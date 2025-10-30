@@ -33,6 +33,16 @@ export default function TermsOfService() {
 
           <section>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
+              事業者情報
+            </h2>
+            <div className="space-y-2 text-gray-600">
+              <p><strong>運営者：</strong>SOZEL / ソゼル</p>
+              <p><strong>連絡先：</strong>support@delilog.app</p>
+            </div>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">
               第1条（適用）
             </h2>
             <div className="space-y-2 text-gray-600">
@@ -249,9 +259,23 @@ export default function TermsOfService() {
             </div>
           </section>
 
+          <section>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">
+              第15条（お問い合わせ）
+            </h2>
+            <div className="space-y-2 text-gray-600">
+              <p>
+                本規約に関するお問い合わせは、以下までご連絡ください：
+              </p>
+              <p className="font-semibold mt-4">
+                メール: support@delilog.app
+              </p>
+            </div>
+          </section>
+
           <section className="pt-4 border-t border-gray-200">
             <p className="text-sm text-gray-500">
-              最終更新日: 2025年10月14日
+              最終更新日: 2025年10月30日
             </p>
           </section>
         </div>
