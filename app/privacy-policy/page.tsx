@@ -1,21 +1,24 @@
-import Link from "next/link";
+'use client';
 
-export const metadata = {
-  title: "プライバシーポリシー | delilog",
-  description: "delilogのプライバシーポリシー",
-};
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 export default function PrivacyPolicy() {
+  const searchParams = useSearchParams();
+  const isApp = searchParams.get('app') === 'true';
+
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* ヘッダー */}
-      <header className="bg-white shadow-sm">
-        <div className="max-w-4xl mx-auto px-4 py-4">
-          <Link href="/" className="text-xl font-bold text-gray-900 hover:text-gray-700">
-            ← delilog
-          </Link>
-        </div>
-      </header>
+      {/* ヘッダー - アプリからのアクセス時は非表示 */}
+      {!isApp && (
+        <header className="bg-white shadow-sm">
+          <div className="max-w-4xl mx-auto px-4 py-4">
+            <Link href="/" className="text-xl font-bold text-gray-900 hover:text-gray-700">
+              ← delilog
+            </Link>
+          </div>
+        </header>
+      )}
 
       {/* コンテンツ */}
       <main className="max-w-4xl mx-auto px-4 py-12">
@@ -193,22 +196,24 @@ export default function PrivacyPolicy() {
         </div>
       </main>
 
-      {/* フッター */}
-      <footer className="bg-gray-900 text-gray-400 py-12 px-4 mt-20">
-        <div className="max-w-6xl mx-auto text-center">
-          <div className="flex justify-center gap-8 mb-6">
-            <Link href="/privacy-policy" className="hover:text-white transition">
-              プライバシーポリシー
-            </Link>
-            <Link href="/terms-of-service" className="hover:text-white transition">
-              利用規約
-            </Link>
+      {/* フッター - アプリからのアクセス時は非表示 */}
+      {!isApp && (
+        <footer className="bg-gray-900 text-gray-400 py-12 px-4 mt-20">
+          <div className="max-w-6xl mx-auto text-center">
+            <div className="flex justify-center gap-8 mb-6">
+              <Link href="/privacy-policy" className="hover:text-white transition">
+                プライバシーポリシー
+              </Link>
+              <Link href="/terms-of-service" className="hover:text-white transition">
+                利用規約
+              </Link>
+            </div>
+            <p className="text-sm">
+              © 2025 delilog. All rights reserved.
+            </p>
           </div>
-          <p className="text-sm">
-            © 2025 delilog. All rights reserved.
-          </p>
-        </div>
-      </footer>
+        </footer>
+      )}
     </div>
   );
 }
