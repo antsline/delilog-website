@@ -291,7 +291,7 @@ export default function Home() {
             <div className="bg-white rounded-xl p-6 shadow-sm">
               <p className="text-lg text-gray-700 flex items-center gap-3">
                 <span className="flex-shrink-0 w-6 h-6 bg-[#1876be] rounded flex items-center justify-center text-white text-base font-bold">✓</span>
-                <span>軽貨物の個人事業主</span>
+                <span>軽貨物運送業の個人事業主</span>
               </p>
             </div>
             <div className="bg-white rounded-xl p-6 shadow-sm">
@@ -305,6 +305,64 @@ export default function Home() {
                 <span className="flex-shrink-0 w-6 h-6 bg-[#1876be] rounded flex items-center justify-center text-white text-base font-bold">✓</span>
                 <span>書類管理を効率化したい方</span>
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 今後追加予定の機能 */}
+      <section className="py-20 px-4 bg-gray-100">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h3 className="text-3xl font-bold text-[#fb6c39] mb-4">
+              今後追加予定の機能
+            </h3>
+            <p className="text-gray-600">
+              さらに便利になる機能を開発中です
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="bg-white rounded-xl p-6 shadow-sm border-2 border-dashed border-gray-300">
+              <div className="flex items-center gap-3 mb-2">
+                <span className="text-2xl">📊</span>
+                <h4 className="text-lg font-bold text-gray-700">運行記録</h4>
+              </div>
+              <p className="text-sm text-gray-500">日々の運行を詳細に記録</p>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow-sm border-2 border-dashed border-gray-300">
+              <div className="flex items-center gap-3 mb-2">
+                <span className="text-2xl">📈</span>
+                <h4 className="text-lg font-bold text-gray-700">実績管理・明細書発行</h4>
+              </div>
+              <p className="text-sm text-gray-500">配送実績を可視化・明細書を作成</p>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow-sm border-2 border-dashed border-gray-300">
+              <div className="flex items-center gap-3 mb-2">
+                <span className="text-2xl">💰</span>
+                <h4 className="text-lg font-bold text-gray-700">売上管理</h4>
+              </div>
+              <p className="text-sm text-gray-500">売上の記録と集計を自動化</p>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow-sm border-2 border-dashed border-gray-300">
+              <div className="flex items-center gap-3 mb-2">
+                <span className="text-2xl">💳</span>
+                <h4 className="text-lg font-bold text-gray-700">経費管理</h4>
+              </div>
+              <p className="text-sm text-gray-500">経費を記録して利益分析に活用</p>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow-sm border-2 border-dashed border-gray-300">
+              <div className="flex items-center gap-3 mb-2">
+                <span className="text-2xl">📄</span>
+                <h4 className="text-lg font-bold text-gray-700">請求書発行</h4>
+              </div>
+              <p className="text-sm text-gray-500">請求書を簡単に作成・発行</p>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow-sm border-2 border-dashed border-gray-300">
+              <div className="flex items-center gap-3 mb-2">
+                <span className="text-2xl">💻</span>
+                <h4 className="text-lg font-bold text-gray-700">Web管理サイト</h4>
+              </div>
+              <p className="text-sm text-gray-500">PCブラウザでデータ管理</p>
             </div>
           </div>
         </div>
