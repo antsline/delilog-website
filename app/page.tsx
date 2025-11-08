@@ -1,21 +1,35 @@
+'use client';
+
 import Image from "next/image";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 
 export default function Home() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const mockups = [
+    "/screenshot_mockup_1.png",
+    "/screenshot_mockup_2.png",
+    "/screenshot_mockup_3.png",
+    "/screenshot_mockup_4.png",
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % mockups.length);
+    }, 3000); // 3秒ごとに切り替え
+
+    return () => clearInterval(timer);
+  }, [mockups.length]);
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* ヘッダー */}
       <header className="bg-white shadow-sm">
-        <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-gray-900">delilog</h1>
-          <nav className="flex gap-6">
-            <Link href="/privacy-policy" className="text-gray-600 hover:text-gray-900">
-              プライバシーポリシー
-            </Link>
-            <Link href="/terms-of-service" className="text-gray-600 hover:text-gray-900">
-              利用規約
-            </Link>
-          </nav>
+        <div className="max-w-6xl mx-auto px-4 py-4">
+          <h1 className="text-2xl font-bold">
+            <span className="text-[#fb6c39]">delilog</span>
+            {" "}- <span className="text-lg text-[#1876be]">デリログ</span>
+          </h1>
         </div>
       </header>
 
@@ -34,7 +48,7 @@ export default function Home() {
                   className="rounded-3xl shadow-lg"
                 />
               </div>
-              <h2 className="text-5xl font-bold text-gray-900 mb-6">
+              <h2 className="text-5xl font-bold text-[#fb6c39] mb-6">
                 delilog
               </h2>
               <p className="text-xl lg:text-2xl text-gray-700 mb-4 leading-relaxed">
@@ -44,30 +58,75 @@ export default function Home() {
                 車両日常点検・業務前点呼・業務後点呼を簡単に記録
               </p>
               <ul className="text-base lg:text-lg text-gray-600 mb-12 space-y-2">
-                <li>✓ 法定の点検・点呼項目に対応</li>
-                <li>✓ オフラインでも記録可能</li>
-                <li>✓ PDF出力で書類作成も簡単</li>
+                <li className="flex items-center gap-2">
+                  <span className="flex-shrink-0 w-5 h-5 bg-[#1876be] rounded flex items-center justify-center text-white text-sm font-bold">✓</span>
+                  <span>法定の点検・点呼項目に対応</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="flex-shrink-0 w-5 h-5 bg-[#1876be] rounded flex items-center justify-center text-white text-sm font-bold">✓</span>
+                  <span>オフラインでも記録可能</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="flex-shrink-0 w-5 h-5 bg-[#1876be] rounded flex items-center justify-center text-white text-sm font-bold">✓</span>
+                  <span>PDF出力で書類作成も簡単</span>
+                </li>
               </ul>
               <div className="flex justify-center lg:justify-start gap-4">
                 <a
                   href="https://apps.apple.com/jp/app/id6753698337"
-                  className="inline-block bg-black text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-gray-800 transition"
+                  className="inline-block hover:opacity-80 transition"
                 >
-                  App Storeでダウンロード
+                  <Image
+                    src="/app-store-badge-ja.svg"
+                    alt="Download on the App Store"
+                    width={200}
+                    height={67}
+                    className="h-14 w-auto"
+                  />
                 </a>
               </div>
             </div>
 
-            {/* 右側：モックアップ画像 */}
+            {/* 右側：モックアップカルーセル */}
             <div className="flex-1 flex justify-center">
-              <Image
-                src="/screenshot_mockup_1.png"
-                alt="delilog アプリ画面"
-                width={400}
-                height={800}
-                className="max-w-full h-auto"
-                priority
-              />
+              <div className="relative w-full max-w-[400px]">
+                {/* カルーセル画像 */}
+                <div className="relative overflow-hidden">
+                  {mockups.map((mockup, index) => (
+                    <div
+                      key={index}
+                      className={`transition-opacity duration-500 ${
+                        index === currentSlide ? "opacity-100" : "opacity-0 absolute inset-0"
+                      }`}
+                    >
+                      <Image
+                        src={mockup}
+                        alt={`delilog アプリ画面 ${index + 1}`}
+                        width={400}
+                        height={800}
+                        className="max-w-full h-auto"
+                        priority={index === 0}
+                      />
+                    </div>
+                  ))}
+                </div>
+
+                {/* インジケーター（ドット） */}
+                <div className="flex justify-center gap-2 mt-6">
+                  {mockups.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentSlide(index)}
+                      className={`w-2 h-2 rounded-full transition-all ${
+                        index === currentSlide
+                          ? "bg-[#1876be] w-6"
+                          : "bg-gray-300 hover:bg-gray-400"
+                      }`}
+                      aria-label={`スライド ${index + 1} に移動`}
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -76,7 +135,7 @@ export default function Home() {
       {/* 機能紹介 */}
       <section className="py-20 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
-          <h3 className="text-3xl font-bold text-center text-gray-900 mb-16">
+          <h3 className="text-3xl font-bold text-center text-[#fb6c39] mb-16">
             主な機能
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -92,7 +151,7 @@ export default function Home() {
                 />
               </div>
               <div className="p-6">
-                <h4 className="text-xl font-bold text-gray-900 mb-3">
+                <h4 className="text-xl font-bold text-[#1876be] mb-3">
                   車両日常点検
                 </h4>
                 <ul className="text-gray-600 space-y-2 text-sm">
@@ -115,7 +174,7 @@ export default function Home() {
                 />
               </div>
               <div className="p-6">
-                <h4 className="text-xl font-bold text-gray-900 mb-3">
+                <h4 className="text-xl font-bold text-[#1876be] mb-3">
                   業務前点呼・業務後点呼
                 </h4>
                 <ul className="text-gray-600 space-y-2 text-sm">
@@ -139,7 +198,7 @@ export default function Home() {
                 />
               </div>
               <div className="p-6">
-                <h4 className="text-xl font-bold text-gray-900 mb-3">
+                <h4 className="text-xl font-bold text-[#1876be] mb-3">
                   オフライン対応
                 </h4>
                 <ul className="text-gray-600 space-y-2 text-sm">
@@ -162,7 +221,7 @@ export default function Home() {
                 />
               </div>
               <div className="p-6">
-                <h4 className="text-xl font-bold text-gray-900 mb-3">
+                <h4 className="text-xl font-bold text-[#1876be] mb-3">
                   記録の保存と出力
                 </h4>
                 <ul className="text-gray-600 space-y-2 text-sm">
@@ -185,7 +244,7 @@ export default function Home() {
                 />
               </div>
               <div className="p-6">
-                <h4 className="text-xl font-bold text-gray-900 mb-3">
+                <h4 className="text-xl font-bold text-[#1876be] mb-3">
                   使いやすいデザイン
                 </h4>
                 <ul className="text-gray-600 space-y-2 text-sm">
@@ -208,7 +267,7 @@ export default function Home() {
                 />
               </div>
               <div className="p-6">
-                <h4 className="text-xl font-bold text-gray-900 mb-3">
+                <h4 className="text-xl font-bold text-[#1876be] mb-3">
                   安心のデータ管理
                 </h4>
                 <ul className="text-gray-600 space-y-2 text-sm">
@@ -225,29 +284,44 @@ export default function Home() {
       {/* 対象ユーザー */}
       <section className="py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <h3 className="text-3xl font-bold text-gray-900 mb-12">
+          <h3 className="text-3xl font-bold text-[#fb6c39] mb-12">
             こんな方におすすめ
           </h3>
-          <div className="grid md:grid-cols-2 gap-6 text-left">
+          <div className="grid md:grid-cols-3 gap-6 text-left">
             <div className="bg-white rounded-xl p-6 shadow-sm">
-              <p className="text-lg text-gray-700">✓ 運送事業者</p>
+              <p className="text-lg text-gray-700 flex items-center gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-[#1876be] rounded flex items-center justify-center text-white text-base font-bold">✓</span>
+                <span>軽貨物の個人事業主</span>
+              </p>
             </div>
             <div className="bg-white rounded-xl p-6 shadow-sm">
-              <p className="text-lg text-gray-700">✓ 配送ドライバー</p>
+              <p className="text-lg text-gray-700 flex items-center gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-[#1876be] rounded flex items-center justify-center text-white text-base font-bold">✓</span>
+                <span>スマホだけで記録したい方</span>
+              </p>
             </div>
             <div className="bg-white rounded-xl p-6 shadow-sm">
-              <p className="text-lg text-gray-700">✓ 軽貨物ドライバー</p>
-            </div>
-            <div className="bg-white rounded-xl p-6 shadow-sm">
-              <p className="text-lg text-gray-700">✓ 運行管理者</p>
+              <p className="text-lg text-gray-700 flex items-center gap-3">
+                <span className="flex-shrink-0 w-6 h-6 bg-[#1876be] rounded flex items-center justify-center text-white text-base font-bold">✓</span>
+                <span>書類管理を効率化したい方</span>
+              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-20 px-4 bg-gray-900 text-white">
+      <section className="py-20 px-4 bg-[#1876be] text-white">
         <div className="max-w-4xl mx-auto text-center">
+          <div className="flex justify-center mb-8">
+            <Image
+              src="/app_icon.png"
+              alt="delilog アプリアイコン"
+              width={100}
+              height={100}
+              className="rounded-3xl shadow-lg"
+            />
+          </div>
           <h3 className="text-3xl font-bold mb-6">
             今すぐ始めよう
           </h3>
@@ -256,15 +330,21 @@ export default function Home() {
           </p>
           <a
             href="https://apps.apple.com/jp/app/id6753698337"
-            className="inline-block bg-white text-gray-900 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-gray-100 transition"
+            className="inline-block hover:opacity-80 transition"
           >
-            App Storeでダウンロード
+            <Image
+              src="/app-store-badge-ja.svg"
+              alt="Download on the App Store"
+              width={200}
+              height={67}
+              className="h-14 w-auto"
+            />
           </a>
         </div>
       </section>
 
       {/* フッター */}
-      <footer className="bg-gray-900 text-gray-400 py-12 px-4">
+      <footer className="bg-[#1876be] text-gray-200 py-12 px-4">
         <div className="max-w-6xl mx-auto text-center">
           <div className="flex justify-center gap-8 mb-6">
             <Link href="/privacy-policy" className="hover:text-white transition">
