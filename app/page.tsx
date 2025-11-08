@@ -97,9 +97,8 @@ export default function Home() {
                 </h4>
                 <ul className="text-gray-600 space-y-2 text-sm">
                   <li>・法定点検項目を網羅</li>
-                  <li>・写真撮影で異常箇所を記録</li>
-                  <li>・点検履歴の一覧表示</li>
-                  <li>・PDF出力で報告書類を作成</li>
+                  <li>・チェック形式で簡単入力</li>
+                  <li>・点検記録をPDF化して保存</li>
                 </ul>
               </div>
             </div>
@@ -120,64 +119,104 @@ export default function Home() {
                   業務前点呼・業務後点呼
                 </h4>
                 <ul className="text-gray-600 space-y-2 text-sm">
-                  <li>・アルコールチェック記録</li>
-                  <li>・健康状態の確認</li>
-                  <li>・車両状態の記録</li>
-                  <li>・点呼記録簿のPDF出力</li>
+                  <li>・必要項目を漏れなく記録</li>
+                  <li>・国交省様式に対応したPDF</li>
+                  <li>・業務前後の点呼を効率化</li>
                 </ul>
               </div>
             </div>
 
             {/* オフライン対応 */}
-            <div className="bg-gray-50 rounded-2xl p-8">
-              <div className="text-4xl mb-4">📱</div>
-              <h4 className="text-xl font-bold text-gray-900 mb-3">
-                オフライン対応
-              </h4>
-              <ul className="text-gray-600 space-y-2">
-                <li>・ネット接続なしでも記録可能</li>
-                <li>・オンライン復帰時に自動同期</li>
-                <li>・現場での使用に最適</li>
-              </ul>
+            <div className="bg-gray-50 rounded-2xl overflow-hidden">
+              <div className="relative h-48 bg-gradient-to-br from-purple-50 to-purple-100 overflow-hidden">
+                <Image
+                  src="/no_signal_2.png"
+                  alt="オフライン対応"
+                  width={400}
+                  height={300}
+                  className="w-full h-full object-cover scale-110"
+                  style={{ objectPosition: 'center 30%' }}
+                />
+              </div>
+              <div className="p-6">
+                <h4 className="text-xl font-bold text-gray-900 mb-3">
+                  オフライン対応
+                </h4>
+                <ul className="text-gray-600 space-y-2 text-sm">
+                  <li>・ネット接続なしでも記録可能</li>
+                  <li>・圏外でも業務を止めない</li>
+                  <li>・後からワンタップで同期</li>
+                </ul>
+              </div>
             </div>
 
             {/* データ管理 */}
-            <div className="bg-gray-50 rounded-2xl p-8">
-              <div className="text-4xl mb-4">☁️</div>
-              <h4 className="text-xl font-bold text-gray-900 mb-3">
-                データ管理
-              </h4>
-              <ul className="text-gray-600 space-y-2">
-                <li>・クラウドバックアップで安心</li>
-                <li>・複数車両の管理に対応</li>
-                <li>・期間指定でPDF一括出力</li>
-              </ul>
+            <div className="bg-gray-50 rounded-2xl overflow-hidden">
+              <div className="relative h-48 bg-gradient-to-br from-orange-50 to-orange-100 overflow-hidden">
+                <Image
+                  src="/print_document_1.png"
+                  alt="記録の保存と出力"
+                  width={400}
+                  height={300}
+                  className="w-full h-full object-cover object-center scale-110"
+                />
+              </div>
+              <div className="p-6">
+                <h4 className="text-xl font-bold text-gray-900 mb-3">
+                  記録の保存と出力
+                </h4>
+                <ul className="text-gray-600 space-y-2 text-sm">
+                  <li>・デジタルで記録を保存</li>
+                  <li>・提出時にワンタップで印刷</li>
+                  <li>・複数車両の登録に対応</li>
+                </ul>
+              </div>
             </div>
 
             {/* シンプルなデザイン */}
-            <div className="bg-gray-50 rounded-2xl p-8">
-              <div className="text-4xl mb-4">✨</div>
-              <h4 className="text-xl font-bold text-gray-900 mb-3">
-                使いやすいデザイン
-              </h4>
-              <ul className="text-gray-600 space-y-2">
-                <li>・直感的な操作画面</li>
-                <li>・法令に準拠した記録項目</li>
-                <li>・書類作成の手間を大幅削減</li>
-              </ul>
+            <div className="bg-gray-50 rounded-2xl overflow-hidden">
+              <div className="relative h-48 bg-gradient-to-br from-pink-50 to-pink-100 overflow-hidden">
+                <Image
+                  src="/comfortable_operation_1.png"
+                  alt="使いやすいデザイン"
+                  width={400}
+                  height={300}
+                  className="w-full h-full object-cover object-center scale-110"
+                />
+              </div>
+              <div className="p-6">
+                <h4 className="text-xl font-bold text-gray-900 mb-3">
+                  使いやすいデザイン
+                </h4>
+                <ul className="text-gray-600 space-y-2 text-sm">
+                  <li>・直感的な操作画面</li>
+                  <li>・必要な記録項目を網羅</li>
+                  <li>・日々の記録作業を効率化</li>
+                </ul>
+              </div>
             </div>
 
             {/* データの安全性 */}
-            <div className="bg-gray-50 rounded-2xl p-8">
-              <div className="text-4xl mb-4">🔒</div>
-              <h4 className="text-xl font-bold text-gray-900 mb-3">
-                データの安全性
-              </h4>
-              <ul className="text-gray-600 space-y-2">
-                <li>・データの紛失リスクを軽減</li>
-                <li>・セキュアなクラウド保存</li>
-                <li>・いつでもデータにアクセス</li>
-              </ul>
+            <div className="bg-gray-50 rounded-2xl overflow-hidden">
+              <div className="relative h-48 bg-gradient-to-br from-cyan-50 to-cyan-100 overflow-hidden">
+                <Image
+                  src="/safety_security_1.png"
+                  alt="安心のデータ管理"
+                  width={400}
+                  height={300}
+                  className="w-full h-full object-cover object-center scale-110"
+                />
+              </div>
+              <div className="p-6">
+                <h4 className="text-xl font-bold text-gray-900 mb-3">
+                  安心のデータ管理
+                </h4>
+                <ul className="text-gray-600 space-y-2 text-sm">
+                  <li>・スマホ故障時も安心</li>
+                  <li>・クラウドで自動バックアップ</li>
+                  <li>・過去の記録もすぐ確認</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
