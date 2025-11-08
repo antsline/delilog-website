@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
-export default function PrivacyPolicy() {
+function PrivacyPolicyContent() {
   const searchParams = useSearchParams();
   const isApp = searchParams.get('app') === 'true';
 
@@ -215,5 +216,13 @@ export default function PrivacyPolicy() {
         </footer>
       )}
     </div>
+  );
+}
+
+export default function PrivacyPolicy() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-gray-50" />}>
+      <PrivacyPolicyContent />
+    </Suspense>
   );
 }

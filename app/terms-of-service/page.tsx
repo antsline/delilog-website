@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
-export default function TermsOfService() {
+function TermsOfServiceContent() {
   const searchParams = useSearchParams();
   const isApp = searchParams.get('app') === 'true';
 
@@ -303,5 +304,13 @@ export default function TermsOfService() {
         </footer>
       )}
     </div>
+  );
+}
+
+export default function TermsOfService() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-gray-50" />}>
+      <TermsOfServiceContent />
+    </Suspense>
   );
 }

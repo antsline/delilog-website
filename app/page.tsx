@@ -37,15 +37,17 @@ export default function Home() {
               <h2 className="text-5xl font-bold text-gray-900 mb-6">
                 delilog
               </h2>
-              <p className="text-2xl text-gray-700 mb-4">
-                配送業務管理
+              <p className="text-xl lg:text-2xl text-gray-700 mb-4 leading-relaxed">
+                軽運送自営業者向けの業務管理アプリ
               </p>
-              <p className="text-xl text-gray-600 mb-12">
-                運送業務の記録を一元管理
+              <p className="text-lg lg:text-xl text-gray-600 mb-6 leading-relaxed">
+                車両日常点検・業務前点呼・業務後点呼を簡単に記録
               </p>
-              <p className="text-lg text-gray-600 mb-12">
-                配送・運送業向けの業務記録管理アプリ。車両日常点検、業務前点呼、業務後点呼を簡単に記録。PDF出力で書類作成も効率化。オフライン対応で現場でも安心。
-              </p>
+              <ul className="text-base lg:text-lg text-gray-600 mb-12 space-y-2">
+                <li>✓ 法定の点検・点呼項目に対応</li>
+                <li>✓ オフラインでも記録可能</li>
+                <li>✓ PDF出力で書類作成も簡単</li>
+              </ul>
               <div className="flex justify-center lg:justify-start gap-4">
                 <a
                   href="https://apps.apple.com/jp/app/id6753698337"
@@ -79,31 +81,51 @@ export default function Home() {
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* 車両日常点検 */}
-            <div className="bg-gray-50 rounded-2xl p-8">
-              <div className="text-4xl mb-4">📋</div>
-              <h4 className="text-xl font-bold text-gray-900 mb-3">
-                車両日常点検
-              </h4>
-              <ul className="text-gray-600 space-y-2">
-                <li>・法定点検項目を網羅</li>
-                <li>・写真撮影で異常箇所を記録</li>
-                <li>・点検履歴の一覧表示</li>
-                <li>・PDF出力で報告書類を作成</li>
-              </ul>
+            <div className="bg-gray-50 rounded-2xl overflow-hidden">
+              <div className="relative h-48 bg-gradient-to-br from-blue-50 to-blue-100 overflow-hidden">
+                <Image
+                  src="/car_inspection_1.png"
+                  alt="車両日常点検"
+                  width={400}
+                  height={300}
+                  className="w-full h-full object-cover object-center scale-110"
+                />
+              </div>
+              <div className="p-6">
+                <h4 className="text-xl font-bold text-gray-900 mb-3">
+                  車両日常点検
+                </h4>
+                <ul className="text-gray-600 space-y-2 text-sm">
+                  <li>・法定点検項目を網羅</li>
+                  <li>・写真撮影で異常箇所を記録</li>
+                  <li>・点検履歴の一覧表示</li>
+                  <li>・PDF出力で報告書類を作成</li>
+                </ul>
+              </div>
             </div>
 
             {/* 業務前点呼・業務後点呼 */}
-            <div className="bg-gray-50 rounded-2xl p-8">
-              <div className="text-4xl mb-4">📝</div>
-              <h4 className="text-xl font-bold text-gray-900 mb-3">
-                業務前点呼・業務後点呼
-              </h4>
-              <ul className="text-gray-600 space-y-2">
-                <li>・アルコールチェック記録</li>
-                <li>・健康状態の確認</li>
-                <li>・車両状態の記録</li>
-                <li>・点呼記録簿のPDF出力</li>
-              </ul>
+            <div className="bg-gray-50 rounded-2xl overflow-hidden">
+              <div className="relative h-48 bg-gradient-to-br from-green-50 to-green-100 overflow-hidden">
+                <Image
+                  src="/alcohol_check_1.png"
+                  alt="業務前点呼・業務後点呼"
+                  width={400}
+                  height={300}
+                  className="w-full h-full object-cover object-center scale-110"
+                />
+              </div>
+              <div className="p-6">
+                <h4 className="text-xl font-bold text-gray-900 mb-3">
+                  業務前点呼・業務後点呼
+                </h4>
+                <ul className="text-gray-600 space-y-2 text-sm">
+                  <li>・アルコールチェック記録</li>
+                  <li>・健康状態の確認</li>
+                  <li>・車両状態の記録</li>
+                  <li>・点呼記録簿のPDF出力</li>
+                </ul>
+              </div>
             </div>
 
             {/* オフライン対応 */}
