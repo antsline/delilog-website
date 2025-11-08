@@ -21,26 +21,52 @@ export default function Home() {
 
       {/* ヒーローセクション */}
       <section className="py-20 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-5xl font-bold text-gray-900 mb-6">
-            delilog
-          </h2>
-          <p className="text-2xl text-gray-700 mb-4">
-            配送業務管理
-          </p>
-          <p className="text-xl text-gray-600 mb-12">
-            運送業務の記録を一元管理
-          </p>
-          <p className="text-lg text-gray-600 mb-12 max-w-2xl mx-auto">
-            配送・運送業向けの業務記録管理アプリ。車両日常点検、業務前点呼、業務後点呼を簡単に記録。PDF出力で書類作成も効率化。オフライン対応で現場でも安心。
-          </p>
-          <div className="flex justify-center gap-4">
-            <a
-              href="#"
-              className="inline-block bg-black text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-gray-800 transition"
-            >
-              App Storeでダウンロード
-            </a>
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-col lg:flex-row items-center gap-12">
+            {/* 左側：テキストコンテンツ */}
+            <div className="flex-1 text-center lg:text-left">
+              <div className="flex justify-center lg:justify-start mb-6">
+                <Image
+                  src="/app_icon.png"
+                  alt="delilog アプリアイコン"
+                  width={120}
+                  height={120}
+                  className="rounded-3xl shadow-lg"
+                />
+              </div>
+              <h2 className="text-5xl font-bold text-gray-900 mb-6">
+                delilog
+              </h2>
+              <p className="text-2xl text-gray-700 mb-4">
+                配送業務管理
+              </p>
+              <p className="text-xl text-gray-600 mb-12">
+                運送業務の記録を一元管理
+              </p>
+              <p className="text-lg text-gray-600 mb-12">
+                配送・運送業向けの業務記録管理アプリ。車両日常点検、業務前点呼、業務後点呼を簡単に記録。PDF出力で書類作成も効率化。オフライン対応で現場でも安心。
+              </p>
+              <div className="flex justify-center lg:justify-start gap-4">
+                <a
+                  href="https://apps.apple.com/jp/app/id6753698337"
+                  className="inline-block bg-black text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-gray-800 transition"
+                >
+                  App Storeでダウンロード
+                </a>
+              </div>
+            </div>
+
+            {/* 右側：モックアップ画像 */}
+            <div className="flex-1 flex justify-center">
+              <Image
+                src="/screenshot_mockup_1.png"
+                alt="delilog アプリ画面"
+                width={400}
+                height={800}
+                className="max-w-full h-auto"
+                priority
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -168,7 +194,7 @@ export default function Home() {
             無料でダウンロードできます
           </p>
           <a
-            href="#"
+            href="https://apps.apple.com/jp/app/id6753698337"
             className="inline-block bg-white text-gray-900 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-gray-100 transition"
           >
             App Storeでダウンロード
