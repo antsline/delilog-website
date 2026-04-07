@@ -146,7 +146,7 @@ function PrivacyPolicyContent() {
                 <h3 className="font-semibold text-gray-900 mb-2">利用している第三者サービス</h3>
                 <ul className="list-disc list-inside ml-4 space-y-1">
                   <li><strong>Supabase</strong>（認証・データベース）：米国・欧州、GDPR準拠</li>
-                  <li><strong>Sentry</strong>（エラー監視）：匿名化されたエラーログのみ</li>
+                  <li><strong>RevenueCat</strong>（サブスクリプション管理）：購入情報の管理のみ</li>
                 </ul>
               </div>
             </div>
