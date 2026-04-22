@@ -71,6 +71,7 @@ export default function Home() {
             <Link href="#features" className="text-sm font-medium text-slate-600 hover:text-primary transition-colors">機能</Link>
             <Link href="#pricing" className="text-sm font-medium text-slate-600 hover:text-primary transition-colors">料金</Link>
             <Link href="#roadmap" className="text-sm font-medium text-slate-600 hover:text-primary transition-colors">ロードマップ</Link>
+            <Link href="/blog" className="text-sm font-medium text-slate-600 hover:text-primary transition-colors">Blog</Link>
             <Button asChild variant="default" className="rounded-full shadow-lg shadow-primary/20">
               <a href="https://apps.apple.com/jp/app/id6753698337">ダウンロード</a>
             </Button>
@@ -96,6 +97,7 @@ export default function Home() {
               <Link href="#features" className="text-base font-medium text-slate-600 py-2" onClick={() => setMobileMenuOpen(false)}>機能</Link>
               <Link href="#pricing" className="text-base font-medium text-slate-600 py-2" onClick={() => setMobileMenuOpen(false)}>料金</Link>
               <Link href="#roadmap" className="text-base font-medium text-slate-600 py-2" onClick={() => setMobileMenuOpen(false)}>ロードマップ</Link>
+              <Link href="/blog" className="text-base font-medium text-slate-600 py-2" onClick={() => setMobileMenuOpen(false)}>Blog</Link>
               <Button asChild className="w-full">
                 <a href="https://apps.apple.com/jp/app/id6753698337">ダウンロード</a>
               </Button>

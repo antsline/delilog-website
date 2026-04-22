@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { font-family: 'Noto Sans JP', sans-serif; background: #FDF9F2; }
+  .container {
+    width: 1200px;
+    height: 500px;
+    background: #FDF9F2;
+    padding: 48px 64px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .header { margin-bottom: 32px; }
+  .title {
+    font-size: 34px;
+    font-weight: 900;
+    color: #0f172a;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  .subtitle {
+    font-size: 15px;
+    font-weight: 500;
+    color: #64748b;
+    margin-top: 10px;
+  }
+  .bars { display: flex; flex-direction: column; gap: 24px; flex: 1; justify-content: center; }
+  .bar-row { display: flex; align-items: center; gap: 20px; }
+  .bar-label {
+    flex-shrink: 0;
+    width: 140px;
+    text-align: right;
+  }
+  .bar-label-main {
+    font-size: 24px;
+    font-weight: 900;
+    color: #0f172a;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .bar-label-sub {
+    font-size: 12px;
+    color: #64748b;
+    font-weight: 600;
+    margin-top: 4px;
+  }
+  .bar-track { flex: 1; position: relative; display: flex; align-items: center; gap: 20px; }
+  .bar {
+    height: 56px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    padding: 0 22px;
+    color: white;
+    font-weight: 700;
+    font-size: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    position: relative;
+  }
+  .bar.short {
+    width: 28%;
+    background: linear-gradient(90deg, #1875bd, #2196F3);
+  }
+  .bar.long {
+    width: 84%;
+    background: linear-gradient(90deg, #FF6B35, #FF8254);
+  }
+  .bar-year {
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+  }
+  .bar-items {
+    font-size: 14px;
+    color: #334155;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  .bar-items strong {
+    font-weight: 700;
+    color: #0f172a;
+  }
+  .note {
+    font-size: 12px;
+    color: #64748b;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: 500;
+  }
+  .credit {
+    position: absolute;
+    bottom: 18px;
+    right: 36px;
+    font-size: 12px;
+    color: #94a3b8;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1 class="title">記録の保存期間は項目によって違います</h1>
+    <p class="subtitle">長い方に合わせて保管するのが、もっとも安全です</p>
+  </div>
+
+  <div class="bars">
+    <div class="bar-row">
+      <div class="bar-label">
+        <div class="bar-label-main">1年保存</div>
+        <div class="bar-label-sub">SHORT-TERM</div>
+      </div>
+      <div class="bar-track">
+        <div class="bar short">
+          <span class="bar-year">1 year</span>
+        </div>
+        <div class="bar-items">
+          <strong>点呼の記録</strong>・<strong>業務の記録</strong>（運行記録）
+        </div>
+      </div>
+    </div>
+
+    <div class="bar-row">
+      <div class="bar-label">
+        <div class="bar-label-main">3年保存</div>
+        <div class="bar-label-sub">LONG-TERM</div>
+      </div>
+      <div class="bar-track">
+        <div class="bar long">
+          <span class="bar-year">3 years</span>
+        </div>
+        <div class="bar-items">
+          <strong>事故の記録</strong>・<strong>指導・監督の記録</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">※ 同じ日の記録で複数期間が関わる場合は、長いほう（3年）に合わせて保管するのが安全です</div>
+  <div class="credit">delilog</div>
+</div>
+</body>
+</html>

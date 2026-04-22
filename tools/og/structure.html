@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { font-family: 'Noto Sans JP', sans-serif; background: #FDF9F2; }
+  .container {
+    width: 1200px;
+    height: 800px;
+    background: #FDF9F2;
+    padding: 60px 64px 48px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .header { text-align: center; margin-bottom: 40px; }
+  .title-badge {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 700;
+    color: #FF6B35;
+    letter-spacing: 0.15em;
+    background: rgba(255, 107, 53, 0.1);
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+  }
+  .title {
+    font-size: 42px;
+    font-weight: 900;
+    color: #1e293b;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  .subtitle {
+    font-size: 16px;
+    font-weight: 500;
+    color: #64748b;
+    margin-top: 12px;
+  }
+  .groups {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    flex: 1;
+  }
+  .group {
+    padding: 28px 22px;
+    border-radius: 20px;
+    border: 2px solid;
+    display: flex;
+    flex-direction: column;
+    background: white;
+  }
+  .group.a { border-color: rgba(255, 107, 53, 0.25); }
+  .group.b { border-color: rgba(24, 117, 189, 0.25); }
+  .group.c { border-color: rgba(100, 116, 139, 0.25); }
+  .group-label {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    margin-bottom: 6px;
+  }
+  .group.a .group-label { color: #FF6B35; }
+  .group.b .group-label { color: #1875bd; }
+  .group.c .group-label { color: #475569; }
+  .group-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 6px;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+  .group-count {
+    font-size: 12px;
+    color: #64748b;
+    font-weight: 600;
+    margin-bottom: 22px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  .items { list-style: none; flex: 1; }
+  .item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 11px;
+    font-size: 14.5px;
+    color: #1e293b;
+    line-height: 1.5;
+    font-weight: 500;
+  }
+  .item-number {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: white;
+    border: 1.5px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 800;
+    margin-top: 1px;
+  }
+  .group.a .item-number { color: #FF6B35; border-color: #FF6B35; }
+  .group.b .item-number { color: #1875bd; border-color: #1875bd; }
+  .group.c .item-number { color: #64748b; border-color: #94a3b8; }
+  .item-text { flex: 1; }
+  .preservation {
+    display: inline-block;
+    font-size: 11px;
+    color: #64748b;
+    font-weight: 600;
+    background: #f1f5f9;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 6px;
+    vertical-align: 1px;
+  }
+  .credit {
+    position: absolute;
+    bottom: 22px;
+    right: 36px;
+    font-size: 12px;
+    color: #94a3b8;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <span class="title-badge">14 LEGAL OBLIGATIONS</span>
+    <h1 class="title">守るべき14項目を3つに分けて整理</h1>
+    <p class="subtitle">貨物軽自動車運送事業者が対応すべき法令義務</p>
+  </div>
+
+  <div class="groups">
+    <div class="group a">
+      <div class="group-label">GROUP A</div>
+      <div class="group-title">毎日の仕事で<br>やること</div>
+      <div class="group-count">4項目・毎日</div>
+      <ul class="items">
+        <li class="item"><span class="item-number">1</span><span class="item-text">点呼の記録<span class="preservation">保存1年</span></span></li>
+        <li class="item"><span class="item-number">2</span><span class="item-text">日常点検</span></li>
+        <li class="item"><span class="item-number">3</span><span class="item-text">業務の記録<span class="preservation">保存1年</span></span></li>
+        <li class="item"><span class="item-number">4</span><span class="item-text">勤務時間の管理</span></li>
+      </ul>
+    </div>
+
+    <div class="group b">
+      <div class="group-label">GROUP B</div>
+      <div class="group-title">ときどき必要な<br>管理</div>
+      <div class="group-count">5項目・随時 / 年1回</div>
+      <ul class="items">
+        <li class="item"><span class="item-number">5</span><span class="item-text">安全管理者の選任・届出</span></li>
+        <li class="item"><span class="item-number">6</span><span class="item-text">安全管理者の講習受講</span></li>
+        <li class="item"><span class="item-number">7</span><span class="item-text">初任運転者への指導</span></li>
+        <li class="item"><span class="item-number">8</span><span class="item-text">運転者への指導・監督</span></li>
+        <li class="item"><span class="item-number">9</span><span class="item-text">健康診断</span></li>
+      </ul>
+    </div>
+
+    <div class="group c">
+      <div class="group-label">GROUP C</div>
+      <div class="group-title">もしもの時の<br>対応</div>
+      <div class="group-count">5項目・発生時</div>
+      <ul class="items">
+        <li class="item"><span class="item-number">10</span><span class="item-text">事故の記録<span class="preservation">保存3年</span></span></li>
+        <li class="item"><span class="item-number">11</span><span class="item-text">国交省への事故報告</span></li>
+        <li class="item"><span class="item-number">12</span><span class="item-text">異常気象時の措置</span></li>
+        <li class="item"><span class="item-number">13</span><span class="item-text">過積載の防止</span></li>
+        <li class="item"><span class="item-number">14</span><span class="item-text">貨物の適正な積載</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="credit">delilog</div>
+</div>
+</body>
+</html>

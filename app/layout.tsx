@@ -9,6 +9,7 @@ const notoSansJP = Noto_Sans_JP({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://delilog.app"),
   title: "delilog - 軽貨物ドライバーのための業務記録アプリ",
   description: "点検・点呼・運行記録をスマホ1台で完結。法定点検項目・アルコールチェック・国交省様式PDF出力に対応。基本無料。",
 };
