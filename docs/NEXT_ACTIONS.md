@@ -1,32 +1,20 @@
 # delilog 次にやることリスト
 
 **作成日**: 2026-04-23
+**最終更新**: 2026-04-23
 **前提**: ブログ公開・初回記事投稿・Analytics 基盤整備を完了した直後の状態
 
 ---
 
+## 完了済み（2026-04-23）
+
+- ✅ **① Vercel 重複プロジェクト削除**（`delilog-website-5dys`）
+- ✅ **② Search Console サイトマップ送信**（`sitemap.xml`）
+- ✅ **③ Search Console URL検査・インデックス登録リクエスト**
+
+---
+
 ## 今日〜3日以内（残タスク整理）
-
-### ① Vercel: 重複プロジェクト削除
-
-- `delilog-website-5dys` を削除
-- Vercel Dashboard → 左上プロジェクトセレクタから切替 → Settings → General → Delete Project
-- **所要**: 3分
-
-### ② Google Search Console: サイトマップ送信
-
-- Search Console 左メニュー → サイトマップ
-- 入力欄に `sitemap.xml` と入力して「送信」
-- ステータスが「成功しました」になることを確認
-- **所要**: 1分
-
-### ③ Google Search Console: 記事の URL 検査
-
-- 左メニュー → URL検査
-- `https://delilog.app/blog/keikamotsu-anzentaisaku-2025` を入力
-- 「インデックス登録をリクエスト」クリック
-- 余力があれば `/blog` と `/` も同様に
-- **所要**: 5分
 
 ### ④ Analytics 動作確認
 
@@ -170,10 +158,10 @@ https://delilog.app/blog/keikamotsu-anzentaisaku-2025
 ## 優先度マトリクス
 
 ```
-緊急×重要（今すぐ）       ：① 5dys削除 / ② サイトマップ送信 / ③ URL検査
+緊急×重要（今すぐ）       ：④ Analytics動作確認
 重要×非緊急（計画的に）    ：⑦ 2本目執筆 / ⑪ パートナー開拓
 緊急×非重要（隙間で）      ：⑤ Clarity / ⑧ デプロイ確認
 非緊急×非重要（余力で）    ：⑩ 動画 / ⑫ App Storeパラメータ
 ```
 
-迷ったら**左上（①②③）から片付ける**のが効率的。
+①②③は 2026-04-23 に完了。次の本命は **⑦ 2本目の記事執筆**（重要×非緊急）。
