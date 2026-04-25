@@ -235,3 +235,43 @@ author: "delilog編集部"
 `.claude/agents/` に専用エージェント6体を配置。`/write-blog <テーマ>` で一連のパイプライン起動。
 
 各エージェントの責務と連携は `.claude/commands/write-blog.md` を参照。
+
+### 運用ルール
+
+#### 中間成果物の永続化
+
+各 Phase の出力は `.claude/work/<slug>/` に Markdown ファイルとして保存される:
+
+- `01-plan.md` （planner）
+- `02-outline.md` （outliner）
+- `03-fact-check.md` （fact-checker）
+- `04-consistency.md` （consistency-guard）
+- `05a-skeleton.md` / `05b-section-1-4.md` / `05c-section-5-8.md` / `05d-section-9-12.md` （writer の各モード）
+- `06-review.md` （reviewer）
+- `07-image-prompts.md` （image-prompter）
+
+writer のタイムアウト時は**失敗した section のみ再実行可能**。他 Phase の成果物は再利用される。
+
+#### 誤解パターンDBの活用
+
+`.claude/knowledge/misconceptions.md` に過去のファクトチェックで発見された誤情報を ID 付きで蓄積している。
+
+fact-checker は**毎回最初にこのファイルを Read**し、新記事の主張が既知の誤解（M0XX）に該当するかを照合する。新規誤解が発見されたら、ユーザー承認の上で misconceptions.md に追記する。
+
+#### writer の章単位分割
+
+writer は3モードで動作する:
+
+- `mode: skeleton` — frontmatter + 章タイトルのみ（軽量）
+- `mode: sections` — 指定章範囲（例: `1-4` / `5-8` / `9-12`）の本文（並行実行可）
+- `mode: merge` — 全章結合 + 既存記事の相互リンク更新
+
+長文記事のタイムアウト対策として導入。並行実行で実時間も短縮できる。
+
+#### カスタムエージェントの認識
+
+`.claude/agents/` のエージェントは**新しい Claude Code セッションで自動認識**される。セッション中に作成・更新したエージェントは認識されないため、その場合は `subagent_type: general-purpose` で `.md` の内容を prompt に埋め込んで代替実行する。
+
+#### `.claude/work/` の git 取り扱い
+
+中間成果物は実装上必要だが、リポジトリに永続的に残す必要はない。**`.gitignore` で除外する運用を推奨**（記事公開時は `content/blog/` と `public/blog/` のみ commit）。
