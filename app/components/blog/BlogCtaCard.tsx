@@ -9,7 +9,11 @@ export function BlogCtaCard() {
           <Image src="/icon.png" alt="delilog" width={64} height={64} className="rounded-2xl shadow-md" />
         </div>
         <div className="flex-1">
-          <p className="text-sm font-semibold text-primary mb-1">軽貨物ドライバーのための業務記録アプリ</p>
+          <p className="text-sm mb-1">
+            <span className="font-bold text-slate-900">delilog</span>
+            <span className="mx-1.5 text-slate-300">·</span>
+            <span className="font-semibold text-primary">軽貨物ドライバーのための業務記録アプリ</span>
+          </p>
           <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-2">点呼・点検・運行記録を1つに</h3>
           <p className="text-sm text-slate-600 mb-4">
             点呼・日常点検は無料で無制限。運行記録などのプレミアム機能は14日間無料で試せます。

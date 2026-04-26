@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Clock } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { BlogCtaCard } from "@/app/components/blog/BlogCtaCard";
 import { TableOfContents } from "@/app/components/blog/TableOfContents";
 import { formatJapaneseDate, getAllPostSlugs, getPostBySlug } from "@/lib/blog";
@@ -163,11 +163,6 @@ export default async function BlogPostPage({ params }: PageProps) {
         </h1>
         <div className="flex items-center gap-4 text-sm text-slate-500">
           <time dateTime={post.date}>{formatJapaneseDate(post.date)}</time>
-          <span className="text-slate-300">•</span>
-          <span className="inline-flex items-center gap-1">
-            <Clock className="w-4 h-4" />
-            約{post.readingTimeMin}分で読めます
-          </span>
           {post.author && (
             <>
               <span className="text-slate-300">•</span>

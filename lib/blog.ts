@@ -18,9 +18,7 @@ export type BlogFrontmatter = {
   author?: string;
 };
 
-export type BlogPostMeta = BlogFrontmatter & {
-  readingTimeMin: number;
-};
+export type BlogPostMeta = BlogFrontmatter;
 
 export type BlogHeading = {
   id: string;
@@ -50,12 +48,6 @@ async function readMarkdownFile(filename: string): Promise<{ data: BlogFrontmatt
   }
 
   return { data, content: parsed.content };
-}
-
-function estimateReadingTime(japaneseText: string): number {
-  const characters = japaneseText.replace(/\s+/g, "").length;
-  const charactersPerMinute = 600;
-  return Math.max(1, Math.round(characters / charactersPerMinute));
 }
 
 // Note: sanitize: false は、content/blog/ 配下が内部執筆のみである前提に基づく。
@@ -108,6 +100,30 @@ function injectHeadingIds(html: string, headings: BlogHeading[]): string {
   });
 }
 
+function transformInlineCtas(html: string): string {
+  return html.replace(/<!--CTA-->\s*([\s\S]*?)\s*<!--\/CTA-->/g, (_match, inner: string) => {
+    return [
+      '<aside class="not-prose my-12 rounded-2xl bg-gradient-to-br from-primary-50 via-white to-secondary-50 border border-primary-100 p-6 sm:p-8">',
+      '<div class="flex flex-col sm:flex-row items-start sm:items-center gap-6">',
+      '<div class="flex-shrink-0">',
+      '<img src="/icon.png" alt="delilog" width="64" height="64" class="rounded-2xl shadow-md" />',
+      '</div>',
+      '<div class="flex-1">',
+      '<p class="text-sm mb-1">',
+      '<span class="font-bold text-slate-900">delilog</span>',
+      '<span class="mx-1.5 text-slate-300">·</span>',
+      '<span class="font-semibold text-primary">軽貨物ドライバーのための業務記録アプリ</span>',
+      '</p>',
+      '<div class="inline-cta-body">',
+      inner.trim(),
+      '</div>',
+      '</div>',
+      '</div>',
+      '</aside>',
+    ].join('');
+  });
+}
+
 export async function getAllPostMetas(): Promise<BlogPostMeta[]> {
   let entries: string[];
   try {
@@ -119,11 +135,8 @@ export async function getAllPostMetas(): Promise<BlogPostMeta[]> {
   const files = entries.filter((entry) => entry.endsWith(".md"));
   const metas = await Promise.all(
     files.map(async (filename) => {
-      const { data, content } = await readMarkdownFile(filename);
-      return {
-        ...data,
-        readingTimeMin: estimateReadingTime(content),
-      };
+      const { data } = await readMarkdownFile(filename);
+      return { ...data };
     }),
   );
 
@@ -145,7 +158,7 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     const { data, content } = await readMarkdownFile(filename);
     const headings = extractH2Headings(content);
     const rawHtml = await markdownToHtml(content);
-    const contentHtml = injectHeadingIds(rawHtml, headings);
+    const contentHtml = transformInlineCtas(injectHeadingIds(rawHtml, headings));
 
     const markerIdx = contentHtml.indexOf(TOC_MARKER);
     const contentHtmlBeforeToc =
@@ -155,7 +168,6 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
 
     return {
       ...data,
-      readingTimeMin: estimateReadingTime(content),
       contentHtmlBeforeToc,
       contentHtmlAfterToc,
       rawContent: content,

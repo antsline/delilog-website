@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Clock } from "lucide-react";
 import type { BlogPostMeta } from "@/lib/blog";
 import { formatJapaneseDate } from "@/lib/blog";
 
@@ -11,11 +10,6 @@ export function BlogArticleCard({ post }: { post: BlogPostMeta }) {
     >
       <div className="flex items-center gap-3 text-xs text-slate-500 mb-3">
         <time dateTime={post.date}>{formatJapaneseDate(post.date)}</time>
-        <span className="text-slate-300">•</span>
-        <span className="inline-flex items-center gap-1">
-          <Clock className="w-3.5 h-3.5" />
-          約{post.readingTimeMin}分で読めます
-        </span>
       </div>
 
       <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-3 leading-snug group-hover:text-primary transition-colors">
