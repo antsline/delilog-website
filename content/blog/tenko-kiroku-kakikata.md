@@ -545,6 +545,8 @@ author: "delilog編集部"
 - [軽貨物ドライバーの法令義務14項目｜2025年4月施行「安全対策強化」完全ガイド](/blog/keikamotsu-anzentaisaku-2025) — 点呼を含む14項目の全体像
 - [業務の記録（運行記録）6項目の書き方と保存方法](/blog/gyoumu-no-kiroku-kakikata) — 点呼と並んで毎日発生する業務の記録
 - [軽貨物ドライバーの勤務時間ルール完全ガイド｜改善基準告示6つの数値・1人親方の運用・違反時の処分](/blog/kaizen-kijun-kokuji-keikamotsu)
+- [軽貨物ドライバーの働き方｜業務形態3類型徹底比較【2026年版】](/blog/keikamotsu-hatarakikata)
+- [軽貨物ドライバーの実態統計｜年代・地域・年収・労働時間データ【2026年版】](/blog/keikamotsu-jittai-toukei)
 
 ---
 
