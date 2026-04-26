@@ -4,6 +4,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Clock } from "lucide-react";
 import { BlogCtaCard } from "@/app/components/blog/BlogCtaCard";
+import { TableOfContents } from "@/app/components/blog/TableOfContents";
 import { formatJapaneseDate, getAllPostSlugs, getPostBySlug } from "@/lib/blog";
 import { APP_STORE_URL, SITE_URL } from "@/lib/constants";
 
@@ -176,23 +177,49 @@ export default async function BlogPostPage({ params }: PageProps) {
         </div>
       </header>
 
-      <div
-        className="prose prose-slate prose-lg max-w-none
-          prose-headings:tracking-tight prose-headings:scroll-mt-24
-          prose-h2:text-2xl sm:prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:pb-2 prose-h2:border-b prose-h2:border-slate-200
-          prose-h3:text-xl sm:prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4
-          prose-h4:text-lg prose-h4:mt-6 prose-h4:mb-2
-          prose-p:leading-relaxed prose-p:text-slate-700
-          prose-a:text-primary prose-a:no-underline hover:prose-a:underline
-          prose-strong:text-slate-900 prose-strong:font-semibold
-          prose-blockquote:border-l-primary prose-blockquote:bg-primary/5 prose-blockquote:py-2 prose-blockquote:px-4 prose-blockquote:not-italic prose-blockquote:text-slate-700
-          prose-ul:my-4 prose-ol:my-4 prose-li:my-1
-          prose-table:text-sm prose-th:bg-slate-50 prose-th:font-semibold prose-th:text-slate-900
-          prose-code:text-primary prose-code:bg-primary/5 prose-code:rounded prose-code:px-1.5 prose-code:py-0.5 prose-code:font-normal prose-code:before:content-none prose-code:after:content-none
-          prose-hr:border-slate-200 prose-hr:my-10
-          prose-img:rounded-2xl prose-img:border prose-img:border-slate-200 prose-img:shadow-sm prose-img:my-10 prose-img:mx-auto"
-        dangerouslySetInnerHTML={{ __html: post.contentHtml }}
-      />
+      {(() => {
+        const proseClassName =
+          "prose prose-slate prose-lg max-w-none " +
+          "prose-headings:tracking-tight prose-headings:scroll-mt-24 " +
+          "prose-h2:text-2xl sm:prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:pb-2 prose-h2:border-b prose-h2:border-slate-200 " +
+          "prose-h3:text-xl sm:prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4 " +
+          "prose-h4:text-lg prose-h4:mt-6 prose-h4:mb-2 " +
+          "prose-p:leading-relaxed prose-p:text-slate-700 " +
+          "prose-a:text-primary prose-a:no-underline hover:prose-a:underline " +
+          "prose-strong:text-slate-900 prose-strong:font-semibold " +
+          "prose-blockquote:border-l-primary prose-blockquote:bg-primary/5 prose-blockquote:py-2 prose-blockquote:px-4 prose-blockquote:not-italic prose-blockquote:text-slate-700 " +
+          "prose-ul:my-4 prose-ol:my-4 prose-li:my-1 " +
+          "prose-table:text-sm prose-th:bg-slate-50 prose-th:font-semibold prose-th:text-slate-900 " +
+          "prose-code:text-primary prose-code:bg-primary/5 prose-code:rounded prose-code:px-1.5 prose-code:py-0.5 prose-code:font-normal prose-code:before:content-none prose-code:after:content-none " +
+          "prose-hr:border-slate-200 prose-hr:my-10 " +
+          "prose-img:rounded-2xl prose-img:border prose-img:border-slate-200 prose-img:shadow-sm prose-img:my-10 prose-img:mx-auto";
+
+        if (post.contentHtmlAfterToc) {
+          return (
+            <>
+              <div
+                className={proseClassName}
+                dangerouslySetInnerHTML={{ __html: post.contentHtmlBeforeToc }}
+              />
+              <TableOfContents headings={post.headings} />
+              <div
+                className={proseClassName}
+                dangerouslySetInnerHTML={{ __html: post.contentHtmlAfterToc }}
+              />
+            </>
+          );
+        }
+
+        return (
+          <>
+            <TableOfContents headings={post.headings} />
+            <div
+              className={proseClassName}
+              dangerouslySetInnerHTML={{ __html: post.contentHtmlBeforeToc }}
+            />
+          </>
+        );
+      })()}
 
       <BlogCtaCard />
 
