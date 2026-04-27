@@ -2,6 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import matter from "gray-matter";
 import { remark } from "remark";
+import remarkCjkFriendly from "remark-cjk-friendly";
 import remarkGfm from "remark-gfm";
 import remarkHtml from "remark-html";
 
@@ -53,7 +54,11 @@ async function readMarkdownFile(filename: string): Promise<{ data: BlogFrontmatt
 // Note: sanitize: false は、content/blog/ 配下が内部執筆のみである前提に基づく。
 // 外部寄稿や CMS 取り込みを受け入れる場合は、rehype-sanitize を挟むか sanitize: true に切り替えること。
 async function markdownToHtml(markdown: string): Promise<string> {
-  const processed = await remark().use(remarkGfm).use(remarkHtml, { sanitize: false }).process(markdown);
+  const processed = await remark()
+    .use(remarkCjkFriendly)
+    .use(remarkGfm)
+    .use(remarkHtml, { sanitize: false })
+    .process(markdown);
   return String(processed);
 }
 
