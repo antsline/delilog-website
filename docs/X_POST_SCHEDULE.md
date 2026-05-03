@@ -6,7 +6,7 @@ delilog ブログ記事を X で再投稿（リサイクル）するための運
 - 投稿実績は `utm_content` で識別し、Google Analytics で効果検証する
 - 公開記事は `docs/BLOG_BACKLOG.md` を参照
 
-最終更新: 2026-05-03（記事 #9 公開・マトリクス追加）
+最終更新: 2026-05-04（記事 #10 公開・マトリクス追加）
 
 ---
 
@@ -78,8 +78,9 @@ https://delilog.app/blog/tenko-kiroku-kakikata?utm_source=x&utm_medium=social&ut
 | 7 | 業務形態別「相場」 | □ | □ | □ | □ |
 | 8 | 黒ナンバー取得の流れ | □ | □ | □ | □ |
 | 9 | コネなしで案件を取る6ルート | □ | □ | □ | □ |
+| 10 | 軽貨物の「闇」の正体 | □ | □ | □ | □ |
 
-9記事 × 4角度 = **計36パターン**。週6日 × 3枠 = 週18投稿として、約2ヶ月で1周。
+10記事 × 4角度 = **計40パターン**。週6日 × 3枠 = 週18投稿として、約2.5ヶ月で1周。
 
 ---
 
@@ -165,6 +166,80 @@ A: いいえ。「酒気帯びの有無」のチェックでOK（国交省モデ
 毎日この4項目を埋めれば法令クリア。
 記入例つきで詳しく解説→
 [URL]
+```
+
+---
+
+### 記事 #10: 軽貨物の「闇」の正体
+
+#### 結論型（initial）— 早朝向け
+
+```
+軽貨物の「闇」って結局なんだろう？
+
+調べた結論：黒幕はいない。あるのは構造だけ。
+
+・EC急成長×ドライバー不足
+・「送料無料」志向の消費者文化
+・参入障壁の低さ
+・個人事業主という法的形式
+
+闇の正体と、消耗しない9つの処方箋→
+https://delilog.app/blog/keikamotsu-yami-kouzou?utm_source=x&utm_medium=social&utm_content=initial
+```
+
+#### 痛み型（fail-case）— 夜向け
+
+```
+「軽貨物 やめとけ」「軽貨物 闇」と検索して不安になっていませんか？
+
+その「闇」、特定の悪人の仕業ではなく構造です。
+構造は一人では変えられない。でも、その中で消耗しない選択は今日からできます。
+
+3カテゴリ・4つの力学・9つの処方箋で体系化→
+https://delilog.app/blog/keikamotsu-yami-kouzou?utm_source=x&utm_medium=social&utm_content=fail-case
+```
+
+#### FAQ型（faq）— 早朝向け
+
+```
+Q：軽貨物の「闇」って結局何のこと？
+
+A：搾取＝個人ドライバーから不当に金と時間が奪われている状態。
+特定の悪人の仕業ではなく、構造から生まれます。
+
+「黒幕はいない」を仮説検証＋4つの力学を解剖→
+https://delilog.app/blog/keikamotsu-yami-kouzou?utm_source=x&utm_medium=social&utm_content=faq
+```
+
+#### 図表型（checklist）— 日曜午前向け（画像 prescription-matrix.png 添付）
+
+```
+軽貨物ドライバー向け 9つの処方箋マトリクス [画像]
+
+A. 自分を守る基礎（記録/契約/数字）
+B. 縛りを減らす（車両/収入分散）
+C. お金の体力＝逃げ道（生活/節税/相場/出口）
+
+「闇に文句を言う前に、自分の特権を使い切れ」
+構造分析と処方箋→
+https://delilog.app/blog/keikamotsu-yami-kouzou?utm_source=x&utm_medium=social&utm_content=checklist
+```
+
+#### 番外編: 節税切り出し（utm_content=tax）— リサイクル2周目向け
+
+記事の裏メッセージ「個人事業主の節税特権」を切り出した派生案。`utm_content=tax` は本記事固有の追加パターン。
+
+```
+軽貨物の「闇」と戦う最大の武器は、実は節税です。
+
+サラリーマンには絶対にできない3点：
+・青色申告65万控除
+・iDeCo 月68,000円（2026年12月から月75,000円）
+・小規模企業共済 月70,000円（全額所得控除）
+
+闇に文句を言う前に、自分の特権を使い切れ→
+https://delilog.app/blog/keikamotsu-yami-kouzou?utm_source=x&utm_medium=social&utm_content=tax
 ```
 
 ---
