@@ -560,6 +560,7 @@ delilog の「勤務時間管理」は、改善基準告示の数値（13/15/284
 - [業務の記録（運行記録）6項目の書き方と保存方法](/blog/gyoumu-no-kiroku-kakikata)
 - [軽貨物ドライバーの働き方｜業務形態3類型徹底比較【2026年版】](/blog/keikamotsu-hatarakikata)
 - [軽貨物ドライバーの実態統計｜年代・地域・年収・労働時間データ【2026年版】](/blog/keikamotsu-jittai-toukei)
+- [軽貨物の「闇」の正体｜構造を解剖して個人の戦い方を考える](/blog/keikamotsu-yami-kouzou)
 
 ---
 

@@ -327,6 +327,7 @@ delilog は継続委託・チャーター・プラットフォーム、いずれ
 - [業務の記録（運行記録）6項目の書き方と保存方法](/blog/gyoumu-no-kiroku-kakikata)
 - [点呼記録、何を書けばいい？法令要件と具体的な記入例](/blog/tenko-kiroku-kakikata)
 - [軽貨物ドライバーの勤務時間ルール完全ガイド｜改善基準告示6つの数値・1人親方の運用・違反時の処分](/blog/kaizen-kijun-kokuji-keikamotsu)
+- [軽貨物の「闇」の正体｜構造を解剖して個人の戦い方を考える](/blog/keikamotsu-yami-kouzou)
 
 ---
 
