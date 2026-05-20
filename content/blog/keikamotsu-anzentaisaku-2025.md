@@ -419,6 +419,7 @@ author: "delilog編集部"
 - [業務の記録（運行記録）6項目の書き方と保存方法](/blog/gyoumu-no-kiroku-kakikata)
 - [軽貨物ドライバーの勤務時間ルール完全ガイド｜改善基準告示6つの数値・1人親方の運用・違反時の処分](/blog/kaizen-kijun-kokuji-keikamotsu)
 - [軽貨物の日常点検記録簿テンプレ｜15項目PDF雛形（無料DL）と記入例](/blog/nichijou-tenken-kirokubo-template) — 国交省公式の15項目チェックシートと記入例
+- [点呼記録簿テンプレート【無料DL】国交省準拠PDF版と記入例｜軽貨物1人親方向け](/blog/tenko-kirokubo-template) — 7行型・10行型のPDF雛形と17列の意味解説
 - [軽貨物ドライバーの働き方｜業務形態3類型徹底比較【2026年版】](/blog/keikamotsu-hatarakikata)
 - [軽貨物ドライバーの実態統計｜年代・地域・年収・労働時間データ【2026年版】](/blog/keikamotsu-jittai-toukei)
 - [黒ナンバー（事業用軽自動車）取得の流れ完全ガイド｜運輸支局・軽自動車検査協会・税務署 3窓口の動線【2026年版】](/blog/keikamotsu-kuro-number-shutoku) — これから黒ナンバーを取得する方は、3窓口・5書類・取得後の安全管理者選任までこちらで解説しています

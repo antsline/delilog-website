@@ -548,6 +548,7 @@ delilog の点呼記録は、アルコール「使用有無」「酒気帯び有
 ## あわせて読みたい
 
 - [軽貨物ドライバーの法令義務14項目｜2025年4月施行「安全対策強化」完全ガイド](/blog/keikamotsu-anzentaisaku-2025) — 点呼を含む14項目の全体像
+- [点呼記録簿テンプレート【無料DL】国交省準拠PDF版と記入例｜軽貨物1人親方向け【2026年版】](/blog/tenko-kirokubo-template) — 7行型・10行型のPDF雛形を無料配布
 - [業務の記録（運行記録）6項目の書き方と保存方法](/blog/gyoumu-no-kiroku-kakikata) — 点呼と並んで毎日発生する業務の記録
 - [軽貨物の日常点検記録簿テンプレ｜15項目PDF雛形（無料DL）と記入例](/blog/nichijou-tenken-kirokubo-template) — 業務前点呼の「車両日常点検」確認の前提となる15項目
 - [軽貨物ドライバーの勤務時間ルール完全ガイド｜改善基準告示6つの数値・1人親方の運用・違反時の処分](/blog/kaizen-kijun-kokuji-keikamotsu)
