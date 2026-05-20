@@ -1,7 +1,7 @@
 ---
 title: "点呼記録簿テンプレート【無料DL】国交省準拠PDF版と記入例｜軽貨物1人親方向け【2026年版】"
 description: "2025年4月から軽貨物1人親方にも義務化された点呼記録。国交省モデル様式準拠のPDF（7行型・10行型）とExcelテンプレートを無料配布。17列の列構成の意味・記入例・1人親方の自己点呼での書き方・保存期間1年・電子保存の要件まで全解説します。"
-date: "2026-05-25"
+date: "2026-05-20"
 slug: "tenko-kirokubo-template"
 ogImage: "/blog/tenko-kirokubo-template/og.png"
 tags:
