@@ -9,6 +9,9 @@ import { cn } from "@/lib/utils";
 
 const APP_STORE_URL = "https://apps.apple.com/jp/app/id6753698337";
 
+// Premium 料金改定の実施日時（日本時間 2026年6月8日 18:00）
+const PRICE_CHANGE_AT = new Date("2026-06-08T18:00:00+09:00").getTime();
+
 const fontEditorial = {
   fontFamily: 'var(--font-noto-sans-jp), -apple-system, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", sans-serif',
 };
@@ -21,6 +24,18 @@ type EyebrowProps = {
   children: React.ReactNode;
   variant?: "primary" | "secondary" | "light";
   className?: string;
+};
+
+type PricingPlan = {
+  name: string;
+  price: string;
+  unit: string;
+  sub: string;
+  upcoming?: string | null;
+  accent: boolean;
+  badge?: string;
+  cta: string;
+  feats: string[];
 };
 
 function Eyebrow({ children, variant = "primary", className }: EyebrowProps) {
@@ -81,6 +96,31 @@ export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  // 料金改定までのカウントダウン。マウント後にクライアント時刻で算出する
+  const [mounted, setMounted] = useState(false);
+  const [remaining, setRemaining] = useState(PRICE_CHANGE_AT - Date.now());
+
+  useEffect(() => {
+    setMounted(true);
+    const tick = () => setRemaining(PRICE_CHANGE_AT - Date.now());
+    tick();
+    const timer = setInterval(tick, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  // SSR/初期描画は予告表示を既定とし、改定後はクライアントで切り替える
+  const beforeChange = mounted ? remaining > 0 : true;
+  const cd = (() => {
+    const diff = Math.max(0, remaining);
+    return {
+      days: Math.floor(diff / 86400000),
+      hours: Math.floor((diff % 86400000) / 3600000),
+      mins: Math.floor((diff % 3600000) / 60000),
+      secs: Math.floor((diff % 60000) / 1000),
+    };
+  })();
+  const pad = (n: number) => String(n).padStart(2, "0");
+
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
@@ -112,15 +152,39 @@ export default function Home() {
       className="min-h-screen bg-[#faf7f1] text-[#16130f] selection:bg-primary/20"
       style={fontEditorial}
     >
-      {/* Header */}
-      <header
-        className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-          isScrolled
-            ? "border-b border-[#16130f]/10 bg-[#faf7f1]/85 backdrop-blur py-3"
-            : "bg-transparent py-4"
+      {/* Header + 料金改定お知らせバー */}
+      <div className="fixed top-0 left-0 right-0 z-50">
+        {beforeChange && (
+          <div className="bg-[#16130f] text-[#faf7f1]">
+            <div className="mx-auto flex max-w-[1280px] flex-wrap items-center justify-center gap-x-4 gap-y-1 px-4 py-2.5 text-center text-[12px] sm:text-[13px]">
+              <span className="inline-flex items-center gap-2 font-medium">
+                <span
+                  className="rounded bg-primary px-2 py-0.5 text-[10px] font-extrabold tracking-[0.12em] text-white"
+                  style={fontInter}
+                >
+                  お知らせ
+                </span>
+                <span>
+                  2026年6月8日（日）18:00よりPremiumプランの料金を改定します
+                </span>
+              </span>
+              <a
+                href="#price-change"
+                className="font-semibold text-primary underline-offset-4 hover:underline"
+              >
+                詳しく見る →
+              </a>
+            </div>
+          </div>
         )}
-      >
+        <header
+          className={cn(
+            "relative transition-all duration-300",
+            isScrolled
+              ? "border-b border-[#16130f]/10 bg-[#faf7f1]/85 backdrop-blur py-3"
+              : "bg-transparent py-4"
+          )}
+        >
         <div className="mx-auto flex max-w-[1280px] items-center justify-between px-4 sm:px-8 lg:px-16">
           <Link href="/" className="flex items-center gap-2.5">
             <Image
@@ -191,9 +255,17 @@ export default function Home() {
           </motion.div>
         )}
       </header>
+      </div>
 
       {/* HERO */}
-      <section className="px-4 pb-16 pt-28 sm:px-8 sm:pt-32 lg:px-16 lg:pb-24 lg:pt-40">
+      <section
+        className={cn(
+          "px-4 pb-16 sm:px-8 lg:px-16 lg:pb-24",
+          beforeChange
+            ? "pt-36 sm:pt-40 lg:pt-44"
+            : "pt-28 sm:pt-32 lg:pt-40"
+        )}
+      >
         <div className="mx-auto grid max-w-[1280px] gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
           <motion.div initial="hidden" animate="visible" variants={stagger}>
             <motion.div variants={fadeInUp}>
@@ -303,8 +375,8 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: 0.5 }}
               >
                 <Image
-                  src="/screenshot_mockup_8.png"
-                  alt="業務の記録画面"
+                  src="/screenshot_jisseki.png"
+                  alt="売上実績ダッシュボード画面"
                   width={230}
                   height={460}
                   className="rounded-[2rem]"
@@ -314,6 +386,132 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+
+      {/* 料金改定のお知らせ（改定前のみ表示） */}
+      {beforeChange && (
+        <section
+          id="price-change"
+          className="border-y border-[#16130f]/10 bg-[#faf7f1] px-4 py-20 sm:px-8 lg:px-16 lg:py-24"
+        >
+          <div className="mx-auto grid max-w-[1280px] gap-10 lg:grid-cols-2 lg:gap-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <Eyebrow>Notice · 料金改定のお知らせ</Eyebrow>
+              <h2 className="mt-5 text-[30px] font-black leading-[1.18] tracking-[-0.02em] sm:text-[38px] lg:text-[40px]">
+                2026年6月8日より、
+                <br className="hidden sm:block" />
+                Premiumプランの料金を
+                <br className="hidden sm:block" />
+                改定します。
+              </h2>
+              <p className="mt-6 max-w-xl text-[15px] leading-[1.95] text-[#3a342d] sm:text-[16px]">
+                実績・売上管理をはじめとする新機能の追加と、より安心してお使いいただけるサービスづくりのため、Premiumプランの料金を見直すことになりました。日頃よりdelilogをご利用いただき、ありがとうございます。
+              </p>
+              <div className="mt-7 flex items-start gap-3 rounded-xl border border-[#16130f]/10 bg-white p-4">
+                <span className="mt-0.5 inline-flex h-5 shrink-0 items-center rounded bg-secondary/10 px-2 text-[10px] font-bold tracking-wide text-secondary">
+                  無料プラン
+                </span>
+                <p className="text-[13px] leading-[1.8] text-[#6b6357]">
+                  無料プランの機能・料金に変更はありません。これまでどおりお使いいただけます。
+                </p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="rounded-2xl border border-[#16130f]/10 bg-white p-7 sm:p-9"
+            >
+              <div
+                className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#6b6357]"
+                style={fontInter}
+              >
+                新しい料金
+              </div>
+              <div className="mt-5 space-y-4">
+                <div className="flex items-center justify-between gap-4 border-b border-[#16130f]/10 pb-4">
+                  <div className="text-[14px] font-bold text-[#16130f]">
+                    Premium 月額
+                  </div>
+                  <div className="flex items-baseline gap-2.5" style={fontInter}>
+                    <span className="text-[15px] text-[#a89a85] line-through">
+                      ¥600
+                    </span>
+                    <span className="self-center text-[#6b6357]">→</span>
+                    <span className="text-[26px] font-black tracking-[-0.02em] text-primary">
+                      ¥900
+                    </span>
+                    <span className="text-[12px] text-[#6b6357]">/月</span>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between gap-4">
+                  <div className="text-[14px] font-bold text-[#16130f]">
+                    Premium 年額
+                  </div>
+                  <div className="flex items-baseline gap-2.5" style={fontInter}>
+                    <span className="text-[15px] text-[#a89a85] line-through">
+                      ¥6,000
+                    </span>
+                    <span className="self-center text-[#6b6357]">→</span>
+                    <span className="text-[26px] font-black tracking-[-0.02em] text-primary">
+                      ¥9,000
+                    </span>
+                    <span className="text-[12px] text-[#6b6357]">/年</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-7 rounded-xl bg-[#16130f] p-5 text-[#faf7f1]">
+                <div className="text-[12px] text-[#a89a85]">
+                  現在の料金（月¥600／年¥6,000）でのお申し込みは
+                </div>
+                <div className="mt-1 text-[15px] font-bold">
+                  2026年6月8日（日）18:00まで
+                </div>
+                <div
+                  className="mt-4 grid grid-cols-4 gap-2"
+                  style={fontInter}
+                >
+                  {[
+                    { v: cd.days, l: "日", raw: true },
+                    { v: cd.hours, l: "時間", raw: false },
+                    { v: cd.mins, l: "分", raw: false },
+                    { v: cd.secs, l: "秒", raw: false },
+                  ].map((c) => (
+                    <div
+                      key={c.l}
+                      className="rounded-lg bg-white/5 py-2.5 text-center"
+                    >
+                      <div className="text-[24px] font-black leading-none">
+                        {mounted ? (c.raw ? c.v : pad(c.v)) : "--"}
+                      </div>
+                      <div className="mt-1 text-[10px] text-[#a89a85]">
+                        {c.l}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <a
+                href="#pricing"
+                className="mt-5 inline-flex w-full items-center justify-center rounded-xl bg-primary px-5 py-3.5 text-[14px] font-bold tracking-wide text-white transition-transform hover:-translate-y-0.5"
+              >
+                14日間無料トライアルを始める
+              </a>
+              <p className="mt-3 text-center text-[11px] text-[#6b6357]">
+                年額プランは1年分の前払い。お申し込み時点の料金が適用されます。
+              </p>
+            </motion.div>
+          </div>
+        </section>
+      )}
 
       {/* HOW IT WORKS */}
       <section
@@ -388,7 +586,7 @@ export default function Home() {
         <div className="mx-auto max-w-[1280px]">
           <div className="mb-12 grid gap-10 lg:mb-14 lg:grid-cols-[300px_1fr] lg:gap-20">
             <div>
-              <Eyebrow>Features · 01–06</Eyebrow>
+              <Eyebrow>Features · 01–07</Eyebrow>
               <h2 className="mt-5 text-[34px] font-black leading-[1.1] tracking-[-0.025em] sm:text-[42px] lg:text-[44px]">
                 現場の声から
                 <br />
@@ -440,6 +638,13 @@ export default function Home() {
                 t: "事故の記録",
                 d: "事故発生時の概要・原因・再発防止対策など6項目を記録。3年間の保存に対応します。",
                 tag: "プレミアム",
+              },
+              {
+                n: "07",
+                t: "実績・売上管理",
+                d: "取引先と単価表を登録しておけば、日々の配送実績から売上を自動で集計。月次の売上をダッシュボードでひと目で振り返れます。",
+                tag: "プレミアム",
+                badge: "NEW",
               },
             ].map((f) => (
               <div
@@ -594,12 +799,23 @@ export default function Home() {
       <section id="pricing" className="px-4 py-20 sm:px-8 lg:px-16 lg:py-28">
         <div className="mx-auto max-w-[1280px]">
           <Eyebrow>Pricing</Eyebrow>
-          <h2 className="mb-10 mt-5 text-[34px] font-black leading-[1.1] tracking-[-0.025em] sm:text-[42px] lg:mb-14 lg:text-[44px]">
+          <h2 className="mt-5 text-[34px] font-black leading-[1.1] tracking-[-0.025em] sm:text-[42px] lg:text-[44px]">
             まずは無料で。
           </h2>
+          {beforeChange ? (
+            <p className="mb-10 mt-4 text-[13px] leading-[1.8] text-[#6b6357] lg:mb-14">
+              現在の料金を表示しています。
+              <span className="font-semibold text-[#16130f]">
+                2026年6月8日（日）18:00よりPremiumプランは月¥900／年¥9,000に改定
+              </span>
+              します。
+            </p>
+          ) : (
+            <div className="mb-10 lg:mb-14" />
+          )}
 
           <div className="grid gap-4 md:grid-cols-3">
-            {[
+            {([
               {
                 name: "無料プラン",
                 price: "¥0",
@@ -619,9 +835,10 @@ export default function Home() {
               },
               {
                 name: "Premium 月額",
-                price: "¥600",
+                price: beforeChange ? "¥600" : "¥900",
                 unit: "/月",
                 sub: "気軽に始めたい方に",
+                upcoming: beforeChange ? "2026年6月8日より ¥900" : null,
                 accent: true,
                 cta: "14日間無料で試す",
                 feats: [
@@ -636,9 +853,12 @@ export default function Home() {
               },
               {
                 name: "Premium 年額",
-                price: "¥6,000",
+                price: beforeChange ? "¥6,000" : "¥9,000",
                 unit: "/年",
-                sub: "月¥500・2ヶ月分おトク",
+                sub: beforeChange
+                  ? "月¥500・2ヶ月分おトク"
+                  : "月¥750・2ヶ月分おトク",
+                upcoming: beforeChange ? "2026年6月8日より ¥9,000" : null,
                 accent: false,
                 badge: "BEST",
                 cta: "14日間無料で試す",
@@ -652,7 +872,9 @@ export default function Home() {
                   "事故の記録",
                 ],
               },
-            ].map((p, i) => (
+            ] as PricingPlan[]).map((p, i) => {
+              const upcoming = p.upcoming;
+              return (
               <div
                 key={p.name}
                 className={cn(
@@ -705,6 +927,20 @@ export default function Home() {
                   {p.sub}
                 </div>
 
+                {upcoming && (
+                  <div
+                    className={cn(
+                      "mt-3 inline-flex items-center gap-1.5 rounded-md px-2.5 py-1 text-[11px] font-semibold",
+                      p.accent
+                        ? "bg-white/10 text-[#faf7f1]"
+                        : "bg-primary/10 text-primary-700"
+                    )}
+                  >
+                    <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                    {upcoming}
+                  </div>
+                )}
+
                 <ul
                   className={cn(
                     "mt-7 space-y-2 border-t pt-5 text-[13px] leading-[2]",
@@ -748,7 +984,8 @@ export default function Home() {
                   </p>
                 )}
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -779,14 +1016,6 @@ export default function Home() {
                 d: "運転者への指導の実施日時・内容・対象者を記録し、3年間の保存に対応（2025年4月義務化）。",
                 tag: "近日対応",
                 priority: true,
-              },
-              {
-                t: "実績管理",
-                d: "配送実績の集計と可視化。日次・月次の業務量をひと目で振り返れます。",
-              },
-              {
-                t: "売上・経費管理",
-                d: "日次・月次の売上集計と、ガソリン代などの経費を入力・管理できます。",
               },
               {
                 t: "請求書発行",
@@ -913,7 +1142,7 @@ export default function Home() {
                 <span className="text-primary">これひとつで。</span>
               </h3>
               <p className="mt-6 max-w-xl text-[15px] leading-[1.85] text-[#a89a85] sm:text-[16px]">
-                delilogなら、毎日の点検・点呼・運行記録が驚くほどスムーズに。
+                delilogなら、毎日の点検・点呼・運行記録から売上の振り返りまで、驚くほどスムーズに。
                 まずは無料ダウンロードして、明日の業務から試してみてください。
               </p>
             </div>
