@@ -3,7 +3,10 @@ import { APP_STORE_URL } from "@/lib/constants";
 
 export function BlogCtaCard() {
   return (
-    <aside className="not-prose my-12 rounded-2xl bg-gradient-to-br from-primary-50 via-white to-secondary-50 border border-primary-100 p-6 sm:p-8">
+    <aside
+      data-cta="article-end"
+      className="not-prose my-12 rounded-2xl bg-gradient-to-br from-primary-50 via-white to-secondary-50 border border-primary-100 p-6 sm:p-8"
+    >
       <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
         <div className="flex-shrink-0">
           <Image src="/icon.png" alt="delilog" width={64} height={64} className="rounded-2xl shadow-md" />

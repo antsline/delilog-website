@@ -15,4 +15,26 @@
   .inline-cta-body > p:last-child > a {
     @apply inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-white no-underline shadow-lg shadow-primary/20 transition-all hover:scale-105;
   }
+
+  .dlbox-body > p:first-child {
+    @apply text-lg sm:text-xl font-bold text-slate-900 mb-4 leading-snug;
+  }
+  .dlbox-body > p {
+    @apply text-sm text-slate-600 leading-relaxed mb-3;
+  }
+  .dlbox-body > ul {
+    @apply mb-4 space-y-2 pl-0 list-none;
+  }
+  .dlbox-body > ul li {
+    @apply text-sm text-slate-600 leading-relaxed;
+  }
+  .dlbox-body > ul a {
+    @apply font-semibold text-primary underline underline-offset-4 hover:no-underline;
+  }
+  .dlbox-body > p:last-child {
+    @apply mb-0 border-t border-slate-100 pt-4;
+  }
+  .dlbox-body > p:last-child > a {
+    @apply font-semibold text-primary underline underline-offset-4 hover:no-underline;
+  }
 }

@@ -106,9 +106,11 @@ function injectHeadingIds(html: string, headings: BlogHeading[]): string {
 }
 
 function transformInlineCtas(html: string): string {
+  let ctaIndex = 0;
   return html.replace(/<!--CTA-->\s*([\s\S]*?)\s*<!--\/CTA-->/g, (_match, inner: string) => {
+    ctaIndex += 1;
     return [
-      '<aside class="not-prose my-12 rounded-2xl bg-gradient-to-br from-primary-50 via-white to-secondary-50 border border-primary-100 p-6 sm:p-8">',
+      `<aside data-cta="inline-${ctaIndex}" class="not-prose my-12 rounded-2xl bg-gradient-to-br from-primary-50 via-white to-secondary-50 border border-primary-100 p-6 sm:p-8">`,
       '<div class="flex flex-col sm:flex-row items-start sm:items-center gap-6">',
       '<div class="flex-shrink-0">',
       '<img src="/icon.png" alt="delilog" width="64" height="64" class="rounded-2xl shadow-md" />',
@@ -123,6 +125,20 @@ function transformInlineCtas(html: string): string {
       inner.trim(),
       '</div>',
       '</div>',
+      '</div>',
+      '</aside>',
+    ].join('');
+  });
+}
+
+// テンプレDL系記事の冒頭に置く「即ダウンロード」ボックス。
+// 検索意図（テンプレを今すぐDLしたい）に最短で応えつつ、離脱前にアプリ導線を1つ確保する。
+function transformDlBoxes(html: string): string {
+  return html.replace(/<!--DLBOX-->\s*([\s\S]*?)\s*<!--\/DLBOX-->/g, (_match, inner: string) => {
+    return [
+      '<aside data-cta="dlbox" class="not-prose my-10 rounded-2xl border-2 border-primary/30 bg-white p-6 sm:p-7 shadow-sm">',
+      '<div class="dlbox-body">',
+      inner.trim(),
       '</div>',
       '</aside>',
     ].join('');
@@ -163,7 +179,9 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     const { data, content } = await readMarkdownFile(filename);
     const headings = extractH2Headings(content);
     const rawHtml = await markdownToHtml(content);
-    const contentHtml = transformInlineCtas(injectHeadingIds(rawHtml, headings));
+    const contentHtml = transformDlBoxes(
+      transformInlineCtas(injectHeadingIds(rawHtml, headings)),
+    );
 
     const markerIdx = contentHtml.indexOf(TOC_MARKER);
     const contentHtmlBeforeToc =

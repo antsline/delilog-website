@@ -24,6 +24,20 @@ author: "delilog編集部"
 
 なお、点呼記録の各項目の書き方・記入例を詳しく知りたい方は、[軽貨物「点呼記録」完全ガイド｜4項目の書き方・アルコール検知器の選び方・1人親方の自己点呼【2026年版】](/blog/tenko-kiroku-kakikata)をあわせてご覧ください。この記事は「様式の入手・使い始め方」に特化して解説します。
 
+<!--DLBOX-->
+
+**まずはテンプレートをダウンロード**（無料・登録不要）
+
+- [7行型PDFをダウンロード](/blog/tenko-kirokubo-template/tenko-kirokubo-7rows.pdf) — 1行のスペースが広く、所見や指示事項を書く量が多い方向き
+- [10行型PDFをダウンロード](/blog/tenko-kirokubo-template/tenko-kirokubo-10rows.pdf) — 1枚に多くの日付が入り、稼働日数が多い方向き
+- [Excel版をダウンロード](/blog/tenko-kirokubo-template/tenko-kirokubo-template.xlsx) — PCで入力・管理したい方向き
+
+7行型と10行型の使い分けは第4章、17列それぞれの書き方は第3章で解説しています。
+
+毎日の印刷と手書きを省きたい方は、[delilog アプリ（無料）](https://apps.apple.com/jp/app/delilog/id6753698337)なら点呼をタップで記録するだけで、同じ様式のPDFが自動で出来上がります。
+
+<!--/DLBOX-->
+
 <!--TOC-->
 
 > **この記事でわかること**

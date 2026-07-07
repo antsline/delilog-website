@@ -3,7 +3,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
+import { BlogClickTracker } from "@/app/components/blog/BlogClickTracker";
 import { BlogCtaCard } from "@/app/components/blog/BlogCtaCard";
+import { BlogStickyAppBar } from "@/app/components/blog/BlogStickyAppBar";
 import { TableOfContents } from "@/app/components/blog/TableOfContents";
 import { formatJapaneseDate, getAllPostSlugs, getPostBySlug } from "@/lib/blog";
 import { APP_STORE_URL, SITE_URL } from "@/lib/constants";
@@ -129,6 +131,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   return (
     <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+      <BlogClickTracker slug={post.slug} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: escapeJsonLd(JSON.stringify(structuredData)) }}
@@ -228,12 +231,15 @@ export default async function BlogPostPage({ params }: PageProps) {
         </Link>
         <a
           href={APP_STORE_URL}
+          data-cta="footer-link"
           className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
         >
           <Image src="/icon.png" alt="" width={20} height={20} className="rounded" />
           delilog を試してみる
         </a>
       </div>
+
+      <BlogStickyAppBar />
     </article>
   );
 }
