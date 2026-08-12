@@ -36,7 +36,7 @@ function PrivacyPolicyContent() {
 
           <section>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              事業者情報
+              1. 事業者情報
             </h2>
             <div className="space-y-2 text-gray-600">
               <p><strong>アプリ名：</strong>Delilog（デリログ）</p>
@@ -47,61 +47,84 @@ function PrivacyPolicyContent() {
 
           <section>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              1. 収集する情報
+              2. 収集する情報
             </h2>
             <div className="space-y-4 text-gray-600">
+              <p>当アプリは、サービス提供のために以下の情報を収集します。</p>
+
               <div>
-                <h3 className="font-semibold text-gray-900 mb-2">1.1 ユーザーが提供する情報</h3>
+                <h3 className="font-semibold text-gray-900 mb-2">2.1 ユーザーが提供する情報</h3>
                 <ul className="list-disc list-inside ml-4 space-y-1">
                   <li><strong>アカウント情報</strong>：メールアドレス、パスワード（暗号化保存）</li>
                   <li>
                     <strong>業務記録情報</strong>：
                     <ul className="list-disc list-inside ml-8 mt-1 space-y-1">
                       <li>車両情報（車両番号、車種等）</li>
-                      <li>日常点検記録（点検日時、点検項目、点検結果）</li>
+                      <li>日常点検記録（点検日時、点検項目、点検結果、点検箇所の写真）</li>
                       <li>点呼記録（点呼日時、点呼方法、アルコールチェック結果等）</li>
-                      <li>運行記録（出発・到着日時、場所、走行距離、荷役・待機情報等）</li>
+                      <li>運行記録（出発・到着日時、場所、走行距離、荷役・待機情報等。記録に含まれる運転者名を含む）</li>
                       <li>事故記録（発生日時、場所、状況、損害情報等）</li>
+                      <li>指導・監督記録（実施日、内容、指導者名・対象者名等）</li>
+                      <li>期限・予定（免許更新・車検などの期日と通知設定）</li>
                       <li>署名データ（点呼記録用）</li>
                     </ul>
+                  </li>
+                  <li>
+                    <strong>取引・売上情報</strong>（実績・請求書機能を利用する場合）：
+                    <ul className="list-disc list-inside ml-8 mt-1 space-y-1">
+                      <li>取引先情報（名称、担当者名、住所、電話番号、メールアドレス等）</li>
+                      <li>案件・契約情報（単価・料金体系等）</li>
+                      <li>実績記録・請求書の発行内容</li>
+                    </ul>
+                    <p className="ml-8 mt-1 text-sm">
+                      ※取引先情報にはユーザー以外の第三者の情報が含まれる場合があります。ユーザーは、適法に取得した情報のみを登録してください。
+                    </p>
+                  </li>
+                  <li><strong>お問い合わせ・ご要望</strong>：アプリ内フォームから送信された本文と、返信先メールアドレス（任意）</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="font-semibold text-gray-900 mb-2">2.2 端末内にのみ保存される設定情報</h3>
+                <ul className="list-disc list-inside ml-4 space-y-1">
+                  <li>
+                    <strong>運転者名・事業者名（屋号）などの設定</strong>：PDF出力用の既定値としてデバイスローカルにのみ保存され、設定としてはサーバーに送信されません。
+                  </li>
+                  <li>
+                    ただし、<strong>運行記録・指導監督記録など法令帳票の記録内容として入力された氏名は、業務記録の一部として上記2.1のとおりクラウドに保存されます</strong>（法令上の保存義務に対応するため）。
+                  </li>
+                  <li>
+                    これらのローカル設定は、設定画面の「端末バックアップ」機能でファイルに書き出し、別の端末で復元できます。バックアップファイルの送信・保管は行われず、ファイルの管理はユーザーご自身で行っていただきます。
                   </li>
                 </ul>
               </div>
 
               <div>
-                <h3 className="font-semibold text-gray-900 mb-2">1.2 ローカル保存のみの情報（サーバー送信なし）</h3>
-                <p><strong>運転者名・事業者名</strong>：PDF出力用にデバイスローカルにのみ保存され、サーバーには送信されません。</p>
-              </div>
-
-              <div>
-                <h3 className="font-semibold text-gray-900 mb-2">1.3 自動的に収集される情報</h3>
+                <h3 className="font-semibold text-gray-900 mb-2">2.3 自動的に収集される情報</h3>
                 <ul className="list-disc list-inside ml-4 space-y-1">
-                  <li><strong>デバイス情報</strong>：端末識別子（匿名化）、OSバージョン</li>
-                  <li><strong>利用状況</strong>：アプリの利用状況、エラーログ（匿名）</li>
+                  <li><strong>デバイス情報</strong>：OSの種類、アプリのバージョン</li>
+                  <li>
+                    <strong>利用状況（アカウントに紐づく利用イベント）</strong>：サービス改善のため、主要な操作の実施記録（例：点呼の完了、運行記録の完了と走行距離、PDF出力、購入画面の表示・購入操作、評価依頼への反応）を、ユーザーID・アプリバージョンとともに当アプリのサーバー（Supabase）に記録します。記録内容の閲覧は運営者のみが行い、広告目的では利用しません。
+                  </li>
+                  <li>
+                    <strong>位置情報（天気機能を利用する場合）</strong>：ホーム画面の天気表示のために、ユーザーの許可を得たうえで現在地（緯度・経度）を取得し、天気情報の取得のためにのみ利用します。位置情報を業務記録と紐付けて保存することや、バックグラウンドでの取得は行いません。位置情報の利用は端末の設定からいつでも無効にできます。
+                  </li>
                 </ul>
-              </div>
-
-              <div>
-                <h3 className="font-semibold text-gray-900 mb-2">1.4 位置情報</h3>
-                <p>
-                  ユーザーの許可を得た場合のみ、天気情報取得のための概算位置情報を取得します。
-                  バックグラウンドでの位置情報の取得は行いません。
-                </p>
               </div>
             </div>
           </section>
 
           <section>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              2. 情報の利用目的
+              3. 情報の利用目的
             </h2>
             <div className="space-y-2 text-gray-600">
-              <p>収集した情報は、以下の目的で利用します：</p>
+              <p>収集した情報は、以下の目的で利用します。</p>
               <ul className="list-disc list-inside ml-4 space-y-1">
                 <li>サービスの提供・運営</li>
                 <li>ユーザーサポート・問い合わせ対応</li>
-                <li>サービスの改善・新機能の開発</li>
-                <li>統計データの作成（匿名化）</li>
+                <li>サービスの改善・新機能の開発（利用状況の分析を含む）</li>
+                <li>統計データの作成</li>
                 <li>不正利用の防止・セキュリティ対策</li>
               </ul>
             </div>
@@ -109,23 +132,24 @@ function PrivacyPolicyContent() {
 
           <section>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              3. 情報の保存場所と期間
+              4. 情報の保存場所と期間
             </h2>
             <div className="space-y-4 text-gray-600">
               <div>
-                <h3 className="font-semibold text-gray-900 mb-2">3.1 保存場所</h3>
+                <h3 className="font-semibold text-gray-900 mb-2">4.1 保存場所</h3>
                 <ul className="list-disc list-inside ml-4 space-y-1">
                   <li><strong>ローカルストレージ</strong>：デバイス内のSQLiteデータベース（OS標準暗号化）</li>
-                  <li><strong>クラウドストレージ</strong>：Supabase（PostgreSQL）- 認証情報と業務記録のみ</li>
+                  <li><strong>クラウドストレージ</strong>：Supabase（PostgreSQL）- 認証情報、業務記録、取引・売上情報、利用状況、お問い合わせ内容</li>
                 </ul>
-                <p className="mt-2 ml-4">運転者名・事業者名はクラウドに保存されません。</p>
+                <p className="mt-2 ml-4">運転者名・事業者名（屋号）の設定値はクラウドに保存されません（2.2参照）。</p>
               </div>
 
               <div>
-                <h3 className="font-semibold text-gray-900 mb-2">3.2 保存期間</h3>
+                <h3 className="font-semibold text-gray-900 mb-2">4.2 保存期間</h3>
                 <ul className="list-disc list-inside ml-4 space-y-1">
                   <li><strong>業務記録</strong>：法令に基づき最低1年間保存（ユーザーが削除するまで保持）</li>
                   <li><strong>アカウント情報</strong>：アカウント削除まで保持</li>
+                  <li><strong>利用状況・お問い合わせ内容</strong>：サービス改善・対応のために必要な期間保持</li>
                 </ul>
               </div>
             </div>
@@ -133,7 +157,7 @@ function PrivacyPolicyContent() {
 
           <section>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              4. 第三者への提供
+              5. 第三者への提供
             </h2>
             <div className="space-y-2 text-gray-600">
               <p>当アプリは、以下の場合を除き、ユーザーの個人情報を第三者に提供しません。</p>
@@ -143,10 +167,17 @@ function PrivacyPolicyContent() {
                 <li>人の生命、身体または財産の保護のために必要な場合</li>
               </ul>
               <div className="mt-4">
-                <h3 className="font-semibold text-gray-900 mb-2">利用している第三者サービス</h3>
+                <h3 className="font-semibold text-gray-900 mb-2">5.1 利用している第三者サービス</h3>
                 <ul className="list-disc list-inside ml-4 space-y-1">
                   <li><strong>Supabase</strong>（認証・データベース）：米国・欧州、GDPR準拠</li>
                   <li><strong>RevenueCat</strong>（サブスクリプション管理）：購入情報の管理のみ</li>
+                  <li>
+                    <strong>Apple</strong>：
+                    <ul className="list-disc list-inside ml-8 mt-1 space-y-1">
+                      <li>天気情報の取得（Apple Weather）：天気取得のために現在地の緯度・経度が送信されます</li>
+                      <li>App Store（アプリ内課金の決済処理、アップデート確認）</li>
+                    </ul>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -154,7 +185,7 @@ function PrivacyPolicyContent() {
 
           <section>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              5. セキュリティ
+              6. セキュリティ
             </h2>
             <div className="space-y-2 text-gray-600">
               <p>当アプリは、情報の安全性を確保するため、以下の対策を実施しています。</p>
@@ -170,15 +201,15 @@ function PrivacyPolicyContent() {
 
           <section>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              6. ユーザーの権利
+              7. ユーザーの権利
             </h2>
             <div className="space-y-2 text-gray-600">
-              <p>ユーザーは、自身の個人情報について以下の権利を有します：</p>
+              <p>ユーザーは、自身の個人情報について以下の権利を有します。</p>
               <ul className="list-disc list-inside ml-4 space-y-1">
                 <li><strong>アクセス権</strong>：自身の情報の確認</li>
                 <li><strong>訂正権</strong>：誤った情報の修正</li>
                 <li><strong>削除権</strong>：アカウント削除による全データの削除</li>
-                <li><strong>データポータビリティ</strong>：データのエクスポート（PDF形式）</li>
+                <li><strong>データポータビリティ</strong>：データのエクスポート（帳票のPDF形式、端末設定のバックアップファイル）</li>
               </ul>
               <p className="mt-2">
                 これらの権利を行使する場合は、アプリ内の設定またはお問い合わせ先までご連絡ください。
@@ -188,18 +219,21 @@ function PrivacyPolicyContent() {
 
           <section>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              7. Cookie・トラッキング技術
+              8. トラッキングについて
             </h2>
             <div className="space-y-2 text-gray-600">
               <p>
-                当アプリは、現時点でCookieやトラッキング技術を使用していません。将来的に使用する場合は、本ポリシーを更新してお知らせします。
+                当アプリは、広告目的のトラッキング（アプリやWebサイトを横断した行動追跡）や、広告識別子（IDFA）の取得は行いません。Cookieも使用していません。
+              </p>
+              <p>
+                サービス改善のために、アカウントに紐づく利用状況を当アプリ自身のサーバーに記録します（2.3参照）。この情報が第三者の広告・分析事業者に提供されることはありません。
               </p>
             </div>
           </section>
 
           <section>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              8. 子どものプライバシー
+              9. 子どものプライバシー
             </h2>
             <div className="space-y-2 text-gray-600">
               <p>
@@ -210,7 +244,7 @@ function PrivacyPolicyContent() {
 
           <section>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              9. プライバシーポリシーの変更
+              10. プライバシーポリシーの変更
             </h2>
             <div className="space-y-2 text-gray-600">
               <p>
@@ -221,7 +255,7 @@ function PrivacyPolicyContent() {
 
           <section>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              10. お問い合わせ
+              11. お問い合わせ
             </h2>
             <div className="space-y-2 text-gray-600">
               <p>
@@ -236,7 +270,10 @@ function PrivacyPolicyContent() {
 
           <section className="pt-4 border-t border-gray-200">
             <p className="text-sm text-gray-500">
-              最終更新日: 2026年4月7日
+              最終更新日: 2026年8月13日
+            </p>
+            <p className="text-sm text-gray-500 mt-1">
+              本プライバシーポリシーは、2026年8月13日より有効です。
             </p>
           </section>
         </div>
