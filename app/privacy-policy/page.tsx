@@ -175,9 +175,10 @@ function PrivacyPolicyContent() {
                     <strong>Apple</strong>：
                     <ul className="list-disc list-inside ml-8 mt-1 space-y-1">
                       <li>天気情報の取得（Apple Weather）：天気取得のために現在地の緯度・経度が送信されます</li>
-                      <li>App Store（アプリ内課金の決済処理、アップデート確認）</li>
+                      <li>App Store（iOS版のアプリ内課金の決済処理、アップデート確認）</li>
                     </ul>
                   </li>
+                  <li><strong>Google</strong>：Google Play（Android版のアプリ内課金の決済処理）</li>
                 </ul>
               </div>
             </div>
@@ -212,14 +213,68 @@ function PrivacyPolicyContent() {
                 <li><strong>データポータビリティ</strong>：データのエクスポート（帳票のPDF形式、端末設定のバックアップファイル）</li>
               </ul>
               <p className="mt-2">
-                これらの権利を行使する場合は、アプリ内の設定またはお問い合わせ先までご連絡ください。
+                これらの権利を行使する場合は、アプリ内の設定またはお問い合わせ先までご連絡ください。アカウントの削除方法は「8. アカウントとデータの削除」をご覧ください。
               </p>
+            </div>
+          </section>
+
+          <section id="account-deletion">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">
+              8. アカウントとデータの削除
+            </h2>
+            <div className="space-y-4 text-gray-600">
+              <p>
+                Delilog（デリログ／運営者：SOZEL）のアカウントと、クラウドに保存されたデータは、いつでも削除できます。削除したデータは元に戻せないため、必要な記録は事前にアプリの「PDF出力」から保存してください。
+              </p>
+
+              <div>
+                <h3 className="font-semibold text-gray-900 mb-2">8.1 アプリから削除する</h3>
+                <ol className="list-decimal list-inside ml-4 space-y-1">
+                  <li>アプリを開き、削除したいアカウントでログインします</li>
+                  <li>「設定」画面を開きます</li>
+                  <li>画面下の「アカウントを削除」をタップします</li>
+                  <li>確認の表示に従い「削除する」をタップします</li>
+                </ol>
+              </div>
+
+              <div>
+                <h3 className="font-semibold text-gray-900 mb-2">8.2 アプリを使えない場合</h3>
+                <p>
+                  ご登録のメールアドレスから support@delilog.app へ、件名を「アカウント削除の依頼」としてご連絡ください。ご本人の確認のうえ、原則14日以内に削除し、完了をメールでお知らせします。
+                </p>
+              </div>
+
+              <div>
+                <h3 className="font-semibold text-gray-900 mb-2">8.3 削除されるデータ</h3>
+                <ul className="list-disc list-inside ml-4 space-y-1">
+                  <li>アカウント情報（メールアドレス、パスワード）</li>
+                  <li>クラウドに保存された業務記録（車両、日常点検、点呼、運行、事故、指導・監督、期限・予定）</li>
+                  <li>クラウドに保存された取引・売上情報（取引先、契約、実績、請求書）</li>
+                </ul>
+                <p className="mt-2">これらは削除の操作と同時に消去されます。</p>
+              </div>
+
+              <div>
+                <h3 className="font-semibold text-gray-900 mb-2">8.4 削除後も残るデータと保存期間</h3>
+                <ul className="list-disc list-inside ml-4 space-y-1">
+                  <li><strong>利用状況・お問い合わせ内容</strong>：サービス改善・対応のために必要な期間保持します</li>
+                  <li><strong>バックアップ</strong>：障害に備えたバックアップには削除前のデータが残り、最長90日で消去されます</li>
+                  <li><strong>端末内のデータ</strong>：端末に残っている記録や設定は、アプリを端末から削除すると消えます</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="font-semibold text-gray-900 mb-2">8.5 サブスクリプションについて</h3>
+                <p>
+                  アカウントを削除しても、App Store・Google Play の定期購入は自動では解約されません。各ストアの定期購入の管理画面から解約してください。
+                </p>
+              </div>
             </div>
           </section>
 
           <section>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              8. トラッキングについて
+              9. トラッキングについて
             </h2>
             <div className="space-y-2 text-gray-600">
               <p>
@@ -233,7 +288,7 @@ function PrivacyPolicyContent() {
 
           <section>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              9. 子どものプライバシー
+              10. 子どものプライバシー
             </h2>
             <div className="space-y-2 text-gray-600">
               <p>
@@ -244,7 +299,7 @@ function PrivacyPolicyContent() {
 
           <section>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              10. プライバシーポリシーの変更
+              11. プライバシーポリシーの変更
             </h2>
             <div className="space-y-2 text-gray-600">
               <p>
@@ -255,7 +310,7 @@ function PrivacyPolicyContent() {
 
           <section>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              11. お問い合わせ
+              12. お問い合わせ
             </h2>
             <div className="space-y-2 text-gray-600">
               <p>
@@ -270,10 +325,10 @@ function PrivacyPolicyContent() {
 
           <section className="pt-4 border-t border-gray-200">
             <p className="text-sm text-gray-500">
-              最終更新日: 2026年8月13日
+              最終更新日: 2026年10月17日
             </p>
             <p className="text-sm text-gray-500 mt-1">
-              本プライバシーポリシーは、2026年8月13日より有効です。
+              本プライバシーポリシーは、2026年10月17日より有効です。
             </p>
           </section>
         </div>
