@@ -2,11 +2,19 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 
 function PrivacyPolicyContent() {
   const searchParams = useSearchParams();
   const isApp = searchParams.get('app') === 'true';
+
+  // 本文はクライアントで描画されるため、ブラウザ標準の #アンカーへの移動が
+  // 間に合わない。描画後に該当の節までスクロールする
+  useEffect(() => {
+    const id = window.location.hash.slice(1);
+    if (!id) return;
+    document.getElementById(decodeURIComponent(id))?.scrollIntoView();
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -224,7 +232,7 @@ function PrivacyPolicyContent() {
             </h2>
             <div className="space-y-4 text-gray-600">
               <p>
-                Delilog（デリログ／運営者：SOZEL）のアカウントと、クラウドに保存されたデータは、いつでも削除できます。削除したデータは元に戻せないため、必要な記録は事前にアプリの「PDF出力」から保存してください。
+                Delilog（デリログ）のアカウントと、クラウドに保存されたデータは、いつでも削除できます。削除したデータは元に戻せないため、必要な記録は事前にアプリの「PDF出力」から保存してください。
               </p>
 
               <div>
