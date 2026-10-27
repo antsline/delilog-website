@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { APP_STORE_URL } from "@/lib/constants";
+import { APP_STORE_URL, GOOGLE_PLAY_URL } from "@/lib/constants";
 
 export function BlogCtaCard() {
   return (
@@ -21,12 +21,20 @@ export function BlogCtaCard() {
           <p className="text-sm text-slate-600 mb-4">
             点呼・日常点検は無料で無制限。運行記録などのプレミアム機能は14日間無料で試せます。
           </p>
-          <a
-            href={APP_STORE_URL}
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-all hover:scale-105"
-          >
-            App Store でダウンロード
-          </a>
+          <div className="flex flex-wrap gap-3">
+            <a
+              href={APP_STORE_URL}
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-all hover:scale-105"
+            >
+              App Store でダウンロード
+            </a>
+            <a
+              href={GOOGLE_PLAY_URL}
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-all hover:scale-105"
+            >
+              Google Play でダウンロード
+            </a>
+          </div>
         </div>
       </div>
     </aside>

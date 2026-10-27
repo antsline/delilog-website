@@ -250,7 +250,7 @@ Amazon Flex・PickGo・ハコベル等のプラットフォーム型は、**運�
 
 delilog は継続委託・チャーター・プラットフォーム、いずれの働き方でも使えます。**無料でダウンロード**でき、点呼記録・日常点検は無料プランで永続的に。業務の記録や勤務時間管理は14日間無料で試せます。
 
-[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337)
+[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) [Google Play でダウンロード](https://play.google.com/store/apps/details?id=com.sozel.delilog)
 
 <!--/CTA-->
 
@@ -291,7 +291,7 @@ delilog は継続委託・チャーター・プラットフォーム、いずれ
 
 特に**プラットフォーム型**で働くドライバーは、複数案件の業務記録を整理する必要があるため、アプリ管理の恩恵が大きい設計になっています。
 
-> [App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) ／ Google Play版は近日公開予定
+> [App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) ／ [Google Play でダウンロード](https://play.google.com/store/apps/details?id=com.sozel.delilog)
 
 ---
 

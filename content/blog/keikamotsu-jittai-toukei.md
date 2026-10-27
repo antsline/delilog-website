@@ -300,7 +300,7 @@ author: "delilog編集部"
 
 改善基準告示の遵守には、1日13時間という拘束時間の上限を毎日意識する必要があります。delilog は軽貨物ドライバー向けに設計された記録ツール。**無料でダウンロード**でき、業務の記録や勤務時間管理（プレミアム機能）も14日間無料で試せます。
 
-[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337)
+[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) [Google Play でダウンロード](https://play.google.com/store/apps/details?id=com.sozel.delilog)
 
 <!--/CTA-->
 
@@ -367,7 +367,7 @@ author: "delilog編集部"
 
 業務形態を比較したいとき、確定申告の準備をしたいとき、改善基準告示の遵守状況を確認したいとき——いずれの場面でも、毎日の記録が土台になります。まずは無料の点呼・点検機能から試してみてください。
 
-> [App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) ／ Google Play版は近日公開予定
+> [App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) ／ [Google Play でダウンロード](https://play.google.com/store/apps/details?id=com.sozel.delilog)
 
 ---
 

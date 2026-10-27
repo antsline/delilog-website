@@ -299,7 +299,7 @@ author: "delilog編集部"
 
 delilog の「勤務時間管理」は、改善基準告示の数値（13/15/284/3,300/9/4）を業務記録から**自動でチェック**し、超過しそうなときに警告します。手計算も Excel の関数地獄も不要。**無料でダウンロード**して、勤務時間管理（プレミアム機能）は14日間無料で試せます。
 
-[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337)
+[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) [Google Play でダウンロード](https://play.google.com/store/apps/details?id=com.sozel.delilog)
 
 <!--/CTA-->
 
@@ -549,7 +549,7 @@ delilog の「勤務時間管理」は、改善基準告示の数値（13/15/284
 
 まずは無料の点呼・点検から試して、勤務時間管理が必要になったらトライアル——という流れが無理なく始められます。
 
-> [App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) ／ Google Play版は近日公開予定
+> [App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) ／ [Google Play でダウンロード](https://play.google.com/store/apps/details?id=com.sozel.delilog)
 
 ---
 

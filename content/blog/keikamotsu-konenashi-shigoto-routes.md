@@ -408,7 +408,7 @@ SNS発信で**最も注意すべきは表現規制**です。軽貨物ドライ�
 直受け営業の提案資料への添付、業務委託会社・マッチング・直受け案件を1日横断で記録、確定申告時の経費按分の根拠など、案件確保ルートをまたいだ業務管理にそのまま使えます。
 
 - iOS版：[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337)
-- Android版：近日公開予定
+- Android版：[Google Play でダウンロード](https://play.google.com/store/apps/details?id=com.sozel.delilog)
 
 「制度として6ルートが整っている。問題は組み合わせと実行」——本記事をそのきっかけにしていただければ嬉しいです。
 

@@ -7,7 +7,7 @@ type Props = {
   slug: string;
 };
 
-// 記事内のApp Storeリンク・テンプレDLリンクのクリックを計測する。
+// 記事内のApp Store / Google Playリンク・テンプレDLリンクのクリックを計測する。
 // CTA位置は最近傍の [data-cta] 属性（dlbox / inline-N / article-end / footer-link / sticky-bar）から判定。
 export function BlogClickTracker({ slug }: Props) {
   useEffect(() => {
@@ -22,6 +22,11 @@ export function BlogClickTracker({ slug }: Props) {
 
       if (anchor.href.includes("apps.apple.com")) {
         track("app_store_click", { slug, cta });
+        return;
+      }
+
+      if (anchor.href.includes("play.google.com")) {
+        track("google_play_click", { slug, cta });
         return;
       }
 

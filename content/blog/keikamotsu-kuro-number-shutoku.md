@@ -164,7 +164,7 @@ author: "delilog編集部"
 
 黒ナンバーが交付された当日から、点呼・日常点検・業務の記録は毎日発生します。delilog なら **点呼記録・日常点検（15項目）は無料プラン** で永続的に使え、**業務の記録（運行記録）は14日間無料トライアル付きのプレミアム機能** で残せます。PDF出力は国交省モデル様式に準拠しているので、運輸支局への提示にもそのまま使えます。
 
-[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337)
+[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) [Google Play でダウンロード](https://play.google.com/store/apps/details?id=com.sozel.delilog)
 
 <!--/CTA-->
 
@@ -419,7 +419,7 @@ author: "delilog編集部"
 
 費用比較で迷っている時間にも、取得後すぐ始まる14項目の義務（点呼・業務記録・点検）への準備は進められます。delilog は **点呼記録・日常点検（15項目）が無料プラン** で使え、業務の記録（運行記録：開始・終了・休憩の日時と地点、走行距離、経過地点）は **14日間無料トライアル付きのプレミアム機能** で残せます。取得当日から記録を1件ずつ積み上げていきましょう。
 
-[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337)
+[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) [Google Play でダウンロード](https://play.google.com/store/apps/details?id=com.sozel.delilog)
 
 <!--/CTA-->
 
@@ -478,7 +478,7 @@ author: "delilog編集部"
 
 スマホアプリの一例として、私たちが開発している軽貨物ドライバー向け業務記録アプリ **delilog** を紹介します。**国土交通省モデル様式に準拠** した PDF 出力に対応しており、**点呼記録**（アルコール使用有無・酒気帯び有無の2項目ボタンと所見欄）と **日常点検**（15項目チェックリスト）は **無料プラン** で利用できます。**業務の記録（運行記録）はプレミアム機能** で、14日間の無料トライアルがあります。
 
-> [App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) ／ Android版は近日公開予定
+> [App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) ／ [Google Play でダウンロード](https://play.google.com/store/apps/details?id=com.sozel.delilog)
 
 紙やExcelで始めても、もちろん問題ありません。大切なのは **「最初の1日目から記録を残す」** ことです。点呼記録の書き方は [軽貨物「点呼記録」完全ガイド](/blog/tenko-kiroku-kakikata)、業務の記録は [軽貨物「業務の記録」完全ガイド](/blog/gyoumu-no-kiroku-kakikata)、勤務時間ルールは [改善基準告示・軽貨物の勤務時間ルール完全ガイド](/blog/kaizen-kijun-kokuji-keikamotsu) で詳しく扱っています。
 
@@ -542,7 +542,7 @@ eラーニング（NASVA等）であれば自分のペースで5時間程度。*
 
 最初の1日目から記録を残せるよう、**紙・Excel・アプリのどれで進めるか** だけは、取得当日までに決めておきましょう。私たちが開発している **delilog** なら、点呼記録と日常点検は **無料プラン** で始められます。「とりあえず1件、その日のうちに記録を残す」ところから始めると、後の監査対応の不安も和らぎます。
 
-> [App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) ／ Android版は近日公開予定
+> [App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) ／ [Google Play でダウンロード](https://play.google.com/store/apps/details?id=com.sozel.delilog)
 
 開業手続きを乗り越えた皆さんの軽貨物ドライバーとしての一歩が、安心して踏み出せるものになりますように。
 

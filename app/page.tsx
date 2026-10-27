@@ -6,8 +6,11 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { APP_STORE_URL, GOOGLE_PLAY_URL } from "@/lib/constants";
+import { useStoreUrl } from "@/lib/useStoreUrl";
 
-const APP_STORE_URL = "https://apps.apple.com/jp/app/id6753698337";
+const GOOGLE_PLAY_ICON_PATH =
+  "M3.6 1.8c-.3.3-.5.8-.5 1.4v17.6c0 .6.2 1.1.5 1.4l.1.1 9.9-9.9v-.2L3.7 1.7l-.1.1zM16.9 15.7l-3.3-3.3v-.2l3.3-3.3.1.1 3.9 2.2c1.1.6 1.1 1.7 0 2.3l-3.9 2.2h-.1zM17 15.6l-3.4-3.4L3.6 22.2c.4.4 1 .4 1.7.1L17 15.6M17 8.8 5.3 2.1c-.7-.4-1.3-.3-1.7.1l10 10L17 8.8z";
 
 const fontEditorial = {
   fontFamily: 'var(--font-noto-sans-jp), -apple-system, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", sans-serif',
@@ -88,7 +91,34 @@ function AppStorePill({ size = "default" }: { size?: "default" | "lg" }) {
   );
 }
 
+function GooglePlayPill({ size = "default" }: { size?: "default" | "lg" }) {
+  const padding = size === "lg" ? "px-7 py-4" : "px-6 py-3.5";
+  const main = size === "lg" ? "text-[18px]" : "text-[16px]";
+  return (
+    <a
+      href={GOOGLE_PLAY_URL}
+      className={cn(
+        "inline-flex items-center gap-3 rounded-2xl bg-[#16130f] text-white shadow-[0_12px_28px_-10px_rgba(22,19,15,0.4)] transition-transform hover:-translate-y-0.5",
+        padding
+      )}
+    >
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+        <path d={GOOGLE_PLAY_ICON_PATH} />
+      </svg>
+      <div className="text-left leading-tight">
+        <div className="text-[9px] uppercase tracking-[0.08em] opacity-70" style={fontInter}>
+          Get it on
+        </div>
+        <div className={cn("font-bold tracking-tight", main)} style={fontInter}>
+          Google Play
+        </div>
+      </div>
+    </a>
+  );
+}
+
 export default function Home() {
+  const storeUrl = useStoreUrl();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -159,10 +189,10 @@ export default function Home() {
               </Link>
             ))}
             <a
-              href={APP_STORE_URL}
+              href={storeUrl}
               className="rounded-full bg-[#16130f] px-4 py-2 text-[12px] font-semibold text-white transition-transform hover:-translate-y-0.5"
             >
-              App Storeで入手
+              無料で入手
             </a>
           </nav>
 
@@ -194,10 +224,10 @@ export default function Home() {
                 </Link>
               ))}
               <a
-                href={APP_STORE_URL}
+                href={storeUrl}
                 className="mt-2 inline-flex items-center justify-center rounded-full bg-[#16130f] px-4 py-3 text-sm font-semibold text-white"
               >
-                App Storeで入手
+                無料で入手
               </a>
             </div>
           </motion.div>
@@ -242,6 +272,7 @@ export default function Home() {
               className="mt-9 flex flex-wrap items-center gap-5"
             >
               <AppStorePill />
+              <GooglePlayPill />
               <span className="text-[12px] leading-[1.7] text-[#6b6357]">
                 基本無料 / Premium
                 <br />
@@ -749,7 +780,7 @@ export default function Home() {
                 </ul>
 
                 <a
-                  href={APP_STORE_URL}
+                  href={storeUrl}
                   className={cn(
                     "mt-5 inline-flex w-full items-center justify-center rounded-xl px-4 py-3.5 text-[14px] font-bold tracking-wide transition-transform hover:-translate-y-0.5",
                     p.accent
@@ -935,7 +966,7 @@ export default function Home() {
               </p>
             </div>
             <div className="lg:text-right">
-              <div className="inline-flex">
+              <div className="inline-flex flex-wrap gap-3 lg:justify-end">
                 <a
                   href={APP_STORE_URL}
                   className="inline-flex items-center gap-3 rounded-2xl bg-primary px-7 py-4 text-[16px] font-extrabold text-[#16130f] transition-transform hover:-translate-y-0.5"
@@ -950,6 +981,21 @@ export default function Home() {
                     <path d="M17.05 12.04c-.03-3.07 2.51-4.55 2.62-4.62-1.43-2.09-3.66-2.38-4.45-2.41-1.89-.19-3.69 1.11-4.65 1.11-.97 0-2.45-1.08-4.04-1.05-2.07.03-3.99 1.21-5.05 3.06-2.16 3.74-.55 9.27 1.55 12.31 1.03 1.49 2.25 3.16 3.84 3.1 1.55-.06 2.13-1 4-1 1.86 0 2.4 1 4.04.97 1.67-.03 2.72-1.51 3.74-3.01 1.18-1.73 1.66-3.4 1.69-3.49-.04-.02-3.24-1.24-3.27-4.93z" />
                   </svg>
                   App Storeで入手 →
+                </a>
+                <a
+                  href={GOOGLE_PLAY_URL}
+                  className="inline-flex items-center gap-3 rounded-2xl bg-primary px-7 py-4 text-[16px] font-extrabold text-[#16130f] transition-transform hover:-translate-y-0.5"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden
+                  >
+                    <path d={GOOGLE_PLAY_ICON_PATH} />
+                  </svg>
+                  Google Playで入手 →
                 </a>
               </div>
               <div className="mt-3.5 text-[12px] text-[#a89a85] lg:mt-4">

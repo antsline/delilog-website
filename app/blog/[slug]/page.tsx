@@ -8,7 +8,8 @@ import { BlogCtaCard } from "@/app/components/blog/BlogCtaCard";
 import { BlogStickyAppBar } from "@/app/components/blog/BlogStickyAppBar";
 import { TableOfContents } from "@/app/components/blog/TableOfContents";
 import { formatJapaneseDate, getAllPostSlugs, getPostBySlug } from "@/lib/blog";
-import { APP_STORE_URL, SITE_URL } from "@/lib/constants";
+import { StoreLink } from "@/app/components/blog/StoreLink";
+import { SITE_URL } from "@/lib/constants";
 
 const DEFAULT_OG_IMAGE = "/icon.png";
 
@@ -229,14 +230,13 @@ export default async function BlogPostPage({ params }: PageProps) {
           <ArrowLeft className="w-4 h-4" />
           Blog 一覧に戻る
         </Link>
-        <a
-          href={APP_STORE_URL}
+        <StoreLink
           data-cta="footer-link"
           className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
         >
           <Image src="/icon.png" alt="" width={20} height={20} className="rounded" />
           delilog を試してみる
-        </a>
+        </StoreLink>
       </div>
 
       <BlogStickyAppBar />

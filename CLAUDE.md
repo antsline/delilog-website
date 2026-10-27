@@ -27,7 +27,7 @@ delilog（軽貨物ドライバー向け業務記録アプリ）の公式サイ�
 ### 配布
 
 - iOS: https://apps.apple.com/jp/app/delilog/id6753698337
-- Android: 近日公開（Google Play版は現時点で未リリース）
+- Android: https://play.google.com/store/apps/details?id=com.sozel.delilog（2026-10 公開）
 - 料金: 基本無料。プレミアムは月額 ¥900 / 年額 ¥9,000（14日間無料トライアルあり）。※1.4.0で ¥600/¥6,000 から改定。既存ユーザーは ¥600 据え置き（grandfather）だが、記事・LP には新価格のみ記載する
 
 ### やってはいけない記述
@@ -146,7 +146,7 @@ author: "delilog編集部"
 
   [delilog の機能説明（2〜3文）]
 
-  [App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) ／ Google Play版は近日公開予定
+  [App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) [Google Play でダウンロード](https://play.google.com/store/apps/details?id=com.sozel.delilog)
 
   <!--/CTA-->
   ```
@@ -171,7 +171,7 @@ author: "delilog編集部"
 
   - 構造は「太字見出し → DLリンクのリスト → 章参照1行 → アプリ導線1行（最終段落、上罫線付きでレンダリング）」の順を厳守（CSS が段落位置で装飾を当てるため）
   - DLBOX 内のアプリリンクはカードCTA集約ルールの例外として認める（データ根拠: 2026-07 分析でブログ→ストア到達が603クリック中48件と細く、DL導線とアプリ接点が記事最下部に偏っていたため）
-- **ストア/DLクリック計測**: 記事内の App Store リンクとテンプレファイルリンクは `BlogClickTracker` が Vercel Analytics カスタムイベント（`app_store_click` / `template_download`）で自動計測する。CTA位置は最近傍の `data-cta` 属性（`dlbox` / `inline-N` / `article-end` / `footer-link` / `sticky-bar`）で識別されるため、新しいCTAコンポーネントを作る場合は `data-cta` を必ず付与する
+- **ストア/DLクリック計測**: 記事内の App Store / Google Play リンクとテンプレファイルリンクは `BlogClickTracker` が Vercel Analytics カスタムイベント（`app_store_click` / `google_play_click` / `template_download`）で自動計測する。CTA位置は最近傍の `data-cta` 属性（`dlbox` / `inline-N` / `article-end` / `footer-link` / `sticky-bar`）で識別されるため、新しいCTAコンポーネントを作る場合は `data-cta` を必ず付与する
 - **モバイル固定バー**: 全ブログ記事に `BlogStickyAppBar`（スクロール600px超で表示・セッション内解除可能）が付く。記事側での対応は不要
 - **外部URL は必ず Markdown リンク構文 `[ラベル](URL)` で記述する**。bare URL を 全角括弧（）の中に置くと、Markdown レンダラーが URL の終端を正しく認識できず、続く日本語テキストまでリンクとして処理されてしまう（実害: リンクのオレンジ色が段落全体に広がる）。
   - NG: `国交省の制度改正ページ（https://www.mlit.go.jp/jidosha/jidosha_tk2_000172.html）では、…`

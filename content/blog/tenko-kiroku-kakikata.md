@@ -278,7 +278,7 @@ author: "delilog編集部"
 
 delilog の点呼記録は、アルコール「使用有無」「酒気帯び有無」の**2項目をボタンタップで記録**。所見欄は任意（異常時のみ入力推奨）で、業務前・業務後ともに30秒〜1分で完了します。**点呼記録・日常点検は無料プラン**で永続的に使えます。
 
-[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337)
+[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) [Google Play でダウンロード](https://play.google.com/store/apps/details?id=com.sozel.delilog)
 
 <!--/CTA-->
 
@@ -541,7 +541,7 @@ delilog の点呼記録は、アルコール「使用有無」「酒気帯び有
 
 点呼・日常点検は **無料プラン**で利用可能。まずは気軽に試してみてください。
 
-> [App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) ／ Google Play版は近日公開予定
+> [App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) ／ [Google Play でダウンロード](https://play.google.com/store/apps/details?id=com.sozel.delilog)
 
 ---
 

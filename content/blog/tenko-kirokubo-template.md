@@ -403,7 +403,7 @@ PDF出力は国交省モデル様式に準拠しているため、運輸支局�
 
 delilog の点呼記録は、アルコール「使用有無」「酒気帯び有無」の2項目をボタンタップで記録。所見欄は任意（異常時のみ入力）なので、業務前・業務後ともに30秒〜1分で完了します。点呼記録・日常点検は**無料プラン**で永続的に使えます。PDF出力は国交省モデル様式に準拠しているので、運輸支局への提示にもそのまま使えます。
 
-[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) ／ Google Play版は近日公開予定
+[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) [Google Play でダウンロード](https://play.google.com/store/apps/details?id=com.sozel.delilog)
 
 <!--/CTA-->
 
@@ -516,7 +516,7 @@ PDF はヘッダーに氏名・屋号を記入し、業務前後に1行ずつ記
 
 delilog なら、業務前・業務後の点呼記録をボタンタップで30秒〜1分で完了。日常点検15項目チェックも同じアプリ内で連動しているため、「日常点検→点呼記録の日常点検状況欄に反映」がシームレスに進みます。**点呼記録・日常点検は無料プラン**で永続的に使えます。業務の記録（運行記録）や勤務時間管理などプレミアム機能には**14日間の無料トライアル**があります。PDF出力は国交省モデル様式に準拠しているので、運輸支局への提示にもそのまま使えます。
 
-[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) ／ Google Play版は近日公開予定
+[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) [Google Play でダウンロード](https://play.google.com/store/apps/details?id=com.sozel.delilog)
 
 <!--/CTA-->
 

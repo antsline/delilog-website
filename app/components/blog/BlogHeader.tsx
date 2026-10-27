@@ -5,11 +5,12 @@ import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/app/components/ui/button";
-import { APP_STORE_URL } from "@/lib/constants";
+import { useStoreUrl } from "@/lib/useStoreUrl";
 
 const MOBILE_NAV_ID = "blog-mobile-nav";
 
 export function BlogHeader() {
+  const storeUrl = useStoreUrl();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const closeMenu = useCallback(() => setMobileMenuOpen(false), []);
@@ -51,7 +52,7 @@ export function BlogHeader() {
             Blog
           </Link>
           <Button asChild variant="default" className="rounded-full shadow-lg shadow-primary/20">
-            <a href={APP_STORE_URL}>ダウンロード</a>
+            <a href={storeUrl}>ダウンロード</a>
           </Button>
         </nav>
 
@@ -82,7 +83,7 @@ export function BlogHeader() {
               Blog
             </Link>
             <Button asChild className="w-full">
-              <a href={APP_STORE_URL}>ダウンロード</a>
+              <a href={storeUrl}>ダウンロード</a>
             </Button>
           </div>
         </div>

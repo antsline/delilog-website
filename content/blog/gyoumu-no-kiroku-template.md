@@ -609,7 +609,7 @@ PCが前提のため、業務中の車内でリアルタイムに記録するこ
 
 delilogの業務の記録（プレミアム機能）は、集荷・納品・休憩のタイミングにスマートフォンで記録。走行距離はメーター値を入力すれば自動計算されます。クラウド自動保存で1年間の記録を管理でき、PDF出力は国交省モデル様式に準拠。点呼・日常点検との一体運用で、法令義務をスマホ1台でカバーできます。まずは14日間の無料トライアルでお試しください。
 
-[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) ／ Google Play版は近日公開予定
+[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) [Google Play でダウンロード](https://play.google.com/store/apps/details?id=com.sozel.delilog)
 
 <!--/CTA-->
 
@@ -766,7 +766,7 @@ delilogの業務の記録（プレミアム機能）は、集荷・納品・休�
 
 delilogなら、集荷・納品・休憩のタイミングにスマートフォンで業務の記録を入力し、入力したメーター値から走行距離を自動計算します。クラウド自動保存で1年分の記録を管理でき、PDF出力は国交省モデル様式に準拠。点呼記録・日常点検は無料プランで永続的に使えます。業務の記録は**プレミアム機能（14日間無料トライアル）**でお試しください。
 
-[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) ／ Google Play版は近日公開予定
+[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) [Google Play でダウンロード](https://play.google.com/store/apps/details?id=com.sozel.delilog)
 
 <!--/CTA-->
 

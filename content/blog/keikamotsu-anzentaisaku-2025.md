@@ -268,7 +268,7 @@ author: "delilog編集部"
 
 点呼記録・日常点検（15項目）は**無料プラン**で永続的に使えます。業務の記録・勤務時間管理などのプレミアム機能も14日間無料で試せます。PDFは国交省モデル様式に準拠しているので、運輸支局への提示にもそのまま使えます。
 
-[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337)
+[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) [Google Play でダウンロード](https://play.google.com/store/apps/details?id=com.sozel.delilog)
 
 <!--/CTA-->
 
@@ -407,7 +407,7 @@ author: "delilog編集部"
 
 まずは無料の点呼・点検から始めて、業務の記録も残したくなったらトライアルで試す——という流れで無理なく導入できます。
 
-> [App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) ／ Google Play版は近日公開予定
+> [App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) ／ [Google Play でダウンロード](https://play.google.com/store/apps/details?id=com.sozel.delilog)
 
 ---
 

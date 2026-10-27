@@ -226,7 +226,7 @@ Uber Eats は、軽貨物（黒ナンバー）を含む配達パートナーが�
 
 プラットフォームでも、継続委託でも、チャーターでも、毎日の運行記録（業務の記録・点呼・日常点検）は法令上必要です。delilog なら**点呼記録・日常点検は無料**で始められ、業務の記録（運行記録）は**14日間無料トライアル付きのプレミアム機能**で残せます。PDF出力は国交省モデル様式準拠なので、提出資料としてもそのまま使えます。
 
-[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337)
+[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) [Google Play でダウンロード](https://play.google.com/store/apps/details?id=com.sozel.delilog)
 
 <!--/CTA-->
 
@@ -548,7 +548,7 @@ PickGo・Hacobell といったチャーター便マッチングサービスの�
 
 業務形態を選び直すときも、現状の単価を見直すときも、出発点はやはり**毎日の運行記録**です。delilog なら**点呼記録・日常点検は無料**で始められ、業務の記録（運行記録：開始・終了・休憩の日時と地点、走行距離、経過地点）は**14日間無料トライアル付きのプレミアム機能**で残せます。法令対応のための記録を一括で残しながら、自分の労働時間と距離を客観視する材料としても活用してください。
 
-[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337)
+[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) [Google Play でダウンロード](https://play.google.com/store/apps/details?id=com.sozel.delilog)
 
 <!--/CTA-->
 
@@ -642,7 +642,7 @@ PickGo・Hacobell といったチャーター便マッチングサービスの�
 
 公表値で全体像を掴み、契約前に本人確認し、毎日の運行を記録して自分の働き方を振り返る——この3つが揃うと、業務形態の選択も、現状の見直しも、ぐっと判断しやすくなります。まずは無料の点呼・点検機能から試してみてください。
 
-> [App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) ／ Google Play版は近日公開予定
+> [App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) ／ [Google Play でダウンロード](https://play.google.com/store/apps/details?id=com.sozel.delilog)
 
 ---
 

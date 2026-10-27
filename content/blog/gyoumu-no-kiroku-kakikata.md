@@ -207,7 +207,7 @@ author: "delilog編集部"
 
 delilog なら、開始・終了・休憩の日時と地点、走行距離、経過地点をアプリで記録できます。1年間の保存も自動、PDFは国交省モデル様式に準拠。**無料でダウンロード**して、業務の記録（プレミアム機能）は14日間無料で試せます。
 
-[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337)
+[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) [Google Play でダウンロード](https://play.google.com/store/apps/details?id=com.sozel.delilog)
 
 <!--/CTA-->
 
@@ -421,7 +421,7 @@ delilog なら、開始・終了・休憩の日時と地点、走行距離、経
 
 まずは無料の点呼・点検から試して、業務の記録も残したくなったら14日間の無料トライアルで追加する——という導入の流れが一番無理のないコースです。
 
-> [App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) ／ Google Play版は近日公開予定
+> [App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) ／ [Google Play でダウンロード](https://play.google.com/store/apps/details?id=com.sozel.delilog)
 
 ---
 

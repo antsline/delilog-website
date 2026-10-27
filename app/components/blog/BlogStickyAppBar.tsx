@@ -3,12 +3,13 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { X } from "lucide-react";
-import { APP_STORE_URL } from "@/lib/constants";
+import { useStoreUrl } from "@/lib/useStoreUrl";
 
 const DISMISS_KEY = "delilog-sticky-cta-dismissed";
 const SHOW_AFTER_SCROLL_PX = 600;
 
 export function BlogStickyAppBar() {
+  const storeUrl = useStoreUrl();
   const [visible, setVisible] = useState(false);
   const [dismissed, setDismissed] = useState(true);
 
@@ -45,7 +46,7 @@ export function BlogStickyAppBar() {
           <p className="text-xs text-slate-500 truncate">国交省様式のPDFを自動作成（無料）</p>
         </div>
         <a
-          href={APP_STORE_URL}
+          href={storeUrl}
           className="flex-shrink-0 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-primary/20"
         >
           無料DL

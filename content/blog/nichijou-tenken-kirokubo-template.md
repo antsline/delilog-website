@@ -582,7 +582,7 @@ delilog の日常点検機能（国交省公式の15項目チェックリスト�
 
 delilog の日常点検は、国交省公式の15項目を順にタップしていくだけで記録が完成します。点呼記録と同じアプリで一元管理できるため、業務前点呼の「車両日常点検はしたか」確認もシームレスに進みます。**日常点検・点呼記録は無料プラン**で永続的に使え、業務の記録（運行記録）などプレミアム機能には**14日間の無料トライアル**があります。PDF出力は国交省モデル様式に準拠しているので、運輸支局への提示にもそのまま使えます。
 
-[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) ／ Google Play版は近日公開予定
+[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) [Google Play でダウンロード](https://play.google.com/store/apps/details?id=com.sozel.delilog)
 
 <!--/CTA-->
 
@@ -722,7 +722,7 @@ A4縦・1ファイル2ページの構成で、年間でも24枚（月2枚 × 12�
 
 delilog なら、国交省公式の日常点検15項目をタップ式でチェックでき、業務前点呼の「車両日常点検はしたか」確認もそのままアプリ内で完結します。**日常点検・点呼記録は無料プランで永続的に使えます**。業務の記録（運行記録）や勤務時間管理などプレミアム機能には**14日間の無料トライアル**があります。PDF出力は国交省モデル様式に準拠しているため、運輸支局への提示にもそのまま使えます。
 
-[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) ／ Google Play版は近日公開予定
+[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) [Google Play でダウンロード](https://play.google.com/store/apps/details?id=com.sozel.delilog)
 
 <!--/CTA-->
 

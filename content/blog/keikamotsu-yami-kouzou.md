@@ -832,7 +832,7 @@ delilog の無料プランで点呼記録・日常点検を、プレミアムプ
 - 勤務時間管理（改善基準告示に基づく自動チェック）
 - 事故の記録（6項目＋3年保存）
 
-[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) ／ Android版は近日公開予定
+[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) [Google Play でダウンロード](https://play.google.com/store/apps/details?id=com.sozel.delilog)
 
 ---
 
