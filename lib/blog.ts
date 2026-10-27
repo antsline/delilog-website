@@ -105,6 +105,14 @@ function injectHeadingIds(html: string, headings: BlogHeading[]): string {
   });
 }
 
+// PC で読んでいる人向けの QR（app/components/blog/DesktopQr.tsx と同じ見た目）。スマホでは出さない。
+const DESKTOP_QR_HTML = [
+  '<div class="hidden lg:flex flex-col items-center flex-shrink-0 gap-1.5">',
+  '<img src="/qr/blog.svg" alt="delilog のダウンロード用QRコード" width="96" height="96" class="rounded-md" />',
+  '<span class="text-[11px] leading-tight text-slate-500 text-center">スマホで読み取って<br />インストール</span>',
+  '</div>',
+].join('');
+
 function transformInlineCtas(html: string): string {
   let ctaIndex = 0;
   return html.replace(/<!--CTA-->\s*([\s\S]*?)\s*<!--\/CTA-->/g, (_match, inner: string) => {
@@ -125,6 +133,7 @@ function transformInlineCtas(html: string): string {
       inner.trim(),
       '</div>',
       '</div>',
+      DESKTOP_QR_HTML,
       '</div>',
       '</aside>',
     ].join('');

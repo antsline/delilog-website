@@ -14,6 +14,10 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://delilog.app"),
   title: "delilog - 軽貨物ドライバーのための業務記録アプリ",
   description: "点検・点呼・運行記録をスマホ1台で完結。法定点検項目・アルコールチェック・国交省様式PDF出力に対応。基本無料。",
+  // iPhone の Safari で画面上部に「入手」バナーを出す（Smart App Banner）
+  itunes: {
+    appId: "6753698337",
+  },
   // Google Search Console verification: Search Consoleで「HTMLタグ」方式を選び、発行されたcontent値をここに貼る
   // verification: {
   //   google: "ここにSearch Consoleが発行した認証コードを貼る",

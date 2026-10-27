@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { APP_STORE_URL, GOOGLE_PLAY_URL } from "@/lib/constants";
+import { DesktopQr } from "@/app/components/blog/DesktopQr";
 
 export function BlogCtaCard() {
   return (
@@ -36,6 +37,7 @@ export function BlogCtaCard() {
             </a>
           </div>
         </div>
+        <DesktopQr src="/qr/blog.svg" />
       </div>
     </aside>
   );

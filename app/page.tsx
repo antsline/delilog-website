@@ -117,6 +117,32 @@ function GooglePlayPill({ size = "default" }: { size?: "default" | "lg" }) {
   );
 }
 
+// PC で見ている人向け。スマホでは出さない（その端末でそのままストアを開ける）。
+function DesktopQr({ tone = "light", className }: { tone?: "light" | "dark"; className?: string }) {
+  return (
+    <div className={cn("hidden items-center gap-3 lg:flex", className)}>
+      <Image
+        src="/qr/lp.svg"
+        alt="delilog のダウンロード用QRコード"
+        width={76}
+        height={76}
+        className="rounded-md"
+        unoptimized
+      />
+      <span
+        className={cn(
+          "text-left text-[11px] leading-[1.6]",
+          tone === "dark" ? "text-[#a89a85]" : "text-[#6b6357]"
+        )}
+      >
+        スマホで読み取って
+        <br />
+        インストール
+      </span>
+    </div>
+  );
+}
+
 export default function Home() {
   const storeUrl = useStoreUrl();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -273,6 +299,7 @@ export default function Home() {
             >
               <AppStorePill />
               <GooglePlayPill />
+              <DesktopQr />
               <span className="text-[12px] leading-[1.7] text-[#6b6357]">
                 基本無料 / Premium
                 <br />
@@ -1010,10 +1037,10 @@ export default function Home() {
               </p>
             </div>
             <div className="lg:text-right">
-              <div className="inline-flex flex-wrap gap-3 lg:justify-end">
+              <div className="inline-grid gap-3">
                 <a
                   href={APP_STORE_URL}
-                  className="inline-flex items-center gap-3 rounded-2xl bg-primary px-7 py-4 text-[16px] font-extrabold text-[#16130f] transition-transform hover:-translate-y-0.5"
+                  className="inline-flex items-center justify-center gap-3 rounded-2xl bg-primary px-7 py-4 text-[16px] font-extrabold text-[#16130f] transition-transform hover:-translate-y-0.5"
                 >
                   <svg
                     width="20"
@@ -1028,7 +1055,7 @@ export default function Home() {
                 </a>
                 <a
                   href={GOOGLE_PLAY_URL}
-                  className="inline-flex items-center gap-3 rounded-2xl bg-primary px-7 py-4 text-[16px] font-extrabold text-[#16130f] transition-transform hover:-translate-y-0.5"
+                  className="inline-flex items-center justify-center gap-3 rounded-2xl bg-primary px-7 py-4 text-[16px] font-extrabold text-[#16130f] transition-transform hover:-translate-y-0.5"
                 >
                   <svg
                     width="20"
@@ -1045,6 +1072,7 @@ export default function Home() {
               <div className="mt-3.5 text-[12px] text-[#a89a85] lg:mt-4">
                 基本無料 / Premium 14日間無料トライアル
               </div>
+              <DesktopQr tone="dark" className="mt-6 lg:justify-end" />
             </div>
           </div>
 

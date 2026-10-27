@@ -181,6 +181,7 @@ author: "delilog編集部"
   - 構造は「太字見出し → DLリンクのリスト → 章参照1行 → アプリ導線1行（最終段落、上罫線付きでレンダリング）」の順を厳守（CSS が段落位置で装飾を当てるため）
   - DLBOX 内のアプリリンクはカードCTA集約ルールの例外として認める（データ根拠: 2026-07 分析でブログ→ストア到達が603クリック中48件と細く、DL導線とアプリ接点が記事最下部に偏っていたため）
 - **ストア/DLクリック計測**: 記事内の App Store / Google Play リンクとテンプレファイルリンクは `BlogClickTracker` が Vercel Analytics カスタムイベント（`app_store_click` / `google_play_click` / `template_download`）で自動計測する。CTA位置は最近傍の `data-cta` 属性（`dlbox` / `inline-N` / `article-end` / `footer-link` / `sticky-bar`）で識別されるため、新しいCTAコンポーネントを作る場合は `data-cta` を必ず付与する
+- **QR コード（`/download`）**: PC 表示のカード（`DesktopQr`・スマホでは非表示）、LP、テンプレートの PDF に QR を置いている。行き先は `https://delilog.app/download?from=<読み取り元>` で、端末を見て App Store / Google Play / LP に振り分け、Vercel Analytics の `qr_download`（`from` / `platform`）で数える。読み取り元は `blog_qr` / `lp_qr` / `template_tenko7` / `template_tenko10` / `template_nichijou` / `template_tenko_xlsx`。新しいテンプレートを配るときも、欄外に1行と QR を入れる（業務の記録テンプレと同じ体裁）
 - **モバイル固定バー**: 全ブログ記事に `BlogStickyAppBar`（スクロール600px超で表示・セッション内解除可能）が付く。記事側での対応は不要
 - **外部URL は必ず Markdown リンク構文 `[ラベル](URL)` で記述する**。bare URL を 全角括弧（）の中に置くと、Markdown レンダラーが URL の終端を正しく認識できず、続く日本語テキストまでリンクとして処理されてしまう（実害: リンクのオレンジ色が段落全体に広がる）。
   - NG: `国交省の制度改正ページ（https://www.mlit.go.jp/jidosha/jidosha_tk2_000172.html）では、…`
