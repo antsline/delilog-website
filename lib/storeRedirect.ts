@@ -1,4 +1,4 @@
-import { APP_STORE_URL, GOOGLE_PLAY_URL } from "@/lib/constants";
+import { appStoreCampaignUrl, googlePlayCampaignUrl } from "@/lib/storeCampaign";
 
 export type StorePlatform = "android" | "ios" | "other";
 
@@ -22,11 +22,10 @@ export function detectPlatform(userAgent: string): StorePlatform {
 // 端末ごとの行き先。PC など判別できない端末は、両方のストアのボタンがある LP に送る。
 export function buildStoreRedirect(platform: StorePlatform, source: string): string {
   if (platform === "android") {
-    const referrer = encodeURIComponent(`utm_source=${source}&utm_medium=qr`);
-    return `${GOOGLE_PLAY_URL}&referrer=${referrer}`;
+    return googlePlayCampaignUrl(source, "qr");
   }
   if (platform === "ios") {
-    return APP_STORE_URL;
+    return appStoreCampaignUrl(`qr_${source}`);
   }
   return `/?utm_source=${source}&utm_medium=qr`;
 }

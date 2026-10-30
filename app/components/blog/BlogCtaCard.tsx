@@ -1,8 +1,13 @@
 import Image from "next/image";
-import { APP_STORE_URL, GOOGLE_PLAY_URL } from "@/lib/constants";
+import { appStoreCampaignUrl, blogCampaign, googlePlayCampaignUrl } from "@/lib/storeCampaign";
 import { DesktopQr } from "@/app/components/blog/DesktopQr";
 
-export function BlogCtaCard() {
+type Props = {
+  slug: string;
+};
+
+export function BlogCtaCard({ slug }: Props) {
+  const campaign = blogCampaign(slug);
   return (
     <aside
       data-cta="article-end"
@@ -24,13 +29,13 @@ export function BlogCtaCard() {
           </p>
           <div className="flex flex-wrap gap-3">
             <a
-              href={APP_STORE_URL}
+              href={appStoreCampaignUrl(campaign)}
               className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-all hover:scale-105"
             >
               App Store でダウンロード
             </a>
             <a
-              href={GOOGLE_PLAY_URL}
+              href={googlePlayCampaignUrl(campaign, "blog")}
               className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-all hover:scale-105"
             >
               Google Play でダウンロード

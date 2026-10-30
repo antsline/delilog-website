@@ -5,12 +5,14 @@ import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/app/components/ui/button";
+import { usePathname } from "next/navigation";
+import { campaignFromBlogPath } from "@/lib/storeCampaign";
 import { useStoreUrl } from "@/lib/useStoreUrl";
 
 const MOBILE_NAV_ID = "blog-mobile-nav";
 
 export function BlogHeader() {
-  const storeUrl = useStoreUrl();
+  const storeUrl = useStoreUrl(campaignFromBlogPath(usePathname()));
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const closeMenu = useCallback(() => setMobileMenuOpen(false), []);

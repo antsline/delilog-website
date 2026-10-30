@@ -5,6 +5,7 @@ import { remark } from "remark";
 import remarkCjkFriendly from "remark-cjk-friendly";
 import remarkGfm from "remark-gfm";
 import remarkHtml from "remark-html";
+import { blogCampaign, tagStoreLinks } from "@/lib/storeCampaign";
 
 const BLOG_DIR = path.join(process.cwd(), "content", "blog");
 const SLUG_PATTERN = /^[a-z0-9-]+$/;
@@ -188,8 +189,9 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     const { data, content } = await readMarkdownFile(filename);
     const headings = extractH2Headings(content);
     const rawHtml = await markdownToHtml(content);
-    const contentHtml = transformDlBoxes(
-      transformInlineCtas(injectHeadingIds(rawHtml, headings)),
+    const contentHtml = tagStoreLinks(
+      transformDlBoxes(transformInlineCtas(injectHeadingIds(rawHtml, headings))),
+      blogCampaign(slug),
     );
 
     const markerIdx = contentHtml.indexOf(TOC_MARKER);

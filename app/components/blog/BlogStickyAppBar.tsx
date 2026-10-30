@@ -3,13 +3,15 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { X } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { campaignFromBlogPath } from "@/lib/storeCampaign";
 import { useStoreUrl } from "@/lib/useStoreUrl";
 
 const DISMISS_KEY = "delilog-sticky-cta-dismissed";
 const SHOW_AFTER_SCROLL_PX = 600;
 
 export function BlogStickyAppBar() {
-  const storeUrl = useStoreUrl();
+  const storeUrl = useStoreUrl(campaignFromBlogPath(usePathname()));
   const [visible, setVisible] = useState(false);
   const [dismissed, setDismissed] = useState(true);
 
