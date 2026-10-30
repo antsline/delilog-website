@@ -5,11 +5,15 @@ import { track } from "@vercel/analytics";
 
 type Props = {
   slug: string;
+  // トップページでは入口の名前（例: lp_app_share）も送る。
+  campaign?: string;
 };
 
 // 記事内のApp Store / Google Playリンク・テンプレDLリンクのクリックを計測する。
-// CTA位置は最近傍の [data-cta] 属性（dlbox / inline-N / article-end / footer-link / sticky-bar）から判定。
-export function BlogClickTracker({ slug }: Props) {
+// トップページでも slug="top" で使う。
+// CTA位置は最近傍の [data-cta] 属性（記事: dlbox / inline-N / article-end / footer-link / sticky-bar、
+// トップ: header / mobile-menu / hero / pricing / final）から判定。
+export function BlogClickTracker({ slug, campaign }: Props) {
   useEffect(() => {
     function handleClick(event: MouseEvent) {
       const target = event.target as Element | null;
@@ -21,12 +25,12 @@ export function BlogClickTracker({ slug }: Props) {
       const cta = anchor.closest("[data-cta]")?.getAttribute("data-cta") ?? "body";
 
       if (anchor.href.includes("apps.apple.com")) {
-        track("app_store_click", { slug, cta });
+        track("app_store_click", { slug, cta, ...(campaign && { campaign }) });
         return;
       }
 
       if (anchor.href.includes("play.google.com")) {
-        track("google_play_click", { slug, cta });
+        track("google_play_click", { slug, cta, ...(campaign && { campaign }) });
         return;
       }
 
@@ -38,7 +42,7 @@ export function BlogClickTracker({ slug }: Props) {
 
     document.addEventListener("click", handleClick, true);
     return () => document.removeEventListener("click", handleClick, true);
-  }, [slug]);
+  }, [slug, campaign]);
 
   return null;
 }

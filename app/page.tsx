@@ -6,7 +6,9 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { APP_STORE_URL, GOOGLE_PLAY_URL } from "@/lib/constants";
+import { BlogClickTracker } from "@/app/components/blog/BlogClickTracker";
+import { appStoreCampaignUrl, googlePlayCampaignUrl } from "@/lib/storeCampaign";
+import { useLandingCampaign } from "@/lib/useLandingCampaign";
 import { useStoreUrl } from "@/lib/useStoreUrl";
 
 const GOOGLE_PLAY_ICON_PATH =
@@ -65,12 +67,14 @@ function Eyebrow({ children, variant = "primary", className }: EyebrowProps) {
   );
 }
 
-function AppStorePill({ size = "default" }: { size?: "default" | "lg" }) {
+type PillProps = { campaign: string; size?: "default" | "lg" };
+
+function AppStorePill({ campaign, size = "default" }: PillProps) {
   const padding = size === "lg" ? "px-7 py-4" : "px-6 py-3.5";
   const main = size === "lg" ? "text-[18px]" : "text-[16px]";
   return (
     <a
-      href={APP_STORE_URL}
+      href={appStoreCampaignUrl(campaign)}
       className={cn(
         "inline-flex items-center gap-3 rounded-2xl bg-[#16130f] text-white shadow-[0_12px_28px_-10px_rgba(22,19,15,0.4)] transition-transform hover:-translate-y-0.5",
         padding
@@ -91,12 +95,12 @@ function AppStorePill({ size = "default" }: { size?: "default" | "lg" }) {
   );
 }
 
-function GooglePlayPill({ size = "default" }: { size?: "default" | "lg" }) {
+function GooglePlayPill({ campaign, size = "default" }: PillProps) {
   const padding = size === "lg" ? "px-7 py-4" : "px-6 py-3.5";
   const main = size === "lg" ? "text-[18px]" : "text-[16px]";
   return (
     <a
-      href={GOOGLE_PLAY_URL}
+      href={googlePlayCampaignUrl(campaign, "lp")}
       className={cn(
         "inline-flex items-center gap-3 rounded-2xl bg-[#16130f] text-white shadow-[0_12px_28px_-10px_rgba(22,19,15,0.4)] transition-transform hover:-translate-y-0.5",
         padding
@@ -144,7 +148,8 @@ function DesktopQr({ tone = "light", className }: { tone?: "light" | "dark"; cla
 }
 
 export default function Home() {
-  const storeUrl = useStoreUrl();
+  const campaign = useLandingCampaign();
+  const storeUrl = useStoreUrl(campaign, "lp");
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -179,6 +184,7 @@ export default function Home() {
       className="min-h-screen bg-[#faf7f1] text-[#16130f] selection:bg-primary/20"
       style={fontEditorial}
     >
+      <BlogClickTracker slug="top" campaign={campaign} />
       {/* Header */}
       <div className="fixed top-0 left-0 right-0 z-50">
         <header
@@ -216,6 +222,7 @@ export default function Home() {
             ))}
             <a
               href={storeUrl}
+              data-cta="header"
               className="rounded-full bg-[#16130f] px-4 py-2 text-[12px] font-semibold text-white transition-transform hover:-translate-y-0.5"
             >
               無料で入手
@@ -251,6 +258,7 @@ export default function Home() {
               ))}
               <a
                 href={storeUrl}
+                data-cta="mobile-menu"
                 className="mt-2 inline-flex items-center justify-center rounded-full bg-[#16130f] px-4 py-3 text-sm font-semibold text-white"
               >
                 無料で入手
@@ -295,10 +303,11 @@ export default function Home() {
 
             <motion.div
               variants={fadeInUp}
+              data-cta="hero"
               className="mt-9 flex flex-wrap items-center gap-5"
             >
-              <AppStorePill />
-              <GooglePlayPill />
+              <AppStorePill campaign={campaign} />
+              <GooglePlayPill campaign={campaign} />
               <DesktopQr />
               <span className="text-[12px] leading-[1.7] text-[#6b6357]">
                 基本無料 / Premium
@@ -854,6 +863,7 @@ export default function Home() {
 
                 <a
                   href={storeUrl}
+                  data-cta="pricing"
                   className={cn(
                     "mt-5 inline-flex w-full items-center justify-center rounded-xl px-4 py-3.5 text-[14px] font-bold tracking-wide transition-transform hover:-translate-y-0.5",
                     p.accent
@@ -1037,9 +1047,9 @@ export default function Home() {
               </p>
             </div>
             <div className="lg:text-right">
-              <div className="inline-grid gap-3">
+              <div data-cta="final" className="inline-grid gap-3">
                 <a
-                  href={APP_STORE_URL}
+                  href={appStoreCampaignUrl(campaign)}
                   className="inline-flex items-center justify-center gap-3 rounded-2xl bg-primary px-7 py-4 text-[16px] font-extrabold text-[#16130f] transition-transform hover:-translate-y-0.5"
                 >
                   <svg
@@ -1054,7 +1064,7 @@ export default function Home() {
                   App Storeで入手 →
                 </a>
                 <a
-                  href={GOOGLE_PLAY_URL}
+                  href={googlePlayCampaignUrl(campaign, "lp")}
                   className="inline-flex items-center justify-center gap-3 rounded-2xl bg-primary px-7 py-4 text-[16px] font-extrabold text-[#16130f] transition-transform hover:-translate-y-0.5"
                 >
                   <svg
