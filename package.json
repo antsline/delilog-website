@@ -9,7 +9,8 @@
     "lint": "next lint",
     "test": "node --test scripts/blog",
     "blog:figures": "node scripts/blog/render-figures.mjs",
-    "blog:stats": "node scripts/blog/article-stats.mjs"
+    "blog:stats": "node scripts/blog/article-stats.mjs",
+    "blog:mobile": "node scripts/blog/mobile-check.mjs"
   },
   "keywords": [],
   "author": "",
