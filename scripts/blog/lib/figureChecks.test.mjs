@@ -51,3 +51,7 @@ test('同じ文字が何度も出ても、指摘は1件にまとめる', () => {
   const small = { text: '注記', fontPx: 20 };
   assert.equal(checkFigure({ ...ok, texts: [small, small] }).length, 1);
 });
+
+test('測れる文字が1つも無い図は不合格（目で確かめられない）', () => {
+  assert.match(checkFigure({ ...ok, texts: [] })[0], /文字が見つからない/);
+});

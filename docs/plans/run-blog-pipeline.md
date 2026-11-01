@@ -2,7 +2,7 @@
 
 作成: 2026-11-02
 ブランチ: feat/blog-pipeline（worktree `~/delilog-website-blog-pipeline`。本体の作業ツリーにある未公開の変更には触らない）
-状態: 実行中
+状態: 完了
 
 ## 要件
 
@@ -58,7 +58,8 @@
 | T3 | 8bbed80 | 本文（.prose）内の表示中の画像だけを判定（PC 用 QR・CTA カードのアイコンは除外）。点呼記録簿テンプレで横長の3枚が「4.7倍に縮小」で NG になることを確認。スクショは .claude/work/<slug>/mobile/（2倍解像度） |
 | T4 | 15c0eae | 字数・章構成（冒頭の結論・4〜6章・FAQ 3〜5問）・図（4:5・44px以上・6要素）・OG（og.json）・承認1回の流れ・誤解DBと裏の取れない主張の扱いを改定。「この記事でわかること」は廃止 |
 | T5 | 1f213cf | 書き換えはサブエージェント（Sonnet）、差分は確認済み。blog:stats が章数を数えると書かれていた誤りを直した。planner・outliner・consistency-guard・fact-checker に Write を足した（中間ファイルを自分で保存するため）。consistency-guard の本文は変更なし |
-| T6 | (このコミット) | 敵対レビューで CRITICAL 2・HIGH 5。直した: サブエージェントは元のフォルダで動くので全エージェントに WORKTREE（絶対パス）を渡し $WORKTREE 下だけ読み書き／worktree 作成を set -e と「ブランチ・トップの確認」で守り、失敗時は main にコミットしない／ユーザーの作業ツリーの指紋を取り、タスクごとに比べる／worktree は .claude/worktrees（.git/info/exclude で即 ignore、tsconfig の exclude に .claude）／公開手順は rebase 後に自分のブランチだけ force-with-lease、--delete-branch なし、main ではコミットしない／プレビュー待ちは1回の Bash で最大約9分、failure は失敗扱い／T6 は1コミットにして push 後にコミットしない／続きの実行の手順 |
+| T6 | 3fcf6ce | 敵対レビューで CRITICAL 2・HIGH 5。直した: サブエージェントは元のフォルダで動くので全エージェントに WORKTREE（絶対パス）を渡し $WORKTREE 下だけ読み書き／worktree 作成を set -e と「ブランチ・トップの確認」で守り、失敗時は main にコミットしない／ユーザーの作業ツリーの指紋を取り、タスクごとに比べる／worktree は .claude/worktrees（.git/info/exclude で即 ignore、tsconfig の exclude に .claude）／公開手順は rebase 後に自分のブランチだけ force-with-lease、--delete-branch なし、main ではコミットしない／プレビュー待ちは1回の Bash で最大約9分、failure は失敗扱い／T6 は1コミットにして push 後にコミットしない／続きの実行の手順 |
+| 最終レビュー | (このコミット) | HIGH 2・MEDIUM 5 を修正: blog:mobile のサーバーを必ず止める（ポートの空き確認・起動失敗の検知・子プロセスごと kill）／文字は描画後の大きさで測る（transform・SVG の縮みを掛ける。非表示・style の中は除く）／縦のはみ出し／測れる文字が無い図は不合格／置換の $ 問題・og.json の知らない項目はエラー／URL の後ろの日本語を字数に残す／存在しない slug は即エラー |
 
 ### T2 時点の既存記事（本文の字数・新しい数え方）
 
@@ -85,4 +86,7 @@
 
 ## 未解決の点
 
-（実行中に見つけた計画外の作業を積む）
+- 既存13記事は新ルールから外れている（全件 7,000字超・冒頭の結論なし・横長の図）。作り直しは別計画
+- 事故記事（jiko-houkokusho-template）は新ルールで作り直すか、分割するか要判断（約2万字）
+- プレビュー URL は Vercel のログインが要る可能性（Deployment Protection の設定次第）。初回の実行で確かめる
+- Stop フックの柵が worktree への cd 後に効くかは、初回の /write-blog で確かめる

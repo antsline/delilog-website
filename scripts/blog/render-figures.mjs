@@ -35,16 +35,20 @@ function wrap(templateName, inner) {
   const publicUrl = pathToFileURL(join(ROOT, 'public')).href;
   return template
     .replace('<head>', `<head>\n${base}`)
-    .replace('<!--FIGURE-->', inner)
+    .replace('<!--FIGURE-->', () => inner)
     .replaceAll('{{PUBLIC}}', publicUrl)
     .replace(/(src|href)="\/(?!\/)/g, `$1="${publicUrl}/`);
 }
 
+const OG_KEYS = ['line1Accent', 'line1', 'line2Accent', 'line2', 'badge', 'subtitle', 'number', 'unit'];
+
 function fillOg(og) {
+  const unknown = Object.keys(og).filter((k) => !OG_KEYS.includes(k));
+  if (unknown.length) throw new Error(`og.json に知らない項目があります: ${unknown.join(', ')}（使えるのは ${OG_KEYS.join(' / ')}）`);
   let html = wrap('og.html', '');
   for (const [key, value] of Object.entries(og)) {
     const text = Array.isArray(value) ? value.map(escapeHtml).join('<br>') : escapeHtml(value);
-    html = html.replace(new RegExp(`(data-field="${key}">)(</)`), `$1${text}$2`);
+    html = html.replace(new RegExp(`(data-field="${key}">)(</)`), (_, open, close) => `${open}${text}${close}`);
   }
   if (!og.number) html = html.replace(/<div class="og-num"[\s\S]*?<\/div>/, '');
   return html;
@@ -55,18 +59,33 @@ async function measure(page, size) {
   return page.evaluate(({ width, height }) => {
     const texts = [];
     const overflows = [];
+    // 描画されている大きさで測る（transform・zoom・SVG の viewBox による縮みを掛ける）
+    const scaleOf = (el) => {
+      if (el instanceof SVGElement) {
+        const ctm = el.getScreenCTM();
+        return ctm ? Math.hypot(ctm.a, ctm.b) : 1;
+      }
+      const h = el.offsetHeight;
+      const ratio = h > 0 ? el.getBoundingClientRect().height / h : 1;
+      return Math.abs(ratio - 1) < 0.05 ? 1 : ratio; // 端数の誤差は無視し、transform・zoom の縮みだけ拾う
+    };
     const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
     while (walker.nextNode()) {
       const node = walker.currentNode;
       const text = node.textContent.trim();
-      if (!text) continue;
       const el = node.parentElement;
-      texts.push({ text, fontPx: parseFloat(getComputedStyle(el).fontSize) });
+      if (!text || !el || el.closest('style,script,template,title')) continue;
+      const visible = el.checkVisibility ? el.checkVisibility({ checkVisibilityCSS: true }) : el.getClientRects().length > 0;
+      if (!visible) continue;
+      texts.push({ text, fontPx: Math.round(parseFloat(getComputedStyle(el).fontSize) * scaleOf(el) * 10) / 10 });
     }
     for (const el of document.querySelectorAll('main *')) {
       const r = el.getBoundingClientRect();
       if (r.width === 0 && r.height === 0) continue;
-      const clipped = el.scrollWidth > el.clientWidth + 1 && getComputedStyle(el).overflowX !== 'visible';
+      const cs = getComputedStyle(el);
+      const clipped =
+        (el.scrollWidth > el.clientWidth + 1 && cs.overflowX !== 'visible') ||
+        (el.scrollHeight > el.clientHeight + 1 && cs.overflowY !== 'visible');
       const outside = r.right > width + 1 || r.bottom > height + 1 || r.left < -1 || r.top < -1;
       if (clipped || outside) overflows.push((el.textContent || el.className || el.tagName).trim());
     }
@@ -125,7 +144,7 @@ async function main() {
       const outPath = join(outDir, `${name}.png`);
       const measured = await render(page, wrap('figure.html', readFileSync(join(srcDir, file), 'utf8')), FIGURE_SIZE, outPath);
       const problems = checkFigure(measured);
-      const minFontPx = Math.min(...measured.texts.map((t) => t.fontPx));
+      const minFontPx = measured.texts.length ? Math.min(...measured.texts.map((t) => t.fontPx)) : null;
       manifest[`${name}.png`] = { ...FIGURE_SIZE, minFontPx };
       console.log(`${problems.length ? 'NG' : 'OK'} ${name}.png（最小の文字 ${minFontPx}px）`);
       for (const p of problems) console.log(`   - ${p}`);

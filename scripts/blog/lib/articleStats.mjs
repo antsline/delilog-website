@@ -33,7 +33,7 @@ export function bodyText(md) {
     .replace(/!\[[^\]]*\]\([^)]*\)/g, '')
     .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
     .replace(/<https?:[^>]+>/g, '')
-    .replace(/https?:\/\/\S+/g, '')
+    .replace(/https?:\/\/[\x21-\x7E]+/g, '') // URL は ASCII だけ。続く日本語は残す
     .replace(/^\s*\|?\s*:?-{3,}.*$/gm, '')
     .replace(/^#{1,6}\s+/gm, '')
     .replace(/^\s*>\s?/gm, '')

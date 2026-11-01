@@ -2,6 +2,6 @@
   "too-small.png": {
     "width": 1080,
     "height": 1350,
-    "minFontPx": 24
+    "minFontPx": 23.9
   }
 }

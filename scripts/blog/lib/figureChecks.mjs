@@ -26,6 +26,9 @@ export function minSourceFontPx(sourceWidth = FIGURE_SIZE.width) {
  */
 export function checkFigure({ texts, overflows, itemCount, docHeight }) {
   const problems = [];
+  if (texts.length === 0) {
+    problems.push('文字が見つからない: 測れる文字が無いので読めるか判定できない（文字は HTML の文字で書く。画像の中の文字は使わない）');
+  }
   const reported = new Set();
   for (const { text, fontPx } of texts) {
     const shown = displayFontPx(fontPx, FIGURE_SIZE.width);

@@ -95,3 +95,8 @@ test('PNG の幅と高さをヘッダから読む', () => {
   assert.deepEqual(pngSize(header), { width: 1080, height: 1350 });
   assert.equal(pngSize(Buffer.from('not a png at all, sorry')), null);
 });
+
+test('地の文の URL を消しても、続く日本語は数える', () => {
+  const md = '---\ntitle: t\n---\n\nhttps://www.mlit.go.jp/x.htmlを参照してください。\n';
+  assert.match(bodyText(md), /を参照してください/);
+});

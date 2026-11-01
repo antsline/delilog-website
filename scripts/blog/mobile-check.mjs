@@ -9,6 +9,7 @@
  * 最小の文字サイズを出し、14px 未満・縮みすぎの横長の図があれば失敗する。
  */
 import { spawn } from 'node:child_process';
+import { createServer } from 'node:net';
 import { existsSync, mkdirSync, readFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -22,12 +23,23 @@ const VIEWPORT = { width: 390, height: 844, deviceScaleFactor: 2, isMobile: true
 const MOBILE_UA =
   'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1';
 
-async function waitForServer(url, timeoutMs = 60000) {
+function portIsFree(port) {
+  return new Promise((resolvePort) => {
+    const probe = createServer()
+      .once('error', () => resolvePort(false))
+      .once('listening', () => probe.close(() => resolvePort(true)))
+      .listen(port);
+  });
+}
+
+/** サーバーの起動を待つ。起動に失敗して終わっていたら、すぐ失敗にする */
+async function waitForServer(url, hasExited, timeoutMs = 60000) {
   const started = Date.now();
   while (Date.now() - started < timeoutMs) {
+    if (hasExited()) throw new Error('next start が起動直後に終了しました（ビルドが壊れている可能性）');
     try {
       const res = await fetch(url);
-      if (res.ok) return;
+      if (res.status < 500) return;
     } catch {
       // まだ立ち上がっていない
     }
@@ -55,15 +67,28 @@ async function main() {
   mkdirSync(outDir, { recursive: true });
   const manifest = readManifest(slug);
 
+  if (!(await portIsFree(PORT))) {
+    console.error(`ポート ${PORT} が使用中です（前回のサーバーが残っている可能性）。止めるか BLOG_MOBILE_PORT で別のポートを指定してください`);
+    process.exit(2);
+  }
   const server = spawn(join(ROOT, 'node_modules', '.bin', 'next'), ['start', '-p', String(PORT)], {
     cwd: ROOT,
     stdio: 'ignore',
+    detached: true, // 子プロセス（next の worker）ごと止められるように
   });
-  const browser = await launchBrowser();
+  let exited = false;
+  server.on('exit', () => {
+    exited = true;
+  });
+  let browser;
   let failed = false;
   try {
-    const url = `http://localhost:${PORT}/blog/${slug}`;
-    await waitForServer(url);
+    browser = await launchBrowser();
+    const base = `http://localhost:${PORT}`;
+    await waitForServer(`${base}/`, () => exited);
+    const url = `${base}/blog/${slug}`;
+    const res = await fetch(url);
+    if (res.status === 404) throw new Error(`記事が見つかりません: /blog/${slug}（slug の綴りと、ビルドに含まれているかを確かめる）`);
     const page = await browser.newPage();
     await page.setUserAgent(MOBILE_UA);
     await page.setViewport(VIEWPORT);
@@ -106,8 +131,12 @@ async function main() {
     }
     console.log(`\nスクリーンショット: ${outDir}`);
   } finally {
-    await browser.close();
-    server.kill();
+    await browser?.close().catch(() => {});
+    try {
+      process.kill(-server.pid);
+    } catch {
+      // もう終わっている
+    }
   }
   if (failed) process.exit(1);
 }
