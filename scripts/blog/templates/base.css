@@ -1,0 +1,83 @@
+/*
+ * 記事内の図・OG 画像の共通スタイル（delilog ブログのデザインシステム）。
+ * 色は CLAUDE.md の「カラーパレット」と同じ。影・グラデーションは使わない。
+ * 図は 1080×1350 で作り、スマホでは約 1/3 に縮む。本文の文字は 44px 以上（--fs-min）。
+ */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900&display=block');
+
+:root {
+  --cream: #F6EDD9;
+  --orange: #EA5A1A;
+  --navy: #1E3A5F;
+  --peach: #FCE8DD;
+  --white: #FFFFFF;
+  --gray: #B8B0A0;
+  --ink: #1E3A5F;
+  --fs-min: 44px;
+  --fs-body: 48px;
+  --fs-lead: 56px;
+  --fs-title: 76px;
+  --fs-big: 160px;
+  --radius: 28px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  font-family: 'Noto Sans JP', 'Hiragino Sans', sans-serif;
+  color: var(--ink);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---- 図（1080×1350） ---- */
+.fig {
+  width: 1080px;
+  height: 1350px;
+  padding: 72px 72px 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  overflow: hidden;
+}
+.fig-title { font-size: var(--fs-title); font-weight: 900; line-height: 1.25; letter-spacing: 0.01em; }
+.fig-title em { font-style: normal; color: var(--orange); }
+.fig-lead { font-size: var(--fs-lead); font-weight: 700; line-height: 1.4; }
+.fig-body { flex: 1; display: flex; flex-direction: column; gap: 24px; justify-content: center; }
+.fig-row { display: flex; gap: 28px; }
+.fig-row > * { flex: 1; }
+.fig-card {
+  background: var(--white);
+  border: 4px solid var(--navy);
+  border-radius: var(--radius);
+  padding: 28px 36px;
+  font-size: var(--fs-body);
+  font-weight: 700;
+  line-height: 1.4;
+}
+.fig-card.is-accent { background: var(--peach); border-color: var(--orange); }
+.fig-card.is-strong { background: var(--orange); border-color: var(--orange); color: var(--white); }
+.fig-card small { display: block; font-size: var(--fs-min); font-weight: 500; margin-top: 8px; }
+.fig-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 88px; height: 88px; border-radius: 44px;
+  background: var(--orange); color: var(--white);
+  font-size: 52px; font-weight: 900; margin-right: 24px;
+}
+.fig-step { display: flex; align-items: center; }
+.fig-arrow { text-align: center; font-size: 64px; font-weight: 900; color: var(--orange); line-height: 1; }
+.fig-big { font-size: var(--fs-big); font-weight: 900; color: var(--orange); line-height: 1; }
+.fig-badge {
+  display: inline-block; align-self: flex-start;
+  border: 4px solid var(--orange); color: var(--orange);
+  border-radius: 999px; padding: 8px 32px;
+  font-size: var(--fs-min); font-weight: 700;
+}
+.fig-ok { color: #1F7A4D; }
+.fig-ng { color: var(--orange); }
+.fig-note { font-size: var(--fs-min); font-weight: 500; color: var(--navy); line-height: 1.4; }
+.fig-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: var(--fs-min); font-weight: 700; color: var(--navy);
+}
+.fig-footer img { height: 64px; }

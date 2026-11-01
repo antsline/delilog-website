@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+  .og { width: 1200px; height: 630px; padding: 64px 88px 56px; display: flex; flex-direction: column; gap: 32px; overflow: hidden; }
+  .og-top { display: flex; gap: 40px; align-items: center; }
+  .og-logo { width: 200px; height: 200px; flex: none; border: 3px solid #2C6BA8; border-radius: 28px; background: var(--white); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .og-logo img { width: 100%; height: 100%; object-fit: cover; }
+  .og-title { font-size: 84px; font-weight: 900; line-height: 1.2; color: #111; letter-spacing: 0.01em; }
+  .og-title .a1 { color: var(--orange); }
+  .og-title .a2 { color: #2C6BA8; }
+  .og-rule { height: 4px; background: #2C6BA8; }
+  .og-bottom { display: flex; justify-content: space-between; align-items: flex-end; flex: 1; }
+  .og-left { display: flex; flex-direction: column; gap: 24px; }
+  .og-badge { align-self: flex-start; border: 4px solid var(--orange); color: var(--orange); padding: 8px 36px; font-size: 34px; font-weight: 700; }
+  .og-sub { border-left: 6px solid #2C6BA8; padding-left: 24px; font-size: 38px; font-weight: 700; color: #2C6BA8; line-height: 1.35; }
+  .og-num { background: var(--orange); color: var(--white); border-radius: 24px; padding: 8px 32px 16px; display: flex; align-items: center; gap: 12px; }
+  .og-num b { font-size: 190px; font-weight: 900; line-height: 1; font-family: Georgia, 'Noto Sans JP', serif; }
+  .og-num span { writing-mode: vertical-rl; font-size: 52px; font-weight: 900; }
+</style>
+</head>
+<body>
+<main class="og">
+  <div class="og-top">
+    <div class="og-logo"><img src="{{PUBLIC}}/app_icon.png" alt=""></div>
+    <div class="og-title">
+      <div><span class="a1" data-field="line1Accent"></span><span data-field="line1"></span></div>
+      <div><span class="a2" data-field="line2Accent"></span><span data-field="line2"></span></div>
+    </div>
+  </div>
+  <div class="og-rule"></div>
+  <div class="og-bottom">
+    <div class="og-left">
+      <div class="og-badge" data-field="badge"></div>
+      <div class="og-sub" data-field="subtitle"></div>
+    </div>
+    <div class="og-num" data-optional="number"><b data-field="number"></b><span data-field="unit"></span></div>
+  </div>
+</main>
+</body>
+</html>

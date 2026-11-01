@@ -38,7 +38,7 @@
 
 ## タスク
 
-- [ ] T1: 図と OG の書き出しスクリプト — `scripts/blog/render-figures.mjs`・共通 CSS（パレット・Noto Sans JP）・OG テンプレ・`npm run blog:figures`。文字サイズとはみ出しの判定は純関数にしてテスト先行。サンプル図で書き出せる
+- [x] T1: 図と OG の書き出しスクリプト — `scripts/blog/render-figures.mjs`・共通 CSS（パレット・Noto Sans JP）・OG テンプレ・`npm run blog:figures`。文字サイズとはみ出しの判定は純関数にしてテスト先行。サンプル図で書き出せる
 - [ ] T2: 記事の字数・構成チェック — `scripts/blog/article-stats.mjs`・`npm run blog:stats`。字数の数え方（frontmatter・記法・URL・CTA の中身の扱い）をテスト先行で決める。既存14記事の字数一覧を出して実行ログに残す
 - [ ] T3: スマホ表示の確認スクリプト — `scripts/blog/mobile-check.mjs`・`npm run blog:mobile`。ビルド済みサイトを 390px で開き、全画面スクショと画像ごとの判定を出す。点呼記録簿テンプレで「小さすぎる」と出ることを確かめる
 - [ ] T4: CLAUDE.md のルール改定 — 文字数・章構成（冒頭の要約・章の数・FAQ の数）・図の仕様・OG の作り方・パイプラインの説明を新しいルールに
@@ -53,6 +53,7 @@
 
 | タスク | コミット | メモ |
 |---|---|---|
+| T1 | (このコミット) | 図は content/figures/<slug>/*.html（main.fig の中身だけ）。setContent では file:// を読めないので一時ファイルを開く方式に。見本 scripts/blog/examples は合格、examples/ng は不合格になることを確認。フォントは Google Fonts の Noto Sans JP（読めなければヒラギノ） |
 
 ## 失敗カウンタ
 
