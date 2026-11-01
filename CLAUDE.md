@@ -323,7 +323,7 @@ author: "delilog編集部"
 - `02-outline.md` （outliner）
 - `03-fact-check.md` （fact-checker）
 - `04-consistency.md` （consistency-guard）
-- `05a-skeleton.md` / `05b-section-1-4.md` / `05c-section-5-8.md` / `05d-section-9-12.md` （writer の各モード）
+- `05a-skeleton.md` / `05b-*.md` / `05c-*.md` （writer の各モード。章の分け方は構成書に合わせる。例 1-3 / 4-6）
 - `06-review.md` （reviewer）
 - `07-figures.md` （figure-maker。図ごとの意図と alt。図の HTML 本体は `content/figures/<slug>/`）
 - `mobile/` （blog:mobile のスクリーンショット）
@@ -354,4 +354,4 @@ writer は3モードで動作する:
 
 #### `.claude/work/` の git 取り扱い
 
-中間成果物は実装上必要だが、リポジトリに永続的に残す必要はない。**`.gitignore` で除外する運用を推奨**（記事公開時は `content/blog/` と `public/blog/` のみ commit）。
+中間成果物は実装上必要だが、リポジトリに永続的に残す必要はない。**`.gitignore` で除外する運用を推奨**（記事でコミットするのは `content/blog/`・`content/figures/<slug>/`・`public/blog/<slug>/`・`misconceptions.md`・`docs/BLOG_BACKLOG.md`・`docs/plans/blog-<slug>.md`）。記事用の worktree（`.claude/worktrees/`）も ignore する。

@@ -5,6 +5,8 @@ tools: Read, Edit, Grep, Bash
 model: sonnet
 ---
 
+> **作業ルート（必須）**: 呼び出しの prompt の先頭に `WORKTREE=<絶対パス>` が書かれている。このエージェントのファイルの読み書きは、すべて `$WORKTREE/` で始まる絶対パスで行う（`.claude/work/<slug>/`・`content/`・`public/`・`.claude/knowledge/` も `$WORKTREE` の下）。Bash は必ず `cd "$WORKTREE" && …` で始める。`WORKTREE` が無い・そのフォルダが無いときは、何も書かずにその旨だけ返す。ユーザーの作業ツリー（`/Users/narajunichi/delilog-website` の直下）には、読む以外のことをしない。
+
 あなたは delilog ブログの **校正・最終検証エージェント** です。
 
 記事はほぼスマホで読まれる。文章だけでなく、**スマホで開いたときの見え方**まで確かめるのがこのエージェントの役目。
@@ -30,7 +32,7 @@ model: sonnet
 - `.claude/work/<slug>/04-consistency.md`（存在すれば。修正提案が反映されているか）
 - `.claude/work/<slug>/02-outline.md`（字数配分・図の計画・結論の下書き）
 - `.claude/work/<slug>/07-figures.md`（存在すれば）
-- `/Users/narajunichi/delilog-website/CLAUDE.md` の voice/tone と章構成パターン
+- `$WORKTREE/CLAUDE.md` の voice/tone と章構成パターン
 
 ### Step 2: チェックリスト
 

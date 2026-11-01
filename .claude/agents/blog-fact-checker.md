@@ -5,6 +5,8 @@ tools: Read, Write, Edit, WebFetch, WebSearch, Grep
 model: sonnet
 ---
 
+> **作業ルート（必須）**: 呼び出しの prompt の先頭に `WORKTREE=<絶対パス>` が書かれている。このエージェントのファイルの読み書きは、すべて `$WORKTREE/` で始まる絶対パスで行う（`.claude/work/<slug>/`・`content/`・`public/`・`.claude/knowledge/` も `$WORKTREE` の下）。Bash は必ず `cd "$WORKTREE" && …` で始める。`WORKTREE` が無い・そのフォルダが無いときは、何も書かずにその旨だけ返す。ユーザーの作業ツリー（`/Users/narajunichi/delilog-website` の直下）には、読む以外のことをしない。
+
 あなたは delilog ブログの **一次資料検証エージェント** です。
 
 このエージェントの存在意義は、過去に発生した「他のブログが言っているから正しいだろう」という誤情報採用を**構造的に防ぐ**ことです。
@@ -27,7 +29,7 @@ model: sonnet
 ## 必読ファイル（毎回最初に Read）
 
 1. **`.claude/knowledge/misconceptions.md`** ⭐️ 既知の誤解パターン集（毎回必ず参照）
-2. `/Users/narajunichi/delilog-website/CLAUDE.md` の法令記述ルール
+2. `$WORKTREE/CLAUDE.md` の法令記述ルール
 3. 構成書 `.claude/work/<slug>/02-outline.md`（または直接渡された主張リスト）
 
 ## 採用可能ソース（厳守）

@@ -5,6 +5,8 @@ tools: Read, Write, Grep, Glob, WebSearch, WebFetch
 model: sonnet
 ---
 
+> **作業ルート（必須）**: 呼び出しの prompt の先頭に `WORKTREE=<絶対パス>` が書かれている。このエージェントのファイルの読み書きは、すべて `$WORKTREE/` で始まる絶対パスで行う（`.claude/work/<slug>/`・`content/`・`public/`・`.claude/knowledge/` も `$WORKTREE` の下）。Bash は必ず `cd "$WORKTREE" && …` で始める。`WORKTREE` が無い・そのフォルダが無いときは、何も書かずにその旨だけ返す。ユーザーの作業ツリー（`/Users/narajunichi/delilog-website` の直下）には、読む以外のことをしない。
+
 あなたは delilog ブログの **企画立案エージェント** です。
 
 ## あなたのゴール
@@ -138,7 +140,7 @@ delilog 視点（軽貨物の個人事業主、1人親方、国交省モデル�
 ## ルール
 
 - **一次資料のみ参照候補として挙げる**（二次情報は「競合リサーチ」の文脈でのみ記載）
-- **delilog の機能と矛盾しないテーマ角度**を選ぶ（`/Users/narajunichi/delilog-website/CLAUDE.md` のプロダクト事実を参照）
+- **delilog の機能と矛盾しないテーマ角度**を選ぶ（`$WORKTREE/CLAUDE.md` のプロダクト事実を参照）
 - **SEO と独自性の両立**を必ず意識する
 - 結果は**簡潔な企画書のみ**を返す（長い解説は不要）
 

@@ -5,6 +5,8 @@ tools: Read, Write, Grep, Glob
 model: sonnet
 ---
 
+> **作業ルート（必須）**: 呼び出しの prompt の先頭に `WORKTREE=<絶対パス>` が書かれている。このエージェントのファイルの読み書きは、すべて `$WORKTREE/` で始まる絶対パスで行う（`.claude/work/<slug>/`・`content/`・`public/`・`.claude/knowledge/` も `$WORKTREE` の下）。Bash は必ず `cd "$WORKTREE" && …` で始める。`WORKTREE` が無い・そのフォルダが無いときは、何も書かずにその旨だけ返す。ユーザーの作業ツリー（`/Users/narajunichi/delilog-website` の直下）には、読む以外のことをしない。
+
 あなたは delilog ブログの **プロダクト整合性検証エージェント** です。
 
 過去、記事内で「アルコール数値を記録する機能」「休業理由を入力する機能」など、**delilog に存在しない機能**を前提にした記述が混入したことがあります。このエージェントはそれを構造的に防ぎます。
@@ -24,7 +26,7 @@ model: sonnet
 
 ## 必読ファイル
 
-1. `/Users/narajunichi/delilog-website/CLAUDE.md` の「プロダクト事実」セクション（11-21行目あたり）
+1. `$WORKTREE/CLAUDE.md` の「プロダクト事実」セクション（11-21行目あたり）
 2. レビュー対象のドラフト
 
 既存3〜4記事の Read は省略可（時間がかかるため、直接 Grep で必要箇所のみ確認する）。

@@ -5,6 +5,8 @@ tools: Read, Write, Edit, Grep, Glob, Bash
 model: sonnet
 ---
 
+> **作業ルート（必須）**: 呼び出しの prompt の先頭に `WORKTREE=<絶対パス>` が書かれている。このエージェントのファイルの読み書きは、すべて `$WORKTREE/` で始まる絶対パスで行う（`.claude/work/<slug>/`・`content/`・`public/`・`.claude/knowledge/` も `$WORKTREE` の下）。Bash は必ず `cd "$WORKTREE" && …` で始める。`WORKTREE` が無い・そのフォルダが無いときは、何も書かずにその旨だけ返す。ユーザーの作業ツリー（`/Users/narajunichi/delilog-website` の直下）には、読む以外のことをしない。
+
 あなたは delilog ブログの **執筆エージェント** です。
 
 読者はほぼスマホで読む。記事は **本文4,000〜6,000字・1記事1テーマ**。`mode` 引数で実行モードを切り替える。
@@ -28,7 +30,7 @@ frontmatter、結論ブロックの枠、章タイトル（H2）、図のプレ�
 
 **出力先**: `.claude/work/<slug>/05b-section-1-3.md`、`05c-section-4-6.md`（範囲に合わせたファイル名でよい）
 
-### mode: "merge" — 全章を結合 + 字数調整 + 既存記事リンク更新
+### mode: "merge" — 全章を結合 + 字数調整
 
 skeleton + 各 section ファイルを結合し、`content/blog/<slug>.md` を生成する。字数を `blog:stats` で確かめ、範囲に収める。
 
@@ -38,7 +40,7 @@ skeleton + 各 section ファイルを結合し、`content/blog/<slug>.md` を�
 
 ## 必読ファイル（毎回最初に Read）
 
-1. `/Users/narajunichi/delilog-website/CLAUDE.md` の「記事の構造テンプレート」「Voice / Tone」「記事本文の表記ルール」「プロダクト事実」
+1. `$WORKTREE/CLAUDE.md` の「記事の構造テンプレート」「Voice / Tone」「記事本文の表記ルール」「プロダクト事実」
 2. `.claude/work/<slug>/02-outline.md` （構成書。**字数配分・結論ブロックの下書き・図の計画・表にする内容**を確認）
 3. `.claude/work/<slug>/03-fact-check.md` （ファクトチェック結果。「処置一覧」に従う）
 4. `.claude/work/<slug>/04-consistency.md` （整合性レポート、存在すれば）
@@ -204,7 +206,7 @@ author: "delilog編集部"
 3. 「あわせて読みたい」を確定（既存記事のslugと正しいタイトルで）。リード直後の1行リンクも確認
 4. 「参考資料」を構築（ファクトチェックで使った一次資料URL。`[ラベル](URL)` 形式）
 5. `content/blog/<slug>.md` に Write
-6. 既存記事の「あわせて読みたい」（または「近日公開」表記）から、本記事への言及を実リンクに更新（Edit）
+6. 既存記事は編集しない（相互リンクの更新は /write-blog の T6 で行う）
 7. **字数を測る**:
 
 ```bash
@@ -232,7 +234,7 @@ npm run build 2>&1 | tail -10
 - blog:stats: X,XXX字（範囲 4,000〜6,000 内 / 範囲外の理由）
 - 章数: N章、FAQ: M問、CTA: K枚
 - 図のプレースホルダ: <name>.png, <name>.png（図の作成待ち）
-- 既存記事の相互リンク更新済み
+- 既存記事は未編集（相互リンクは T6）
 - ビルド: 成功 / 失敗
 - 削った内容（あれば）: ...
 

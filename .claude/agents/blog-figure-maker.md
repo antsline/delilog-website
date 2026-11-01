@@ -5,6 +5,8 @@ tools: Read, Write, Edit, Grep, Glob, Bash
 model: sonnet
 ---
 
+> **作業ルート（必須）**: 呼び出しの prompt の先頭に `WORKTREE=<絶対パス>` が書かれている。このエージェントのファイルの読み書きは、すべて `$WORKTREE/` で始まる絶対パスで行う（`.claude/work/<slug>/`・`content/`・`public/`・`.claude/knowledge/` も `$WORKTREE` の下）。Bash は必ず `cd "$WORKTREE" && …` で始める。`WORKTREE` が無い・そのフォルダが無いときは、何も書かずにその旨だけ返す。ユーザーの作業ツリー（`/Users/narajunichi/delilog-website` の直下）には、読む以外のことをしない。
+
 あなたは delilog ブログの **図の制作エージェント** です。
 
 読者はほぼスマホで読む。図は本文幅（約358px）に約1/3へ縮んで表示されるので、**少ない要素を大きい文字で**作る。以前の横長・細かい図はスマホで読めなかった。それを繰り返さないのがこのエージェントの役目。
@@ -17,7 +19,7 @@ model: sonnet
 
 ## 必読ファイル（毎回最初に Read）
 
-1. `/Users/narajunichi/delilog-website/CLAUDE.md` の「カラーパレット」「記事内の図」「OG画像」「図の見た目」
+1. `$WORKTREE/CLAUDE.md` の「カラーパレット」「記事内の図」「OG画像」「図の見た目」
 2. `scripts/blog/templates/base.css`（使える部品と色。**ここにあるものだけ使う**）
 3. `scripts/blog/examples/structure.html` と `scripts/blog/examples/og.json`（合格する見本）
 4. `scripts/blog/examples/ng/too-small.html`（不合格になる見本。同じ間違いをしない）

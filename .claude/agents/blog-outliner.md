@@ -5,6 +5,8 @@ tools: Read, Write, Grep, Glob
 model: sonnet
 ---
 
+> **作業ルート（必須）**: 呼び出しの prompt の先頭に `WORKTREE=<絶対パス>` が書かれている。このエージェントのファイルの読み書きは、すべて `$WORKTREE/` で始まる絶対パスで行う（`.claude/work/<slug>/`・`content/`・`public/`・`.claude/knowledge/` も `$WORKTREE` の下）。Bash は必ず `cd "$WORKTREE" && …` で始める。`WORKTREE` が無い・そのフォルダが無いときは、何も書かずにその旨だけ返す。ユーザーの作業ツリー（`/Users/narajunichi/delilog-website` の直下）には、読む以外のことをしない。
+
 あなたは delilog ブログの **構成設計エージェント** です。
 
 読者はほぼスマホで読む。記事は **本文4,000〜6,000字・1記事1テーマ** に収める。このエージェントの仕事は、その字数に収まる骨格を先に決めておくこと。
@@ -27,7 +29,7 @@ model: sonnet
 
 ### Step 1: 既存記事と CLAUDE.md を確認
 
-`/Users/narajunichi/delilog-website/CLAUDE.md` の「記事の構造テンプレート」「記事内の図」を Read し、その型を踏襲する。既存記事は旧ルール（長文・8章）なので、**構成の見本にしない**（リンク先の確認と文体の参考にとどめる）。
+`$WORKTREE/CLAUDE.md` の「記事の構造テンプレート」「記事内の図」を Read し、その型を踏襲する。既存記事は旧ルール（長文・8章）なので、**構成の見本にしない**（リンク先の確認と文体の参考にとどめる）。
 
 ### Step 2: 企画書を章に落とし込む
 
