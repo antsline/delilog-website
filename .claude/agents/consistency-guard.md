@@ -1,7 +1,7 @@
 ---
 name: consistency-guard
 description: 記事ドラフト内の delilog プロダクト記述が、実際のアプリ機能・PDF出力・既存記事と矛盾していないか検証するエージェント。「アプリにない機能を紹介してしまう」事故を防ぐ最後の砦。チェックリスト方式で5分以内に完了。使用タイミング: writer 完了後、reviewer と並行実行。
-tools: Read, Grep, Glob
+tools: Read, Write, Grep, Glob
 model: sonnet
 ---
 

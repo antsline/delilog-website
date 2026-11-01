@@ -42,7 +42,7 @@
 - [x] T2: 記事の字数・構成チェック — `scripts/blog/article-stats.mjs`・`npm run blog:stats`。字数の数え方（frontmatter・記法・URL・CTA の中身の扱い）をテスト先行で決める。既存14記事の字数一覧を出して実行ログに残す
 - [x] T3: スマホ表示の確認スクリプト — `scripts/blog/mobile-check.mjs`・`npm run blog:mobile`。ビルド済みサイトを 390px で開き、全画面スクショと画像ごとの判定を出す。点呼記録簿テンプレで「小さすぎる」と出ることを確かめる
 - [x] T4: CLAUDE.md のルール改定 — 文字数・章構成（冒頭の要約・章の数・FAQ の数）・図の仕様・OG の作り方・パイプラインの説明を新しいルールに
-- [ ] T5: エージェントの改定 — planner（字数に収まるテーマの切り方・分割案）、outliner（章ごとの字数の割り当て・図は1メッセージ）、fact-checker（承認を待たず、裏が取れない主張は「外す」と判定）、writer（字数の上限・表は本文で）、reviewer（3つのスクリプトの結果を使う）。image-prompter を廃止し、図の HTML を書く `blog-figure-maker` を新設
+- [x] T5: エージェントの改定 — planner（字数に収まるテーマの切り方・分割案）、outliner（章ごとの字数の割り当て・図は1メッセージ）、fact-checker（承認を待たず、裏が取れない主張は「外す」と判定）、writer（字数の上限・表は本文で）、reviewer（3つのスクリプトの結果を使う）。image-prompter を廃止し、図の HTML を書く `blog-figure-maker` を新設
 - [ ] T6: `/write-blog` の作り直し — 承認は企画＋構成の1回。承認後は記事用の計画ファイル（`- [ ] T` 形式）と `run-plan-state` で Stop フックの柵をかけ、ファクトチェック → 執筆 → 図 → 3つのチェック → ビルド → コミット → `blog/<slug>` ブランチに push → プレビュー URL まで止まらない。最終報告の型（外した主張・スマホのスクショ・プレビュー URL）
 
 ## リスクのあるタスク
@@ -56,7 +56,8 @@
 | T1 | 7e85a99 | 図は content/figures/<slug>/*.html（main.fig の中身だけ）。setContent では file:// を読めないので一時ファイルを開く方式に。見本 scripts/blog/examples は合格、examples/ng は不合格になることを確認。フォントは Google Fonts の Noto Sans JP（読めなければヒラギノ） |
 | T2 | 90612a1 | 字数は空白・記法・URL・CTA/DLBOX・「あわせて読みたい」「参考資料」を除いて数える。既存13記事（公開済み）は 7,221〜25,181字で全件が目安超え・冒頭の要約なし・図は全て横長（下の表） |
 | T3 | 8bbed80 | 本文（.prose）内の表示中の画像だけを判定（PC 用 QR・CTA カードのアイコンは除外）。点呼記録簿テンプレで横長の3枚が「4.7倍に縮小」で NG になることを確認。スクショは .claude/work/<slug>/mobile/（2倍解像度） |
-| T4 | (このコミット) | 字数・章構成（冒頭の結論・4〜6章・FAQ 3〜5問）・図（4:5・44px以上・6要素）・OG（og.json）・承認1回の流れ・誤解DBと裏の取れない主張の扱いを改定。「この記事でわかること」は廃止 |
+| T4 | 15c0eae | 字数・章構成（冒頭の結論・4〜6章・FAQ 3〜5問）・図（4:5・44px以上・6要素）・OG（og.json）・承認1回の流れ・誤解DBと裏の取れない主張の扱いを改定。「この記事でわかること」は廃止 |
+| T5 | (このコミット) | 書き換えはサブエージェント（Sonnet）、差分は確認済み。blog:stats が章数を数えると書かれていた誤りを直した。planner・outliner・consistency-guard・fact-checker に Write を足した（中間ファイルを自分で保存するため）。consistency-guard の本文は変更なし |
 
 ### T2 時点の既存記事（本文の字数・新しい数え方）
 
