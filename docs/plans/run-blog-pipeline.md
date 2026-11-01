@@ -39,7 +39,7 @@
 ## タスク
 
 - [x] T1: 図と OG の書き出しスクリプト — `scripts/blog/render-figures.mjs`・共通 CSS（パレット・Noto Sans JP）・OG テンプレ・`npm run blog:figures`。文字サイズとはみ出しの判定は純関数にしてテスト先行。サンプル図で書き出せる
-- [ ] T2: 記事の字数・構成チェック — `scripts/blog/article-stats.mjs`・`npm run blog:stats`。字数の数え方（frontmatter・記法・URL・CTA の中身の扱い）をテスト先行で決める。既存14記事の字数一覧を出して実行ログに残す
+- [x] T2: 記事の字数・構成チェック — `scripts/blog/article-stats.mjs`・`npm run blog:stats`。字数の数え方（frontmatter・記法・URL・CTA の中身の扱い）をテスト先行で決める。既存14記事の字数一覧を出して実行ログに残す
 - [ ] T3: スマホ表示の確認スクリプト — `scripts/blog/mobile-check.mjs`・`npm run blog:mobile`。ビルド済みサイトを 390px で開き、全画面スクショと画像ごとの判定を出す。点呼記録簿テンプレで「小さすぎる」と出ることを確かめる
 - [ ] T4: CLAUDE.md のルール改定 — 文字数・章構成（冒頭の要約・章の数・FAQ の数）・図の仕様・OG の作り方・パイプラインの説明を新しいルールに
 - [ ] T5: エージェントの改定 — planner（字数に収まるテーマの切り方・分割案）、outliner（章ごとの字数の割り当て・図は1メッセージ）、fact-checker（承認を待たず、裏が取れない主張は「外す」と判定）、writer（字数の上限・表は本文で）、reviewer（3つのスクリプトの結果を使う）。image-prompter を廃止し、図の HTML を書く `blog-figure-maker` を新設
@@ -53,7 +53,26 @@
 
 | タスク | コミット | メモ |
 |---|---|---|
-| T1 | (このコミット) | 図は content/figures/<slug>/*.html（main.fig の中身だけ）。setContent では file:// を読めないので一時ファイルを開く方式に。見本 scripts/blog/examples は合格、examples/ng は不合格になることを確認。フォントは Google Fonts の Noto Sans JP（読めなければヒラギノ） |
+| T1 | 7e85a99 | 図は content/figures/<slug>/*.html（main.fig の中身だけ）。setContent では file:// を読めないので一時ファイルを開く方式に。見本 scripts/blog/examples は合格、examples/ng は不合格になることを確認。フォントは Google Fonts の Noto Sans JP（読めなければヒラギノ） |
+| T2 | (このコミット) | 字数は空白・記法・URL・CTA/DLBOX・「あわせて読みたい」「参考資料」を除いて数える。既存13記事（公開済み）は 7,221〜25,181字で全件が目安超え・冒頭の要約なし・図は全て横長（下の表） |
+
+### T2 時点の既存記事（本文の字数・新しい数え方）
+
+| 記事 | 本文の字数 | 図 | CTA |
+|---|---:|---:|---:|
+| keikamotsu-anzentaisaku-2025 | 7,221 | 3 | 2 |
+| gyoumu-no-kiroku-kakikata | 7,983 | 4 | 2 |
+| tenko-kiroku-kakikata | 9,093 | 4 | 2 |
+| keikamotsu-hatarakikata | 9,309 | 3 | 1 |
+| keikamotsu-jittai-toukei | 10,345 | 4 | 1 |
+| kaizen-kijun-kokuji-keikamotsu | 10,525 | 5 | 2 |
+| keikamotsu-konenashi-shigoto-routes | 13,666 | 5 | 1 |
+| tenko-kirokubo-template | 14,498 | 4 | 2 |
+| gyoumu-no-kiroku-template | 15,640 | 3 | 2 |
+| keikamotsu-kuro-number-shutoku | 16,420 | 6 | 3 |
+| nichijou-tenken-kirokubo-template | 20,220 | 4 | 2 |
+| keikamotsu-tanka-soba-2026 | 21,091 | 9 | 2 |
+| keikamotsu-yami-kouzou | 25,181 | 5 | 2 |
 
 ## 失敗カウンタ
 
