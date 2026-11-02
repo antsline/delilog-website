@@ -19,7 +19,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-jiko-saihats
 
 ## タスク
 
-- [ ] T1: ファクトチェック — 03-fact-check.md。裏が取れない主張は「削除」「書き換え」と判定
+- [x] T1: ファクトチェック — 03-fact-check.md。裏が取れない主張は「削除」「書き換え」と判定
 - [ ] T2: プロダクト整合性 — 04-consistency.md
 - [ ] T3: 執筆 — content/blog/jiko-saihatsu-boushi-reibun.md。blog:stats が OK
 - [ ] T4: 図と OG — content/figures/jiko-saihatsu-boushi-reibun/。blog:figures が OK
@@ -30,6 +30,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-jiko-saihats
 
 | タスク | コミット | メモ |
 |---|---|---|
+| T1 | (このコミット) | 14件: 採用9・書き換え4・削除0。M058〜M060 追記。荷役・積み荷崩れは「事故の記録の対象」と断言しない |
 
 ## 失敗カウンタ
 
@@ -38,3 +39,5 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-jiko-saihats
 
 ## 最終報告に載せる項目
 
+- 書き換え: 荷役中の落下・走行中の積み荷崩れは第9条の2の「事故」に当たると言い切れないため、例文4・5は「記録を残すなら同じ書き方で整理できる」とし、対象と断言しない（M058）／「原因究明結果待ち」は再発防止対策欄の注記で、原因が明らかになってから対策を講ずる場合に限る（M059）／3層は国交省の型ではなく編集部の読み方（M059）／国交省記載例の引用は原文の重複「進入前前」を含めないよう3つに分ける
+- 国交省の記載例の原文は、2026-11-02 に国交省の様式例 xlsx を直接取得してテキスト化したもの（00-source/excel-examples.md）で確認済み
