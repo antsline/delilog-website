@@ -22,7 +22,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-jiko-saihats
 - [x] T1: ファクトチェック — 03-fact-check.md。裏が取れない主張は「削除」「書き換え」と判定
 - [x] T2: プロダクト整合性 — 04-consistency.md
 - [x] T3: 執筆 — content/blog/jiko-saihatsu-boushi-reibun.md。blog:stats が OK
-- [ ] T4: 図と OG — content/figures/jiko-saihatsu-boushi-reibun/。blog:figures が OK
+- [x] T4: 図と OG — content/figures/jiko-saihatsu-boushi-reibun/。blog:figures が OK
 - [ ] T5: 最終レビュー — 06-review.md。5つの検証コマンドがすべて OK、スマホのスクショを目で確認
 - [ ] T6: 公開準備 — 1本目の第4章末を実リンクに、相互リンクと BLOG_BACKLOG の更新、push、プレビュー URL を取得
 
@@ -33,6 +33,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-jiko-saihats
 | T1 | (このコミット) | 14件: 採用9・書き換え4・削除0。M058〜M060 追記。荷役・積み荷崩れは「事故の記録の対象」と断言しない |
 | T2 | (このコミット) | 不整合1件（表Cの「一覧」）を修正。03 の判定を構成書へ反映。1本目 FAQ Q3 の「原因究明結果待ち」の欄を T6 で明確化 |
 | T3 | (このコミット) | 5,465字・CTA 2枚・FAQ 4問・例文5つ |
+| T4 | (このコミット) | structure・patterns・OG（5パターン）。最小文字 44px |
 
 ## 失敗カウンタ
 
