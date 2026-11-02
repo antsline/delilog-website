@@ -23,7 +23,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-jiko-saihats
 - [x] T2: プロダクト整合性 — 04-consistency.md
 - [x] T3: 執筆 — content/blog/jiko-saihatsu-boushi-reibun.md。blog:stats が OK
 - [x] T4: 図と OG — content/figures/jiko-saihatsu-boushi-reibun/。blog:figures が OK
-- [ ] T5: 最終レビュー — 06-review.md。5つの検証コマンドがすべて OK、スマホのスクショを目で確認
+- [x] T5: 最終レビュー — 06-review.md。5つの検証コマンドがすべて OK、スマホのスクショを目で確認
 - [ ] T6: 公開準備 — 1本目の第4章末を実リンクに、相互リンクと BLOG_BACKLOG の更新、push、プレビュー URL を取得
 
 ## 実行ログ
@@ -34,6 +34,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-jiko-saihats
 | T2 | (このコミット) | 不整合1件（表Cの「一覧」）を修正。03 の判定を構成書へ反映。1本目 FAQ Q3 の「原因究明結果待ち」の欄を T6 で明確化 |
 | T3 | (このコミット) | 5,465字・CTA 2枚・FAQ 4問・例文5つ |
 | T4 | (このコミット) | structure・patterns・OG（5パターン）。最小文字 44px |
+| T5 | (このコミット) | 5件修正（例文4・5の形式を1〜3に揃える等）。5検証 OK。5,461字 |
 
 ## 失敗カウンタ
 
