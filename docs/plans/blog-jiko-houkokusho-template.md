@@ -19,7 +19,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-jiko-houkoku
 
 ## タスク
 
-- [ ] T1: ファクトチェック — 03-fact-check.md。裏が取れない主張は「削除」「書き換え」と判定
+- [x] T1: ファクトチェック — 03-fact-check.md。裏が取れない主張は「削除」「書き換え」と判定
 - [ ] T2: プロダクト整合性 — 04-consistency.md
 - [ ] T3: 執筆 — content/blog/jiko-houkokusho-template.md。blog:stats が OK
 - [ ] T4: 図と OG — content/figures/jiko-houkokusho-template/。blog:figures が OK
@@ -30,6 +30,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-jiko-houkoku
 
 | タスク | コミット | メモ |
 |---|---|---|
+| T1 | (このコミット) | 28件: 採用13・書き換え9・削除4。M046・M047 を追記、M040 の条文根拠を訂正 |
 
 ## 失敗カウンタ
 
@@ -37,5 +38,9 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-jiko-houkoku
 |---|---|---|---|
 
 ## 最終報告に載せる項目
+
+- 削除した主張: バイク便は事故の記録の対象外（誤り・M046）／日常点検記録は1年保存（一次資料なし）／1人親方は自宅で保存（一次資料なし）／delilog で事故の記録を検索できる（プロダクト事実にない）
+- 書き換え: 30日以内は「通達で」と明示、発生場所は番地まで書く形（地図添付でも可・M047）、行政処分は「対象になり得る」まで（日車数・罰金は書かない）、国への報告は「一定の重大事故（速報は特に重大なもの）」
+- misconceptions: M046・M047 を追記。M040 の条文根拠を訂正（第8条第1項第9号の括弧書きは「第九条の二及び第九条の五第一項」）。ユーザー手元の M040 は旧版のまま
 
 - ぶつかりうるファイル（予定）: content/blog/keikamotsu-anzentaisaku-2025.md（ユーザーの未コミット変更あり）、.claude/knowledge/misconceptions.md
