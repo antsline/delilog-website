@@ -23,7 +23,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-keikamotsu-t
 - [x] T2: プロダクト整合性 — 04-consistency.md
 - [x] T3: 執筆 — content/blog/keikamotsu-tanka-soba-2026.md。blog:stats が OK
 - [x] T4: 図と OG — content/figures/keikamotsu-tanka-soba-2026/。blog:figures が OK
-- [ ] T5: 最終レビュー — 06-review.md。5つの検証コマンドがすべて OK、スマホのスクショを目で確認
+- [x] T5: 最終レビュー — 06-review.md。5つの検証コマンドがすべて OK、スマホのスクショを目で確認
 - [ ] T6: 公開準備 — 被リンク元のアンカー更新、konenashi の案内の言い換え、旧 PNG の削除、BLOG_BACKLOG 更新、push、プレビュー URL を取得
 
 ## 実行ログ
@@ -34,6 +34,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-keikamotsu-t
 | T2 | (このコミット) | 不整合2件（CTA の「実単価が見える」「自動で算出」）を修正。03 の判定を構成書へ反映。タイトルは維持 |
 | T3 | (このコミット) | 本文を丸ごと置き換え。5,241字（旧 21,091字）・CTA 2枚・FAQ 4問 |
 | T4 | (このコミット) | koushiki-kingaku・akabou-unchin・uriage-tedori・OG（400円）。最小文字 44px |
+| T5 | (このコミット) | 1件修正（第5章の月収調査の文のねじれ）。5検証 OK |
 
 ## 失敗カウンタ
 
