@@ -427,7 +427,7 @@ delilog なら、点呼記録・日常点検・指導・監督の記録は無料
 
 今回は14項目の全体像を見てきました。個別の項目はそれぞれ奥が深いので、別記事で詳しく掘り下げていきます。
 
-- [点呼記録、何を書けばいい？法令要件と具体的な記入例](/blog/tenko-kiroku-kakikata)
+- [軽貨物「点呼記録」の書き方｜業務前・業務後の記入例と1人親方の自己点呼](/blog/tenko-kiroku-kakikata)
 - [業務の記録（運行記録）6項目の書き方と保存方法](/blog/gyoumu-no-kiroku-kakikata)
 - [軽貨物ドライバーの勤務時間ルール完全ガイド｜改善基準告示6つの数値・1人親方の運用・違反時の処分](/blog/kaizen-kijun-kokuji-keikamotsu)
 - [軽貨物の日常点検記録簿テンプレ｜15項目PDF雛形（無料DL）と記入例](/blog/nichijou-tenken-kirokubo-template) — 国交省公式の15項目チェックシートと記入例

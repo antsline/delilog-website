@@ -325,7 +325,7 @@ delilog は継続委託・チャーター・プラットフォーム、いずれ
 - [黒ナンバー（事業用軽自動車）取得の流れ完全ガイド｜運輸支局・軽自動車検査協会・税務署 3窓口の動線【2026年版】](/blog/keikamotsu-kuro-number-shutoku) — 開業前の方は、黒ナンバー取得の3窓口動線と必要書類5点セットを先にチェックしてください
 - [軽貨物ドライバーの法令義務14項目｜2025年4月施行「安全対策強化」完全ガイド](/blog/keikamotsu-anzentaisaku-2025)
 - [業務の記録（運行記録）6項目の書き方と保存方法](/blog/gyoumu-no-kiroku-kakikata)
-- [点呼記録、何を書けばいい？法令要件と具体的な記入例](/blog/tenko-kiroku-kakikata)
+- [軽貨物「点呼記録」の書き方｜業務前・業務後の記入例と1人親方の自己点呼](/blog/tenko-kiroku-kakikata)
 - [軽貨物ドライバーの勤務時間ルール完全ガイド｜改善基準告示6つの数値・1人親方の運用・違反時の処分](/blog/kaizen-kijun-kokuji-keikamotsu)
 - [軽貨物の「闇」の正体｜構造を解剖して個人の戦い方を考える](/blog/keikamotsu-yami-kouzou)
 

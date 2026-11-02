@@ -3,7 +3,7 @@
 作成: 2026-11-02
 ブランチ: blog/tenko-kiroku-kakikata
 WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-tenko-kiroku-kakikata
-状態: 実行中
+状態: 完了
 
 承認: 2026-11-02 ユーザー「承認」。既存記事の作り直し（slug・date 維持）。テンプレ記事と役割分担し、書き方・記入例に特化
 
@@ -24,7 +24,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-tenko-kiroku
 - [x] T3: 執筆 — content/blog/tenko-kiroku-kakikata.md。blog:stats が OK
 - [x] T4: 図と OG — content/figures/tenko-kiroku-kakikata/。blog:figures が OK
 - [x] T5: 最終レビュー — 06-review.md。5つの検証コマンドがすべて OK、スマホのスクショを目で確認
-- [ ] T6: 公開準備 — 被リンク元のアンカー更新、テンプレ記事の検知器案内の修正、旧 PNG 3枚の削除、BLOG_BACKLOG 更新、push、プレビュー URL を取得
+- [x] T6: 公開準備 — 被リンク元のアンカー更新、テンプレ記事の検知器案内の修正、旧 PNG 3枚の削除、BLOG_BACKLOG 更新、push、プレビュー URL を取得
 
 ## 実行ログ
 
@@ -35,6 +35,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-tenko-kiroku
 | T3 | (このコミット) | 本文を丸ごと置き換え。4,371字（旧 9,093字）・CTA 2枚・FAQ 4問 |
 | T4 | (このコミット) | daily-flow・abnormal-flow・OG（7項目）。最小文字 44px |
 | T5 | (このコミット) | 2件修正（delilog 説明の運用推奨に読める文を削除・長文）。5検証 OK。4,337字 |
+| T6 | (このコミット) | 被リンク元9記事のアンカーを新タイトルへ、日常点検テンプレ記事の「所見欄・空欄で問題ない」の2文を直す、テンプレ記事の検知器案内を削る、旧 PNG 3枚を削除、章見出しに番号、BACKLOG 更新 |
 
 ## 失敗カウンタ
 
@@ -47,3 +48,5 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-tenko-kiroku
 - 書き換え: 点呼は2025年4月の新設ではなく従来からの義務（M048）／平常日は空欄ではなく○や「問題なし」と短く書く（M054）／業務後の酒気帯び確認の理由付けを外す／運行可否の記録は提案にとどめる／従業員を雇った場合は「前提が変わる」まで（M052）
 - 人の判断: delilog の点呼の記入欄は初期空白・任意。一次資料は確認結果が分かる記載を例示している（記事は製品事実だけ書き、「空欄でも法令に沿う」とは書かない）
 - 他記事への波及（今回は直さない）: 「点呼は2025年4月施行」と書いている既存記事があれば M048 に反する
+- ぶつかりうるファイル: なし（手元の未コミット変更は terms-of-service・app.json・スクショのみで重ならない）
+- 範囲外で見つけた点: tenko-kirokubo-template の Q4 が国交省「アルコール検知器の使用について」ページを根拠に引用しているが、T1 ではこのページの記述を安定して確認できなかった（要再確認）

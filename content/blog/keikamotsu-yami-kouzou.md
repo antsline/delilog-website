@@ -36,7 +36,7 @@ YouTube の暴露動画を見ているうちに「この業界、本当に大丈
 >
 > - [軽貨物ドライバーの法令義務14項目｜2025年4月施行「安全対策強化」完全ガイド](/blog/keikamotsu-anzentaisaku-2025)
 > - [業務の記録（運行記録）6項目の書き方と保存方法](/blog/gyoumu-no-kiroku-kakikata)
-> - [点呼記録、何を書けばいい？法令要件と具体的な記入例](/blog/tenko-kiroku-kakikata)
+> - [軽貨物「点呼記録」の書き方｜業務前・業務後の記入例と1人親方の自己点呼](/blog/tenko-kiroku-kakikata)
 > - [軽貨物ドライバーの勤務時間ルール完全ガイド｜改善基準告示6つの数値・1人親方の運用・違反時の処分](/blog/kaizen-kijun-kokuji-keikamotsu)
 
 ---
@@ -424,7 +424,7 @@ delilog なら、点呼記録と日常点検は無料、業務の記録（運行
 業務の記録・点呼記録の具体的な書き方については、それぞれ専用記事で詳しく解説しています。
 
 - [業務の記録（運行記録）6項目の書き方と保存方法](/blog/gyoumu-no-kiroku-kakikata)
-- [点呼記録、何を書けばいい？法令要件と具体的な記入例](/blog/tenko-kiroku-kakikata)
+- [軽貨物「点呼記録」の書き方｜業務前・業務後の記入例と1人親方の自己点呼](/blog/tenko-kiroku-kakikata)
 
 ### 処方箋2: 契約書を「精読・保管・比較」する
 
@@ -860,7 +860,7 @@ delilog の無料プランで点呼記録・日常点検を、プレミアムプ
 
 - [軽貨物ドライバーの法令義務14項目｜2025年4月施行「安全対策強化」完全ガイド](/blog/keikamotsu-anzentaisaku-2025)
 - [業務の記録（運行記録）6項目の書き方と保存方法](/blog/gyoumu-no-kiroku-kakikata)
-- [点呼記録、何を書けばいい？法令要件と具体的な記入例](/blog/tenko-kiroku-kakikata)
+- [軽貨物「点呼記録」の書き方｜業務前・業務後の記入例と1人親方の自己点呼](/blog/tenko-kiroku-kakikata)
 - [軽貨物ドライバーの勤務時間ルール完全ガイド｜改善基準告示6つの数値・1人親方の運用・違反時の処分](/blog/kaizen-kijun-kokuji-keikamotsu)
 
 ---
