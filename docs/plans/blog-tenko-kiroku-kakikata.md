@@ -19,7 +19,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-tenko-kiroku
 
 ## タスク
 
-- [ ] T1: ファクトチェック — 03-fact-check.md。裏が取れない主張は「削除」「書き換え」と判定
+- [x] T1: ファクトチェック — 03-fact-check.md。裏が取れない主張は「削除」「書き換え」と判定
 - [ ] T2: プロダクト整合性 — 04-consistency.md
 - [ ] T3: 執筆 — content/blog/tenko-kiroku-kakikata.md。blog:stats が OK
 - [ ] T4: 図と OG — content/figures/tenko-kiroku-kakikata/。blog:figures が OK
@@ -30,6 +30,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-tenko-kiroku
 
 | タスク | コミット | メモ |
 |---|---|---|
+| T1 | (このコミット) | 22件: 採用11・書き換え7・削除2（+混在1）。M048〜M054 追記。OG は 7 項目（業務前4＋業務後3、記録欄で数える） |
 
 ## 失敗カウンタ
 
@@ -38,3 +39,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-tenko-kiroku
 
 ## 最終報告に載せる項目
 
+- 削除: バイク便は点呼の対象外（M049）／再測定は15分空ける・うがいで反応（M051）／複数便の点呼の単位（M053）
+- 書き換え: 点呼は2025年4月の新設ではなく従来からの義務（M048）／平常日は空欄ではなく○や「問題なし」と短く書く（M054）／業務後の酒気帯び確認の理由付けを外す／運行可否の記録は提案にとどめる／従業員を雇った場合は「前提が変わる」まで（M052）
+- 人の判断: delilog の点呼の記入欄は初期空白・任意。一次資料は確認結果が分かる記載を例示している（記事は製品事実だけ書き、「空欄でも法令に沿う」とは書かない）
+- 他記事への波及（今回は直さない）: 「点呼は2025年4月施行」と書いている既存記事があれば M048 に反する
