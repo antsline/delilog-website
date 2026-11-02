@@ -247,7 +247,7 @@ author: "delilog編集部"
 - 1200×630px。`content/figures/<slug>/og.json` に文言を書くと `blog:figures` が `scripts/blog/templates/og.html` から作る
 - 文言: `line1Accent`（オレンジ）＋`line1`、`line2Accent`（青）＋`line2`、`badge`（例「2026年版」）、`subtitle`（2行まで・配列）、`number`＋`unit`（右下の大きな数字。無ければ省く）
 - 形は既存の OG と同じ（左上に delilog のロゴ、2行のタイトル、左下にバッジとサブタイトル、右下にオレンジの数字）
-- ロゴ（OG の左上・図の右下）は `public/app_icon.png`。**アプリのアイコン（delilog リポジトリの `assets/icon.png`）と同じものを置く**。アプリ側でアイコンを変えたらここも差し替える（2026-11-02 に新アートワークへ更新。それ以前の記事の画像は古いアイコンのまま）
+- ロゴ（OG の左上・図の右下）は `public/app_icon.png`、サイトのアイコン（ヘッダー・固定バー・フッター・CTA カード・タブのアイコン・トップページ）は `app/icon.png`（`/icon.png` で配信）。どちらも**アプリのアイコン（delilog リポジトリの `assets/icon.png`）と同じものを置く**。アプリ側でアイコンを変えたらここも差し替える（2026-11-02 に新アートワークへ更新。それ以前の記事の画像は古いアイコンのまま）
 
 ### 図の見た目
 
