@@ -21,7 +21,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-tenko-kiroku
 
 - [x] T1: ファクトチェック — 03-fact-check.md。裏が取れない主張は「削除」「書き換え」と判定
 - [x] T2: プロダクト整合性 — 04-consistency.md
-- [ ] T3: 執筆 — content/blog/tenko-kiroku-kakikata.md。blog:stats が OK
+- [x] T3: 執筆 — content/blog/tenko-kiroku-kakikata.md。blog:stats が OK
 - [ ] T4: 図と OG — content/figures/tenko-kiroku-kakikata/。blog:figures が OK
 - [ ] T5: 最終レビュー — 06-review.md。5つの検証コマンドがすべて OK、スマホのスクショを目で確認
 - [ ] T6: 公開準備 — 被リンク元のアンカー更新、テンプレ記事の検知器案内の修正、旧 PNG 3枚の削除、BLOG_BACKLOG 更新、push、プレビュー URL を取得
@@ -32,6 +32,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-tenko-kiroku
 |---|---|---|
 | T1 | (このコミット) | 22件: 採用11・書き換え7・削除2（+混在1）。M048〜M054 追記。OG は 7 項目（業務前4＋業務後3、記録欄で数える） |
 | T2 | (このコミット) | 不整合3件（CTA の任意入力表現・平常日の書き方・数値の根拠）を構成書で修正。03 の判定を反映 |
+| T3 | (このコミット) | 本文を丸ごと置き換え。4,371字（旧 9,093字）・CTA 2枚・FAQ 4問 |
 
 ## 失敗カウンタ
 
