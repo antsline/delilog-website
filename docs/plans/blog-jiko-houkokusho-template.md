@@ -20,7 +20,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-jiko-houkoku
 ## タスク
 
 - [x] T1: ファクトチェック — 03-fact-check.md。裏が取れない主張は「削除」「書き換え」と判定
-- [ ] T2: プロダクト整合性 — 04-consistency.md
+- [x] T2: プロダクト整合性 — 04-consistency.md
 - [ ] T3: 執筆 — content/blog/jiko-houkokusho-template.md。blog:stats が OK
 - [ ] T4: 図と OG — content/figures/jiko-houkokusho-template/。blog:figures が OK
 - [ ] T5: 最終レビュー — 06-review.md。5つの検証コマンドがすべて OK、スマホのスクショを目で確認
@@ -31,6 +31,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-jiko-houkoku
 | タスク | コミット | メモ |
 |---|---|---|
 | T1 | (このコミット) | 28件: 採用13・書き換え9・削除4。M046・M047 を追記、M040 の条文根拠を訂正 |
+| T2 | (このコミット) | 不整合3件（検索機能・クラウド表現・プラン表記）を構成書で修正。03 の判定11か所を反映 |
 
 ## 失敗カウンタ
 
