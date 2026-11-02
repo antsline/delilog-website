@@ -19,7 +19,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-keikamotsu-t
 
 ## タスク
 
-- [ ] T1: ファクトチェック — 03-fact-check.md。裏が取れない主張は「削除」「書き換え」と判定
+- [x] T1: ファクトチェック — 03-fact-check.md。裏が取れない主張は「削除」「書き換え」と判定
 - [ ] T2: プロダクト整合性 — 04-consistency.md
 - [ ] T3: 執筆 — content/blog/keikamotsu-tanka-soba-2026.md。blog:stats が OK
 - [ ] T4: 図と OG — content/figures/keikamotsu-tanka-soba-2026/。blog:figures が OK
@@ -30,6 +30,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-keikamotsu-t
 
 | タスク | コミット | メモ |
 |---|---|---|
+| T1 | (このコミット) | 26件: 採用12・書き換え9・削除5。M055〜M057 追記。Amazon Flex が公式に金額（4時間程度で最大9,600円）を出しており結論を3社に変更 |
 
 ## 失敗カウンタ
 
@@ -38,3 +39,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-keikamotsu-t
 
 ## 最終報告に載せる項目
 
+- 結論の変更: 公式に金額を確認できたのは出前館・赤帽に加えて Amazon Flex（公式トップ「4時間程度の稼働で最大9,600円」2025年4〜6月・関東圏・軽貨物車の想定）
+- 書き換え: 各社「非公表」→「公式ページで金額を確認できなかった」／月収調査は「売上ベース」と断定しない（調査項目は「平均月収」で定義なし）／赤帽は「全国統一」と書かず、4組合の公式ページで同額まで
+- 削除: 令和6年度アンケートの収入項目／適正原価と軽貨物／Uber Eats の配達調整金廃止／軽自動車税・自賠責の改定額／青色申告65万円の要件
+- 他記事への波及（今回は直さない）: keikamotsu-jittai-toukei の「売上ベースである可能性が高い」
