@@ -533,6 +533,7 @@ delilog なら、業務前・業務後の点呼記録をボタンタップで30�
 - [軽貨物の日常点検記録簿テンプレ｜15項目PDF雛形（無料DL）と記入例【2026年版】](/blog/nichijou-tenken-kirokubo-template) — 日常点検記録簿の無料テンプレ
 - [軽貨物「業務の記録（運行記録）」完全ガイド｜6項目の書き方・保存ルール・つまずきポイント【2026年版】](/blog/gyoumu-no-kiroku-kakikata) — 1年保存の運行記録
 - [軽貨物の業務の記録（運行記録）テンプレ｜6項目PDF雛形（無料DL）と記入例【2026年版】](/blog/gyoumu-no-kiroku-template) — 業務の記録のDL様式と記入済みサンプル
+- [軽貨物「事故の記録」の書き方｜8項目の記入例とテンプレ（PDF・Excel無料DL）【2026年版】](/blog/jiko-houkokusho-template) — 事故の記録8項目の書き方と、PDF・Excelの無料テンプレ
 - [軽貨物ドライバーの勤務時間ルール完全ガイド｜改善基準告示6つの数値・1人親方の運用・違反時の処分【2026年版】](/blog/kaizen-kijun-kokuji-keikamotsu) — 拘束時間・休息期間の上限
 
 ## 参考資料
