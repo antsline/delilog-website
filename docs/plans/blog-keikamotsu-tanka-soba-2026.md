@@ -21,7 +21,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-keikamotsu-t
 
 - [x] T1: ファクトチェック — 03-fact-check.md。裏が取れない主張は「削除」「書き換え」と判定
 - [x] T2: プロダクト整合性 — 04-consistency.md
-- [ ] T3: 執筆 — content/blog/keikamotsu-tanka-soba-2026.md。blog:stats が OK
+- [x] T3: 執筆 — content/blog/keikamotsu-tanka-soba-2026.md。blog:stats が OK
 - [ ] T4: 図と OG — content/figures/keikamotsu-tanka-soba-2026/。blog:figures が OK
 - [ ] T5: 最終レビュー — 06-review.md。5つの検証コマンドがすべて OK、スマホのスクショを目で確認
 - [ ] T6: 公開準備 — 被リンク元のアンカー更新、konenashi の案内の言い換え、旧 PNG の削除、BLOG_BACKLOG 更新、push、プレビュー URL を取得
@@ -32,6 +32,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-keikamotsu-t
 |---|---|---|
 | T1 | (このコミット) | 26件: 採用12・書き換え9・削除5。M055〜M057 追記。Amazon Flex が公式に金額（4時間程度で最大9,600円）を出しており結論を3社に変更 |
 | T2 | (このコミット) | 不整合2件（CTA の「実単価が見える」「自動で算出」）を修正。03 の判定を構成書へ反映。タイトルは維持 |
+| T3 | (このコミット) | 本文を丸ごと置き換え。5,241字（旧 21,091字）・CTA 2枚・FAQ 4問 |
 
 ## 失敗カウンタ
 
