@@ -3,7 +3,7 @@
 作成: 2026-11-02
 ブランチ: blog/keikamotsu-tanka-soba-2026
 WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-keikamotsu-tanka-soba-2026
-状態: 実行中
+状態: 完了
 
 承認: 2026-11-02 ユーザー「承認。Aでいきましょう」。既存記事の作り直し（slug・date 維持）。数字は公式の公表値と国の調査だけ（求人サイトの掲載例は使わない）。手取りの試算は載せない
 
@@ -24,7 +24,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-keikamotsu-t
 - [x] T3: 執筆 — content/blog/keikamotsu-tanka-soba-2026.md。blog:stats が OK
 - [x] T4: 図と OG — content/figures/keikamotsu-tanka-soba-2026/。blog:figures が OK
 - [x] T5: 最終レビュー — 06-review.md。5つの検証コマンドがすべて OK、スマホのスクショを目で確認
-- [ ] T6: 公開準備 — 被リンク元のアンカー更新、konenashi の案内の言い換え、旧 PNG の削除、BLOG_BACKLOG 更新、push、プレビュー URL を取得
+- [x] T6: 公開準備 — 被リンク元のアンカー更新、konenashi の案内の言い換え、旧 PNG の削除、BLOG_BACKLOG 更新、push、プレビュー URL を取得
 
 ## 実行ログ
 
@@ -35,6 +35,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-keikamotsu-t
 | T3 | (このコミット) | 本文を丸ごと置き換え。5,241字（旧 21,091字）・CTA 2枚・FAQ 4問 |
 | T4 | (このコミット) | koushiki-kingaku・akabou-unchin・uriage-tedori・OG（400円）。最小文字 44px |
 | T5 | (このコミット) | 1件修正（第5章の月収調査の文のねじれ）。5検証 OK |
+| T6 | (このコミット) | 被リンク元4記事8か所のアンカー更新（konenashi の「継続委託節でレンジ感」「経費控除前の売上」も言い換え）、jittai-toukei の「売上ベース」断定2か所を削除、旧 PNG 8枚を削除、早見表を3列に、BACKLOG 更新。公開前に出前館・Flex・赤帽の金額を再取得し一致を確認 |
 
 ## 失敗カウンタ
 
@@ -47,3 +48,5 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-keikamotsu-t
 - 書き換え: 各社「非公表」→「公式ページで金額を確認できなかった」／月収調査は「売上ベース」と断定しない（調査項目は「平均月収」で定義なし）／赤帽は「全国統一」と書かず、4組合の公式ページで同額まで
 - 削除: 令和6年度アンケートの収入項目／適正原価と軽貨物／Uber Eats の配達調整金廃止／軽自動車税・自賠責の改定額／青色申告65万円の要件
 - 他記事への波及（今回は直さない）: keikamotsu-jittai-toukei の「売上ベースである可能性が高い」
+- ぶつかりうるファイル: なし
+- 範囲外で見つけた点: konenashi 173行「直受けは継続委託相場より2〜3割高め（業界の体感値）」は出典なし／jittai-toukei 204行の「売上ベースである可能性が高い」は残した
