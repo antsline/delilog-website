@@ -1,0 +1,12 @@
+{
+  "abnormal-flow.png": {
+    "width": 1080,
+    "height": 1350,
+    "minFontPx": 44
+  },
+  "daily-flow.png": {
+    "width": 1080,
+    "height": 1350,
+    "minFontPx": 44
+  }
+}
