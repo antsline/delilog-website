@@ -21,7 +21,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-jiko-houkoku
 
 - [x] T1: ファクトチェック — 03-fact-check.md。裏が取れない主張は「削除」「書き換え」と判定
 - [x] T2: プロダクト整合性 — 04-consistency.md
-- [ ] T3: 執筆 — content/blog/jiko-houkokusho-template.md。blog:stats が OK
+- [x] T3: 執筆 — content/blog/jiko-houkokusho-template.md。blog:stats が OK
 - [ ] T4: 図と OG — content/figures/jiko-houkokusho-template/。blog:figures が OK
 - [ ] T5: 最終レビュー — 06-review.md。5つの検証コマンドがすべて OK、スマホのスクショを目で確認
 - [ ] T6: 公開準備 — 配布 PDF・Excel の欄外に1行＋QR（template_jiko、Excel はリンク）、相互リンクと BLOG_BACKLOG の更新、keikamotsu-anzentaisaku-2025 の 4-4 の修正、blog/jiko-houkokusho-template を push、プレビュー URL を取得
@@ -32,6 +32,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-jiko-houkoku
 |---|---|---|
 | T1 | (このコミット) | 28件: 採用13・書き換え9・削除4。M046・M047 を追記、M040 の条文根拠を訂正 |
 | T2 | (このコミット) | 不整合3件（検索機能・クラウド表現・プラン表記）を構成書で修正。03 の判定11か所を反映 |
+| T3 | (このコミット) | 本文 5,079字・CTA 2枚。FAQ は5問（構成書は4問。Q5「相手方が不明なとき」は T5 で事実確認） |
 
 ## 失敗カウンタ
 
