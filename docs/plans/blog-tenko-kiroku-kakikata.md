@@ -23,7 +23,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-tenko-kiroku
 - [x] T2: プロダクト整合性 — 04-consistency.md
 - [x] T3: 執筆 — content/blog/tenko-kiroku-kakikata.md。blog:stats が OK
 - [x] T4: 図と OG — content/figures/tenko-kiroku-kakikata/。blog:figures が OK
-- [ ] T5: 最終レビュー — 06-review.md。5つの検証コマンドがすべて OK、スマホのスクショを目で確認
+- [x] T5: 最終レビュー — 06-review.md。5つの検証コマンドがすべて OK、スマホのスクショを目で確認
 - [ ] T6: 公開準備 — 被リンク元のアンカー更新、テンプレ記事の検知器案内の修正、旧 PNG 3枚の削除、BLOG_BACKLOG 更新、push、プレビュー URL を取得
 
 ## 実行ログ
@@ -34,6 +34,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-tenko-kiroku
 | T2 | (このコミット) | 不整合3件（CTA の任意入力表現・平常日の書き方・数値の根拠）を構成書で修正。03 の判定を反映 |
 | T3 | (このコミット) | 本文を丸ごと置き換え。4,371字（旧 9,093字）・CTA 2枚・FAQ 4問 |
 | T4 | (このコミット) | daily-flow・abnormal-flow・OG（7項目）。最小文字 44px |
+| T5 | (このコミット) | 2件修正（delilog 説明の運用推奨に読める文を削除・長文）。5検証 OK。4,337字 |
 
 ## 失敗カウンタ
 
