@@ -182,7 +182,7 @@ author: "delilog編集部"
 - **ストア/DLクリック計測**: 記事内の App Store / Google Play リンクとテンプレファイルリンクは `BlogClickTracker` が Vercel Analytics カスタムイベント（`app_store_click` / `google_play_click` / `template_download`）で自動計測する。CTA位置は最近傍の `data-cta` 属性（`dlbox` / `inline-N` / `article-end` / `footer-link` / `sticky-bar`）で識別されるため、新しいCTAコンポーネントを作る場合は `data-cta` を必ず付与する
 - **トップページの計測**: トップページも同じ `BlogClickTracker`（`slug="top"`）で数え、`campaign` に入口の名前（`lp` / アプリの紹介なら `lp_app_share`）を付ける
 - **ストアリンクの入口の印**: App Store は `pt=127806295&ct=<入口>`、Google Play は `referrer` の `utm_source=<入口>`。記事は `blog_<slug>`、QR は `qr_<from>`、トップは `lp` / `lp_<utm_source>`。組み立ては `lib/storeCampaign.ts` に集約し、ストアの URL を直書きしない（記事本文の素の URL は表示時に自動で印が付く）
-- **QR コード（`/download`）**: PC 表示のカード（`DesktopQr`・スマホでは非表示）、LP、テンプレートの PDF に QR を置いている。行き先は `https://delilog.app/download?from=<読み取り元>` で、端末を見て App Store / Google Play / LP に振り分け、Vercel Analytics の `qr_download`（`from` / `platform`）で数える。読み取り元は `blog_qr` / `lp_qr` / `template_tenko7` / `template_tenko10` / `template_nichijou` / `template_tenko_xlsx`。新しいテンプレートを配るときも、欄外に1行と QR を入れる（業務の記録テンプレと同じ体裁）
+- **QR コード（`/download`）**: PC 表示のカード（`DesktopQr`・スマホでは非表示）、LP、テンプレートの PDF に QR を置いている。行き先は `https://delilog.app/download?from=<読み取り元>` で、端末を見て App Store / Google Play / LP に振り分け、Vercel Analytics の `qr_download`（`from` / `platform`）で数える。読み取り元は `blog_qr` / `lp_qr` / `template_tenko7` / `template_tenko10` / `template_nichijou` / `template_tenko_xlsx` / `template_jiko` / `template_jiko_xlsx`。新しいテンプレートを配るときも、欄外に1行と QR を入れる（業務の記録テンプレと同じ体裁）
 - **モバイル固定バー**: 全ブログ記事に `BlogStickyAppBar`（スクロール600px超で表示・セッション内解除可能）が付く。記事側での対応は不要
 - **外部URL は必ず Markdown リンク構文 `[ラベル](URL)` で記述する**。bare URL を 全角括弧（）の中に置くと、Markdown レンダラーが URL の終端を正しく認識できず、続く日本語テキストまでリンクとして処理されてしまう（実害: リンクのオレンジ色が段落全体に広がる）。
   - NG: `国交省の制度改正ページ（https://www.mlit.go.jp/jidosha/jidosha_tk2_000172.html）では、…`
@@ -247,6 +247,7 @@ author: "delilog編集部"
 - 1200×630px。`content/figures/<slug>/og.json` に文言を書くと `blog:figures` が `scripts/blog/templates/og.html` から作る
 - 文言: `line1Accent`（オレンジ）＋`line1`、`line2Accent`（青）＋`line2`、`badge`（例「2026年版」）、`subtitle`（2行まで・配列）、`number`＋`unit`（右下の大きな数字。無ければ省く）
 - 形は既存の OG と同じ（左上に delilog のロゴ、2行のタイトル、左下にバッジとサブタイトル、右下にオレンジの数字）
+- ロゴ（OG の左上・図の右下）は `public/app_icon.png`、サイトのアイコン（ヘッダー・固定バー・フッター・CTA カード・タブのアイコン・トップページ）は `app/icon.png`（`/icon.png` で配信）。どちらも**アプリのアイコン（delilog リポジトリの `assets/icon.png`）と同じものを置く**。アプリ側でアイコンを変えたらここも差し替える（2026-11-02 に新アートワークへ更新。それ以前の記事の画像は古いアイコンのまま）
 
 ### 図の見た目
 
