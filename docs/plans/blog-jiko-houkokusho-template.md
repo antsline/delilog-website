@@ -23,7 +23,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-jiko-houkoku
 - [x] T2: プロダクト整合性 — 04-consistency.md
 - [x] T3: 執筆 — content/blog/jiko-houkokusho-template.md。blog:stats が OK
 - [x] T4: 図と OG — content/figures/jiko-houkokusho-template/。blog:figures が OK
-- [ ] T5: 最終レビュー — 06-review.md。5つの検証コマンドがすべて OK、スマホのスクショを目で確認
+- [x] T5: 最終レビュー — 06-review.md。5つの検証コマンドがすべて OK、スマホのスクショを目で確認
 - [ ] T6: 公開準備 — 配布 PDF・Excel の欄外に1行＋QR（template_jiko、Excel はリンク）、相互リンクと BLOG_BACKLOG の更新、keikamotsu-anzentaisaku-2025 の 4-4 の修正、blog/jiko-houkokusho-template を push、プレビュー URL を取得
 
 ## 実行ログ
@@ -34,6 +34,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-jiko-houkoku
 | T2 | (このコミット) | 不整合3件（検索機能・クラウド表現・プラン表記）を構成書で修正。03 の判定11か所を反映 |
 | T3 | (このコミット) | 本文 5,079字・CTA 2枚。FAQ は5問（構成書は4問。Q5「相手方が不明なとき」は T5 で事実確認） |
 | T4 | (このコミット) | scope・items8・OG。最小文字 44px。items8 は8項目すべてを表示する形に修正 |
+| T5 | (このコミット) | reviewer が5件修正（章番号・図1の文言・FAQ Q3/Q5・第4章）。国交省様式例 xlsx を直接照合し記載例の要約が一致。FAQ Q3 に「原因究明結果待ち」を追加。5検証すべて OK、スマホ全ページを目視 |
 
 ## 失敗カウンタ
 
@@ -46,4 +47,6 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-jiko-houkoku
 - 書き換え: 30日以内は「通達で」と明示、発生場所は番地まで書く形（地図添付でも可・M047）、行政処分は「対象になり得る」まで（日車数・罰金は書かない）、国への報告は「一定の重大事故（速報は特に重大なもの）」
 - misconceptions: M046・M047 を追記。M040 の条文根拠を訂正（第8条第1項第9号の括弧書きは「第九条の二及び第九条の五第一項」）。ユーザー手元の M040 は旧版のまま
 
+- 国交省様式例 xlsx は照合済み（記載例の要約は一致）。配布 xlsx も8項目そろっている
+- 行政処分の適用範囲（別表が軽貨物にそのまま適用されるか）は未確認のため「対象になり得る」まで
 - ぶつかりうるファイル（予定）: content/blog/keikamotsu-anzentaisaku-2025.md（ユーザーの未コミット変更あり）、.claude/knowledge/misconceptions.md
