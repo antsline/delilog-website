@@ -35,7 +35,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/feat-blog-schedul
 ## タスク
 
 - [x] T1: 公開対象を選ぶ純関数 — `scripts/blog/lib/schedule.mjs`（JST の今日・ラベルの解釈・対象 PR の選択と並び）とテスト
-- [ ] T2: 予約公開スクリプト — `scripts/blog/publish-due.mjs`（gh で PR を取得 → squash で main に取り込み → build → push → PR を閉じる。dry-run あり）と `.gitattributes`（共有ファイルを union）。union の挙動を一時リポジトリで確かめるテスト
+- [x] T2: 予約公開スクリプト — `scripts/blog/publish-due.mjs`（gh で PR を取得 → squash で main に取り込み → build → push → PR を閉じる。dry-run あり）と `.gitattributes`（共有ファイルを union）。union の挙動を一時リポジトリで確かめるテスト
 - [ ] T3: GitHub Actions — `.github/workflows/scheduled-publish.yml`（毎日 21:00 UTC＝6:00 JST と手動実行・dry-run 入力・権限 contents/pull-requests write）
 - [ ] T4: 予定表 — `docs/BLOG_SCHEDULE.md`（公開予定の表・次の候補の並び・ルール）。候補は BLOG_BACKLOG と memory の作り直しリストから
 - [ ] T5: `/blog-week` コマンドと `/write-blog` の予約モード — 週の流れ（候補選び → まとめて承認 → 1本ずつ作る → PR とラベル → 「公開して」で approved）。`/write-blog` に `publish-on` と承認済み構成の受け取り、作り直しのときの扱いを足す。CLAUDE.md のパイプライン節も合わせる
@@ -50,7 +50,8 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/feat-blog-schedul
 
 | タスク | コミット | メモ |
 |---|---|---|
-| T1 | (このコミット) | schedule.mjs とテスト6件。npm test 30件 OK |
+| T1 | 7597473 | schedule.mjs とテスト6件。npm test 30件 OK |
+| T2 | (このコミット) | code-reviewer の HIGH 2件を反映: フォーク PR を除外・PR ごとに try/catch／記事まわり以外のファイルを含む PR は入れない・ビルドにトークンを渡さない・approved はオーナーが最後のコミットより後に付けたものだけ・pull/N/head を headRefOid で固定。MEDIUM: main が進んだら push しない・ログの :: を潰す。ブランチ保護・ルールセットは無し（確認済み）。テスト38件 |
 
 ## 失敗カウンタ
 

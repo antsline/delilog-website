@@ -1,0 +1,6 @@
+# ブログの予約公開（scripts/blog/publish-due.mjs）で、同じ週に作った記事の PR が
+# 同じ共有ファイルに追記していても衝突で止まらないよう、両方の追記を残す。
+# union は git の組み込みの merge driver（git CLI で取り込むときに効く）。
+.claude/knowledge/misconceptions.md merge=union
+docs/BLOG_BACKLOG.md merge=union
+docs/BLOG_SCHEDULE.md merge=union

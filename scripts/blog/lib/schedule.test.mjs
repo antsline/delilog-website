@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { jstDate, publishDateOf, selectDue, nextPublishDates } from './schedule.mjs';
+import { jstDate, publishDateOf, selectDue, nextPublishDates, disallowedPaths, approvalProblem, safeLog } from './schedule.mjs';
 
 test('JST の日付: UTC 21:00 は翌日の朝6時', () => {
   assert.equal(jstDate(new Date('2026-11-06T21:00:00Z')), '2026-11-07');
@@ -48,4 +48,47 @@ test('次の公開日: 予約済みの最後の日の2日後から、今日よ�
   assert.deepEqual(nextPublishDates({ today: '2026-11-06', taken: [], count: 2 }), ['2026-11-07', '2026-11-09']);
   assert.deepEqual(nextPublishDates({ today: '2026-11-06', taken: ['2026-11-01'], count: 1 }), ['2026-11-07']);
   assert.deepEqual(nextPublishDates({ today: '2026-12-30', taken: [], count: 2, intervalDays: 3 }), ['2026-12-31', '2027-01-03']);
+});
+
+test('フォークからの PR は対象にしない', () => {
+  const fork = { ...pr(1, ['approved', 'publish:2026-11-01']), isCrossRepository: true };
+  assert.deepEqual(selectDue([fork], '2026-11-01').due, []);
+});
+
+test('記事の PR が変えてよいのは記事・図・公開画像・共有の3ファイル・記事の計画だけ', () => {
+  assert.deepEqual(
+    disallowedPaths([
+      'content/blog/a.md',
+      'content/figures/a/og.json',
+      'public/blog/a/og.png',
+      '.claude/knowledge/misconceptions.md',
+      'docs/BLOG_BACKLOG.md',
+      'docs/BLOG_SCHEDULE.md',
+      'docs/plans/blog-a.md',
+    ]),
+    [],
+  );
+  assert.deepEqual(
+    disallowedPaths(['content/blog/a.md', 'package.json', 'next.config.js', '.github/workflows/x.yml', 'public/app_icon.png', 'docs/plans/run-x.md']),
+    ['package.json', 'next.config.js', '.github/workflows/x.yml', 'public/app_icon.png', 'docs/plans/run-x.md'],
+  );
+});
+
+const labeled = (login, at, name = 'approved') => ({ event: 'labeled', label: { name }, actor: { login }, created_at: at });
+
+test('approved はオーナーが、最後のコミットより後に付けたものだけ有効', () => {
+  const head = '2026-11-06T10:00:00Z';
+  assert.equal(approvalProblem({ events: [labeled('antsline', '2026-11-06T11:00:00Z')], owner: 'antsline', headCommittedAt: head }), null);
+  assert.match(approvalProblem({ events: [labeled('someone', '2026-11-06T11:00:00Z')], owner: 'antsline', headCommittedAt: head }), /オーナー以外/);
+  assert.match(approvalProblem({ events: [labeled('antsline', '2026-11-06T09:00:00Z')], owner: 'antsline', headCommittedAt: head }), /承認の後にコミット/);
+  assert.match(approvalProblem({ events: [labeled('antsline', '2026-11-06T11:00:00Z', 'publish:2026-11-07')], owner: 'antsline', headCommittedAt: head }), /見つからない/);
+});
+
+test('最後に付けた approved で判定する（付け直したら新しいほう）', () => {
+  const events = [labeled('antsline', '2026-11-06T09:00:00Z'), labeled('antsline', '2026-11-06T12:00:00Z')];
+  assert.equal(approvalProblem({ events, owner: 'antsline', headCommittedAt: '2026-11-06T10:00:00Z' }), null);
+});
+
+test('ログに出す文字から Actions のコマンド（::）と改行を潰す', () => {
+  assert.equal(safeLog('::error::x\n::add-mask::y'), ': :error: :x : :add-mask: :y');
 });
