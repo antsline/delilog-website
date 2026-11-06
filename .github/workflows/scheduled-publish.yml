@@ -1,0 +1,57 @@
+# ブログの予約公開: 毎朝 6:00（JST）に、公開日が来た approved の記事 PR を main に入れる。
+# main への push で Vercel が本番に出す。中身は scripts/blog/publish-due.mjs。
+# 手動実行（Actions → scheduled-publish → Run workflow）では dry_run で入れる PR を確かめられる。
+name: scheduled-publish
+
+on:
+  schedule:
+    - cron: "0 21 * * *" # 21:00 UTC = 6:00 JST（GitHub の混雑で数十分遅れることがある）
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "入れる PR を表示するだけ（main は変えない）"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: scheduled-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          persist-credentials: false # トークンを .git/config に残さない（ビルドに渡さない）。push はスクリプトがその時だけ渡す
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: 依存を入れる
+        run: npm ci
+
+      - name: git の作者
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: 予約公開
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}
+        run: |
+          if [ "$DRY_RUN" = "true" ]; then
+            node scripts/blog/publish-due.mjs --dry-run
+          else
+            node scripts/blog/publish-due.mjs
+          fi
