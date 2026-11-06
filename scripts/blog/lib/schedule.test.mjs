@@ -43,11 +43,11 @@ test('ラベルは文字列でも {name} でも読める（gh の JSON の形）
   assert.deepEqual(due.map((p) => p.number), [1]);
 });
 
-test('次の公開日: 予約済みの最後の日の2日後から、今日より後に2日おき', () => {
+test('次の公開日: 予約済みの最後の日の2日後から（無ければ明後日から）2日おき', () => {
   assert.deepEqual(nextPublishDates({ today: '2026-11-06', taken: ['2026-11-08'], count: 3 }), ['2026-11-10', '2026-11-12', '2026-11-14']);
-  assert.deepEqual(nextPublishDates({ today: '2026-11-06', taken: [], count: 2 }), ['2026-11-07', '2026-11-09']);
-  assert.deepEqual(nextPublishDates({ today: '2026-11-06', taken: ['2026-11-01'], count: 1 }), ['2026-11-07']);
-  assert.deepEqual(nextPublishDates({ today: '2026-12-30', taken: [], count: 2, intervalDays: 3 }), ['2026-12-31', '2027-01-03']);
+  assert.deepEqual(nextPublishDates({ today: '2026-11-06', taken: [], count: 2 }), ['2026-11-08', '2026-11-10']);
+  assert.deepEqual(nextPublishDates({ today: '2026-11-06', taken: ['2026-11-01'], count: 1 }), ['2026-11-08']);
+  assert.deepEqual(nextPublishDates({ today: '2026-12-30', taken: [], count: 2, intervalDays: 3 }), ['2027-01-01', '2027-01-04']);
 });
 
 test('フォークからの PR は対象にしない', () => {

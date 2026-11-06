@@ -57,11 +57,12 @@ function addDays(ymd, days) {
 
 /**
  * 新しく作る記事の公開日を count 個決める。
- * 予約済みの最後の日（今日より後のもの）の intervalDays 日後から始め、無ければ明日から。
+ * 予約済みの最後の日（今日より後のもの）の intervalDays 日後から始める。
+ * 無ければ明後日から（作る時間と、オーナーがプレビューを確かめる1日を空ける）。
  */
 export function nextPublishDates({ today, taken, count, intervalDays = 2 }) {
   const future = taken.filter((d) => d > today).sort();
-  const start = future.length ? addDays(future[future.length - 1], intervalDays) : addDays(today, 1);
+  const start = future.length ? addDays(future[future.length - 1], intervalDays) : addDays(today, 2);
   return Array.from({ length: count }, (_, i) => addDays(start, i * intervalDays));
 }
 
