@@ -4,21 +4,29 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="base.css">
 <style>
-  .og { width: 1200px; height: 630px; padding: 64px 88px 56px; display: flex; flex-direction: column; gap: 32px; overflow: hidden; }
-  .og-top { display: flex; gap: 40px; align-items: center; }
-  .og-logo { width: 200px; height: 200px; flex: none; border: 3px solid #2C6BA8; border-radius: 28px; background: var(--white); display: flex; align-items: center; justify-content: center; overflow: hidden; }
-  .og-logo img { width: 100%; height: 100%; object-fit: cover; }
-  .og-title { font-size: 84px; font-weight: 900; line-height: 1.2; color: #111; letter-spacing: 0.01em; }
+  /*
+   * OG 画像（1200×630）。ロゴ・2行のタイトル・線・左に版と副題・右に数字の箱。
+   * 文字の大きさは下の fit() が枠に合わせて決める（記事ごとに文字数が違っても崩れないように）。
+   * 収まらないとき（最小の大きさでもはみ出す）は overflow で切れ、blog:figures が NG にする。
+   */
+  .og { width: 1200px; height: 630px; padding: 60px 80px 44px; display: flex; flex-direction: column; overflow: hidden; }
+  .og-top { height: 200px; display: flex; gap: 40px; align-items: center; flex: none; }
+  .og-logo { width: 200px; height: 200px; flex: none; border: 3px solid #2C6BA8; border-radius: 28px; background: var(--white); overflow: hidden; }
+  .og-logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .og-title { flex: 1; min-width: 0; font-weight: 900; line-height: 1.22; color: #111; letter-spacing: 0.01em; }
+  .og-title .line { white-space: nowrap; overflow-x: clip; }
   .og-title .a1 { color: var(--orange); }
   .og-title .a2 { color: #2C6BA8; }
-  .og-rule { height: 4px; background: #2C6BA8; }
-  .og-bottom { display: flex; justify-content: space-between; align-items: flex-end; flex: 1; }
-  .og-left { display: flex; flex-direction: column; gap: 24px; }
-  .og-badge { align-self: flex-start; border: 4px solid var(--orange); color: var(--orange); padding: 8px 36px; font-size: 34px; font-weight: 700; }
-  .og-sub { border-left: 6px solid #2C6BA8; padding-left: 24px; font-size: 38px; font-weight: 700; color: #2C6BA8; line-height: 1.35; }
-  .og-num { background: var(--orange); color: var(--white); border-radius: 24px; padding: 8px 32px 16px; display: flex; align-items: center; gap: 12px; }
-  .og-num b { font-size: 190px; font-weight: 900; line-height: 1; font-family: Georgia, 'Noto Sans JP', serif; }
-  .og-num span { writing-mode: vertical-rl; font-size: 52px; font-weight: 900; }
+  .og-rule { height: 4px; background: #2C6BA8; margin: 36px 0 0; flex: none; }
+  .og-bottom { flex: 1; display: flex; gap: 40px; align-items: center; min-height: 0; }
+  .og-left { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 22px; }
+  .og-badge { align-self: flex-start; border: 4px solid var(--orange); color: var(--orange); padding: 6px 32px; font-size: 32px; font-weight: 700; line-height: 1.3; white-space: nowrap; }
+  .og-sub { border-left: 6px solid #2C6BA8; padding-left: 24px; font-weight: 700; color: #2C6BA8; line-height: 1.35; }
+  .og-sub .line { white-space: nowrap; overflow-x: clip; }
+  .og-num { width: 340px; height: 228px; flex: none; background: var(--orange); color: var(--white); border-radius: 24px; display: flex; align-items: center; justify-content: center; padding: 0 24px; overflow-x: clip; }
+  .og-num-inner { display: flex; align-items: baseline; gap: 8px; white-space: nowrap; font-weight: 900; line-height: 1; }
+  .og-num b { font-weight: 900; letter-spacing: -0.02em; }
+  .og-num span { font-size: 48px; font-weight: 900; }
 </style>
 </head>
 <body>
@@ -26,8 +34,8 @@
   <div class="og-top">
     <div class="og-logo"><img src="{{PUBLIC}}/app_icon.png" alt=""></div>
     <div class="og-title">
-      <div><span class="a1" data-field="line1Accent"></span><span data-field="line1"></span></div>
-      <div><span class="a2" data-field="line2Accent"></span><span data-field="line2"></span></div>
+      <div class="line"><span class="a1" data-field="line1Accent"></span><span data-field="line1"></span></div>
+      <div class="line"><span class="a2" data-field="line2Accent"></span><span data-field="line2"></span></div>
     </div>
   </div>
   <div class="og-rule"></div>
@@ -36,8 +44,46 @@
       <div class="og-badge" data-field="badge"></div>
       <div class="og-sub" data-field="subtitle"></div>
     </div>
-    <div class="og-num" data-optional="number"><b data-field="number"></b><span data-field="unit"></span></div>
+    <div class="og-num" data-optional="number"><div class="og-num-inner"><b data-field="number"></b><span data-field="unit"></span></div></div>
   </div>
 </main>
+<script>
+  window.__ogFitDone = false;
+  // 行ごとに、親の幅に収まる最大の文字サイズを探す（max から 1px ずつ下げ、min で止める）
+  function fitLines(lines, max, min) {
+    let size = max;
+    const fits = () => lines.every((l) => l.scrollWidth <= l.clientWidth);
+    lines.forEach((l) => { l.style.fontSize = size + 'px'; });
+    while (size > min && !fits()) {
+      size -= 1;
+      lines.forEach((l) => { l.style.fontSize = size + 'px'; });
+    }
+    return size;
+  }
+  function fit() {
+    fitLines([...document.querySelectorAll('.og-title .line')], 92, 64);
+    // 副題は <br> 区切りの行を1行ずつの div に分けてからそろえる
+    const sub = document.querySelector('.og-sub');
+    if (sub) {
+      const parts = sub.innerHTML.split(/<br\s*\/?>/).map((s) => s.trim()).filter(Boolean);
+      sub.innerHTML = parts.map((p) => '<div class="line">' + p + '</div>').join('');
+      fitLines([...sub.querySelectorAll('.line')], 40, 30);
+    }
+    const num = document.querySelector('.og-num');
+    if (num) {
+      const inner = num.querySelector('.og-num-inner');
+      const b = num.querySelector('b');
+      const room = num.clientWidth - 48;
+      let size = 170;
+      b.style.fontSize = size + 'px';
+      while (size > 96 && inner.scrollWidth > room) {
+        size -= 2;
+        b.style.fontSize = size + 'px';
+      }
+    }
+    window.__ogFitDone = true;
+  }
+  document.fonts.ready.then(fit);
+</script>
 </body>
 </html>

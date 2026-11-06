@@ -39,7 +39,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/feat-blog-schedul
 - [x] T3: GitHub Actions — `.github/workflows/scheduled-publish.yml`（毎日 21:00 UTC＝6:00 JST と手動実行・dry-run 入力・権限 contents/pull-requests write）
 - [x] T4: 予定表 — `docs/BLOG_SCHEDULE.md`（公開予定の表・次の候補の並び・ルール）。候補は BLOG_BACKLOG と memory の作り直しリストから
 - [x] T5: `/blog-week` コマンドと `/write-blog` の予約モード — 週の流れ（候補選び → まとめて承認 → 1本ずつ作る → PR とラベル → 「公開して」で approved）。`/write-blog` に `publish-on` と承認済み構成の受け取り、作り直しのときの扱いを足す。CLAUDE.md のパイプライン節も合わせる
-- [ ] T6: OG 画像テンプレートの崩れを直す — 数字は太いゴシックで固定サイズの箱・単位は横書きで下にそろえる・タイトルと副題は枠に合わせて自動で文字サイズを決める。`blog:figures` が崩れ（はみ出し・タイトルの幅不足）を NG にする。判定は純関数＋テスト
+- [x] T6: OG 画像テンプレートの崩れを直す — 数字は太いゴシックで固定サイズの箱・単位は横書きで下にそろえる・タイトルと副題は枠に合わせて自動で文字サイズを決める。`blog:figures` が崩れ（はみ出し・タイトルの幅不足）を NG にする。判定は純関数＋テスト
 - [ ] T7: 全15本の OG 画像を作り直す — 古い11本は今の og.png の文言から og.json を作る。15枚を目で確かめ、前後比較の一覧画像を作る
 
 ## リスクのあるタスク
@@ -54,7 +54,8 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/feat-blog-schedul
 | T2 | 8d13877 | code-reviewer の HIGH 2件を反映: フォーク PR を除外・PR ごとに try/catch／記事まわり以外のファイルを含む PR は入れない・ビルドにトークンを渡さない・approved はオーナーが最後のコミットより後に付けたものだけ・pull/N/head を headRefOid で固定。MEDIUM: main が進んだら push しない・ログの :: を潰す。ブランチ保護・ルールセットは無し（確認済み）。テスト38件 |
 | T3 | b20fc5c | 毎日 21:00 UTC＋手動（dry_run 既定オン）。checkout は persist-credentials: false。レビューは T2 と同時 |
 | T4 | a2a197b | 候補20本（作り直し11・新規9）。8/14 に最優先とした請求書テンプレが未着手だったので新規の先頭に。経費記事は 1.4.14 公開後 |
-| T5 | (このコミット) | /blog-week 新設・/write-blog に予約モード・CLAUDE.md。予定表の更新は週の最初の1本の PR だけ（同じ行の書き換えの衝突を避ける）。最初の公開日を「明日」→「明後日」に（オーナーの確認の1日を空ける・テスト更新） |
+| T5 | 33b24b3 | /blog-week 新設・/write-blog に予約モード・CLAUDE.md。予定表の更新は週の最初の1本の PR だけ（同じ行の書き換えの衝突を避ける）。最初の公開日を「明日」→「明後日」に（オーナーの確認の1日を空ける・テスト更新） |
+| T6 | (このコミット) | 数字は Noto Sans JP 900（Georgia 明朝をやめた）・箱は 340×228 固定・単位は横書きで数字の右のベースライン。タイトル（64〜92px）と副題（30〜40px）は fit() で枠に合わせる。行の切れ判定は overflow-x: clip（hidden だと縦方向の誤検知で全部 NG になった）。og.json の形は ogSpec.mjs で検査。テスト43件 |
 
 ## 失敗カウンタ
 
