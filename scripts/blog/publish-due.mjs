@@ -6,7 +6,8 @@
  *
  * 対象: 本体の blog/<slug> ブランチの開いた PR で、ラベル publish:YYYY-MM-DD が今日（JST）以前、かつ approved。
  * 取り込む前に確かめること:
- *   - approved はオーナーが、PR の最後のコミットより後に付けたもの（承認後の差し替えを公開しない）
+ *   - approved はオーナーが付けたもので、オーナーの「approved-sha: <コミット>」コメントが今の先頭と一致
+ *     （承認後の差し替えを公開しない）
  *   - PR が変えたファイルが記事まわりだけ（schedule.mjs の disallowedPaths）
  * 1本ずつ squash で取り込み、そのたびに npm run build を通す（ビルドにはトークンを渡さない）。
  * 衝突・ビルド失敗などの PR は取り込まず PR にコメントして飛ばす。最後に main へまとめて push し、
@@ -136,8 +137,8 @@ function mergeOne(pr, { repo, owner }) {
     return { ok: false, reason: 'PR の一覧を取った後にブランチが更新された（明日の朝にもう一度確かめる）' };
   }
   const events = JSON.parse(gh('api', '--paginate', '--slurp', `repos/${repo}/issues/${pr.number}/events`)).flat();
-  const headCommittedAt = gh('api', `repos/${repo}/commits/${pr.headRefOid}`, '--jq', '.commit.committer.date');
-  const approval = approvalProblem({ events, owner, headCommittedAt });
+  const comments = JSON.parse(gh('api', '--paginate', '--slurp', `repos/${repo}/issues/${pr.number}/comments`)).flat();
+  const approval = approvalProblem({ events, comments, owner, headOid: pr.headRefOid });
   if (approval) return { ok: false, reason: approval };
 
   const result = squashMerge(ROOT, ref, `${pr.title} (#${pr.number})`);

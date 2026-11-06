@@ -312,7 +312,7 @@ author: "delilog編集部"
 
 **承認は1回だけ**（企画＋構成）。承認後はファクトチェック → 執筆 → 図 → 3つのチェック（`blog:stats` / `blog:figures` / `blog:mobile`）→ ビルド → コミット → `blog/<slug>` ブランチへ push → Vercel のプレビュー URL まで止まらない。main へのマージ（＝公開）はユーザーがプレビューを見てから指示する。
 
-**普段は週1回の `/blog-week`**（2026-11-06〜）: 次の3〜4本の企画と構成をまとめて1回で承認 → 1本ずつ `/write-blog` の予約モードで PR（ラベル `publish:YYYY-MM-DD`）まで作る → オーナーがプレビューで法令の記述を確かめて「公開して」（`approved` ラベル）→ 毎朝 6:00（JST）の GitHub Actions `scheduled-publish`（`scripts/blog/publish-due.mjs`）が公開日の来た PR を main に入れる。2日に1本のペース。予定表は `docs/BLOG_SCHEDULE.md`。予約公開で取り込めるのは記事まわりのファイルだけ（`scripts/blog/lib/schedule.mjs` の `disallowedPaths`）。
+**普段は週1回の `/blog-week`**（2026-11-06〜）: 次の3〜4本の企画と構成をまとめて1回で承認 → 1本ずつ `/write-blog` の予約モードで PR（ラベル `publish:YYYY-MM-DD`）まで作る → オーナーがプレビューで法令の記述を確かめて「公開して」（承認コメント `approved-sha` と `approved` ラベル）→ 毎朝 6:00（JST）の GitHub Actions `scheduled-publish`（`scripts/blog/publish-due.mjs`）が公開日の来た PR を main に入れる。2日に1本のペース。予定表は `docs/BLOG_SCHEDULE.md`。予約公開で取り込めるのは記事まわりのファイルだけ（`scripts/blog/lib/schedule.mjs` の `disallowedPaths`）。
 
 各エージェントの責務と連携は `.claude/commands/write-blog.md` を参照。
 

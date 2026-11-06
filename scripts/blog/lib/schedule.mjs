@@ -82,19 +82,30 @@ export function disallowedPaths(paths) {
   return paths.filter((path) => !ALLOWED_PATHS.some((re) => re.test(path)));
 }
 
+const APPROVED_SHA = /^approved-sha: ([0-9a-f]{40})\s*$/m;
+
 /**
- * approved ラベルが有効かを issue のイベントから確かめる。
- * 有効 = 最後に付いた approved がオーナーによるもので、PR の最後のコミットより後。問題があれば理由を返す。
+ * approved が有効かを確かめる。問題があれば理由を返す。
+ * 有効 = 最後に付いた approved ラベルがオーナーによるもの、かつオーナーの最新の
+ * 「approved-sha: <コミット>」コメントが PR の今の先頭コミットと一致（承認後の差し替えを公開しない）。
+ * コミットの日時は書く側が自由に決められるので、日時では比べない。
  */
-export function approvalProblem({ events, owner, headCommittedAt }) {
+export function approvalProblem({ events, comments, owner, headOid }) {
   const approvals = events
     .filter((e) => e.event === 'labeled' && e.label?.name === APPROVED_LABEL)
     .sort((a, b) => (a.created_at < b.created_at ? -1 : 1));
   const last = approvals[approvals.length - 1];
   if (!last) return 'approved を付けた記録が見つからない';
   if (last.actor?.login !== owner) return `approved を付けたのがオーナー以外（${last.actor?.login ?? '不明'}）`;
-  if (Date.parse(last.created_at) < Date.parse(headCommittedAt)) {
-    return '承認の後にコミットが足された（プレビューを確かめ直して approved を付け直す）';
+  const approvedShas = comments
+    .filter((c) => (c.user?.login ?? c.author?.login) === owner)
+    .sort((a, b) => (a.created_at < b.created_at ? -1 : 1))
+    .map((c) => c.body?.match(APPROVED_SHA)?.[1])
+    .filter(Boolean);
+  const approvedSha = approvedShas[approvedShas.length - 1];
+  if (!approvedSha) return 'オーナーの「approved-sha: <コミット>」コメントが無い';
+  if (approvedSha !== headOid) {
+    return '承認の後にブランチが変わった（プレビューを確かめ直して承認し直す）';
   }
   return null;
 }

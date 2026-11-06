@@ -36,7 +36,7 @@ Agent({ subagent_type: "blog-writer", description: "...",
 | Step 1〜2 | 企画・構成を作って承認を待つ | **飛ばす**（worktree に `01-plan.md`・`02-outline.md` が承認済みで置いてある） |
 | frontmatter の `date` | 書いた日 | 新規は `publish-on`。**作り直しは元の公開日のまま**（slug も変えない） |
 | T6 の終わり | プレビュー URL を返す | PR を作り、ラベル `publish:<publish-on>` を付けてからプレビュー URL を返す |
-| 公開 | 「公開して」で PR をマージ | 「公開して」で `approved` ラベルを付けるだけ。毎朝 6:00（JST）の `scheduled-publish` が公開日に main に入れる |
+| 公開 | 「公開して」で PR をマージ | 「公開して」で承認コメント（`approved-sha: <先頭コミット>`）と `approved` ラベルを付けるだけ。毎朝 6:00（JST）の `scheduled-publish` が公開日に main に入れる |
 
 予約公開で取り込めるのは**記事まわりのファイルだけ**: `content/blog/*.md`・`content/figures/<slug>/`・`public/blog/<slug>/`・`.claude/knowledge/misconceptions.md`・`docs/BLOG_BACKLOG.md`・`docs/BLOG_SCHEDULE.md`・`docs/plans/blog-<slug>.md`。これ以外（`package.json`・`app/`・`lib/`・`scripts/` 等）を変えた PR は朝の取り込みで弾かれる。サイトのコードの変更が要ると分かったら、記事に入れず「人の判断が要る点」に書く。
 
@@ -181,7 +181,7 @@ cd "$WT" && [ "$(git rev-parse --abbrev-ref HEAD)" = "blog/$SLUG" ] \
 
 ### T6 公開準備（push まで）
 
-1. 関連する既存記事（2〜3本）の「あわせて読みたい」に新記事を足す（**作り直しのときは足さない**。既にリンクされている）。`docs/BLOG_BACKLOG.md` の該当候補を「公開予定（プレビュー中）」にする（予約モードは「公開予定（YYYY-MM-DD 予約）」）。どちらも worktree の中で。`docs/BLOG_SCHEDULE.md` は `/blog-week` の指示があった記事（その週の最初の1本）でだけ直す
+1. 関連する既存記事（2〜3本）の「あわせて読みたい」に新記事を足す（**作り直しのときは足さない**。既にリンクされている）。`docs/BLOG_BACKLOG.md` の該当候補を「公開予定（プレビュー中）」にする。どちらも worktree の中で。**予約モードでは BLOG_BACKLOG・BLOG_SCHEDULE は `/blog-week` の指示があった記事（その週の最初の1本）でだけ直す**（それ以外の記事では触らない）
 2. ユーザーの作業ツリーで未コミットの変更があるファイル（`git -C <ROOT> status --porcelain`）と、このブランチで変えたファイルが重なっていれば、計画ファイルの「最終報告に載せる項目」に「ぶつかりうるファイル」として書く
 3. 検証コマンドをもう一度全部流す
 4. 計画ファイルの T6 を `- [x]`・状態を「完了」にし、成果物と一緒に**1つのコミット**にする（push 後にもう1回コミットするとプレビューが二重になるため）。CLAUDE.md の Git コミット規則に従い、`Co-Authored-By` は付けない:

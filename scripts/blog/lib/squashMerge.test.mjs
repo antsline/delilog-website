@@ -8,7 +8,7 @@ import { fileURLToPath } from 'node:url';
 import { squashMerge, headSha } from './squashMerge.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..', '..');
-const SHARED = 'docs/BLOG_BACKLOG.md';
+const SHARED = '.claude/knowledge/misconceptions.md';
 
 function git(cwd, ...args) {
   return execFileSync('git', args, { cwd, encoding: 'utf8' }).trim();

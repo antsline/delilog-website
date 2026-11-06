@@ -18,11 +18,13 @@ description: 週に1回、ブログの次の3〜4本の企画と構成をまと�
 set -euo pipefail
 ROOT=$(git rev-parse --show-toplevel); cd "$ROOT"
 git fetch -q --prune origin
-# 公開済み（リモートのブランチが消えた）記事の worktree を片付ける
+# 片付けてよいのは「PR が閉じていて（公開済み or 公開しないと決めた）、リモートのブランチも消えた」記事だけ。
+# まだ push していない（PR が無い）記事・止まった記事は残す
 for wt in .claude/worktrees/blog-*; do
   [ -d "$wt" ] || continue
   b="blog/${wt##*/blog-}"
-  if ! git ls-remote --exit-code --heads origin "$b" >/dev/null 2>&1 && [ -z "$(git -C "$wt" status --porcelain)" ]; then
+  closed=$(gh pr list --state closed --head "$b" --json number --jq 'length')
+  if [ "$closed" -gt 0 ] && ! git ls-remote --exit-code --heads origin "$b" >/dev/null 2>&1 && [ -z "$(git -C "$wt" status --porcelain)" ]; then
     git worktree remove "$wt" && git branch -D "$b" && echo "片付け: $wt"
   fi
 done
@@ -75,7 +77,10 @@ console.log(nextPublishDates({ today: jstDate(new Date()), taken, count: Number(
 承認された記事を**公開日の早い順に1本ずつ**、`/write-blog` の予約モードで最後（PR とプレビュー）まで進める。渡すもの: `publish-on`・種類・承認済みの構成（worktree の `.claude/work/<slug>/02-outline.md`）。
 
 - 1本終わるごとに `blog-week-<今日>.md` の状態を「PR 済み」にし、PR 番号とプレビュー URL を書く
-- **予定表の更新は最初の1本の PR にだけ入れる**: その PR で `docs/BLOG_SCHEDULE.md` の「次の候補」から今週の全記事の行を消し、「予約済み・プレビュー中」に全記事の行（公開日・種類・slug・タイトル・PR は後で埋めるので空欄可）を足す。残りの記事の PR では BLOG_SCHEDULE を触らない（同じ行の書き換えがぶつかるのを避ける）
+- **予定表と BACKLOG の更新は、その週の最初の1本の PR にだけまとめて入れる**（残りの記事の PR では `docs/BLOG_SCHEDULE.md`・`docs/BLOG_BACKLOG.md` を触らない。表の行の書き換えは取り込み時にぶつかるため）。最初の1本の PR で行うこと:
+  1. 先週までに公開された記事（PR が閉じてブランチが消えたもの）を、BLOG_SCHEDULE の「予約済み」から消し、BLOG_BACKLOG の「公開済み記事」に移す（作り直しは字数とメモを更新）。公開しないと決めたものは「次の候補」に戻すか消す
+  2. 今週の全記事を BLOG_SCHEDULE の「次の候補」から消し、「予約済み・プレビュー中」に足す（公開日・種類・slug・タイトル。PR 番号は書かない。ブランチ `blog/<slug>` で引ける）
+  3. BLOG_BACKLOG の該当候補を「公開予定（YYYY-MM-DD 予約）」にする
 - 1本が3回ルールで止まったら、その記事を「停止」にして次の記事へ進む（週全体は止めない）。止まった理由は最終報告に書く
 
 ## Step 5: 最終報告
@@ -101,11 +106,16 @@ console.log(nextPublishDates({ today: jstDate(new Date()), taken, count: Number(
 
 ## 「公開して」と言われたら
 
-対象の PR に `approved` を付けるだけ（main には入れない）:
+対象の PR に、**今の先頭コミットを書いた承認コメント**と `approved` ラベルを付ける（main には入れない）。朝の取り込みは、このコメントのコミットと PR の先頭が一致するときだけ公開する（承認の後にブランチが変わったら公開しない）:
 
 ```bash
+SHA=$(gh pr view <番号> --json headRefOid --jq .headRefOid)
+gh pr comment <番号> --body "公開を承認します（プレビュー確認済み）
+approved-sha: $SHA"
 gh pr edit <番号> --add-label approved
 ```
+
+承認の後に記事を直したときは、直したあとにもう一度このコメントを付ける。
 
 - 「今すぐ出して」と言われたら: `approved` を付けたうえで、その PR の `publish:` ラベルを今日の日付に替え、`gh workflow run scheduled-publish -f dry_run=false` を実行する。終わったら `gh run list --workflow scheduled-publish --limit 1` で結果を確かめて報告する
 - 「<slug> は公開しない」と言われたら: PR を閉じ（`gh pr close`）、worktree とブランチを消す。BLOG_SCHEDULE の該当行は次の週の最初の PR で直す

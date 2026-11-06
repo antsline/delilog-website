@@ -76,17 +76,27 @@ test('記事の PR が変えてよいのは記事・図・公開画像・共有�
 
 const labeled = (login, at, name = 'approved') => ({ event: 'labeled', label: { name }, actor: { login }, created_at: at });
 
-test('approved はオーナーが、最後のコミットより後に付けたものだけ有効', () => {
-  const head = '2026-11-06T10:00:00Z';
-  assert.equal(approvalProblem({ events: [labeled('antsline', '2026-11-06T11:00:00Z')], owner: 'antsline', headCommittedAt: head }), null);
-  assert.match(approvalProblem({ events: [labeled('someone', '2026-11-06T11:00:00Z')], owner: 'antsline', headCommittedAt: head }), /オーナー以外/);
-  assert.match(approvalProblem({ events: [labeled('antsline', '2026-11-06T09:00:00Z')], owner: 'antsline', headCommittedAt: head }), /承認の後にコミット/);
-  assert.match(approvalProblem({ events: [labeled('antsline', '2026-11-06T11:00:00Z', 'publish:2026-11-07')], owner: 'antsline', headCommittedAt: head }), /見つからない/);
+const SHA = 'a'.repeat(40);
+const note = (login, at, body) => ({ user: { login }, created_at: at, body });
+const approvedComments = [note('antsline', '2026-11-06T11:00:00Z', `approved-sha: ${SHA}`)];
+
+test('approved はオーナーが付け、オーナーが承認したコミットが今の先頭のときだけ有効', () => {
+  const ev = [labeled('antsline', '2026-11-06T11:00:00Z')];
+  assert.equal(approvalProblem({ events: ev, comments: approvedComments, owner: 'antsline', headOid: SHA }), null);
+  assert.match(approvalProblem({ events: [labeled('someone', '2026-11-06T11:00:00Z')], comments: approvedComments, owner: 'antsline', headOid: SHA }), /オーナー以外/);
+  assert.match(approvalProblem({ events: [labeled('antsline', '2026-11-06T11:00:00Z', 'publish:2026-11-07')], comments: approvedComments, owner: 'antsline', headOid: SHA }), /見つからない/);
+  assert.match(approvalProblem({ events: ev, comments: [], owner: 'antsline', headOid: SHA }), /approved-sha/);
+  assert.match(approvalProblem({ events: ev, comments: approvedComments, owner: 'antsline', headOid: 'b'.repeat(40) }), /ブランチが変わった/);
 });
 
-test('最後に付けた approved で判定する（付け直したら新しいほう）', () => {
-  const events = [labeled('antsline', '2026-11-06T09:00:00Z'), labeled('antsline', '2026-11-06T12:00:00Z')];
-  assert.equal(approvalProblem({ events, owner: 'antsline', headCommittedAt: '2026-11-06T10:00:00Z' }), null);
+test('approved-sha はオーナーの最新のコメントで判定する（他人のコメントは無視）', () => {
+  const ev = [labeled('antsline', '2026-11-06T09:00:00Z'), labeled('antsline', '2026-11-06T12:00:00Z')];
+  const comments = [
+    note('antsline', '2026-11-06T09:00:00Z', `approved-sha: ${'b'.repeat(40)}`),
+    note('antsline', '2026-11-06T12:00:00Z', `承認します\napproved-sha: ${SHA}`),
+    note('someone', '2026-11-06T13:00:00Z', `approved-sha: ${'c'.repeat(40)}`),
+  ];
+  assert.equal(approvalProblem({ events: ev, comments, owner: 'antsline', headOid: SHA }), null);
 });
 
 test('ログに出す文字から Actions のコマンド（::）と改行を潰す', () => {
