@@ -3,7 +3,7 @@
 作成: 2026-11-06
 ブランチ: feat/blog-schedule
 WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/feat-blog-schedule
-状態: 実行中
+状態: 完了
 
 ## 要件
 
@@ -56,7 +56,8 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/feat-blog-schedul
 | T4 | a2a197b | 候補20本（作り直し11・新規9）。8/14 に最優先とした請求書テンプレが未着手だったので新規の先頭に。経費記事は 1.4.14 公開後 |
 | T5 | 33b24b3 | /blog-week 新設・/write-blog に予約モード・CLAUDE.md。予定表の更新は週の最初の1本の PR だけ（同じ行の書き換えの衝突を避ける）。最初の公開日を「明日」→「明後日」に（オーナーの確認の1日を空ける・テスト更新） |
 | T6 | d7d1b68 | 数字は Noto Sans JP 900（Georgia 明朝をやめた）・箱は 340×228 固定・単位は横書きで数字の右のベースライン。タイトル（64〜92px）と副題（30〜40px）は fit() で枠に合わせる。行の切れ判定は overflow-x: clip（hidden だと縦方向の誤検知で全部 NG になった）。og.json の形は ogSpec.mjs で検査。テスト43件 |
-| T7 | (このコミット) | 古い11本の og.json を今の og.png の文言から作成（2つ目のバッジ「国交省 告示対応」等はテンプレートが1つなので外した。jittai-toukei の「n=772」は4文字を超えるので「772件」）。15枚とも blog:figures OK、目視で確認 |
+| T7 | 501e2b8 | 古い11本の og.json を今の og.png の文言から作成（2つ目のバッジ「国交省 告示対応」等はテンプレートが1つなので外した。jittai-toukei の「n=772」は4文字を超えるので「772件」）。15枚とも blog:figures OK、目視で確認 |
+| 最終レビュー | e713bdc | MEDIUM 4件を反映: 承認を approved-sha コメントでコミットに結びつけ・union は misconceptions だけ・片付けは PR が閉じた記事だけ・予定表と BACKLOG の後片付けを週の最初の PR に。CRITICAL/HIGH なし |
 
 ## 失敗カウンタ
 
@@ -64,5 +65,9 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/feat-blog-schedul
 |---|---|---|---|
 
 ## 未解決の点
+
+- このブランチを main に入れるまで予約公開は動かない（ワークフローと .gitattributes は main 側のものが使われる）
+- 初回の dry-run は main に入れた後に Actions の画面から手動で
+- OG 画像を変えたので、X・LINE などに既に貼られたリンクのプレビューは各サービスのキャッシュが切れるまで旧画像のまま
 
 - 初回の本番動作は、最初の予約日に Actions のログで確認する（または手動実行の dry-run）
