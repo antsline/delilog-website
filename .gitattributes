@@ -1,0 +1,6 @@
+# ブログの予約公開（scripts/blog/publish-due.mjs）で、同じ週に作った記事の PR が
+# 誤解パターン集に追記していても衝突で止まらないよう、両方の追記を残す。
+# union は git の組み込みの merge driver（git CLI で取り込むときに効く）。
+# 表の行を書き換えるファイル（BLOG_BACKLOG・BLOG_SCHEDULE）は union にしない（行が黙って二重になる）。
+# その2つは「週の最初の1本の PR だけが直す」で衝突を避ける（.claude/commands/blog-week.md）。
+.claude/knowledge/misconceptions.md merge=union

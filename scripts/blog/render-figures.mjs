@@ -21,6 +21,7 @@ import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { launchBrowser } from './lib/browser.mjs';
 import { FIGURE_SIZE, OG_SIZE, checkFigure } from './lib/figureChecks.mjs';
+import { ogSpecProblems } from './lib/ogSpec.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const TEMPLATES = join(ROOT, 'scripts', 'blog', 'templates');
@@ -40,17 +41,15 @@ function wrap(templateName, inner) {
     .replace(/(src|href)="\/(?!\/)/g, `$1="${publicUrl}/`);
 }
 
-const OG_KEYS = ['line1Accent', 'line1', 'line2Accent', 'line2', 'badge', 'subtitle', 'number', 'unit'];
-
 function fillOg(og) {
-  const unknown = Object.keys(og).filter((k) => !OG_KEYS.includes(k));
-  if (unknown.length) throw new Error(`og.json に知らない項目があります: ${unknown.join(', ')}（使えるのは ${OG_KEYS.join(' / ')}）`);
+  const problems = ogSpecProblems(og);
+  if (problems.length) throw new Error(`og.json を直してください: ${problems.join(' / ')}`);
   let html = wrap('og.html', '');
   for (const [key, value] of Object.entries(og)) {
     const text = Array.isArray(value) ? value.map(escapeHtml).join('<br>') : escapeHtml(value);
     html = html.replace(new RegExp(`(data-field="${key}">)(</)`), (_, open, close) => `${open}${text}${close}`);
   }
-  if (!og.number) html = html.replace(/<div class="og-num"[\s\S]*?<\/div>/, '');
+  if (!og.number) html = html.replace(/<div class="og-num"[\s\S]*?<\/div><\/div>/, '');
   return html;
 }
 
@@ -109,6 +108,8 @@ async function render(page, html, size, outPath) {
   writeFileSync(htmlPath, html);
   await page.goto(pathToFileURL(htmlPath).href, { waitUntil: 'load', timeout: 60000 });
   await page.evaluate(() => document.fonts.ready);
+  // OG のテンプレートは文字サイズを枠に合わせて決める。終わるまで待つ（図のテンプレートには無いので素通り）
+  await page.waitForFunction(() => window.__ogFitDone !== false, { timeout: 10000 });
   const measured = await measure(page, size);
   await page.screenshot({ path: outPath, clip: { x: 0, y: 0, ...size } });
   return measured;

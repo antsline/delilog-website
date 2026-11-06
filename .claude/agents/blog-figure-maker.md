@@ -52,7 +52,7 @@ model: sonnet
 
 ### Step 3: OG画像の文言を書く
 
-`content/figures/<slug>/og.json` を Write。キーは `line1Accent`（オレンジ）、`line1`、`line2Accent`（青）、`line2`、`badge`（例「2026年版」）、`subtitle`（2行までの配列）、`number`、`unit`（無ければ省く）。構成書の文言案を使い、見本の `og.json` と形をそろえる。
+`content/figures/<slug>/og.json` を Write。キーは `line1Accent`（オレンジ）、`line1`、`line2Accent`（青）、`line2`、`badge`（例「2026年版」）、`subtitle`（2行までの配列）、`number`、`unit`（無ければ省く）。構成書の文言案を使い、見本の `og.json` と形をそろえる。文字の大きさはテンプレートが枠に合わせて自動で決める（タイトル 64〜92px・副題 30〜40px）。タイトルは1行あたり全角10文字前後まで、`number` は4文字まで、`unit` は5文字まで（数字の右に横書きで並ぶ）、副題は2行まで（形の検査は `scripts/blog/lib/ogSpec.mjs`）。
 
 ### Step 4: 書き出しと検査
 

@@ -26,6 +26,20 @@ Agent({ subagent_type: "blog-writer", description: "...",
 
 各タスクの後に、ユーザーの作業ツリーが変わっていないことを確かめる（Step 0 で取った指紋と比べる）。変わっていたら、その時点で `run-plan-state blocked "ユーザーの作業ツリーに書き込みがあった"` にして止まり、何が変わったかを報告する。
 
+### 予約モード（`/blog-week` から呼ばれたとき）
+
+週1回の `/blog-week` が、承認済みの構成と公開日を渡してこのパイプラインを1本ずつ呼ぶ。通常モードとの違いは次のとおり（ほかは全部同じ）:
+
+| | 通常モード | 予約モード |
+|---|---|---|
+| 呼び方 | `/write-blog <テーマ>` | `/blog-week` から。`publish-on: YYYY-MM-DD`・種類（新規 / 作り直し）・承認済みの構成 |
+| Step 1〜2 | 企画・構成を作って承認を待つ | **飛ばす**（worktree に `01-plan.md`・`02-outline.md` が承認済みで置いてある） |
+| frontmatter の `date` | 書いた日 | 新規は `publish-on`。**作り直しは元の公開日のまま**（slug も変えない） |
+| T6 の終わり | プレビュー URL を返す | PR を作り、ラベル `publish:<publish-on>` を付けてからプレビュー URL を返す |
+| 公開 | 「公開して」で PR をマージ | 「公開して」で承認コメント（`approved-sha: <先頭コミット>`）と `approved` ラベルを付けるだけ。毎朝 6:00（JST）の `scheduled-publish` が公開日に main に入れる |
+
+予約公開で取り込めるのは**記事まわりのファイルだけ**: `content/blog/*.md`・`content/figures/<slug>/`・`public/blog/<slug>/`・`.claude/knowledge/misconceptions.md`・`docs/BLOG_BACKLOG.md`・`docs/BLOG_SCHEDULE.md`・`docs/plans/blog-<slug>.md`。これ以外（`package.json`・`app/`・`lib/`・`scripts/` 等）を変えた PR は朝の取り込みで弾かれる。サイトのコードの変更が要ると分かったら、記事に入れず「人の判断が要る点」に書く。
+
 ---
 
 ## Step 0: 作業場所を作る（企画の前）
@@ -62,6 +76,7 @@ echo "WORKTREE=$WT"
 
 - 最後の2つの確認（ブランチが `blog/<slug>`・トップが worktree）が通らなければ、**何もコミットせずに止まる**
 - 以降、このセッションのコマンドは worktree の中で実行する（`pwd` で確かめる）
+- **予約モード**では `/blog-week` が Step 0〜2 を済ませている。Step 3 から始める
 - **続きの実行**（worktree が既にある）: `docs/plans/blog-<slug>.md` があれば Step 3 の最後（`run-plan-state start`）からやり直す。チェック済みのタスクは飛ばす。計画ファイルが無ければ Step 1 から
 
 ## Step 1: 企画と構成
@@ -93,6 +108,7 @@ worktree の中で、`docs/plans/blog-<slug>.md` に計画ファイルを書く�
 作成: YYYY-MM-DD
 ブランチ: blog/<slug>
 WORKTREE: <絶対パス>
+公開日: YYYY-MM-DD（予約モードのときだけ。種類: 新規 / 作り直し）
 状態: 実行中
 
 ## 検証コマンド
@@ -153,7 +169,7 @@ cd "$WT" && [ "$(git rev-parse --abbrev-ref HEAD)" = "blog/$SLUG" ] \
 
 1. `mode: skeleton` → `05a-skeleton.md`
 2. `mode: sections` を2つ（例 `1-3` と `4-6`。後半は FAQ・まとめを含む。章が4つなら `1-2` と `3-4`）→ `05b-*.md` / `05c-*.md`
-3. `mode: merge` → `content/blog/<slug>.md`。`npm run blog:stats -- <slug>` が OK になるまで削る（足りなければ「人の判断が要る点」に記録）。**既存記事の相互リンクはここでは書かない**（T6 で行う）
+3. `mode: merge` → `content/blog/<slug>.md`（予約モードの `date` は上の表のとおり）。`npm run blog:stats -- <slug>` が OK になるまで削る（足りなければ「人の判断が要る点」に記録）。**既存記事の相互リンクはここでは書かない**（T6 で行う）
 
 ### T4 図と OG
 
@@ -165,14 +181,14 @@ cd "$WT" && [ "$(git rev-parse --abbrev-ref HEAD)" = "blog/$SLUG" ] \
 
 ### T6 公開準備（push まで）
 
-1. 関連する既存記事（2〜3本）の「あわせて読みたい」に新記事を足す。`docs/BLOG_BACKLOG.md` の該当候補を「公開予定（プレビュー中）」にする。どちらも worktree の中で
+1. 関連する既存記事（2〜3本）の「あわせて読みたい」に新記事を足す（**作り直しのときは足さない**。既にリンクされている）。`docs/BLOG_BACKLOG.md` の該当候補を「公開予定（プレビュー中）」にする。どちらも worktree の中で。**予約モードでは BLOG_BACKLOG・BLOG_SCHEDULE は `/blog-week` の指示があった記事（その週の最初の1本）でだけ直す**（それ以外の記事では触らない）
 2. ユーザーの作業ツリーで未コミットの変更があるファイル（`git -C <ROOT> status --porcelain`）と、このブランチで変えたファイルが重なっていれば、計画ファイルの「最終報告に載せる項目」に「ぶつかりうるファイル」として書く
 3. 検証コマンドをもう一度全部流す
 4. 計画ファイルの T6 を `- [x]`・状態を「完了」にし、成果物と一緒に**1つのコミット**にする（push 後にもう1回コミットするとプレビューが二重になるため）。CLAUDE.md の Git コミット規則に従い、`Co-Authored-By` は付けない:
 
    ```bash
    cd "$WT" && [ "$(git rev-parse --abbrev-ref HEAD)" = "blog/$SLUG" ] \
-     && git add content/blog/ content/figures/$SLUG/ public/blog/$SLUG/ .claude/knowledge/misconceptions.md docs/BLOG_BACKLOG.md docs/plans/blog-$SLUG.md \
+     && git add content/blog/ content/figures/$SLUG/ public/blog/$SLUG/ .claude/knowledge/misconceptions.md docs/BLOG_BACKLOG.md docs/BLOG_SCHEDULE.md docs/plans/blog-$SLUG.md \
      && git commit -m "feat: N本目のブログ記事「<タイトル抜粋>」を追加
 
    - content/blog/$SLUG.md（本文 X,XXX字・図 N 枚）
@@ -182,6 +198,18 @@ cd "$WT" && [ "$(git rev-parse --abbrev-ref HEAD)" = "blog/$SLUG" ] \
    ```
 
 5. `git push -u origin blog/$SLUG`（**このブランチだけ**）
+   - **予約モード**: 続けて PR を作り、公開日のラベルを付ける（ラベルが無ければ作る）:
+
+     ```bash
+     DATE=<publish-on>
+     gh label create "publish:$DATE" --color 1875bd --description "予約公開日（JST 6:00）" 2>/dev/null || true
+     gh label create approved --color 16a34a --description "オーナーが法令の記述を確かめた" 2>/dev/null || true
+     gh pr create --base main --head blog/$SLUG --label "publish:$DATE" \
+       --title "feat: ブログ記事「<タイトル抜粋>」を追加（$DATE 公開予定）" \
+       --body "<最終報告の要点。特に『公開前に確かめてほしい法令の記述』>"
+     ```
+
+     作り直しのときのタイトルは「feat: ブログ記事「<タイトル抜粋>」を作り直す（$DATE 公開予定）」
 6. プレビューを待つ（1回の Bash の中で待つ。単独の sleep でターンを終えない。Bash のタイムアウトは 600000ms にする）:
 
    ```bash
@@ -232,6 +260,8 @@ cd "$WT" && [ "$(git rev-parse --abbrev-ref HEAD)" = "blog/$SLUG" ] \
 ```
 
 ## 公開の手順（ユーザーが「公開して」と言ったら）
+
+**予約モードの記事**は `/blog-week` の「『公開して』と言われたら」に従う（`approved` ラベルを付けるだけ。マージしない）。以下は通常モードの記事。
 
 worktree の中で:
 
