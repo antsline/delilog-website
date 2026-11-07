@@ -250,6 +250,7 @@ delilog は、点呼記録を国交省モデル様式に準拠した週単位の
 - [軽貨物の日常点検記録簿テンプレ](/blog/nichijou-tenken-kirokubo-template) — 日常点検15項目
 - [軽貨物「事故の記録」の書き方](/blog/jiko-houkokusho-template) — 事故があった日の記録
 - [軽貨物ドライバーの勤務時間ルール完全ガイド](/blog/kaizen-kijun-kokuji-keikamotsu) — 改善基準告示
+- [軽貨物で残す記録は6種類｜保存期間1年・2年・3年の一覧](/blog/keikamotsu-kiroku-hozon-kikan) — 点呼記録以外に残す記録と保存期間
 
 ## 参考資料
 

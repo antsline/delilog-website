@@ -440,6 +440,7 @@ delilog では、業務の開始・休憩・集荷や納品などの経過地点
 - [軽貨物の日常点検記録簿テンプレ｜15項目PDF雛形（無料DL）と記入例](/blog/nichijou-tenken-kirokubo-template) — 国交省公式の15項目チェックシートと記入例
 - [軽貨物「点呼記録」の書き方｜業務前・業務後の記入例と1人親方の自己点呼](/blog/tenko-kiroku-kakikata)
 - [軽貨物ドライバーの勤務時間ルール完全ガイド｜改善基準告示6つの数値・1人親方の運用・違反時の処分](/blog/kaizen-kijun-kokuji-keikamotsu)
+- [軽貨物で残す記録は6種類｜保存期間1年・2年・3年の一覧](/blog/keikamotsu-kiroku-hozon-kikan) — 業務の記録以外に残す記録と保存期間
 - [軽貨物ドライバーの働き方｜業務形態3類型徹底比較【2026年版】](/blog/keikamotsu-hatarakikata)
 - [軽貨物ドライバーの実態統計｜年代・地域・年収・労働時間データ【2026年版】](/blog/keikamotsu-jittai-toukei)
 

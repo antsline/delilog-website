@@ -294,6 +294,7 @@ delilog は、日常点検（無料）や点呼の記録と同じアプリで、
 - [業務の記録テンプレ](/blog/gyoumu-no-kiroku-template) — 業務の記録のテンプレ
 - [点呼記録簿テンプレ](/blog/tenko-kirokubo-template) — 点呼記録簿のテンプレ
 - [日常点検記録簿テンプレ](/blog/nichijou-tenken-kirokubo-template) — 日常点検記録簿のテンプレ
+- [軽貨物で残す記録は6種類｜保存期間1年・2年・3年の一覧](/blog/keikamotsu-kiroku-hozon-kikan) — 事故の記録以外に残す記録と保存期間
 
 ## 参考資料
 

@@ -434,6 +434,7 @@ delilog なら、点呼記録・日常点検・指導・監督の記録は無料
 - [点呼記録簿テンプレート【無料DL】国交省準拠PDF版と記入例｜軽貨物1人親方向け](/blog/tenko-kirokubo-template) — 7行型・10行型のPDF雛形と17列の意味解説
 - [軽貨物「事故の記録」の書き方｜8項目の記入例とテンプレ（PDF・Excel無料DL）【2026年版】](/blog/jiko-houkokusho-template) — 事故の記録8項目の書き方と、PDF・Excelの無料テンプレ
 - [軽貨物の事故の記録「再発防止対策」の書き方｜事故パターン別の例文5つ【2026年版】](/blog/jiko-saihatsu-boushi-reibun) — 再発防止対策の書き方と事故パターン別の例文
+- [軽貨物で残す記録は6種類｜保存期間1年・2年・3年の一覧](/blog/keikamotsu-kiroku-hozon-kikan) — 残す記録と保存期間の一覧
 - [軽貨物ドライバーの働き方｜業務形態3類型徹底比較【2026年版】](/blog/keikamotsu-hatarakikata)
 - [軽貨物ドライバーの実態統計｜年代・地域・年収・労働時間データ【2026年版】](/blog/keikamotsu-jittai-toukei)
 - [黒ナンバー（事業用軽自動車）取得の流れ完全ガイド｜運輸支局・軽自動車検査協会・税務署 3窓口の動線【2026年版】](/blog/keikamotsu-kuro-number-shutoku) — これから黒ナンバーを取得する方は、3窓口・5書類・取得後の安全管理者選任までこちらで解説しています
