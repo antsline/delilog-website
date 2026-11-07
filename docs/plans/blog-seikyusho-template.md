@@ -29,7 +29,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-seikyusho-te
 
 | タスク | コミット | メモ |
 |---|---|---|
-| T1 | (this) | 18件検証。VERIFIED 13・書き換え 3・削除 2。M061・M062 を追記 |
+| T1 | (this) | 18件検証。VERIFIED 13・書き換え 3・削除 2。M063・M064 を追記 |
 | T2 | (this) | 食い違いなし。CTA の文面を確認済み事実に限定 |
 | T3 | (this) | 本文 4,567字（blog:stats の図NGは T4 で解消）。PDF（空欄＋記入例）・Excel（入力・記入例・使い方）を生成。生成スクリプトは .claude/work/ に置きコミットしない |
 | T4 | (this) | 図2枚（items6・calc）＋OG。blog:figures OK・最小44px。check5 は作らずリストに |
@@ -45,7 +45,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-seikyusho-te
 
 - 書き換え: インボイスで増える3つ →「登録番号・適用税率・税率ごとの消費税額」（構成書は「税率ごとの合計」）／請求書の発行義務 → 登録事業者が課税事業者から求められたときの交付義務に限定／立替金 → 「明らかに区分して請求すれば報酬に含めない扱い（司法書士の事例）」＋契約次第
 - 削除: ガソリン代の扱いの断定／「差し戻されない」
-- 新しく足した誤解: M061・M062
+- 新しく足した誤解: M063・M064
 - 人の判断が要る点: QR 読み取り元 template_seikyusho / template_seikyusho_xlsx を CLAUDE.md の一覧に足す（この PR では CLAUDE.md を変えられない）
 - ぶつかりうるファイル: なし（ユーザーの作業ツリーの未コミット変更は app/terms-of-service/page.tsx ほかで、このブランチと重ならない）
 - Excel の数式は Excel / Numbers での再計算表示を未確認（手元に LibreOffice なし）。DL して記入例シートの合計が 267,280 になるか一度開いて確かめる
