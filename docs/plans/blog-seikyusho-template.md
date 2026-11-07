@@ -21,7 +21,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-seikyusho-te
 - [x] T1: ファクトチェック — 03-fact-check.md。裏が取れない主張は「削除」「書き換え」と判定
 - [x] T2: プロダクト整合性 — 04-consistency.md
 - [x] T3: 執筆 — content/blog/seikyusho-template.md。blog:stats が OK（テンプレ PDF・Excel の実物も作る）
-- [ ] T4: 図と OG — content/figures/seikyusho-template/。blog:figures が OK
+- [x] T4: 図と OG — content/figures/seikyusho-template/。blog:figures が OK
 - [ ] T5: 最終レビュー — 06-review.md。5つの検証コマンドがすべて OK、スマホのスクショを目で確認
 - [ ] T6: 公開準備 — 相互リンク（BACKLOG・SCHEDULE は触らない）、blog/seikyusho-template を push、PR＋ラベル publish:2026-11-12、プレビュー URL を取得
 
@@ -32,6 +32,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-seikyusho-te
 | T1 | (this) | 18件検証。VERIFIED 13・書き換え 3・削除 2。M061・M062 を追記 |
 | T2 | (this) | 食い違いなし。CTA の文面を確認済み事実に限定 |
 | T3 | (this) | 本文 4,567字（blog:stats の図NGは T4 で解消）。PDF（空欄＋記入例）・Excel（入力・記入例・使い方）を生成。生成スクリプトは .claude/work/ に置きコミットしない |
+| T4 | (this) | 図2枚（items6・calc）＋OG。blog:figures OK・最小44px。check5 は作らずリストに |
 
 ## 失敗カウンタ
 
