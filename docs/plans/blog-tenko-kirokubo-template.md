@@ -22,7 +22,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-tenko-kiroku
 - [x] T2: プロダクト整合性 — 04-consistency.md
 - [x] T3: 執筆 — content/blog/tenko-kirokubo-template.md。blog:stats が OK
 - [x] T4: 図と OG — content/figures/tenko-kirokubo-template/。blog:figures が OK
-- [ ] T5: 最終レビュー — 06-review.md。5つの検証コマンドがすべて OK、スマホのスクショを目で確認
+- [x] T5: 最終レビュー — 06-review.md。5つの検証コマンドがすべて OK、スマホのスクショを目で確認
 - [ ] T6: 公開準備 — blog/tenko-kirokubo-template を push、PR（publish:2026-11-14）、プレビュー URL を取得（作り直しのため相互リンク追加なし。BLOG_BACKLOG・BLOG_SCHEDULE は触らない）
 
 ## 実行ログ
@@ -32,6 +32,8 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-tenko-kiroku
 | T1 | (このコミット) | 19件中 採用15・書き換え4・削除0。M051 の注意を更新 |
 | T2 | (このコミット) | 食い違いなし |
 | T3 | (このコミット) | 本文 4,811字（構成 5,400字の約9割）。writer の3段は1人で通しで書いた。記入例の表は4列×2表に分けた |
+| T4 | b300005 | 図2枚＋OG。blog:figures 全て OK。旧図3枚（横長）を削除 |
+| T5 | (このコミット) | 5つの検証コマンドすべて OK。第2章の「違うのは後ろの3列」を「2列ずつ」に訂正 |
 
 ## 失敗カウンタ
 
