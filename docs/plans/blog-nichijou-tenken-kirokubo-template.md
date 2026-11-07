@@ -4,7 +4,7 @@
 ブランチ: blog/nichijou-tenken-kirokubo-template
 WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-nichijou-tenken-kirokubo-template
 公開日: 2026-11-10（予約モード。種類: 作り直し）
-状態: 実行中
+状態: 完了
 
 ## 検証コマンド
 
@@ -22,8 +22,8 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-nichijou-ten
 - [x] T2: プロダクト整合性 — 04-consistency.md
 - [x] T3: 執筆 — content/blog/nichijou-tenken-kirokubo-template.md。blog:stats が OK
 - [x] T4: 図と OG — content/figures/nichijou-tenken-kirokubo-template/。blog:figures が OK
-- [ ] T5: 最終レビュー — 06-review.md。5つの検証コマンドがすべて OK、スマホのスクショを目で確認
-- [ ] T6: 公開準備 — 相互リンクと BLOG_BACKLOG の更新、blog/nichijou-tenken-kirokubo-template を push、プレビュー URL を取得
+- [x] T5: 最終レビュー — 06-review.md。5つの検証コマンドがすべて OK、スマホのスクショを目で確認
+- [x] T6: 公開準備 — 相互リンクと BLOG_BACKLOG の更新、blog/nichijou-tenken-kirokubo-template を push、プレビュー URL を取得
 
 ## 実行ログ
 
@@ -33,6 +33,8 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-nichijou-ten
 | T2 | (このコミット) | 食い違いなし。表Dの「点呼との連動」は同じアプリで残せる、に限定 |
 | T3 | (このコミット) | 本文 4,298字・5章＋FAQ4問・CTA2枚。skeleton/sections を分けず1回で執筆 |
 | T4 | (このコミット) | 図3枚＋OG。blog:figures OK。旧横長画像3枚を削除 |
+| T5 | (このコミット) | npm test 43 pass / blog:stats OK 4,298字 / blog:figures OK / build OK / blog:mobile OK（最小14.6px）。CTA に透かしを追記 |
+| T6 | (このコミット) | 作り直しのため相互リンクは追加しない。BACKLOG #11 の字数メモを更新。ぶつかりうるファイル: なし |
 
 ## 失敗カウンタ
 
