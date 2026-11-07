@@ -20,8 +20,8 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-nichijou-ten
 
 - [x] T1: ファクトチェック — 03-fact-check.md。裏が取れない主張は「削除」「書き換え」と判定
 - [x] T2: プロダクト整合性 — 04-consistency.md
-- [ ] T3: 執筆 — content/blog/nichijou-tenken-kirokubo-template.md。blog:stats が OK
-- [ ] T4: 図と OG — content/figures/nichijou-tenken-kirokubo-template/。blog:figures が OK
+- [x] T3: 執筆 — content/blog/nichijou-tenken-kirokubo-template.md。blog:stats が OK
+- [x] T4: 図と OG — content/figures/nichijou-tenken-kirokubo-template/。blog:figures が OK
 - [ ] T5: 最終レビュー — 06-review.md。5つの検証コマンドがすべて OK、スマホのスクショを目で確認
 - [ ] T6: 公開準備 — 相互リンクと BLOG_BACKLOG の更新、blog/nichijou-tenken-kirokubo-template を push、プレビュー URL を取得
 
@@ -31,6 +31,8 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-nichijou-ten
 |---|---|---|
 | T1 | (このコミット) | 15件中 採用7・書き換え5・削除3。M038 が誤りと判明し M061 を追記 |
 | T2 | (このコミット) | 食い違いなし。表Dの「点呼との連動」は同じアプリで残せる、に限定 |
+| T3 | (このコミット) | 本文 4,298字・5章＋FAQ4問・CTA2枚。skeleton/sections を分けず1回で執筆 |
+| T4 | (このコミット) | 図3枚＋OG。blog:figures OK。旧横長画像3枚を削除 |
 
 ## 失敗カウンタ
 
