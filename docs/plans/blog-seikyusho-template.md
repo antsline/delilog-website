@@ -18,8 +18,8 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-seikyusho-te
 
 ## タスク
 
-- [ ] T1: ファクトチェック — 03-fact-check.md。裏が取れない主張は「削除」「書き換え」と判定
-- [ ] T2: プロダクト整合性 — 04-consistency.md
+- [x] T1: ファクトチェック — 03-fact-check.md。裏が取れない主張は「削除」「書き換え」と判定
+- [x] T2: プロダクト整合性 — 04-consistency.md
 - [ ] T3: 執筆 — content/blog/seikyusho-template.md。blog:stats が OK（テンプレ PDF・Excel の実物も作る）
 - [ ] T4: 図と OG — content/figures/seikyusho-template/。blog:figures が OK
 - [ ] T5: 最終レビュー — 06-review.md。5つの検証コマンドがすべて OK、スマホのスクショを目で確認
@@ -29,6 +29,8 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-seikyusho-te
 
 | タスク | コミット | メモ |
 |---|---|---|
+| T1 | (this) | 18件検証。VERIFIED 13・書き換え 3・削除 2。M061・M062 を追記 |
+| T2 | (this) | 食い違いなし。CTA の文面を確認済み事実に限定 |
 
 ## 失敗カウンタ
 
@@ -37,4 +39,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-seikyusho-te
 
 ## 最終報告に載せる項目
 
-（外した主張・書き換えた主張・新しく足した誤解 M0XX・人の判断が要る点・ユーザーの未コミット変更とぶつかりうるファイル）
+- 書き換え: インボイスで増える3つ →「登録番号・適用税率・税率ごとの消費税額」（構成書は「税率ごとの合計」）／請求書の発行義務 → 登録事業者が課税事業者から求められたときの交付義務に限定／立替金 → 「明らかに区分して請求すれば報酬に含めない扱い（司法書士の事例）」＋契約次第
+- 削除: ガソリン代の扱いの断定／「差し戻されない」
+- 新しく足した誤解: M061・M062
+- 人の判断が要る点: QR 読み取り元 template_seikyusho / template_seikyusho_xlsx を CLAUDE.md の一覧に足す（この PR では CLAUDE.md を変えられない）
