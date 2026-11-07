@@ -22,7 +22,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-seikyusho-te
 - [x] T2: プロダクト整合性 — 04-consistency.md
 - [x] T3: 執筆 — content/blog/seikyusho-template.md。blog:stats が OK（テンプレ PDF・Excel の実物も作る）
 - [x] T4: 図と OG — content/figures/seikyusho-template/。blog:figures が OK
-- [ ] T5: 最終レビュー — 06-review.md。5つの検証コマンドがすべて OK、スマホのスクショを目で確認
+- [x] T5: 最終レビュー — 06-review.md。5つの検証コマンドがすべて OK、スマホのスクショを目で確認
 - [ ] T6: 公開準備 — 相互リンク（BACKLOG・SCHEDULE は触らない）、blog/seikyusho-template を push、PR＋ラベル publish:2026-11-12、プレビュー URL を取得
 
 ## 実行ログ
@@ -33,6 +33,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-seikyusho-te
 | T2 | (this) | 食い違いなし。CTA の文面を確認済み事実に限定 |
 | T3 | (this) | 本文 4,567字（blog:stats の図NGは T4 で解消）。PDF（空欄＋記入例）・Excel（入力・記入例・使い方）を生成。生成スクリプトは .claude/work/ に置きコミットしない |
 | T4 | (this) | 図2枚（items6・calc）＋OG。blog:figures OK・最小44px。check5 は作らずリストに |
+| T5 | (this) | 5つの検証コマンド OK。Q2 の仕入明細書の記述を一次資料の範囲に絞った |
 
 ## 失敗カウンタ
 
@@ -45,3 +46,4 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-seikyusho-te
 - 削除: ガソリン代の扱いの断定／「差し戻されない」
 - 新しく足した誤解: M061・M062
 - 人の判断が要る点: QR 読み取り元 template_seikyusho / template_seikyusho_xlsx を CLAUDE.md の一覧に足す（この PR では CLAUDE.md を変えられない）
+- Excel の数式は Excel / Numbers での再計算表示を未確認（手元に LibreOffice なし）。DL して記入例シートの合計が 267,280 になるか一度開いて確かめる
