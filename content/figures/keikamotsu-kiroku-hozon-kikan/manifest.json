@@ -1,0 +1,17 @@
+{
+  "ichiran.png": {
+    "width": 1080,
+    "height": 1350,
+    "minFontPx": 44
+  },
+  "kiten.png": {
+    "width": 1080,
+    "height": 1350,
+    "minFontPx": 44
+  },
+  "timing.png": {
+    "width": 1080,
+    "height": 1350,
+    "minFontPx": 44
+  }
+}

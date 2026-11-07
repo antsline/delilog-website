@@ -20,8 +20,8 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-keikamotsu-k
 
 - [x] T1: ファクトチェック — 03-fact-check.md。裏が取れない主張は「削除」「書き換え」と判定
 - [x] T2: プロダクト整合性 — 04-consistency.md
-- [ ] T3: 執筆 — content/blog/keikamotsu-kiroku-hozon-kikan.md。blog:stats が OK
-- [ ] T4: 図と OG — content/figures/keikamotsu-kiroku-hozon-kikan/。blog:figures が OK
+- [x] T3: 執筆 — content/blog/keikamotsu-kiroku-hozon-kikan.md。blog:stats が OK
+- [x] T4: 図と OG — content/figures/keikamotsu-kiroku-hozon-kikan/。blog:figures が OK
 - [ ] T5: 最終レビュー — 06-review.md。5つの検証コマンドがすべて OK、スマホのスクショを目で確認
 - [ ] T6: 公開準備 — 相互リンクの更新（BACKLOG・SCHEDULE は触らない）、blog/keikamotsu-kiroku-hozon-kikan を push、PR とラベル、プレビュー URL を取得
 
@@ -29,8 +29,10 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-keikamotsu-k
 
 | タスク | コミット | メモ |
 |---|---|---|
-| T1 | (このコミット) | 31件検証。書き換え7・削除3。M065・M066 追記 |
-| T2 | (このコミット) | 不整合0（第4章で delilog に触れない注意1件） |
+| T1 | e249c69 | 31件検証。書き換え7・削除3。M065・M066 追記 |
+| T2 | e249c69 | 不整合0（第4章で delilog に触れない注意1件） |
+| T3 | (このコミット) | 本文 4,328字・CTA 3枚・FAQ 4問・本文5章 |
+| T4 | (このコミット) | 図3枚＋OG。2回目で全て OK |
 
 ## 失敗カウンタ
 
