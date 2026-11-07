@@ -4,7 +4,7 @@
 ブランチ: blog/seikyusho-template
 WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-seikyusho-template
 公開日: 2026-11-12（予約モード。種類: 新規）
-状態: 実行中
+状態: 完了
 
 ## 検証コマンド
 
@@ -23,7 +23,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-seikyusho-te
 - [x] T3: 執筆 — content/blog/seikyusho-template.md。blog:stats が OK（テンプレ PDF・Excel の実物も作る）
 - [x] T4: 図と OG — content/figures/seikyusho-template/。blog:figures が OK
 - [x] T5: 最終レビュー — 06-review.md。5つの検証コマンドがすべて OK、スマホのスクショを目で確認
-- [ ] T6: 公開準備 — 相互リンク（BACKLOG・SCHEDULE は触らない）、blog/seikyusho-template を push、PR＋ラベル publish:2026-11-12、プレビュー URL を取得
+- [x] T6: 公開準備 — 相互リンク（BACKLOG・SCHEDULE は触らない）、blog/seikyusho-template を push、PR＋ラベル publish:2026-11-12、プレビュー URL を取得
 
 ## 実行ログ
 
@@ -34,6 +34,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-seikyusho-te
 | T3 | (this) | 本文 4,567字（blog:stats の図NGは T4 で解消）。PDF（空欄＋記入例）・Excel（入力・記入例・使い方）を生成。生成スクリプトは .claude/work/ に置きコミットしない |
 | T4 | (this) | 図2枚（items6・calc）＋OG。blog:figures OK・最小44px。check5 は作らずリストに |
 | T5 | (this) | 5つの検証コマンド OK。Q2 の仕入明細書の記述を一次資料の範囲に絞った |
+| T6 | (this) | 既存2本（tanka-soba・hatarakikata）の「あわせて読みたい」に追加。BACKLOG・SCHEDULE は触らない。検証コマンド再実行 OK |
 
 ## 失敗カウンタ
 
@@ -46,4 +47,5 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-seikyusho-te
 - 削除: ガソリン代の扱いの断定／「差し戻されない」
 - 新しく足した誤解: M061・M062
 - 人の判断が要る点: QR 読み取り元 template_seikyusho / template_seikyusho_xlsx を CLAUDE.md の一覧に足す（この PR では CLAUDE.md を変えられない）
+- ぶつかりうるファイル: なし（ユーザーの作業ツリーの未コミット変更は app/terms-of-service/page.tsx ほかで、このブランチと重ならない）
 - Excel の数式は Excel / Numbers での再計算表示を未確認（手元に LibreOffice なし）。DL して記入例シートの合計が 267,280 になるか一度開いて確かめる

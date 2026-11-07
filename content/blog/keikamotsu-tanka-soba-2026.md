@@ -257,6 +257,7 @@ delilog の業務の記録（運行記録）は、開始・終了・休憩の日
 
 ## あわせて読みたい
 
+- [軽貨物の請求書テンプレート｜インボイス対応PDF・Excel（無料DL）と記入例【2026年版】](/blog/seikyusho-template) — 個建て・日建て・立替の明細の書き方とテンプレ
 - [軽貨物の働き方3類型を比較【2026】継続委託・チャーター・プラットフォームの収入と自由度](/blog/keikamotsu-hatarakikata)
 - [軽貨物ドライバーの年収・労働時間データ【2026】月収39万以下が8割の実態](/blog/keikamotsu-jittai-toukei)
 - [軽貨物の仕事はコネなしで取れる？個人ドライバーが案件を確保する6つのルート【2026年版】](/blog/keikamotsu-konenashi-shigoto-routes)
