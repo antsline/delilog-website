@@ -18,8 +18,8 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-tenko-kiroku
 
 ## タスク
 
-- [ ] T1: ファクトチェック — 03-fact-check.md。裏が取れない主張は「削除」「書き換え」と判定
-- [ ] T2: プロダクト整合性 — 04-consistency.md
+- [x] T1: ファクトチェック — 03-fact-check.md。裏が取れない主張は「削除」「書き換え」と判定
+- [x] T2: プロダクト整合性 — 04-consistency.md
 - [ ] T3: 執筆 — content/blog/tenko-kirokubo-template.md。blog:stats が OK
 - [ ] T4: 図と OG — content/figures/tenko-kirokubo-template/。blog:figures が OK
 - [ ] T5: 最終レビュー — 06-review.md。5つの検証コマンドがすべて OK、スマホのスクショを目で確認
@@ -29,6 +29,8 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-tenko-kiroku
 
 | タスク | コミット | メモ |
 |---|---|---|
+| T1 | (このコミット) | 19件中 採用15・書き換え4・削除0。M051 の注意を更新 |
+| T2 | (このコミット) | 食い違いなし |
 
 ## 失敗カウンタ
 
@@ -37,3 +39,8 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-tenko-kiroku
 
 ## 最終報告に載せる項目
 
+- 書き換えた主張: 「国交省の例と同じ17列」→「同じ並びの17列・同じ注記（上段を氏名・屋号、1列目を車両番号にした1人親方向け）」／交替運転者通告の「該当なし」は法令の要求ではなく書き忘れと区別する工夫として／「紙とアプリは片方でよい」→「いずれでも差し支えない。両方に残す決まりは見当たらない」
+- 削除した主張: なし
+- misconceptions.md: M051 の注意書きを更新（新規追記なし）
+- 依頼文の訂正（日常点検）を反映: 点呼記録簿の「日常点検の状況」は毎回書く欄。点検の毎日義務とは書かない
+- 他記事の「あわせて読みたい」のアンカー（旧タイトル「国交省準拠PDF版と記入例」）は更新していない（同じ週の別 PR とのぶつかりを避けるため。リンク先 slug は同じなので切れない）
