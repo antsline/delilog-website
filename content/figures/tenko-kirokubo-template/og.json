@@ -1,13 +1,10 @@
 {
-  "line1Accent": "軽貨物",
-  "line1": "ドライバーの",
-  "line2Accent": "点呼記録簿",
-  "line2": "テンプレ",
+  "line1Accent": "点呼記録簿",
+  "line1": "テンプレ",
+  "line2Accent": "無料DL",
+  "line2": "と記入例",
   "badge": "2026年版",
-  "subtitle": [
-    "2025年4月施行",
-    "「様式入手」から「使い始め」"
-  ],
-  "number": "6",
-  "unit": "項目"
+  "subtitle": ["PDF 7行・10行とExcel", "1人親方の記入例つき"],
+  "number": "17",
+  "unit": "列"
 }

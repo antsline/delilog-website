@@ -1,1 +1,12 @@
-{}
+{
+  "choose.png": {
+    "width": 1080,
+    "height": 1350,
+    "minFontPx": 44
+  },
+  "columns.png": {
+    "width": 1080,
+    "height": 1350,
+    "minFontPx": 44
+  }
+}
