@@ -2,6 +2,7 @@
 title: "軽貨物の単価相場は？出前館400円・赤帽20km5,000円の公表値と月収の読み方【2026年版】"
 description: "軽貨物の単価相場を業務形態別に整理。公式ページで金額を確認できた出前館の基本報酬400円、Amazon Flex の最大9,600円（例示）、赤帽の運賃（20kmまで5,000円・税抜）を一覧に。月収の読み方と手取りを出す手順まで解説します。（2026年11月確認）"
 date: "2026-04-27"
+updated: "2026-11-02"
 slug: "keikamotsu-tanka-soba-2026"
 ogImage: "/blog/keikamotsu-tanka-soba-2026/og.png"
 tags:

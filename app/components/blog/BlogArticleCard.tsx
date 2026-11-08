@@ -10,6 +10,11 @@ export function BlogArticleCard({ post }: { post: BlogPostMeta }) {
     >
       <div className="flex items-center gap-3 text-xs text-slate-500 mb-3">
         <time dateTime={post.date}>{formatJapaneseDate(post.date)}</time>
+        {post.updated && (
+          <span>
+            <time dateTime={post.updated}>{formatJapaneseDate(post.updated)}</time> 更新
+          </span>
+        )}
       </div>
 
       <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-3 leading-snug group-hover:text-primary transition-colors">
