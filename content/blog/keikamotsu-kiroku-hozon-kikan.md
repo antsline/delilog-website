@@ -104,6 +104,8 @@ author: "delilog編集部"
 
 1人親方なら、指導する相手は自分です。国交省のリーフレットは、指導監督マニュアルを理解するなどして、自ら必要な知識を身に付けるよう求めています。記録と保存も自分で行います。
 
+このマニュアルは、国交省が貨物軽自動車運送事業者向けに公開している「[指導監督マニュアル（概要編）](https://www.mlit.go.jp/jidosha/anzen/03safety/resourse/data/k_truck_gaiyohen.pdf)」と「[同（本編・146ページ）](https://www.mlit.go.jp/jidosha/anzen/03safety/resourse/data/k_truck_honpen.pdf)」です。本編は、個人事業主を含むすべての貨物軽自動車運送事業者を対象にしていて、個人事業主は自分が管理者であり運転者でもある、と書かれています。まず概要編で全体をつかみ、毎年の指導の中身を決めるときに本編の該当の章を読むと進めやすくなります。
+
 ### 運転者等台帳と適性診断
 
 正式な名前は「貨物軽自動車運転者等台帳」です。運転者ごとに、次の5つを書いて営業所に備え置きます（輸送安全規則 第9条の6）。
@@ -259,4 +261,6 @@ delilog なら、点呼記録と日常点検（15項目）は無料で記録で�
 - [国土交通省 貨物自動車運送事業輸送安全規則の解釈及び運用について（通達）](https://www.mlit.go.jp/jidosha/anzen/03safety/resourse/data/construction_kamotsu.pdf)
 - [貨物軽自動車運送事業者向けFAQ（近畿運輸局掲載）](https://wwwtb.mlit.go.jp/kinki/wakayama/truck/anzen_faq.pdf)
 - [国土交通省 軽貨物運送事業者向けリーフレット](https://www.mlit.go.jp/jidosha/content/001986070.pdf)
+- [国土交通省 貨物軽自動車運送事業者における運転者に対する指導監督マニュアル（概要編）](https://www.mlit.go.jp/jidosha/anzen/03safety/resourse/data/k_truck_gaiyohen.pdf)
+- [国土交通省 同マニュアル（本編）](https://www.mlit.go.jp/jidosha/anzen/03safety/resourse/data/k_truck_honpen.pdf)
 - [国土交通省 制度改正ページ（貨物軽自動車運送事業の安全対策）](https://www.mlit.go.jp/jidosha/jidosha_tk2_000172.html)
