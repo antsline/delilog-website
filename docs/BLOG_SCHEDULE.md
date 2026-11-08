@@ -28,10 +28,7 @@
 
 | 公開日 | 種類 | slug | タイトル（短縮） |
 |---|---|---|---|
-| 2026-11-10 | 作り直し | `nichijou-tenken-kirokubo-template` | 日常点検記録簿テンプレ |
-| 2026-11-12 | 新規 | `seikyusho-template` | 軽貨物の請求書テンプレート |
-| 2026-11-14 | 作り直し | `tenko-kirokubo-template` | 点呼記録簿テンプレ |
-| 2026-11-16 | 新規 | `keikamotsu-kiroku-hozon-kikan` | 軽貨物で残す記録は6種類（保存期間の一覧） |
+| （なし） | | | |
 
 （`/blog-week` がその週の最初の PR で行を足す。PR はブランチ `blog/<slug>` で引ける。公開された行は、次の週の最初の PR で BLOG_BACKLOG の「公開済み記事」へ移してここから消す）
 
