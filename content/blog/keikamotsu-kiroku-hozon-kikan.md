@@ -1,7 +1,7 @@
 ---
 title: "軽貨物で残す記録は6種類｜保存期間1年・2年・3年の一覧と1人親方に要るもの【2026年版】"
 description: "軽貨物（黒ナンバー）で作って残す記録は6種類。点呼記録と業務の記録は1年、点検整備記録簿は2年、事故の記録・指導監督の記録・運転者等台帳は3年です。いつ書くか、保存期間の数え始め、1人親方の扱いまで一覧で整理します。"
-date: "2026-11-16"
+date: "2026-11-08"
 slug: "keikamotsu-kiroku-hozon-kikan"
 ogImage: "/blog/keikamotsu-kiroku-hozon-kikan/og.png"
 tags:

@@ -1,7 +1,7 @@
 ---
 title: "軽貨物の請求書テンプレート｜インボイス対応PDF・Excel（無料DL）と記入例【2026年版】"
 description: "軽貨物の請求書テンプレート（インボイス対応のPDF・Excel）を無料で配布。必要な6項目、個建て・日建て・高速代の立替の記入例、消費税の計算と端数処理、送る前のチェックまで、個人事業主ドライバー向けに国税庁の資料をもとに解説します。"
-date: "2026-11-12"
+date: "2026-11-08"
 slug: "seikyusho-template"
 ogImage: "/blog/seikyusho-template/og.png"
 tags:
