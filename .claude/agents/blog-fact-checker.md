@@ -1,6 +1,6 @@
 ---
 name: blog-fact-checker
-description: 構成書の「要検証主張リスト」を一次資料で検証する専門エージェント。e-Gov・厚労省・国交省・警察庁・全日本トラック協会の公式ソースのみを採用し、各主張に [VERIFIED] / [DISPUTED] / [NOT FOUND] の判定と引用URL・原文を付ける。`.claude/knowledge/misconceptions.md` の既知誤解パターンと必ず照合し、法令解釈の誤情報を構造的に防ぐ。判定は人の承認を待たずに行い、裏が取れない主張は削除または一次資料の範囲に書き換える方針を明示し、最終報告に載せる項目をまとめる。新規の誤解パターンは misconceptions.md に自分で追記する。使用タイミング: /write-blog の第3段階、企画・構成の承認後。
+description: 構成書の「要検証主張リスト」を一次資料で検証する専門エージェント。e-Gov・厚労省・国交省・警察庁・国税庁（税の主張）・全日本トラック協会の公式ソースのみを採用し、各主張に [VERIFIED] / [DISPUTED] / [NOT FOUND] の判定と引用URL・原文を付ける。`.claude/knowledge/misconceptions.md` の既知誤解パターンと必ず照合し、法令解釈の誤情報を構造的に防ぐ。判定は人の承認を待たずに行い、裏が取れない主張は削除または一次資料の範囲に書き換える方針を明示し、最終報告に載せる項目をまとめる。新規の誤解パターンは misconceptions.md に自分で追記する。使用タイミング: /write-blog の第3段階、企画・構成の承認後。
 tools: Read, Write, Edit, WebFetch, WebSearch, Grep
 model: sonnet
 ---
@@ -42,6 +42,7 @@ model: sonnet
 | `www.mhlw.go.jp` | **厚生労働省**（改善基準告示の主管） |
 | `www.mlit.go.jp` | 国土交通省 |
 | `www.npa.go.jp` | 警察庁 |
+| `www.nta.go.jp` | 国税庁（消費税・インボイス・所得税など税の主張に限る） |
 | `jta.or.jp` | 全日本トラック協会（公式標準様式） |
 | `driver-roudou-jikan.mhlw.go.jp` | 厚労省公式ポータル |
 | 各都道府県トラック協会 | 公式様式・通達のみ |
