@@ -7,7 +7,7 @@ import { BlogClickTracker } from "@/app/components/blog/BlogClickTracker";
 import { BlogCtaCard } from "@/app/components/blog/BlogCtaCard";
 import { BlogStickyAppBar } from "@/app/components/blog/BlogStickyAppBar";
 import { TableOfContents } from "@/app/components/blog/TableOfContents";
-import { formatJapaneseDate, getAllPostSlugs, getPostBySlug } from "@/lib/blog";
+import { formatJapaneseDate, getAllPostSlugs, getPostBySlug, lastModifiedDate } from "@/lib/blog";
 import { StoreLink } from "@/app/components/blog/StoreLink";
 import { SITE_URL } from "@/lib/constants";
 
@@ -53,6 +53,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       locale: "ja_JP",
       type: "article",
       publishedTime: post.date,
+      modifiedTime: lastModifiedDate(post),
       authors: post.author ? [post.author] : undefined,
       images: [
         {
@@ -86,7 +87,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     headline: post.title,
     description: post.description,
     datePublished: post.date,
-    dateModified: post.date,
+    dateModified: lastModifiedDate(post),
     author: {
       "@type": "Organization",
       name: post.author ?? "delilog編集部",
@@ -167,6 +168,14 @@ export default async function BlogPostPage({ params }: PageProps) {
         </h1>
         <div className="flex items-center gap-4 text-sm text-slate-500">
           <time dateTime={post.date}>{formatJapaneseDate(post.date)}</time>
+          {post.updated && (
+            <>
+              <span className="text-slate-300">•</span>
+              <span>
+                <time dateTime={post.updated}>{formatJapaneseDate(post.updated)}</time> 更新
+              </span>
+            </>
+          )}
           {post.author && (
             <>
               <span className="text-slate-300">•</span>

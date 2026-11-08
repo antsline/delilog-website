@@ -2,6 +2,7 @@
 title: "軽貨物の日常点検記録簿テンプレ｜15項目PDF（無料DL）と記入例【2026年版】"
 description: "軽貨物（黒ナンバー）の日常点検記録簿テンプレートを無料PDFで配布。国交省の15項目に沿った半月1枚のチェックシートと、○×の付け方、異常があった日の書き方、点呼記録との分担を、個人事業主ドライバー向けにまとめました。"
 date: "2026-05-12"
+updated: "2026-11-08"
 slug: "nichijou-tenken-kirokubo-template"
 ogImage: "/blog/nichijou-tenken-kirokubo-template/og.png"
 tags:

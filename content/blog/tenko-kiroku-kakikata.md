@@ -2,6 +2,7 @@
 title: "軽貨物「点呼記録」の書き方｜業務前・業務後の記入例と1人親方の自己点呼【2026年版】"
 description: "軽貨物の点呼記録は、どの欄に何を書けばいいのか。業務前・業務後の欄ごとの記入例、平常日と異常日の書き分け、1人親方が自分で点呼するときの考え方を、個人事業主ドライバー向けに解説します。"
 date: "2026-04-24"
+updated: "2026-11-02"
 slug: "tenko-kiroku-kakikata"
 ogImage: "/blog/tenko-kiroku-kakikata/og.png"
 tags:

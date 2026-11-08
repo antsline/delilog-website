@@ -9,11 +9,14 @@ import { blogCampaign, tagStoreLinks } from "@/lib/storeCampaign";
 
 const BLOG_DIR = path.join(process.cwd(), "content", "blog");
 const SLUG_PATTERN = /^[a-z0-9-]+$/;
+const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 
 export type BlogFrontmatter = {
   title: string;
   description: string;
   date: string;
+  /** 作り直し・大きな書き直しをした日（YYYY-MM-DD）。無ければ date と同じ扱い */
+  updated?: string;
   slug: string;
   ogImage?: string;
   tags?: string[];
@@ -49,7 +52,21 @@ async function readMarkdownFile(filename: string): Promise<{ data: BlogFrontmatt
     );
   }
 
+  if (data.updated !== undefined) {
+    if (!DATE_PATTERN.test(String(data.updated))) {
+      throw new Error(`Blog post ${filename}: updated must be YYYY-MM-DD (got ${String(data.updated)}).`);
+    }
+    if (String(data.updated) <= String(data.date)) {
+      throw new Error(`Blog post ${filename}: updated (${data.updated}) must be after date (${data.date}).`);
+    }
+  }
+
   return { data, content: parsed.content };
+}
+
+/** 最後に中身を変えた日。サイトマップ・構造化データの dateModified に使う */
+export function lastModifiedDate(post: Pick<BlogFrontmatter, "date" | "updated">): string {
+  return post.updated ?? post.date;
 }
 
 // Note: sanitize: false は、content/blog/ 配下が内部執筆のみである前提に基づく。

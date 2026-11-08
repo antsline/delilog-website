@@ -2,6 +2,7 @@
 title: "点呼記録簿テンプレート【無料DL】PDF（7行・10行）・Excelと記入例｜軽貨物1人親方向け【2026年版】"
 description: "軽貨物の点呼記録簿を無料でダウンロード。国交省の点呼記録簿の例と同じ並びの17列で、PDF（7行・10行）とExcelを配布します。1週間分の記入例と、1人親方が迷う3つの欄の書き方もまとめました。"
 date: "2026-05-20"
+updated: "2026-11-08"
 slug: "tenko-kirokubo-template"
 ogImage: "/blog/tenko-kirokubo-template/og.png"
 tags:

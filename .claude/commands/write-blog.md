@@ -34,7 +34,7 @@ Agent({ subagent_type: "blog-writer", description: "...",
 |---|---|---|
 | 呼び方 | `/write-blog <テーマ>` | `/blog-week` から。`publish-on: YYYY-MM-DD`・種類（新規 / 作り直し）・承認済みの構成 |
 | Step 1〜2 | 企画・構成を作って承認を待つ | **飛ばす**（worktree に `01-plan.md`・`02-outline.md` が承認済みで置いてある） |
-| frontmatter の `date` | 書いた日 | 新規は `publish-on`。**作り直しは元の公開日のまま**（slug も変えない） |
+| frontmatter の `date` | 書いた日 | 新規は `publish-on`。**作り直しは元の公開日のまま**（slug も変えない）にし、`updated: <publish-on>` を足す |
 | T6 の終わり | プレビュー URL を返す | PR を作り、ラベル `publish:<publish-on>` を付けてからプレビュー URL を返す |
 | 公開 | 「公開して」で PR をマージ | 「公開して」で承認コメント（`approved-sha: <先頭コミット>`）と `approved` ラベルを付けるだけ。毎朝 6:00（JST）の `scheduled-publish` が公開日に main に入れる |
 
