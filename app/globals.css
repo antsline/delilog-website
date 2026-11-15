@@ -9,6 +9,10 @@
   .inline-cta-body > p {
     @apply text-sm text-slate-600 leading-relaxed mb-4;
   }
+  /* 本文中の内部リンク（例: 冒頭のカードから紙のテンプレへ）。最後の段落のストアボタンとは別 */
+  .inline-cta-body > p:not(:last-child) a {
+    @apply font-semibold text-primary underline underline-offset-4 hover:no-underline;
+  }
   .inline-cta-body > p:last-child {
     @apply mb-0 flex flex-wrap gap-3;
   }
