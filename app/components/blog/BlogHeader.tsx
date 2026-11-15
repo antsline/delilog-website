@@ -54,7 +54,7 @@ export function BlogHeader() {
             Blog
           </Link>
           <Button asChild variant="default" className="rounded-full shadow-lg shadow-primary/20">
-            <a href={storeUrl}>ダウンロード</a>
+            <a href={storeUrl}>無料で始める</a>
           </Button>
         </nav>
 
@@ -86,7 +86,7 @@ export function BlogHeader() {
               Blog
             </Link>
             <Button asChild className="w-full">
-              <a href={storeUrl}>ダウンロード</a>
+              <a href={storeUrl}>無料で始める</a>
             </Button>
           </div>
         </div>
