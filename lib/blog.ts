@@ -7,6 +7,7 @@ import remarkGfm from "remark-gfm";
 import remarkHtml from "remark-html";
 import { blogLinkCampaign, tagStoreLinks } from "@/lib/storeCampaign";
 import { inlinePlacement } from "@/lib/storeNaming.mjs";
+import { blogQrDataUri } from "@/lib/blogQr";
 
 const BLOG_DIR = path.join(process.cwd(), "content", "blog");
 const SLUG_PATTERN = /^[a-z0-9-]+$/;
@@ -33,6 +34,8 @@ export type BlogHeading = {
 };
 
 export type BlogPost = BlogPostMeta & {
+  // PC 表示のカードに出す記事別の QR（data URI）
+  qrSrc: string;
   contentHtmlBeforeToc: string;
   contentHtmlAfterToc: string;
   rawContent: string;
@@ -125,14 +128,16 @@ function injectHeadingIds(html: string, headings: BlogHeading[]): string {
 }
 
 // PC で読んでいる人向けの QR（app/components/blog/DesktopQr.tsx と同じ見た目）。スマホでは出さない。
-const DESKTOP_QR_HTML = [
-  '<div class="hidden lg:flex flex-col items-center flex-shrink-0 gap-1.5">',
-  '<img src="/qr/blog.svg" alt="delilog のダウンロード用QRコード" width="96" height="96" class="rounded-md" />',
-  '<span class="text-[11px] leading-tight text-slate-500 text-center">スマホで読み取って<br />インストール</span>',
-  '</div>',
-].join('');
+function desktopQrHtml(qrSrc: string): string {
+  return [
+    '<div class="hidden lg:flex flex-col items-center flex-shrink-0 gap-1.5">',
+    `<img src="${qrSrc}" alt="delilog のダウンロード用QRコード" width="96" height="96" class="rounded-md" />`,
+    '<span class="text-[11px] leading-tight text-slate-500 text-center">スマホで読み取って<br />インストール</span>',
+    '</div>',
+  ].join('');
+}
 
-function transformInlineCtas(html: string, slug: string): string {
+function transformInlineCtas(html: string, slug: string, qrSrc: string): string {
   let ctaIndex = 0;
   return html.replace(/<!--CTA-->\s*([\s\S]*?)\s*<!--\/CTA-->/g, (_match, rawInner: string) => {
     ctaIndex += 1;
@@ -153,7 +158,7 @@ function transformInlineCtas(html: string, slug: string): string {
       inner.trim(),
       '</div>',
       '</div>',
-      DESKTOP_QR_HTML,
+      desktopQrHtml(qrSrc),
       '</div>',
       '</aside>',
     ].join('');
@@ -209,9 +214,10 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     const { data, content } = await readMarkdownFile(filename);
     const headings = extractH2Headings(content);
     const rawHtml = await markdownToHtml(content);
+    const qrSrc = await blogQrDataUri(slug);
     // カードの中のリンクは配置ごとに印を付け、残った素のリンクは body として付ける。
     const contentHtml = tagStoreLinks(
-      transformDlBoxes(transformInlineCtas(injectHeadingIds(rawHtml, headings), slug), slug),
+      transformDlBoxes(transformInlineCtas(injectHeadingIds(rawHtml, headings), slug, qrSrc), slug),
       blogLinkCampaign(slug, "body"),
     );
 
@@ -223,6 +229,7 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
 
     return {
       ...data,
+      qrSrc,
       contentHtmlBeforeToc,
       contentHtmlAfterToc,
       rawContent: content,

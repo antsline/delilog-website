@@ -4,9 +4,10 @@ import { DesktopQr } from "@/app/components/blog/DesktopQr";
 
 type Props = {
   slug: string;
+  qrSrc: string;
 };
 
-export function BlogCtaCard({ slug }: Props) {
+export function BlogCtaCard({ slug, qrSrc }: Props) {
   const urls = storeUrls(blogLinkCampaign(slug, "end"));
   return (
     <aside
@@ -42,7 +43,7 @@ export function BlogCtaCard({ slug }: Props) {
             </a>
           </div>
         </div>
-        <DesktopQr src="/qr/blog.svg" />
+        <DesktopQr src={qrSrc} />
       </div>
     </aside>
   );

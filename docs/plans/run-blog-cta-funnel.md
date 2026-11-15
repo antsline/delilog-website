@@ -35,7 +35,7 @@
 ## タスク
 
 - [x] T1: 計測の命名を短い ID に切り替える — 対応表 JSON・命名の純関数とテスト・本文リンク／記事末尾／記事下リンク／ヘッダー／固定バーに配置別の印・/download の ct と utm_source を揃える・予約公開の許可リストと blog:stats の登録漏れチェック
-- [ ] T2: PC 表示の QR を記事別にする — `from=blog_<ID>` の QR をビルド時に SVG で作り、本文 CTA と記事末尾カードに出す
+- [x] T2: PC 表示の QR を記事別にする — `from=blog_<ID>` の QR をビルド時に SVG で作り、本文 CTA と記事末尾カードに出す
 - [ ] T3: DL ボックスにストアボタンと記事別の文言（指示書タスク1・2）
 - [ ] T4: 記事末尾カードの見出し・本文を frontmatter で上書き（タスク3）
 - [ ] T5: 解説記事の冒頭 CTA（`<!--CTA:top-->`、タスク5。6種類の記事は CTA 上限3枚を守るため第3章末のカードと入れ替え）
@@ -54,6 +54,7 @@
 | タスク | コミット | メモ |
 |---|---|---|
 | T1 | (このコミット) | code-reviewer: CRITICAL/HIGH なし。MEDIUM の配置名の型・URL の回帰テスト・JSON 読み込みエラーを直した。union は publish-due が git CLI の merge --squash で取り込むので効く |
+| T2 | (このコミット) | qrcode 1.5.4 を追加（worktree は node_modules を main と共有せず npm ci）。QR は1枚約2.8KB。code-reviewer はコミット後に結果を受けて追加コミットで対応 |
 
 ## 失敗カウンタ
 
