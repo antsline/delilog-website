@@ -8,18 +8,25 @@ import { blogLinkCampaign, slugFromBlogPath } from "@/lib/storeCampaign";
 import { useStoreUrl } from "@/lib/useStoreUrl";
 
 const DISMISS_KEY = "delilog-sticky-cta-dismissed";
-const SHOW_AFTER_SCROLL_PX = 600;
+// 「スクロールを始めたら出す」。読み込み直後（0px）は出さない
+const SHOW_AFTER_SCROLL_PX = 1;
+// 本文の CTA（DL ボックス・本文のカード・記事末尾のカード）が見えている間は、同じ導線を重ねて出さない。
+const IN_ARTICLE_CTA_SELECTOR = '[data-cta="dlbox"], [data-cta="top"], [data-cta^="inline-"], [data-cta="article-end"]';
 
-export function BlogStickyAppBar() {
-  const storeUrl = useStoreUrl(blogLinkCampaign(slugFromBlogPath(usePathname()), "sticky"));
-  const [visible, setVisible] = useState(false);
-  const [dismissed, setDismissed] = useState(true);
+function readDismissed(): boolean {
+  try {
+    return sessionStorage.getItem(DISMISS_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
+function useScrolled(): boolean {
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    setDismissed(sessionStorage.getItem(DISMISS_KEY) === "1");
-
     function handleScroll() {
-      setVisible(window.scrollY > SHOW_AFTER_SCROLL_PX);
+      setScrolled(window.scrollY >= SHOW_AFTER_SCROLL_PX);
     }
 
     handleScroll();
@@ -27,31 +34,76 @@ export function BlogStickyAppBar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  return scrolled;
+}
+
+function useInArticleCtaVisible(): boolean {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const targets = Array.from(document.querySelectorAll(IN_ARTICLE_CTA_SELECTOR));
+    if (targets.length === 0 || typeof IntersectionObserver === "undefined") {
+      return;
+    }
+
+    const onScreen = new Set<Element>();
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          onScreen.add(entry.target);
+        } else {
+          onScreen.delete(entry.target);
+        }
+      }
+      setVisible(onScreen.size > 0);
+    });
+
+    targets.forEach((target) => observer.observe(target));
+    return () => observer.disconnect();
+  }, []);
+
+  return visible;
+}
+
+export function BlogStickyAppBar() {
+  const storeUrl = useStoreUrl(blogLinkCampaign(slugFromBlogPath(usePathname()), "sticky"));
+  const scrolled = useScrolled();
+  const ctaVisible = useInArticleCtaVisible();
+  const [dismissed, setDismissed] = useState(true);
+
+  useEffect(() => {
+    setDismissed(readDismissed());
+  }, []);
+
   function handleDismiss() {
-    sessionStorage.setItem(DISMISS_KEY, "1");
+    try {
+      sessionStorage.setItem(DISMISS_KEY, "1");
+    } catch {
+      // 保存できなくても、このページでは閉じる
+    }
     setDismissed(true);
   }
 
-  if (dismissed || !visible) {
+  if (dismissed || !scrolled || ctaVisible) {
     return null;
   }
 
   return (
     <div
-      data-cta="sticky-bar"
-      className="fixed inset-x-0 bottom-0 z-50 sm:hidden border-t border-slate-200 bg-white/95 backdrop-blur px-4 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))]"
+      data-cta="sticky"
+      className="fixed inset-x-0 bottom-0 z-50 md:hidden border-t border-slate-200 bg-white/95 backdrop-blur px-4 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))]"
     >
       <div className="flex items-center gap-3">
         <Image src="/icon.png" alt="delilog" width={40} height={40} className="rounded-xl flex-shrink-0" />
-        <div className="flex-1 min-w-0">
-          <p className="text-sm font-bold text-slate-900 truncate">点呼・点検を30秒で記録</p>
-          <p className="text-xs text-slate-500 truncate">国交省様式のPDFを自動作成（無料）</p>
-        </div>
+        <a href={storeUrl} className="flex-1 min-w-0">
+          <span className="block text-sm font-bold text-slate-900 leading-snug">紙の代わりに、アプリで記録する</span>
+          <span className="block text-xs text-slate-500">点呼・点検は無料</span>
+        </a>
         <a
           href={storeUrl}
           className="flex-shrink-0 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-primary/20"
         >
-          無料DL
+          無料で始める
         </a>
         <button
           type="button"
