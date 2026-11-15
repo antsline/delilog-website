@@ -240,6 +240,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           Blog 一覧に戻る
         </Link>
         <StoreLink
+          placement="footer"
           data-cta="footer-link"
           className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
         >

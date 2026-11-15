@@ -5,7 +5,8 @@ import { remark } from "remark";
 import remarkCjkFriendly from "remark-cjk-friendly";
 import remarkGfm from "remark-gfm";
 import remarkHtml from "remark-html";
-import { blogCampaign, tagStoreLinks } from "@/lib/storeCampaign";
+import { blogLinkCampaign, tagStoreLinks } from "@/lib/storeCampaign";
+import { inlinePlacement } from "@/lib/storeNaming.mjs";
 
 const BLOG_DIR = path.join(process.cwd(), "content", "blog");
 const SLUG_PATTERN = /^[a-z0-9-]+$/;
@@ -131,10 +132,11 @@ const DESKTOP_QR_HTML = [
   '</div>',
 ].join('');
 
-function transformInlineCtas(html: string): string {
+function transformInlineCtas(html: string, slug: string): string {
   let ctaIndex = 0;
-  return html.replace(/<!--CTA-->\s*([\s\S]*?)\s*<!--\/CTA-->/g, (_match, inner: string) => {
+  return html.replace(/<!--CTA-->\s*([\s\S]*?)\s*<!--\/CTA-->/g, (_match, rawInner: string) => {
     ctaIndex += 1;
+    const inner = tagStoreLinks(rawInner, blogLinkCampaign(slug, inlinePlacement(ctaIndex)));
     return [
       `<aside data-cta="inline-${ctaIndex}" class="not-prose my-12 rounded-2xl bg-gradient-to-br from-primary-50 via-white to-secondary-50 border border-primary-100 p-6 sm:p-8">`,
       '<div class="flex flex-col sm:flex-row items-start sm:items-center gap-6">',
@@ -160,8 +162,9 @@ function transformInlineCtas(html: string): string {
 
 // テンプレDL系記事の冒頭に置く「即ダウンロード」ボックス。
 // 検索意図（テンプレを今すぐDLしたい）に最短で応えつつ、離脱前にアプリ導線を1つ確保する。
-function transformDlBoxes(html: string): string {
-  return html.replace(/<!--DLBOX-->\s*([\s\S]*?)\s*<!--\/DLBOX-->/g, (_match, inner: string) => {
+function transformDlBoxes(html: string, slug: string): string {
+  return html.replace(/<!--DLBOX-->\s*([\s\S]*?)\s*<!--\/DLBOX-->/g, (_match, rawInner: string) => {
+    const inner = tagStoreLinks(rawInner, blogLinkCampaign(slug, "dlbox"));
     return [
       '<aside data-cta="dlbox" class="not-prose my-10 rounded-2xl border-2 border-primary/30 bg-white p-6 sm:p-7 shadow-sm">',
       '<div class="dlbox-body">',
@@ -206,9 +209,10 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     const { data, content } = await readMarkdownFile(filename);
     const headings = extractH2Headings(content);
     const rawHtml = await markdownToHtml(content);
+    // カードの中のリンクは配置ごとに印を付け、残った素のリンクは body として付ける。
     const contentHtml = tagStoreLinks(
-      transformDlBoxes(transformInlineCtas(injectHeadingIds(rawHtml, headings))),
-      blogCampaign(slug),
+      transformDlBoxes(transformInlineCtas(injectHeadingIds(rawHtml, headings), slug), slug),
+      blogLinkCampaign(slug, "body"),
     );
 
     const markerIdx = contentHtml.indexOf(TOC_MARKER);

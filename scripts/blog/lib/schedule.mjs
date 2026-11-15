@@ -70,6 +70,7 @@ export function nextPublishDates({ today, taken, count, intervalDays = 2 }) {
 // 予約公開では取り込まない（ビルドで任意のコードが走るため。必要なら人が通常の PR として入れる）。
 const ALLOWED_PATHS = [
   /^content\/blog\/[a-z0-9-]+\.md$/,
+  /^content\/blog-short-ids\.json$/,
   /^content\/figures\/[a-z0-9-]+\/[^/]+$/,
   /^public\/blog\/[a-z0-9-]+\/[^/]+$/,
   /^\.claude\/knowledge\/misconceptions\.md$/,

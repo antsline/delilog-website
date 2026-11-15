@@ -1,0 +1,20 @@
+{
+  "gyoumu-no-kiroku-kakikata": "gyomu-guide",
+  "gyoumu-no-kiroku-template": "gyomu-tpl",
+  "jiko-houkokusho-template": "jiko-tpl",
+  "jiko-saihatsu-boushi-reibun": "jiko-saihatsu",
+  "kaizen-kijun-kokuji-keikamotsu": "kaizen",
+  "keikamotsu-anzentaisaku-2025": "gimu14",
+  "keikamotsu-hatarakikata": "hatarakikata",
+  "keikamotsu-jittai-toukei": "jittai",
+  "keikamotsu-kiroku-hozon-kikan": "hozon",
+  "keikamotsu-konenashi-shigoto-routes": "konenashi",
+  "keikamotsu-kuro-number-shutoku": "kuro-number",
+  "keikamotsu-tanka-soba-2026": "tanka",
+  "keikamotsu-yami-kouzou": "yami",
+  "nichijou-tenken-kirokubo-template": "tenken-tpl",
+  "seikyusho-template": "seikyu-tpl",
+  "tenko-kiroku-kakikata": "tenko-guide",
+  "tenko-kirokubo-template": "tenko-tpl",
+  "_": "新しい記事はこの行の上に「\"<slug>\": \"<短いID>\",」を1行足す（末尾のカンマを忘れない）"
+}

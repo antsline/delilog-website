@@ -11,7 +11,7 @@ type Props = {
 
 // 記事内のApp Store / Google Playリンク・テンプレDLリンクのクリックを計測する。
 // トップページでも slug="top" で使う。
-// CTA位置は最近傍の [data-cta] 属性（記事: dlbox / inline-N / article-end / footer-link / sticky-bar、
+// CTA位置は最近傍の [data-cta] 属性（記事: dlbox / top / inline-N / article-end / footer-link / sticky / header / mobile-menu、一覧: list、
 // トップ: header / mobile-menu / hero / pricing / final）から判定。
 export function BlogClickTracker({ slug, campaign }: Props) {
   useEffect(() => {

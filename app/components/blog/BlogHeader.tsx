@@ -6,13 +6,13 @@ import { useCallback, useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/app/components/ui/button";
 import { usePathname } from "next/navigation";
-import { campaignFromBlogPath } from "@/lib/storeCampaign";
+import { blogLinkCampaign, slugFromBlogPath } from "@/lib/storeCampaign";
 import { useStoreUrl } from "@/lib/useStoreUrl";
 
 const MOBILE_NAV_ID = "blog-mobile-nav";
 
 export function BlogHeader() {
-  const storeUrl = useStoreUrl(campaignFromBlogPath(usePathname()));
+  const storeUrl = useStoreUrl(blogLinkCampaign(slugFromBlogPath(usePathname()), "header"));
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const closeMenu = useCallback(() => setMobileMenuOpen(false), []);
@@ -43,7 +43,7 @@ export function BlogHeader() {
           </span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav data-cta="header" className="hidden md:flex items-center gap-8">
           <Link href="/#features" className="text-sm font-medium text-slate-600 hover:text-primary transition-colors">
             機能
           </Link>
@@ -72,6 +72,7 @@ export function BlogHeader() {
       {mobileMenuOpen && (
         <div
           id={MOBILE_NAV_ID}
+          data-cta="mobile-menu"
           className="md:hidden absolute top-full left-0 right-0 bg-white border-b border-slate-100 p-4 shadow-xl"
         >
           <div className="flex flex-col gap-4">
