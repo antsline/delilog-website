@@ -31,3 +31,6 @@ export declare function blogStoreCampaign(
 ): { ct: string; source: string; medium: string; content: Placement };
 export declare function shortIdProblems(table: Record<string, string>, slugs: string[]): string[];
 export declare function qrStoreCampaign(source: string): { ct: string; source: string; medium: string };
+export declare function blogQrUrl(siteUrl: string, shortId: string): string;
+export declare function blogQrImagePath(shortId: string): string;
+export declare function shortIdFromQrFile(file: string): string | null;

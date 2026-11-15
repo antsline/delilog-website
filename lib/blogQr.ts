@@ -1,26 +1,33 @@
 import QRCode from "qrcode";
 import shortIdTable from "@/content/blog-short-ids.json";
 import { SITE_URL } from "@/lib/constants";
-import { blogQrSource, shortIdFor } from "@/lib/storeNaming.mjs";
+import { INDEX_ID, TABLE_SENTINEL_KEY, blogQrImagePath, blogQrUrl, shortIdFor } from "@/lib/storeNaming.mjs";
 
 const SHORT_IDS: Record<string, string> = shortIdTable;
 
-// 記事（slug なしなら一覧）の QR の行き先。/download が端末を見てストアに振り分け、読み取り元を数える。
-export function blogQrTarget(slug?: string): string {
-  return `${SITE_URL}/download?from=${blogQrSource(shortIdFor(slug, SHORT_IDS))}`;
+// 記事（slug なしなら一覧）の QR 画像のパス。画像は app/blog-qr/[file]/route.ts がビルド時に作る。
+export function blogQrSrc(slug?: string): string {
+  return blogQrImagePath(shortIdFor(slug, SHORT_IDS));
 }
 
-// PC 表示のカードに出す QR（<img src> にそのまま入れられる data URI）。ビルド時に作る。
-export async function blogQrDataUri(slug?: string): Promise<string> {
+// ビルド時に作る QR の短い ID（全記事＋一覧）。
+export function allQrShortIds(): string[] {
+  const ids = Object.entries(SHORT_IDS)
+    .filter(([key]) => key !== TABLE_SENTINEL_KEY)
+    .map(([, id]) => id);
+  return [...ids, INDEX_ID];
+}
+
+// QR の SVG。行き先は /download?from=blog_<短いID>（端末を見てストアに振り分け、読み取り元を数える）。
+export async function blogQrSvg(shortId: string): Promise<string> {
   try {
-    const svg = await QRCode.toString(blogQrTarget(slug), {
+    return await QRCode.toString(blogQrUrl(SITE_URL, shortId), {
       type: "svg",
       errorCorrectionLevel: "M",
       margin: 2,
       color: { dark: "#16130f", light: "#ffffff" },
     });
-    return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
   } catch (error) {
-    throw new Error(`QR コードを作れませんでした（${slug ?? "blog"}）: ${String(error)}`);
+    throw new Error(`QR コードを作れませんでした（${shortId}）: ${String(error)}`);
   }
 }

@@ -56,6 +56,7 @@
 | T1 | (このコミット) | code-reviewer: CRITICAL/HIGH なし。MEDIUM の配置名の型・URL の回帰テスト・JSON 読み込みエラーを直した。union は publish-due が git CLI の merge --squash で取り込むので効く |
 | T2 | (このコミット) | qrcode 1.5.4 を追加（worktree は node_modules を main と共有せず npm ci）。QR は1枚約2.8KB。code-reviewer はコミット後に結果を受けて追加コミットで対応 |
 | T3 | (このコミット) | 文言の頭に「delilog アプリ」を補った（指示書の文言だけだとアプリ名が出ないため）。gyoumu-no-kiroku-template の blog:stats NG は既存の横長図（作り直し待ち）で今回と無関係 |
+| T2 追補 | (このコミット) | T2 レビュー MEDIUM: data URI がページに何度も入る → /blog-qr/<ID>.svg の静的ルートに変更。QR の行き先と画像名のテストを追加 |
 
 ## 失敗カウンタ
 
@@ -63,3 +64,5 @@
 |---|---|---|---|
 
 ## 未解決の点
+
+- `public/qr/blog.svg`（from=blog_qr）はサイトから参照されなくなった。印刷物などで使っていなければ消してよい

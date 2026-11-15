@@ -7,7 +7,7 @@ import remarkGfm from "remark-gfm";
 import remarkHtml from "remark-html";
 import { blogLinkCampaign, tagStoreLinks } from "@/lib/storeCampaign";
 import { inlinePlacement } from "@/lib/storeNaming.mjs";
-import { blogQrDataUri } from "@/lib/blogQr";
+import { blogQrSrc } from "@/lib/blogQr";
 
 const BLOG_DIR = path.join(process.cwd(), "content", "blog");
 const SLUG_PATTERN = /^[a-z0-9-]+$/;
@@ -34,7 +34,7 @@ export type BlogHeading = {
 };
 
 export type BlogPost = BlogPostMeta & {
-  // PC 表示のカードに出す記事別の QR（data URI）
+  // PC 表示のカードに出す記事別の QR 画像のパス
   qrSrc: string;
   contentHtmlBeforeToc: string;
   contentHtmlAfterToc: string;
@@ -131,7 +131,7 @@ function injectHeadingIds(html: string, headings: BlogHeading[]): string {
 function desktopQrHtml(qrSrc: string): string {
   return [
     '<div class="hidden lg:flex flex-col items-center flex-shrink-0 gap-1.5">',
-    `<img src="${qrSrc}" alt="delilog のダウンロード用QRコード" width="96" height="96" class="rounded-md" />`,
+    `<img src="${qrSrc}" alt="delilog のダウンロード用QRコード" width="96" height="96" class="rounded-md" loading="lazy" />`,
     '<span class="text-[11px] leading-tight text-slate-500 text-center">スマホで読み取って<br />インストール</span>',
     '</div>',
   ].join('');
@@ -214,7 +214,7 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     const { data, content } = await readMarkdownFile(filename);
     const headings = extractH2Headings(content);
     const rawHtml = await markdownToHtml(content);
-    const qrSrc = await blogQrDataUri(slug);
+    const qrSrc = blogQrSrc(slug);
     // カードの中のリンクは配置ごとに印を付け、残った素のリンクは body として付ける。
     const contentHtml = tagStoreLinks(
       transformDlBoxes(transformInlineCtas(injectHeadingIds(rawHtml, headings), slug, qrSrc), slug),

@@ -72,3 +72,17 @@ test('ストアの URL: LP の印は以前と同じ形、記事は utm_content �
   assert.equal(appStoreCampaignHref(AS, 'x'.repeat(50)), `${AS}?pt=127806295&ct=${'x'.repeat(40)}&mt=8`);
   assert.deepEqual([1, 2, 3, 4].map(inlinePlacement), ['inline1', 'inline2', 'inline3', 'body']);
 });
+
+test('記事の QR: 行き先の from が /download の形式に合い、画像のファイル名から ID を戻せる', async () => {
+  const { blogQrUrl, blogQrImagePath, shortIdFromQrFile, INDEX_ID } = await import('../../../lib/storeNaming.mjs');
+  const FROM = /^[a-z0-9_-]{1,32}$/;
+  for (const slug of [...SLUGS, undefined, 'not-registered-very-long-slug-name']) {
+    const id = shortIdFor(slug, TABLE);
+    const from = new URL(blogQrUrl('https://delilog.app', id)).searchParams.get('from');
+    assert.match(from, FROM, `${slug}: ${from}`);
+    assert.equal(shortIdFromQrFile(blogQrImagePath(id).split('/').pop()), id);
+  }
+  assert.equal(blogQrUrl('https://delilog.app', INDEX_ID), 'https://delilog.app/download?from=blog_index');
+  assert.equal(shortIdFromQrFile('../x.svg'), null);
+  assert.equal(shortIdFromQrFile('tenko-tpl.png'), null);
+});
