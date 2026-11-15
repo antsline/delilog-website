@@ -1,22 +1,34 @@
 import { APP_STORE_URL, GOOGLE_PLAY_URL } from "@/lib/constants";
+import shortIdTable from "@/content/blog-short-ids.json";
+import {
+  appStoreCampaignHref,
+  blogStoreCampaign,
+  googlePlayCampaignHref,
+  type Placement,
+} from "@/lib/storeNaming.mjs";
 
-// App Store Connect のプロバイダID（キャンペーンリンクの pt）。
-export const APP_STORE_PROVIDER_ID = "127806295";
-
-// App Store Connect のキャンペーン名（ct）の上限文字数。
-const MAX_CAMPAIGN_LENGTH = 40;
+export type { Placement };
 
 const UTM_SOURCE_PATTERN = /^[a-z0-9_-]{1,32}$/;
 
-// どの入口から来たかの名前。ASC の ct と Google Play の utm_source に同じ値を使う。
-export function blogCampaign(slug?: string): string {
-  return slug ? `blog_${slug}` : "blog";
+const SHORT_IDS: Record<string, string> = shortIdTable;
+
+// ストアのリンクに付ける入口の印。ct は App Store、source / medium / content は Google Play の referrer。
+export type StoreCampaign = {
+  ct: string;
+  source: string;
+  medium: string;
+  content?: string;
+};
+
+// 記事（slug なしなら一覧）の1つの配置の印。命名は lib/storeNaming.mjs、短い ID は content/blog-short-ids.json。
+export function blogLinkCampaign(slug: string | undefined, placement: Placement): StoreCampaign {
+  return blogStoreCampaign(slug, placement, SHORT_IDS);
 }
 
-// usePathname() の値から、ブログのどのページかを名前にする。記事以外（一覧など）は "blog"。
-export function campaignFromBlogPath(pathname: string | null): string {
-  const match = pathname?.match(/^\/blog\/([^/]+)\/?$/);
-  return blogCampaign(match?.[1]);
+// usePathname() の値から記事の slug を取り出す。記事以外（一覧など）は undefined。
+export function slugFromBlogPath(pathname: string | null): string | undefined {
+  return pathname?.match(/^\/blog\/([^/]+)\/?$/)?.[1];
 }
 
 // トップページに来た人の utm_source（例: アプリの紹介なら app_share）を入口の名前にする。無ければ "lp"。
@@ -26,27 +38,27 @@ export function landingCampaign(search: string): string {
 }
 
 export function appStoreCampaignUrl(campaign: string): string {
-  const params = new URLSearchParams({
-    pt: APP_STORE_PROVIDER_ID,
-    ct: campaign.slice(0, MAX_CAMPAIGN_LENGTH),
-    mt: "8",
-  });
-  return `${APP_STORE_URL}?${params.toString()}`;
+  return appStoreCampaignHref(APP_STORE_URL, campaign);
 }
 
-export function googlePlayCampaignUrl(source: string, medium: string): string {
-  const referrer = encodeURIComponent(`utm_source=${source}&utm_medium=${medium}`);
-  return `${GOOGLE_PLAY_URL}&referrer=${referrer}`;
+export function googlePlayCampaignUrl(source: string, medium: string, content?: string): string {
+  return googlePlayCampaignHref(GOOGLE_PLAY_URL, source, medium, content);
 }
 
-// 記事本文（Markdown から作った HTML）の中のストアリンクに、入口の名前を付ける。
-export function tagStoreLinks(html: string, campaign: string): string {
+export function storeUrls(campaign: StoreCampaign): { appStore: string; googlePlay: string } {
+  return {
+    appStore: appStoreCampaignUrl(campaign.ct),
+    googlePlay: googlePlayCampaignUrl(campaign.source, campaign.medium, campaign.content),
+  };
+}
+
+// HTML の中の素のストアリンク（記事の Markdown に書いた URL そのまま）に入口の印を付ける。
+// 印の付いたリンクは URL が変わるので、外側から呼び直しても二重には付かない。
+export function tagStoreLinks(html: string, campaign: StoreCampaign): string {
+  const urls = storeUrls(campaign);
   return html
-    .replaceAll(`href="${APP_STORE_URL}"`, `href="${escapeAttribute(appStoreCampaignUrl(campaign))}"`)
-    .replaceAll(
-      `href="${GOOGLE_PLAY_URL}"`,
-      `href="${escapeAttribute(googlePlayCampaignUrl(campaign, "blog"))}"`,
-    );
+    .replaceAll(`href="${APP_STORE_URL}"`, `href="${escapeAttribute(urls.appStore)}"`)
+    .replaceAll(`href="${GOOGLE_PLAY_URL}"`, `href="${escapeAttribute(urls.googlePlay)}"`);
 }
 
 function escapeAttribute(value: string): string {

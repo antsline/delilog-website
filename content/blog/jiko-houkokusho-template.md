@@ -10,6 +10,8 @@ tags:
   - 事故の記録
   - テンプレート
 author: "delilog編集部"
+ctaTitle: "事故の記録も、日々の点呼・点検と同じ場所に"
+ctaBody: "8項目で入力して、3年分をいつでも探せる状態で残せます。新規作成は14日間無料で試せます。"
 ---
 
 ![軽貨物の事故の記録の書き方｜8項目の記入例とPDF・Excelテンプレ](/blog/jiko-houkokusho-template/og.png)
@@ -29,7 +31,9 @@ author: "delilog編集部"
 
 書き方は第3章・第4章、PDFとExcelの使い分けは第5章で解説します。
 
-[delilog アプリ（無料）](https://apps.apple.com/jp/app/delilog/id6753698337)なら、事故の記録を8項目で入力して3年保存でき、国交省モデル様式のPDFも出せます（事故の記録の新規作成はプレミアム機能）。
+**3年後に紙のファイルから探し出せるかが心配なら、同じ8項目をアプリに残しておく方法もあります。**delilog アプリでの新規作成はプレミアム（14日間無料トライアル）。閲覧とPDF出力は無料です。
+
+[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) [Google Play でダウンロード](https://play.google.com/store/apps/details?id=com.sozel.delilog)
 
 <!--/DLBOX-->
 

@@ -92,8 +92,13 @@ tags:
   - 軽貨物
   - <追加タグ>
 author: "delilog編集部"
+# 任意: 記事末尾のカードの見出しと本文（無ければ共通の文言）
+ctaTitle: "〇〇も、毎日の点呼も、同じアプリで"
+ctaBody: "〇〇は14日間無料で試せます。点呼・日常点検は無料です。"
 ---
 ```
+
+frontmatter とは別に、`content/blog-short-ids.json` に短い ID を1行足す（ストアリンクの計測用。後述の「ストアリンクの入口の印」）。
 
 ### 文字数
 
@@ -155,12 +160,12 @@ author: "delilog編集部"
   <!--/CTA-->
   ```
 
-  - 配置箇所: **記事あたり最大3枚**。
+  - 配置箇所: **記事あたり最大3枚**（冒頭のカードも数える。`blog:stats` が確かめる）。
     1. 記録方法比較の節末（紙/Excel/アプリ）。読者が手段を選ぶ瞬間なので、ここはテキストリンクで済ませず必ずカードにする
-    2. 記事の話題とアプリの機能がぴったり重なる箇所に、もう1枚まで（例: 黒ナンバー取得後の保険・車検 → ドライバー手帳／稼働を数字で管理 → 実績・売上管理）
+    2. 記事の話題とアプリの機能がぴったり重なる箇所に、もう1枚まで（例: 黒ナンバー取得後の保険・車検 → ドライバー手帳／稼働を数字で管理 → 実績・売上管理）。**書き方の解説記事**では、この枠を「冒頭のカード」に使ってよい（リード段落の直後・最初の `---` の前、目次マーカーがあればその直後）。`<!--CTA:top-->` ... `<!--/CTA-->` で囲む（`data-cta="top"`）。紙のテンプレ記事への内部リンクとアプリの案内を並べ、「残し方を選べます」と手段を先に示す（2026-11-15〜。点呼の書き方・業務の記録ガイド・残す記録6種類）
     3. まとめ（最後の章の末尾）
   - カードの本文は「delilog ならこうできる」をその章の話題に寄せて書く（汎用の機能一覧にしない）。書く機能は上のプロダクト事実表と一致させる
-  - 記事末尾には共通のアプリ紹介カード（`BlogCtaCard`）が自動で付くので、まとめのカードと内容を重ねすぎない
+  - 記事末尾には共通のアプリ紹介カード（`BlogCtaCard`）が自動で付くので、まとめのカードと内容を重ねすぎない。見出しと本文は frontmatter の `ctaTitle` / `ctaBody`（どちらも文字列）で記事のテーマに寄せて上書きできる。無ければ共通の文言（「点呼・点検・運行記録を1つに」）
   - 本文中に「delilog なら〜できます」程度の短い言及はOK（リンク・ダウンロードボタンはカードCTAのみに集約）
 - **テンプレ配布記事は冒頭に「即ダウンロード」ボックス（DLBOX）を必ず設置**する。検索意図（テンプレを今すぐDLしたい）に最短で応えるため、リード段落直後・TOC直前に `<!--DLBOX-->` ... `<!--/DLBOX-->` で囲んだカードを置く:
 
@@ -173,18 +178,27 @@ author: "delilog編集部"
 
   詳細解説がある章への参照（1行）。
 
-  最終行はアプリ導線: [delilog アプリ（無料）](https://apps.apple.com/jp/app/delilog/id6753698337)なら〜（1〜2文）。
+  **紙で続けるのが大変なら〜できます。**（読者の悩みに寄せた1文を太字で）delilog アプリなら〜。無料プランか、プレミアムなら14日間無料で試せることを書く。
+
+  [App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) [Google Play でダウンロード](https://play.google.com/store/apps/details?id=com.sozel.delilog)
 
   <!--/DLBOX-->
   ```
 
-  - 構造は「太字見出し → DLリンクのリスト → 章参照1行 → アプリ導線1行（最終段落、上罫線付きでレンダリング）」の順を厳守（CSS が段落位置で装飾を当てるため）
+  - 構造は「太字見出し → DLリンクのリスト → 章参照1行 → アプリの文言（上罫線付き）→ ストアボタンの行（最終段落）」の順を厳守（CSS が段落位置で装飾を当てるため。最後から2つ目の段落が文言、最後の段落がボタンになる）
+  - プレミアム機能（業務の記録・事故の記録の作成・請求書）の記事で「delilog アプリ（無料）」と書かない。「14日間無料で試せます」と書く
   - DLBOX 内のアプリリンクはカードCTA集約ルールの例外として認める（データ根拠: 2026-07 分析でブログ→ストア到達が603クリック中48件と細く、DL導線とアプリ接点が記事最下部に偏っていたため）
-- **ストア/DLクリック計測**: 記事内の App Store / Google Play リンクとテンプレファイルリンクは `BlogClickTracker` が Vercel Analytics カスタムイベント（`app_store_click` / `google_play_click` / `template_download`）で自動計測する。CTA位置は最近傍の `data-cta` 属性（`dlbox` / `inline-N` / `article-end` / `footer-link` / `sticky-bar`）で識別されるため、新しいCTAコンポーネントを作る場合は `data-cta` を必ず付与する
+- **ストア/DLクリック計測**: 記事内の App Store / Google Play リンクとテンプレファイルリンクは `BlogClickTracker` が Vercel Analytics カスタムイベント（`app_store_click` / `google_play_click` / `template_download`）で自動計測する。CTA位置は最近傍の `data-cta` 属性（記事: `dlbox` / `top` / `inline-N` / `article-end` / `footer-link` / `sticky` / `header` / `mobile-menu`、一覧: `list`。`sticky` は 2026-11-15 までは `sticky-bar`）で識別されるため、新しいCTAコンポーネントを作る場合は `data-cta` を必ず付与する
 - **トップページの計測**: トップページも同じ `BlogClickTracker`（`slug="top"`）で数え、`campaign` に入口の名前（`lp` / アプリの紹介なら `lp_app_share`）を付ける
-- **ストアリンクの入口の印**: App Store は `pt=127806295&ct=<入口>`、Google Play は `referrer` の `utm_source=<入口>`。記事は `blog_<slug>`、QR は `qr_<from>`、トップは `lp` / `lp_<utm_source>`。組み立ては `lib/storeCampaign.ts` に集約し、ストアの URL を直書きしない（記事本文の素の URL は表示時に自動で印が付く）
-- **QR コード（`/download`）**: PC 表示のカード（`DesktopQr`・スマホでは非表示）、LP、テンプレートの PDF に QR を置いている。行き先は `https://delilog.app/download?from=<読み取り元>` で、端末を見て App Store / Google Play / LP に振り分け、Vercel Analytics の `qr_download`（`from` / `platform`）で数える。読み取り元は `blog_qr` / `lp_qr` / `template_tenko7` / `template_tenko10` / `template_nichijou` / `template_tenko_xlsx` / `template_jiko` / `template_jiko_xlsx`。新しいテンプレートを配るときも、欄外に1行と QR を入れる（業務の記録テンプレと同じ体裁）
-- **モバイル固定バー**: 全ブログ記事に `BlogStickyAppBar`（スクロール600px超で表示・セッション内解除可能）が付く。記事側での対応は不要
+- **ストアリンクの入口の印**（2026-11-15〜）: 記事ごとの**短い ID** を `content/blog-short-ids.json` に置く（対応表の正。英小文字・数字・ハイフンで20文字まで。`index` は一覧用）。**新しい記事を足すときは、末尾の `"_"` の行の上に `"<slug>": "<短いID>",` を1行足す**（末尾のカンマを忘れない。union で取り込むため。登録漏れは `blog:stats` とテストが止める）
+  - 記事・一覧のリンク: App Store は `pt=127806295&ct=b_<短いID>_<配置>`、Google Play は `referrer` の `utm_source=b_<短いID>&utm_medium=blog&utm_content=<配置>`
+  - 配置: `dlbox` / `top` / `inline1`〜`inline3` / `end`（記事末尾のカード）/ `footer`（記事下の「delilog を試してみる」）/ `header`（ヘッダー・モバイルメニュー）/ `sticky` / `body`（カードの外の素のリンク）/ `list`（一覧のカード）
+  - QR: `ct` と `utm_source` に同じ読み取り元の名前（`from`）を入れ、`utm_medium=qr`
+  - トップは `lp` / `lp_<utm_source>`（`ct` と `utm_source` が同じ）
+  - 2026-11-15 より前は、記事が `ct=blog_<slug>`、QR が `ct=qr_<from>`。App Store Connect で前後を比べるときは短い ID の対応表で読み替える
+  - 命名は `lib/storeNaming.mjs`（テストあり）、組み立ては `lib/storeCampaign.ts` に集約し、ストアの URL を直書きしない（記事本文の素の URL は表示時に、カードの中なら配置ごとに自動で印が付く）
+- **QR コード（`/download`）**: PC 表示のカード（`DesktopQr`・スマホでは非表示）、LP、テンプレートの PDF に QR を置いている。行き先は `https://delilog.app/download?from=<読み取り元>` で、端末を見て App Store / Google Play / LP に振り分け、Vercel Analytics の `qr_download`（`from` / `platform`）で数える。ブログの PC 表示の QR は記事ごとで、読み取り元は `blog_<短いID>`（一覧は `blog_index`）。画像はビルド時に `/blog-qr/<短いID>.svg` として作られる（`app/blog-qr/[file]/route.ts`）。ほかの読み取り元は `lp_qr` / `template_tenko7` / `template_tenko10` / `template_nichijou` / `template_tenko_xlsx` / `template_jiko` / `template_jiko_xlsx`。新しいテンプレートを配るときも、欄外に1行と QR を入れる（業務の記録テンプレと同じ体裁）
+- **モバイル固定バー**: 全ブログ記事に `BlogStickyAppBar`（768px 未満だけ。スクロールを始めたら出し、DL ボックス・本文のカード・記事末尾のカードが画面にある間は隠す。セッション内解除可能）が付く。記事側での対応は不要
 - **外部URL は必ず Markdown リンク構文 `[ラベル](URL)` で記述する**。bare URL を 全角括弧（）の中に置くと、Markdown レンダラーが URL の終端を正しく認識できず、続く日本語テキストまでリンクとして処理されてしまう（実害: リンクのオレンジ色が段落全体に広がる）。
   - NG: `国交省の制度改正ページ（https://www.mlit.go.jp/jidosha/jidosha_tk2_000172.html）では、…`
   - OK: `[国交省の制度改正ページ](https://www.mlit.go.jp/jidosha/jidosha_tk2_000172.html)では、…`

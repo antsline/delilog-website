@@ -28,7 +28,7 @@ function dropExcludedSections(md) {
 /** 本文として読む文字だけを残したテキスト */
 export function bodyText(md) {
   return dropExcludedSections(stripFrontmatter(md))
-    .replace(/<!--(CTA|DLBOX)-->[\s\S]*?<!--\/\1-->/g, '')
+    .replace(/<!--(CTA|DLBOX)(?::top)?-->[\s\S]*?<!--\/\1-->/g, '')
     .replace(/<!--[\s\S]*?-->/g, '')
     .replace(/!\[[^\]]*\]\([^)]*\)/g, '')
     .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
@@ -52,9 +52,19 @@ export function analyzeArticle(md) {
   return {
     chars: countChars(bodyText(md)),
     images: [...body.matchAll(/!\[[^\]]*\]\(([^)\s]+)/g)].map((m) => m[1]),
-    ctaCount: (body.match(/<!--CTA-->/g) ?? []).length,
+    ctaCount: (body.match(/<!--CTA(?::top)?-->/g) ?? []).length,
     hasSummary: /^>\s*\*\*結論/m.test(beforeFirstChapter),
+    dlboxOk: dlboxEndsWithStoreButtons(body),
   };
+}
+
+/** DL ボックスの最後の段落が、ストアボタン（App Store と Google Play のリンクだけ）の行か。DL ボックスが無ければ true */
+function dlboxEndsWithStoreButtons(body) {
+  const box = body.match(/<!--DLBOX-->([\s\S]*?)<!--\/DLBOX-->/);
+  if (!box) return true;
+  const last = box[1].trim().split(/\n\s*\n/).pop() ?? '';
+  const withoutLinks = last.replace(/\[[^\]]*\]\((https:\/\/(?:apps\.apple\.com|play\.google\.com)[^)]*)\)/g, '').trim();
+  return /apps\.apple\.com/.test(last) && /play\.google\.com/.test(last) && withoutLinks === '';
 }
 
 /** PNG のヘッダ（IHDR）から幅と高さを読む。PNG でなければ null */
@@ -68,10 +78,10 @@ const isOg = (path) => /\/og\.png$/.test(path);
 const fmt = (n) => n.toLocaleString('en-US');
 
 /**
- * @param {{chars: number, ctaCount: number, hasSummary: boolean, images: string[]}} stats
+ * @param {{chars: number, ctaCount: number, hasSummary: boolean, images: string[], dlboxOk?: boolean}} stats
  * @param {Record<string, {width: number, height: number}>} imageSizes 画像のパス → 大きさ（無ければ未発見）
  */
-export function checkArticle({ chars, ctaCount, hasSummary, images }, imageSizes) {
+export function checkArticle({ chars, ctaCount, hasSummary, images, dlboxOk = true }, imageSizes) {
   const problems = [];
   if (chars > CHAR_RANGE.max) {
     problems.push(`長すぎる: 本文 ${fmt(chars)}字（${fmt(CHAR_RANGE.min)}〜${fmt(CHAR_RANGE.max)}字。収まらない話題は別記事に分ける）`);
@@ -79,6 +89,7 @@ export function checkArticle({ chars, ctaCount, hasSummary, images }, imageSizes
     problems.push(`短すぎる: 本文 ${fmt(chars)}字（${fmt(CHAR_RANGE.min)}〜${fmt(CHAR_RANGE.max)}字）`);
   }
   if (ctaCount > MAX_CTA) problems.push(`CTA カードが ${ctaCount} 枚（${MAX_CTA}枚まで）`);
+  if (!dlboxOk) problems.push('DL ボックスの最後の段落はストアボタンの行（App Store と Google Play のリンクだけ）にする');
   if (!hasSummary) problems.push('冒頭の要約が無い（最初の章より前に「> **結論**: …」を置く）');
   for (const path of images.filter((p) => !isOg(p))) {
     const size = imageSizes[path];

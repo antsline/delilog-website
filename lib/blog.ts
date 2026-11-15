@@ -5,7 +5,9 @@ import { remark } from "remark";
 import remarkCjkFriendly from "remark-cjk-friendly";
 import remarkGfm from "remark-gfm";
 import remarkHtml from "remark-html";
-import { blogCampaign, tagStoreLinks } from "@/lib/storeCampaign";
+import { blogLinkCampaign, tagStoreLinks } from "@/lib/storeCampaign";
+import { inlinePlacement } from "@/lib/storeNaming.mjs";
+import { blogQrSrc } from "@/lib/blogQr";
 
 const BLOG_DIR = path.join(process.cwd(), "content", "blog");
 const SLUG_PATTERN = /^[a-z0-9-]+$/;
@@ -21,6 +23,9 @@ export type BlogFrontmatter = {
   ogImage?: string;
   tags?: string[];
   author?: string;
+  // 記事末尾のカード（BlogCtaCard）の見出しと本文。無ければ共通の文言
+  ctaTitle?: string;
+  ctaBody?: string;
 };
 
 export type BlogPostMeta = BlogFrontmatter;
@@ -32,6 +37,8 @@ export type BlogHeading = {
 };
 
 export type BlogPost = BlogPostMeta & {
+  // PC 表示のカードに出す記事別の QR 画像のパス
+  qrSrc: string;
   contentHtmlBeforeToc: string;
   contentHtmlAfterToc: string;
   rawContent: string;
@@ -50,6 +57,12 @@ async function readMarkdownFile(filename: string): Promise<{ data: BlogFrontmatt
     throw new Error(
       `Blog post ${filename} is missing required frontmatter (title/description/date/slug).`,
     );
+  }
+
+  for (const key of ["ctaTitle", "ctaBody"] as const) {
+    if (data[key] !== undefined && typeof data[key] !== "string") {
+      throw new Error(`Blog post ${filename}: frontmatter ${key} must be a string.`);
+    }
   }
 
   if (data.updated !== undefined) {
@@ -124,19 +137,27 @@ function injectHeadingIds(html: string, headings: BlogHeading[]): string {
 }
 
 // PC で読んでいる人向けの QR（app/components/blog/DesktopQr.tsx と同じ見た目）。スマホでは出さない。
-const DESKTOP_QR_HTML = [
-  '<div class="hidden lg:flex flex-col items-center flex-shrink-0 gap-1.5">',
-  '<img src="/qr/blog.svg" alt="delilog のダウンロード用QRコード" width="96" height="96" class="rounded-md" />',
-  '<span class="text-[11px] leading-tight text-slate-500 text-center">スマホで読み取って<br />インストール</span>',
-  '</div>',
-].join('');
+function desktopQrHtml(qrSrc: string): string {
+  return [
+    '<div class="hidden lg:flex flex-col items-center flex-shrink-0 gap-1.5">',
+    `<img src="${qrSrc}" alt="delilog のダウンロード用QRコード" width="96" height="96" class="rounded-md" loading="lazy" />`,
+    '<span class="text-[11px] leading-tight text-slate-500 text-center">スマホで読み取って<br />インストール</span>',
+    '</div>',
+  ].join('');
+}
 
-function transformInlineCtas(html: string): string {
+function transformInlineCtas(html: string, slug: string, qrSrc: string): string {
   let ctaIndex = 0;
-  return html.replace(/<!--CTA-->\s*([\s\S]*?)\s*<!--\/CTA-->/g, (_match, inner: string) => {
-    ctaIndex += 1;
+  // <!--CTA:top--> は記事の冒頭のカード（data-cta="top"）。inline-N の番号には数えない。
+  return html.replace(/<!--CTA(:top)?-->\s*([\s\S]*?)\s*<!--\/CTA-->/g, (_match, top: string | undefined, rawInner: string) => {
+    if (!top) {
+      ctaIndex += 1;
+    }
+    const placement = top ? "top" : inlinePlacement(ctaIndex);
+    const dataCta = top ? "top" : `inline-${ctaIndex}`;
+    const inner = tagStoreLinks(rawInner, blogLinkCampaign(slug, placement));
     return [
-      `<aside data-cta="inline-${ctaIndex}" class="not-prose my-12 rounded-2xl bg-gradient-to-br from-primary-50 via-white to-secondary-50 border border-primary-100 p-6 sm:p-8">`,
+      `<aside data-cta="${dataCta}" class="not-prose my-12 rounded-2xl bg-gradient-to-br from-primary-50 via-white to-secondary-50 border border-primary-100 p-6 sm:p-8">`,
       '<div class="flex flex-col sm:flex-row items-start sm:items-center gap-6">',
       '<div class="flex-shrink-0">',
       '<img src="/icon.png" alt="delilog" width="64" height="64" class="rounded-2xl shadow-md" />',
@@ -151,7 +172,7 @@ function transformInlineCtas(html: string): string {
       inner.trim(),
       '</div>',
       '</div>',
-      DESKTOP_QR_HTML,
+      desktopQrHtml(qrSrc),
       '</div>',
       '</aside>',
     ].join('');
@@ -160,8 +181,9 @@ function transformInlineCtas(html: string): string {
 
 // テンプレDL系記事の冒頭に置く「即ダウンロード」ボックス。
 // 検索意図（テンプレを今すぐDLしたい）に最短で応えつつ、離脱前にアプリ導線を1つ確保する。
-function transformDlBoxes(html: string): string {
-  return html.replace(/<!--DLBOX-->\s*([\s\S]*?)\s*<!--\/DLBOX-->/g, (_match, inner: string) => {
+function transformDlBoxes(html: string, slug: string): string {
+  return html.replace(/<!--DLBOX-->\s*([\s\S]*?)\s*<!--\/DLBOX-->/g, (_match, rawInner: string) => {
+    const inner = tagStoreLinks(rawInner, blogLinkCampaign(slug, "dlbox"));
     return [
       '<aside data-cta="dlbox" class="not-prose my-10 rounded-2xl border-2 border-primary/30 bg-white p-6 sm:p-7 shadow-sm">',
       '<div class="dlbox-body">',
@@ -206,9 +228,11 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     const { data, content } = await readMarkdownFile(filename);
     const headings = extractH2Headings(content);
     const rawHtml = await markdownToHtml(content);
+    const qrSrc = blogQrSrc(slug);
+    // カードの中のリンクは配置ごとに印を付け、残った素のリンクは body として付ける。
     const contentHtml = tagStoreLinks(
-      transformDlBoxes(transformInlineCtas(injectHeadingIds(rawHtml, headings))),
-      blogCampaign(slug),
+      transformDlBoxes(transformInlineCtas(injectHeadingIds(rawHtml, headings), slug, qrSrc), slug),
+      blogLinkCampaign(slug, "body"),
     );
 
     const markerIdx = contentHtml.indexOf(TOC_MARKER);
@@ -219,6 +243,7 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
 
     return {
       ...data,
+      qrSrc,
       contentHtmlBeforeToc,
       contentHtmlAfterToc,
       rawContent: content,

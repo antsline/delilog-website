@@ -1,16 +1,33 @@
 import Image from "next/image";
-import { appStoreCampaignUrl, blogCampaign, googlePlayCampaignUrl } from "@/lib/storeCampaign";
+import { blogLinkCampaign, storeUrls, type Placement } from "@/lib/storeCampaign";
 import { DesktopQr } from "@/app/components/blog/DesktopQr";
 
+const DEFAULT_TITLE = "点呼・点検・運行記録を1つに";
+const DEFAULT_BODY = "点呼・日常点検は無料で無制限。運行記録などのプレミアム機能は14日間無料で試せます。";
+
 type Props = {
-  slug: string;
+  // 記事の slug。一覧ページでは省く
+  slug?: string;
+  qrSrc: string;
+  title?: string;
+  body?: string;
+  // 計測用: 入口の印の配置名と data-cta の値
+  placement?: Placement;
+  cta?: string;
 };
 
-export function BlogCtaCard({ slug }: Props) {
-  const campaign = blogCampaign(slug);
+export function BlogCtaCard({
+  slug,
+  qrSrc,
+  title = DEFAULT_TITLE,
+  body = DEFAULT_BODY,
+  placement = "end",
+  cta = "article-end",
+}: Props) {
+  const urls = storeUrls(blogLinkCampaign(slug, placement));
   return (
     <aside
-      data-cta="article-end"
+      data-cta={cta}
       className="not-prose my-12 rounded-2xl bg-gradient-to-br from-primary-50 via-white to-secondary-50 border border-primary-100 p-6 sm:p-8"
     >
       <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
@@ -23,26 +40,24 @@ export function BlogCtaCard({ slug }: Props) {
             <span className="mx-1.5 text-slate-300">·</span>
             <span className="font-semibold text-primary">軽貨物ドライバーのための業務記録アプリ</span>
           </p>
-          <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-2">点呼・点検・運行記録を1つに</h3>
-          <p className="text-sm text-slate-600 mb-4">
-            点呼・日常点検は無料で無制限。運行記録などのプレミアム機能は14日間無料で試せます。
-          </p>
+          <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-2">{title}</h3>
+          <p className="text-sm text-slate-600 mb-4">{body}</p>
           <div className="flex flex-wrap gap-3">
             <a
-              href={appStoreCampaignUrl(campaign)}
+              href={urls.appStore}
               className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-all hover:scale-105"
             >
               App Store でダウンロード
             </a>
             <a
-              href={googlePlayCampaignUrl(campaign, "blog")}
+              href={urls.googlePlay}
               className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-all hover:scale-105"
             >
               Google Play でダウンロード
             </a>
           </div>
         </div>
-        <DesktopQr src="/qr/blog.svg" />
+        <DesktopQr src={qrSrc} />
       </div>
     </aside>
   );

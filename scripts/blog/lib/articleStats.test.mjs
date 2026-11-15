@@ -100,3 +100,19 @@ test('地の文の URL を消しても、続く日本語は数える', () => {
   const md = '---\ntitle: t\n---\n\nhttps://www.mlit.go.jp/x.htmlを参照してください。\n';
   assert.match(bodyText(md), /を参照してください/);
 });
+
+test('冒頭の CTA（<!--CTA:top-->）も CTA として数え、字数からは除く', () => {
+  const md = '---\ntitle: x\n---\n\n> **結論**: あ\n\n<!--CTA:top-->\n\n**見出し**\n\nいいいい\n\n<!--/CTA-->\n\n## 1. 章\n\nうう\n\n<!--CTA-->\n\nええ\n\n<!--/CTA-->\n';
+  const a = analyzeArticle(md);
+  assert.equal(a.ctaCount, 2);
+  assert.doesNotMatch(bodyText(md), /いいいい|見出し/);
+});
+
+test('DL ボックスの最後の段落はストアボタンの行（無ければ指摘）', () => {
+  const ok = '<!--DLBOX-->\n\n**見出し**\n\n- [a](/a.pdf)\n\n章\n\n**文言**説明\n\n[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) [Google Play でダウンロード](https://play.google.com/store/apps/details?id=com.sozel.delilog)\n\n<!--/DLBOX-->';
+  const ng = '<!--DLBOX-->\n\n**見出し**\n\n- [a](/a.pdf)\n\n[delilog アプリ](https://apps.apple.com/jp/app/delilog/id6753698337)なら〜\n\n<!--/DLBOX-->';
+  assert.equal(analyzeArticle(ok).dlboxOk, true);
+  assert.equal(analyzeArticle(ng).dlboxOk, false);
+  assert.equal(analyzeArticle('本文だけ').dlboxOk, true);
+  assert.equal(checkArticle({ chars: 5000, ctaCount: 2, hasSummary: true, images: [], dlboxOk: false }, {}).length, 1);
+});

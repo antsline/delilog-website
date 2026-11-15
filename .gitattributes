@@ -4,3 +4,5 @@
 # 表の行を書き換えるファイル（BLOG_BACKLOG・BLOG_SCHEDULE）は union にしない（行が黙って二重になる）。
 # その2つは「週の最初の1本の PR だけが直す」で衝突を避ける（.claude/commands/blog-week.md）。
 .claude/knowledge/misconceptions.md merge=union
+# 記事の短い ID の対応表。新しい記事の PR は末尾の "_" の行の上にカンマ付きで1行足すので、union で両方残しても JSON が壊れない。
+content/blog-short-ids.json merge=union

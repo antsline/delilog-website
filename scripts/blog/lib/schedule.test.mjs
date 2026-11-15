@@ -59,6 +59,7 @@ test('記事の PR が変えてよいのは記事・図・公開画像・共有�
   assert.deepEqual(
     disallowedPaths([
       'content/blog/a.md',
+      'content/blog-short-ids.json',
       'content/figures/a/og.json',
       'public/blog/a/og.png',
       '.claude/knowledge/misconceptions.md',

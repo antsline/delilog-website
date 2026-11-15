@@ -9,9 +9,11 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { analyzeArticle, checkArticle, pngSize } from './lib/articleStats.mjs';
+import { shortIdProblems } from '../../lib/storeNaming.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const BLOG_DIR = join(ROOT, 'content', 'blog');
+const SHORT_ID_FILE = join(ROOT, 'content', 'blog-short-ids.json');
 const SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
 function imageSizes(paths) {
@@ -25,11 +27,21 @@ function imageSizes(paths) {
   return sizes;
 }
 
+function readShortIds() {
+  try {
+    return JSON.parse(readFileSync(SHORT_ID_FILE, 'utf8'));
+  } catch (error) {
+    throw new Error(`content/blog-short-ids.json が読めません（行の足し方を確かめてください）: ${error.message}`);
+  }
+}
+
 function inspect(slug) {
   const file = join(BLOG_DIR, `${slug}.md`);
   if (!existsSync(file)) throw new Error(`記事がありません: ${file}`);
   const stats = analyzeArticle(readFileSync(file, 'utf8'));
-  return { slug, stats, problems: checkArticle(stats, imageSizes(stats.images)) };
+  const shortIds = readShortIds();
+  const problems = [...checkArticle(stats, imageSizes(stats.images)), ...shortIdProblems(shortIds, [slug])];
+  return { slug, stats, problems };
 }
 
 function main() {

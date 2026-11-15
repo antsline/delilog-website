@@ -28,7 +28,9 @@ author: "delilog編集部"
 
 全列の意味は第3章、記入手順と記入済みサンプルは第4章・第5章で解説しています。
 
-業務の記録は「毎業務ごとに書き続けられるか」がカギです。[delilog アプリ](https://apps.apple.com/jp/app/delilog/id6753698337)なら開始・終了・休憩をタップで記録するだけで、同じ様式のPDFが自動で出来上がります（14日間無料トライアル）。
+**業務のたびに用紙を出すのが続くか不安なら、集荷・休憩・納品のときにスマホへ残す方法もあります。**delilog アプリでの業務の記録の作成はプレミアム機能で、14日間無料で試せます。
+
+[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) [Google Play でダウンロード](https://play.google.com/store/apps/details?id=com.sozel.delilog)
 
 <!--/DLBOX-->
 

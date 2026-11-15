@@ -1,4 +1,5 @@
-import { appStoreCampaignUrl, googlePlayCampaignUrl } from "@/lib/storeCampaign";
+import { storeUrls } from "@/lib/storeCampaign";
+import { qrStoreCampaign } from "@/lib/storeNaming.mjs";
 
 export type StorePlatform = "android" | "ios" | "other";
 
@@ -20,12 +21,14 @@ export function detectPlatform(userAgent: string): StorePlatform {
 }
 
 // 端末ごとの行き先。PC など判別できない端末は、両方のストアのボタンがある LP に送る。
+// App Store の ct と Google Play の utm_source は同じ読み取り元の名前（例: template_tenko7）。
 export function buildStoreRedirect(platform: StorePlatform, source: string): string {
+  const urls = storeUrls(qrStoreCampaign(source));
   if (platform === "android") {
-    return googlePlayCampaignUrl(source, "qr");
+    return urls.googlePlay;
   }
   if (platform === "ios") {
-    return appStoreCampaignUrl(`qr_${source}`);
+    return urls.appStore;
   }
   return `/?utm_source=${source}&utm_medium=qr`;
 }
