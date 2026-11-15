@@ -10,6 +10,8 @@ tags:
   - 事故の記録
   - テンプレート
 author: "delilog編集部"
+ctaTitle: "事故の記録も、日々の点呼・点検と同じ場所に"
+ctaBody: "8項目で入力して、3年分をいつでも探せる状態で残せます。新規作成は14日間無料で試せます。"
 ---
 
 ![軽貨物の事故の記録の書き方｜8項目の記入例とPDF・Excelテンプレ](/blog/jiko-houkokusho-template/og.png)

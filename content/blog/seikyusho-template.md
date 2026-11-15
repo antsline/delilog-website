@@ -10,6 +10,8 @@ tags:
   - 請求書
   - テンプレート
 author: "delilog編集部"
+ctaTitle: "月末の請求書も、毎日の点呼も、同じアプリで"
+ctaBody: "実績からインボイス対応の請求書を作成。点呼・日常点検は無料、請求書は14日間無料で試せます。"
 ---
 
 ![軽貨物の請求書テンプレート｜インボイス対応のPDF・Excelと記入例](/blog/seikyusho-template/og.png)

@@ -37,7 +37,7 @@
 - [x] T1: 計測の命名を短い ID に切り替える — 対応表 JSON・命名の純関数とテスト・本文リンク／記事末尾／記事下リンク／ヘッダー／固定バーに配置別の印・/download の ct と utm_source を揃える・予約公開の許可リストと blog:stats の登録漏れチェック
 - [x] T2: PC 表示の QR を記事別にする — `from=blog_<ID>` の QR をビルド時に SVG で作り、本文 CTA と記事末尾カードに出す
 - [x] T3: DL ボックスにストアボタンと記事別の文言（指示書タスク1・2）
-- [ ] T4: 記事末尾カードの見出し・本文を frontmatter で上書き（タスク3）
+- [x] T4: 記事末尾カードの見出し・本文を frontmatter で上書き（タスク3）
 - [ ] T5: 解説記事の冒頭 CTA（`<!--CTA:top-->`、タスク5。6種類の記事は CTA 上限3枚を守るため第3章末のカードと入れ替え）
 - [ ] T6: モバイル固定バーの手直し（タスク6）
 - [ ] T7: /blog 一覧の CTA（タスク7）
@@ -57,6 +57,7 @@
 | T2 | (このコミット) | qrcode 1.5.4 を追加（worktree は node_modules を main と共有せず npm ci）。QR は1枚約2.8KB。code-reviewer はコミット後に結果を受けて追加コミットで対応 |
 | T3 | (このコミット) | 文言の頭に「delilog アプリ」を補った（指示書の文言だけだとアプリ名が出ないため）。gyoumu-no-kiroku-template の blog:stats NG は既存の横長図（作り直し待ち）で今回と無関係 |
 | T2 追補 | (このコミット) | T2 レビュー MEDIUM: data URI がページに何度も入る → /blog-qr/<ID>.svg の静的ルートに変更。QR の行き先と画像名のテストを追加 |
+| T4 | (このコミット) | frontmatter の ctaTitle / ctaBody。文字列以外はビルドで止める。BlogCtaCard は一覧でも使えるよう slug 省略・配置名・data-cta を受け取る |
 
 ## 失敗カウンタ
 

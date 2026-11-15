@@ -229,7 +229,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         );
       })()}
 
-      <BlogCtaCard slug={post.slug} qrSrc={post.qrSrc} />
+      <BlogCtaCard slug={post.slug} qrSrc={post.qrSrc} title={post.ctaTitle} body={post.ctaBody} />
 
       <div className="mt-16 pt-8 border-t border-slate-200 flex items-center justify-between">
         <Link

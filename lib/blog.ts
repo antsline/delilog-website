@@ -23,6 +23,9 @@ export type BlogFrontmatter = {
   ogImage?: string;
   tags?: string[];
   author?: string;
+  // 記事末尾のカード（BlogCtaCard）の見出しと本文。無ければ共通の文言
+  ctaTitle?: string;
+  ctaBody?: string;
 };
 
 export type BlogPostMeta = BlogFrontmatter;
@@ -54,6 +57,12 @@ async function readMarkdownFile(filename: string): Promise<{ data: BlogFrontmatt
     throw new Error(
       `Blog post ${filename} is missing required frontmatter (title/description/date/slug).`,
     );
+  }
+
+  for (const key of ["ctaTitle", "ctaBody"] as const) {
+    if (data[key] !== undefined && typeof data[key] !== "string") {
+      throw new Error(`Blog post ${filename}: frontmatter ${key} must be a string.`);
+    }
   }
 
   if (data.updated !== undefined) {

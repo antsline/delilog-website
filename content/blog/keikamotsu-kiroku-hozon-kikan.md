@@ -9,6 +9,8 @@ tags:
   - 軽貨物
   - 保存期間
 author: "delilog編集部"
+ctaTitle: "保存期間の違う記録を、1つのアプリで"
+ctaBody: "点呼・日常点検は無料。業務の記録や事故の記録は14日間無料で試せます。"
 ---
 
 ![軽貨物で残す記録は6種類。保存期間は1年・2年・3年の3つに分かれる](/blog/keikamotsu-kiroku-hozon-kikan/og.png)
