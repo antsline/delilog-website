@@ -21,6 +21,16 @@ ctaBody: "点呼・日常点検は無料。業務の記録や事故の記録は1
 
 講習や届出も含めた義務の全体は、[軽貨物（黒ナンバー）の義務14項目チェックリスト](/blog/keikamotsu-anzentaisaku-2025)にまとめています。
 
+<!--CTA:top-->
+
+**種類と保存期間を確認したあと、紙で分けるか、1つのアプリにまとめるかを選べます。**
+
+delilog アプリなら、点呼・日常点検は無料です。
+
+[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) [Google Play でダウンロード](https://play.google.com/store/apps/details?id=com.sozel.delilog)
+
+<!--/CTA-->
+
 ---
 
 ## 1. 一覧表：保存期間が決まっている6つの記録
@@ -129,16 +139,6 @@ ctaBody: "点呼・日常点検は無料。業務の記録や事故の記録は1
 - 死傷者が出た事故を起こした人
 
 特別な指導の記録と診断の結果は、台帳に記録・添付して残すよう国交省の FAQ が示しています。2025年3月末までに届け出ていた事業者は、2028年3月までに行えばよいとされています（国交省リーフレット）。
-
-<!--CTA-->
-
-**指導・監督の記録と台帳を、スマホで1か所に**
-
-delilog なら、指導・監督の実施日時・内容・対象者を記録できます（入力は無料）。ドライバー手帳では適性診断などの期限を通知し、運転者等台帳を PDF で出せます。
-
-[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) [Google Play でダウンロード](https://play.google.com/store/apps/details?id=com.sozel.delilog)
-
-<!--/CTA-->
 
 ---
 

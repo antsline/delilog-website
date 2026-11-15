@@ -20,6 +20,16 @@ author: "delilog編集部"
 
 様式のダウンロードが目的の方は[軽貨物の点呼記録簿テンプレート](/blog/tenko-kirokubo-template)、義務14項目の全体像は[軽貨物（黒ナンバー）の義務14項目チェックリスト](/blog/keikamotsu-anzentaisaku-2025)をどうぞ。
 
+<!--CTA:top-->
+
+**欄の書き方を見る前に、残し方を選べます。**
+
+紙のテンプレは[点呼記録簿テンプレート](/blog/tenko-kirokubo-template)から無料でダウンロードできます。delilog アプリなら、点呼はボタンで約30秒。無料プラン・アカウント登録なしで始められます。
+
+[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) [Google Play でダウンロード](https://play.google.com/store/apps/details?id=com.sozel.delilog)
+
+<!--/CTA-->
+
 ---
 
 ## 1. 点呼記録で残すのは何か

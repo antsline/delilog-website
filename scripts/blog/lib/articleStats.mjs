@@ -28,7 +28,7 @@ function dropExcludedSections(md) {
 /** 本文として読む文字だけを残したテキスト */
 export function bodyText(md) {
   return dropExcludedSections(stripFrontmatter(md))
-    .replace(/<!--(CTA|DLBOX)-->[\s\S]*?<!--\/\1-->/g, '')
+    .replace(/<!--(CTA|DLBOX)(?::top)?-->[\s\S]*?<!--\/\1-->/g, '')
     .replace(/<!--[\s\S]*?-->/g, '')
     .replace(/!\[[^\]]*\]\([^)]*\)/g, '')
     .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
@@ -52,7 +52,7 @@ export function analyzeArticle(md) {
   return {
     chars: countChars(bodyText(md)),
     images: [...body.matchAll(/!\[[^\]]*\]\(([^)\s]+)/g)].map((m) => m[1]),
-    ctaCount: (body.match(/<!--CTA-->/g) ?? []).length,
+    ctaCount: (body.match(/<!--CTA(?::top)?-->/g) ?? []).length,
     hasSummary: /^>\s*\*\*結論/m.test(beforeFirstChapter),
   };
 }

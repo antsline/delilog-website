@@ -24,6 +24,16 @@ author: "delilog編集部"
 
 <!--TOC-->
 
+<!--CTA:top-->
+
+**6項目を毎日手書きで続けるのが現実的かどうか、先にだけ書いておきます。**
+
+無料のPDFテンプレは[業務の記録テンプレ](/blog/gyoumu-no-kiroku-template)にあります。delilog アプリなら、開始・休憩・納品のときにボタンで残せて、14日間無料で試せます。
+
+[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) [Google Play でダウンロード](https://play.google.com/store/apps/details?id=com.sozel.delilog)
+
+<!--/CTA-->
+
 > **法令義務の全体像から知りたい方へ**
 > 安全対策強化14項目の全体像は [軽貨物ドライバーの法令義務14項目｜2025年4月施行「安全対策強化」完全ガイド](/blog/keikamotsu-anzentaisaku-2025) にまとめています。本記事は、そのうち「業務の記録」だけを深掘りした記事です。
 

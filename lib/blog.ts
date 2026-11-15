@@ -148,11 +148,16 @@ function desktopQrHtml(qrSrc: string): string {
 
 function transformInlineCtas(html: string, slug: string, qrSrc: string): string {
   let ctaIndex = 0;
-  return html.replace(/<!--CTA-->\s*([\s\S]*?)\s*<!--\/CTA-->/g, (_match, rawInner: string) => {
-    ctaIndex += 1;
-    const inner = tagStoreLinks(rawInner, blogLinkCampaign(slug, inlinePlacement(ctaIndex)));
+  // <!--CTA:top--> は記事の冒頭のカード（data-cta="top"）。inline-N の番号には数えない。
+  return html.replace(/<!--CTA(:top)?-->\s*([\s\S]*?)\s*<!--\/CTA-->/g, (_match, top: string | undefined, rawInner: string) => {
+    if (!top) {
+      ctaIndex += 1;
+    }
+    const placement = top ? "top" : inlinePlacement(ctaIndex);
+    const dataCta = top ? "top" : `inline-${ctaIndex}`;
+    const inner = tagStoreLinks(rawInner, blogLinkCampaign(slug, placement));
     return [
-      `<aside data-cta="inline-${ctaIndex}" class="not-prose my-12 rounded-2xl bg-gradient-to-br from-primary-50 via-white to-secondary-50 border border-primary-100 p-6 sm:p-8">`,
+      `<aside data-cta="${dataCta}" class="not-prose my-12 rounded-2xl bg-gradient-to-br from-primary-50 via-white to-secondary-50 border border-primary-100 p-6 sm:p-8">`,
       '<div class="flex flex-col sm:flex-row items-start sm:items-center gap-6">',
       '<div class="flex-shrink-0">',
       '<img src="/icon.png" alt="delilog" width="64" height="64" class="rounded-2xl shadow-md" />',
