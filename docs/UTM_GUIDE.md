@@ -62,3 +62,15 @@ URLを手でいじるのが面倒な場合、以下のツールでパラメー�
 
 - [Google Campaign URL Builder](https://ga-dev-tools.google/campaign-url-builder/)
 - ブラウザのブックマークレット化も可能（必要なら相談）
+
+## サイトからストアへのリンクの印（参考）
+
+ここまでは「サイトに来る」リンクの UTM。サイトから App Store / Google Play へ出ていくリンクには、別の印が自動で付く（記事を書く人が付ける必要はない）。正は `CLAUDE.md` の「ストアリンクの入口の印」と `content/blog-short-ids.json`。
+
+| 行き先 | 印 | 例（点呼記録簿テンプレの DL ボックス） |
+|---|---|---|
+| App Store | `ct=b_<短いID>_<配置>` | `ct=b_tenko-tpl_dlbox` |
+| Google Play | `referrer` に `utm_source=b_<短いID>&utm_medium=blog&utm_content=<配置>` | `utm_source=b_tenko-tpl&utm_content=dlbox` |
+| QR（`/download?from=blog_<短いID>`） | `ct` と `utm_source` に同じ `blog_<短いID>`、`utm_medium=qr` | `ct=blog_tenko-tpl` |
+
+2026-11-15 より前の印は `ct=blog_<slug>`（記事）・`ct=qr_<from>`（QR）。

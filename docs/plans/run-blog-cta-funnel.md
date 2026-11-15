@@ -42,7 +42,7 @@
 - [x] T6: モバイル固定バーの手直し（タスク6）
 - [x] T7: /blog 一覧の CTA（タスク7）
 - [x] T8: ヘッダー／モバイルメニューの文言（タスク8）
-- [ ] T9: CLAUDE.md・UTM ガイド・執筆パイプラインの説明を新しい書き方と命名に合わせる
+- [x] T9: CLAUDE.md・UTM ガイド・執筆パイプラインの説明を新しい書き方と命名に合わせる
 - [ ] T10: ローカルで 375px と PC 幅の表示とリンクの印を確かめる（直しがあれば同じコミットで）
 
 ## リスクのあるタスク
@@ -62,6 +62,7 @@
 | T6 | (このコミット) | md 未満（768px 未満）で表示・1px でもスクロールしたら出す・本文の CTA（dlbox / top / inline-N / article-end）が画面にある間は IntersectionObserver で隠す。sessionStorage は try/catch |
 | T7 | (このコミット) | 記事末尾と同じ BlogCtaCard を見出しの下に。一覧にはクリック計測が無かったので BlogClickTracker（slug="index"）も足した |
 | T8 | (このコミット) | ブログのヘッダー（PC のナビ・モバイルメニュー）だけ。トップページのヘッダーは非目標なので触らない |
+| T9 | (このコミット) | CLAUDE.md（CTA の冒頭枠・DLBOX の型・frontmatter・印の命名・QR・固定バー）、blog-writer、write-blog（短い ID の登録）、UTM_GUIDE |
 
 ## 失敗カウンタ
 

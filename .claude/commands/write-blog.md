@@ -125,7 +125,7 @@ WORKTREE: <絶対パス>
 
 - [ ] T1: ファクトチェック — 03-fact-check.md。裏が取れない主張は「削除」「書き換え」と判定
 - [ ] T2: プロダクト整合性 — 04-consistency.md
-- [ ] T3: 執筆 — content/blog/<slug>.md。blog:stats が OK
+- [ ] T3: 執筆 — content/blog/<slug>.md と content/blog-short-ids.json の1行。blog:stats が OK
 - [ ] T4: 図と OG — content/figures/<slug>/。blog:figures が OK
 - [ ] T5: 最終レビュー — 06-review.md。5つの検証コマンドがすべて OK、スマホのスクショを目で確認
 - [ ] T6: 公開準備 — 相互リンクと BLOG_BACKLOG の更新、blog/<slug> を push、プレビュー URL を取得
@@ -169,7 +169,7 @@ cd "$WT" && [ "$(git rev-parse --abbrev-ref HEAD)" = "blog/$SLUG" ] \
 
 1. `mode: skeleton` → `05a-skeleton.md`
 2. `mode: sections` を2つ（例 `1-3` と `4-6`。後半は FAQ・まとめを含む。章が4つなら `1-2` と `3-4`）→ `05b-*.md` / `05c-*.md`
-3. `mode: merge` → `content/blog/<slug>.md`（予約モードの `date` は上の表のとおり）。`npm run blog:stats -- <slug>` が OK になるまで削る（足りなければ「人の判断が要る点」に記録）。**既存記事の相互リンクはここでは書かない**（T6 で行う）
+3. `mode: merge` → `content/blog/<slug>.md`（予約モードの `date` は上の表のとおり）。あわせて `content/blog-short-ids.json` の末尾の `"_"` の行の上に `"<slug>": "<短いID>",` を1行足す（英小文字・数字・ハイフンで20文字まで。既存と重ねない）。`npm run blog:stats -- <slug>` が OK になるまで削る（足りなければ「人の判断が要る点」に記録）。**既存記事の相互リンクはここでは書かない**（T6 で行う）
 
 ### T4 図と OG
 
