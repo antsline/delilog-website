@@ -2,7 +2,7 @@
 
 作成: 2026-11-15
 ブランチ: feat/blog-cta-funnel（worktree `.claude/worktrees/blog-cta`。main のチェックアウトにあるオーナーの未コミット変更に触れないため）
-状態: 実行中
+状態: 完了
 
 元の指示: `~/Downloads/delilog-blog-cta-claude-code.md`（2026-11-15 版）。方針は会話で提示し、指示書の再送で了承。
 
@@ -64,6 +64,7 @@
 | T8 | (このコミット) | ブログのヘッダー（PC のナビ・モバイルメニュー）だけ。トップページのヘッダーは非目標なので触らない |
 | T9 | (このコミット) | CLAUDE.md（CTA の冒頭枠・DLBOX の型・frontmatter・印の命名・QR・固定バー）、blog-writer、write-blog（短い ID の登録）、UTM_GUIDE |
 | T10 | (このコミット) | 対象9記事＋/blog を 1280 / 375 / 375（Android の UA）で puppeteer 確認。全リンクの ct は最大23文字。Android では header / footer / sticky が Google Play に切り替わる。固定バーは CTA の上で隠れる。冒頭カードの内部リンクに色が無かったので globals.css で付けた |
+| 最終レビュー | (このコミット) | code-reviewer: CRITICAL/HIGH なし。MEDIUM の「DL ボックスの型を検査していない」→ blog:stats で最後の段落がストアボタンの行かを確かめる。「固定バーで同じリンクが2回読まれる」→ 文言側を aria-hidden。計測名の変更と保存期間の記事のカード入れ替えは意図どおり（最終報告に記載） |
 
 ## 失敗カウンタ
 

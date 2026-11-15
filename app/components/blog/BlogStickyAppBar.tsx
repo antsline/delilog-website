@@ -95,7 +95,7 @@ export function BlogStickyAppBar() {
     >
       <div className="flex items-center gap-3">
         <Image src="/icon.png" alt="delilog" width={40} height={40} className="rounded-xl flex-shrink-0" />
-        <a href={storeUrl} className="flex-1 min-w-0">
+        <a href={storeUrl} className="flex-1 min-w-0" aria-hidden="true" tabIndex={-1}>
           <span className="block text-sm font-bold text-slate-900 leading-snug">紙の代わりに、アプリで記録する</span>
           <span className="block text-xs text-slate-500">点呼・点検は無料</span>
         </a>
