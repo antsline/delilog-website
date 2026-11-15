@@ -31,7 +31,9 @@ author: "delilog編集部"
 
 記入例は第3章、型の選び方は第4章で紹介しています。
 
-[delilog アプリ（無料）](https://apps.apple.com/jp/app/delilog/id6753698337)なら、点呼をボタンで記録し、国交省のモデル様式に準拠した週単位の PDF を出せます。
+**毎週印刷して手で書くのが面倒なら、同じ欄をアプリのボタンで記録できます。**delilog の点呼は無料プランで使えます。アカウント登録なしで、今日の点呼から始められます。
+
+[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) [Google Play でダウンロード](https://play.google.com/store/apps/details?id=com.sozel.delilog)
 
 <!--/DLBOX-->
 

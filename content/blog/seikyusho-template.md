@@ -29,7 +29,9 @@ author: "delilog編集部"
 
 欄の書き方は第2章・第3章、消費税の計算は第4章で解説します。
 
-[delilog アプリ（無料）](https://apps.apple.com/jp/app/delilog/id6753698337)なら、日々の配送の実績から売上を集計し、インボイス対応の請求書をアプリで作れます（請求書の作成はプレミアム機能）。
+**毎月、屋号や振込先を書き写すのが面倒なら、日々の実績からインボイス対応の請求書を作れます。**delilog アプリでの請求書の作成はプレミアム機能・14日間無料で試せます。
+
+[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) [Google Play でダウンロード](https://play.google.com/store/apps/details?id=com.sozel.delilog)
 
 <!--/DLBOX-->
 

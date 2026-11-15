@@ -29,7 +29,9 @@ author: "delilog編集部"
 
 書き方は第3章、×が付いた日の扱いは第4章で説明します。
 
-[delilog アプリ（無料）](https://apps.apple.com/jp/app/delilog/id6753698337)なら、同じ15項目をスマホでタップして記録し、この様式の PDF で出せます。
+**毎日15項目を紙に○×し続けるのが大変なら、同じ15項目をタップするだけにできます。**delilog は初期値が「良好」なので、異常がある日だけ直します。無料プラン・登録不要です。
+
+[App Store でダウンロード](https://apps.apple.com/jp/app/delilog/id6753698337) [Google Play でダウンロード](https://play.google.com/store/apps/details?id=com.sozel.delilog)
 
 <!--/DLBOX-->
 
