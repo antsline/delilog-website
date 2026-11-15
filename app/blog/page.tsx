@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { BlogArticleCard } from "@/app/components/blog/BlogArticleCard";
+import { BlogClickTracker } from "@/app/components/blog/BlogClickTracker";
+import { BlogCtaCard } from "@/app/components/blog/BlogCtaCard";
+import { blogQrSrc } from "@/lib/blogQr";
 import { getAllPostMetas } from "@/lib/blog";
 import { SITE_URL } from "@/lib/constants";
 
@@ -26,7 +29,8 @@ export default async function BlogIndexPage() {
 
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-      <header className="mb-12 sm:mb-16 text-center">
+      <BlogClickTracker slug="index" />
+      <header className="mb-8 text-center">
         <p className="text-primary font-semibold tracking-wide uppercase mb-3 text-sm">Blog</p>
         <h1 className="text-3xl sm:text-5xl font-bold text-slate-900 mb-4 tracking-tight">
           軽貨物ドライバーのための情報ブログ
@@ -35,6 +39,16 @@ export default async function BlogIndexPage() {
           法令対応・業務効率化・アプリ活用のヒントをお届けします。
         </p>
       </header>
+
+      <div className="max-w-3xl mx-auto mb-12 sm:mb-16">
+        <BlogCtaCard
+          qrSrc={blogQrSrc()}
+          title="点検・点呼・運行記録を、スマホ1台で残すアプリもあります。"
+          body="点呼と日常点検は無料。アカウント登録なしで始められます。"
+          placement="list"
+          cta="list"
+        />
+      </div>
 
       {posts.length === 0 ? (
         <p className="text-center text-slate-500">記事は近日公開予定です。</p>

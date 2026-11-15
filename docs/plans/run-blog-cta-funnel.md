@@ -40,7 +40,7 @@
 - [x] T4: 記事末尾カードの見出し・本文を frontmatter で上書き（タスク3）
 - [x] T5: 解説記事の冒頭 CTA（`<!--CTA:top-->`、タスク5。6種類の記事は CTA 上限3枚を守るため第3章末のカードと入れ替え）
 - [x] T6: モバイル固定バーの手直し（タスク6）
-- [ ] T7: /blog 一覧の CTA（タスク7）
+- [x] T7: /blog 一覧の CTA（タスク7）
 - [ ] T8: ヘッダー／モバイルメニューの文言（タスク8）
 - [ ] T9: CLAUDE.md・UTM ガイド・執筆パイプラインの説明を新しい書き方と命名に合わせる
 - [ ] T10: ローカルで 375px と PC 幅の表示とリンクの印を確かめる（直しがあれば同じコミットで）
@@ -60,6 +60,7 @@
 | T4 | (このコミット) | frontmatter の ctaTitle / ctaBody。文字列以外はビルドで止める。BlogCtaCard は一覧でも使えるよう slug 省略・配置名・data-cta を受け取る |
 | T5 | (このコミット) | <!--CTA:top--> は inline-N の番号に数えず data-cta="top"。blog:stats も CTA として数える。6種類の記事は第3章末のカードを外して3枚に。gyoumu-no-kiroku-kakikata の blog:stats NG（字数・図・結論）は旧ルールの記事の既存問題 |
 | T6 | (このコミット) | md 未満（768px 未満）で表示・1px でもスクロールしたら出す・本文の CTA（dlbox / top / inline-N / article-end）が画面にある間は IntersectionObserver で隠す。sessionStorage は try/catch |
+| T7 | (このコミット) | 記事末尾と同じ BlogCtaCard を見出しの下に。一覧にはクリック計測が無かったので BlogClickTracker（slug="index"）も足した |
 
 ## 失敗カウンタ
 
