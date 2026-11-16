@@ -18,7 +18,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-gyoumu-no-ki
 
 ## タスク
 
-- [ ] T1: ファクトチェック — 03-fact-check.md。裏が取れない主張は「削除」「書き換え」と判定
+- [x] T1: ファクトチェック — 03-fact-check.md。裏が取れない主張は「削除」「書き換え」と判定
 - [ ] T2: プロダクト整合性 — 04-consistency.md
 - [ ] T3: 執筆 — content/blog/gyoumu-no-kiroku-template.md と content/blog-short-ids.json の1行（既存 gyomu-tpl）。blog:stats が OK
 - [ ] T4: 図と OG — content/figures/gyoumu-no-kiroku-template/。blog:figures が OK
@@ -29,6 +29,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-gyoumu-no-ki
 
 | タスク | コミット | メモ |
 |---|---|---|
+| T1 | (このコミット) | 採用6・書き換え8・削除3。M067〜M069 追加 |
 
 ## 失敗カウンタ
 
@@ -37,3 +38,5 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-gyoumu-no-ki
 
 ## 最終報告に載せる項目
 
+- ファクトチェック: 採用6・書き換え8・削除3（03-fact-check.md）。外した主張: 事故と同日の業務記録3年保存／罰則（最大100万円）／約4割増の統計／日常点検1年保存／30分以上の休憩だけ書けばよい・施設エリア単位でよい／屋号欄・稼働時間自動計算の記述
+- 新しい誤解: M067（まとめ書き）・M068（休憩は10分未満だけ省略可）・M069（待機30分・荷役1時間の数え方）
