@@ -18,7 +18,7 @@ model: sonnet
 記事ドラフト（`content/blog/<slug>.md` または `.claude/work/<slug>/05*.md`）を受け取り:
 
 1. **delilog の機能・仕様と矛盾する記述**がないか確認
-2. **無料/プレミアムの記載**が正確か確認
+2. **無料/プレミアムの記載**が正確か確認（本文だけでなく、DL ボックス・CTA カード・frontmatter の `ctaTitle` / `ctaBody` の文言も対象）
 3. **App Store URL や配布チャネル**情報が正確か確認
 4. **既存記事との内部リンク**が正しい slug か確認
 
