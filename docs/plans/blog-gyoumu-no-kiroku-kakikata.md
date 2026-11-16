@@ -4,7 +4,7 @@
 ブランチ: blog/gyoumu-no-kiroku-kakikata
 WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-gyoumu-no-kiroku-kakikata
 公開日: 2026-11-22（種類: 作り直し）
-状態: 実行中
+状態: 完了
 
 ## 検証コマンド
 
@@ -22,8 +22,8 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-gyoumu-no-ki
 - [x] T2: プロダクト整合性 — 04-consistency.md
 - [x] T3: 執筆 — content/blog/gyoumu-no-kiroku-kakikata.md（短い ID gyomu-guide は登録済み）。blog:stats が OK（図以外）
 - [x] T4: 図と OG — content/figures/gyoumu-no-kiroku-kakikata/。blog:figures が OK
-- [ ] T5: 最終レビュー — 06-review.md。5つの検証コマンドがすべて OK、スマホのスクショを目で確認
-- [ ] T6: 公開準備 — 作り直しなので相互リンクは足さない。BLOG_SCHEDULE・BLOG_BACKLOG は触らない。push、PR（publish:2026-11-22）、プレビュー URL
+- [x] T5: 最終レビュー — 06-review.md。5つの検証コマンドがすべて OK、スマホのスクショを目で確認
+- [x] T6: 公開準備 — 作り直しなので相互リンクは足さない。BLOG_SCHEDULE・BLOG_BACKLOG は触らない。push、PR（publish:2026-11-22）、プレビュー URL
 
 ## 実行ログ
 
@@ -33,6 +33,8 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-gyoumu-no-ki
 | T2 | (このコミット) | 重大7件を構成書に反映（6項目の数え方・ctaTitle・カード文言ほか） |
 | T3 | (このコミット) | 本文 4,223字・6章・FAQ 4問 |
 | T4 | (このコミット) | 図2枚（縦長）＋OG。blog:figures OK。旧画像 chiten.png・timeline.png を削除 |
+| T5 | (このコミット) | 5つの検証 OK。直した点なし |
+| T6 | (このコミット) | 作り直しなので相互リンクは足さない。ぶつかりうるファイルなし |
 
 ## 失敗カウンタ
 
@@ -45,3 +47,5 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-gyoumu-no-ki
 - 書き換え: 6項目は国交省リーフレットの6つ（氏名・車両番号・日時・地点・距離・主な経過地点）。事故・遅延・待機・荷役・交替は6項目の外の「起きたときの記録」／根拠は第8条柱書の括弧書き（準用ではない）／「14項目」は書かない／休憩は10分未満なら省略可／まとめ書きは FAQ の「努めてください」
 - 新しい誤解: M073〜M075
 - 人の判断が要る点: M075「国交省の安全対策の表は13行で、14項目は国交省の数字ではない」— 既存記事 keikamotsu-anzentaisaku-2025 のタイトル「14項目」と、他記事のリンク文言に影響。作り直し候補（BLOG_SCHEDULE の候補3）で扱う
+- レビューの指摘: 第4章の表の「交替」行が「記録事項は FAQ で確認」と曖昧（FAQ p.17 を確かめて具体化すると親切）。本文 4,223字で下限に近い（水増しはしない）
+- ぶつかりうるファイル: なし
