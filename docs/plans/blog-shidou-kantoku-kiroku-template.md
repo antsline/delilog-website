@@ -4,7 +4,7 @@
 ブランチ: blog/shidou-kantoku-kiroku-template
 WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-shidou-kantoku-kiroku-template
 公開日: 2026-11-24（種類: 新規）
-状態: 実行中
+状態: 完了
 
 ## 検証コマンド
 
@@ -22,8 +22,8 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-shidou-kanto
 - [x] T2: プロダクト整合性 — 04-consistency.md
 - [x] T3: 執筆 — content/blog/shidou-kantoku-kiroku-template.md・配布ファイル（PDF・Excel）と content/blog-short-ids.json の1行（shidou-tpl）。blog:stats が OK（図以外）
 - [x] T4: 図と OG — content/figures/shidou-kantoku-kiroku-template/。blog:figures が OK
-- [ ] T5: 最終レビュー — 06-review.md。5つの検証コマンドがすべて OK、スマホのスクショを目で確認
-- [ ] T6: 公開準備 — 相互リンク: keikamotsu-kiroku-hozon-kikan（指導・監督の節の本文にリンク＋同記事の誤り3点の修正＋保存期間の表の「詳しい記事」列の指導・監督と台帳の2行＋台帳の行の「運転者でなくなってから3年」を起算日を断定しない書き方に）。ほか1本。BLOG_SCHEDULE・BLOG_BACKLOG は触らない。push、PR（publish:2026-11-24）、プレビュー URL
+- [x] T5: 最終レビュー — 06-review.md。5つの検証コマンドがすべて OK、スマホのスクショを目で確認
+- [x] T6: 公開準備 — 相互リンク: keikamotsu-kiroku-hozon-kikan（指導・監督の節の本文にリンク＋同記事の誤り3点の修正＋保存期間の表の「詳しい記事」列の指導・監督と台帳の2行＋台帳の行の「運転者でなくなってから3年」を起算日を断定しない書き方に）。ほか1本。BLOG_SCHEDULE・BLOG_BACKLOG は触らない。push、PR（publish:2026-11-24）、プレビュー URL
 
 ## 実行ログ
 
@@ -33,6 +33,8 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-shidou-kanto
 | T2 | (このコミット) | 重大2件を構成書に反映（T1 の処置・モデル様式準拠と書かない） |
 | T3 | (このコミット) | 本文 5,028字。配布ファイル PDF（空欄＋記入例・QR）・xlsx（2シート）、元 HTML は _shidou-template.htm |
 | T4 | (このコミット) | 図2枚＋OG。blog:figures OK |
+| T5 | (このコミット) | 5つの検証 OK。まとめの断定を1か所弱めた |
+| T6 | (このコミット) | keikamotsu-kiroku-hozon-kikan（表の2行・指導監督の節にリンク・誤り3点）、jiko-houkokusho-template のあわせて読みたい。4本を公開日順に重ねてもぶつからないことを確認 |
 
 ## 失敗カウンタ
 
@@ -45,3 +47,5 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-shidou-kanto
 - 新しい誤解: M080〜M084
 - 人の判断が要る点: アプリ（~/delilog）の指導監督記録簿 PDF の見出しが「第10条第2項に基づく法定記録」になっている。一般的な指導・監督の根拠は第10条第1項（第2項は特別な指導）。アプリ側の修正を推奨
 - 公開後の作業: CLAUDE.md の QR 読み取り元の一覧に template_shidou / template_shidou_xlsx を足す
+- 注意: この記事と keikamotsu-kiroku-hozon-kikan の表は `/blog/untensha-daichou-template`（11/20 公開予定・PR #21）にリンクしている。#21 を公開しない場合は、このリンクを外してから公開する
+- ぶつかりうるファイル: なし
