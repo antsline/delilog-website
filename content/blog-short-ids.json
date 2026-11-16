@@ -16,5 +16,6 @@
   "seikyusho-template": "seikyu-tpl",
   "tenko-kiroku-kakikata": "tenko-guide",
   "tenko-kirokubo-template": "tenko-tpl",
+  "untensha-daichou-template": "daichou-tpl",
   "_": "新しい記事はこの行の上に「\"<slug>\": \"<短いID>\",」を1行足す（末尾のカンマを忘れない）"
 }
