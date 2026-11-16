@@ -21,7 +21,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-shidou-kanto
 - [x] T1: ファクトチェック — 03-fact-check.md。裏が取れない主張は「削除」「書き換え」と判定
 - [x] T2: プロダクト整合性 — 04-consistency.md
 - [x] T3: 執筆 — content/blog/shidou-kantoku-kiroku-template.md・配布ファイル（PDF・Excel）と content/blog-short-ids.json の1行（shidou-tpl）。blog:stats が OK（図以外）
-- [ ] T4: 図と OG — content/figures/shidou-kantoku-kiroku-template/。blog:figures が OK
+- [x] T4: 図と OG — content/figures/shidou-kantoku-kiroku-template/。blog:figures が OK
 - [ ] T5: 最終レビュー — 06-review.md。5つの検証コマンドがすべて OK、スマホのスクショを目で確認
 - [ ] T6: 公開準備 — 相互リンク: keikamotsu-kiroku-hozon-kikan（指導・監督の節の本文にリンク＋同記事の誤り3点の修正＋保存期間の表の「詳しい記事」列の指導・監督と台帳の2行＋台帳の行の「運転者でなくなってから3年」を起算日を断定しない書き方に）。ほか1本。BLOG_SCHEDULE・BLOG_BACKLOG は触らない。push、PR（publish:2026-11-24）、プレビュー URL
 
@@ -32,6 +32,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-shidou-kanto
 | T1 | (このコミット) | 採用9・書き換え5・削除2。M080〜M084 追加。根拠は第10条第1項 |
 | T2 | (このコミット) | 重大2件を構成書に反映（T1 の処置・モデル様式準拠と書かない） |
 | T3 | (このコミット) | 本文 5,028字。配布ファイル PDF（空欄＋記入例・QR）・xlsx（2シート）、元 HTML は _shidou-template.htm |
+| T4 | (このコミット) | 図2枚＋OG。blog:figures OK |
 
 ## 失敗カウンタ
 
