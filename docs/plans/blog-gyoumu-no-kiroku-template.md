@@ -19,7 +19,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-gyoumu-no-ki
 ## タスク
 
 - [x] T1: ファクトチェック — 03-fact-check.md。裏が取れない主張は「削除」「書き換え」と判定
-- [ ] T2: プロダクト整合性 — 04-consistency.md
+- [x] T2: プロダクト整合性 — 04-consistency.md
 - [ ] T3: 執筆 — content/blog/gyoumu-no-kiroku-template.md と content/blog-short-ids.json の1行（既存 gyomu-tpl）。blog:stats が OK
 - [ ] T4: 図と OG — content/figures/gyoumu-no-kiroku-template/。blog:figures が OK
 - [ ] T5: 最終レビュー — 06-review.md。5つの検証コマンドがすべて OK、スマホのスクショを目で確認
@@ -30,6 +30,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-gyoumu-no-ki
 | タスク | コミット | メモ |
 |---|---|---|
 | T1 | (このコミット) | 採用6・書き換え8・削除3。M067〜M069 追加 |
+| T2 | (このコミット) | 重大3件を構成書に反映（まとめのカード文言・様式例準拠と書かない・T1 処置の反映） |
 
 ## 失敗カウンタ
 
