@@ -3,7 +3,7 @@
 2日に1本のペースで出すための予定表。`/blog-week` がこのファイルを読んで次の3〜4本を選び、承認後に公開日を書き込む。
 ネタの中身（狙う検索語・構成メモ・重複回避）は `docs/BLOG_BACKLOG.md`、公開済みの一覧もそちらが正。
 
-最終更新: 2026-11-08（最初の週の4本を予約。確定申告ガイドはオーナーの判断で外し、残す記録の一覧に差し替え）
+最終更新: 2026-11-16（2026-11-16 週の4本を予約。11/8 週の4本は 11/8 に一括公開済みで BLOG_BACKLOG の公開済みへ移動済み）
 
 ## 仕組み（要点）
 
@@ -28,7 +28,10 @@
 
 | 公開日 | 種類 | slug | タイトル（短縮） |
 |---|---|---|---|
-| （なし） | | | |
+| 2026-11-18 | 作り直し | `gyoumu-no-kiroku-template` | 業務の記録テンプレ（PDF・Excelと記入例） |
+| 2026-11-20 | 新規 | `untensha-daichou-template` | 運転者等台帳テンプレ（1人親方の5項目と記入例） |
+| 2026-11-22 | 作り直し | `gyoumu-no-kiroku-kakikata` | 業務の記録の書き方（6項目・地点の粒度・保存1年） |
+| 2026-11-24 | 新規 | `shidou-kantoku-kiroku-template` | 指導・監督の記録の書き方とテンプレ |
 
 （`/blog-week` がその週の最初の PR で行を足す。PR はブランチ `blog/<slug>` で引ける。公開された行は、次の週の最初の PR で BLOG_BACKLOG の「公開済み記事」へ移してここから消す）
 
@@ -36,19 +39,15 @@
 
 | 順 | 種類 | slug（案） | テーマ | メモ |
 |---|---|---|---|---|
-| 1 | 作り直し | `gyoumu-no-kiroku-template` | 業務の記録テンプレ | 図2・15,640字 |
-| 2 | 新規 | `untensha-daichou-template` | 1人親方の運転者台帳テンプレ（BACKLOG #16） | アプリのドライバー手帳から PDF 出力できる |
-| 3 | 作り直し | `gyoumu-no-kiroku-kakikata` | 業務の記録の書き方 | 勝ち記事 #2 |
-| 4 | 新規 | `shidou-kantoku-kiroku-template` | 指導・監督の記録テンプレ | 2025年4月義務化。アプリで入力は無料 |
-| 5 | 作り直し | `kaizen-kijun-kokuji-keikamotsu` | 改善基準告示（勤務時間ルール） | |
-| 6 | 新規 | `keikamotsu-keihi-list` | 軽貨物の経費リスト（BACKLOG #20） | 1.4.14 公開後。1月上旬まで |
-| 7 | 作り直し | `keikamotsu-anzentaisaku-2025` | 法令義務14項目 | 第4章（記録と保存期間）は縮めて `keikamotsu-kiroku-hozon-kikan` へリンク |
-| 8 | 新規 | `keikamotsu-kansa-mochimono` | 巡回指導・監査の持ち物（BACKLOG #17） | |
-| 9 | 作り直し | `keikamotsu-kuro-number-shutoku` | 黒ナンバー取得の流れ | |
-| 10 | 新規 | `alcohol-kenchiki-kojin` | 個人事業主のアルコール検知器（BACKLOG #14） | 機種比較と運用に振り切る（#3 と重ねない） |
-| 11 | 作り直し | `keikamotsu-hatarakikata` | 業務形態3類型 | |
-| 12 | 新規 | `juudai-jiko-sokuhou` | 重大事故の24時間速報（BACKLOG #18） | |
-| 13 | 作り直し | `keikamotsu-jittai-toukei` | 実態統計 | 「売上ベースである可能性が高い」は裏が取れないので直す |
-| 14 | 新規 | `keikamotsu-gyousei-shobun` | 行政処分の判断と実例（BACKLOG #21） | |
-| 15 | 作り直し | `keikamotsu-konenashi-shigoto-routes` | コネなしで仕事を得る | 「2〜3割高め」に出典が無いので直す |
-| 16 | 作り直し | `keikamotsu-yami-kouzou` | 業界の闇 | |
+| 1 | 作り直し | `kaizen-kijun-kokuji-keikamotsu` | 改善基準告示（勤務時間ルール） | |
+| 2 | 新規 | `keikamotsu-keihi-list` | 軽貨物の経費リスト（BACKLOG #20） | 1.4.14 公開後。1月上旬まで |
+| 3 | 作り直し | `keikamotsu-anzentaisaku-2025` | 法令義務14項目 | 第4章（記録と保存期間）は縮めて `keikamotsu-kiroku-hozon-kikan` へリンク。「14項目」は国交省の数字ではない（リーフレットの表は13行・M075）ので、タイトルと数え方を見直す |
+| 4 | 新規 | `keikamotsu-kansa-mochimono` | 巡回指導・監査の持ち物（BACKLOG #17） | |
+| 5 | 作り直し | `keikamotsu-kuro-number-shutoku` | 黒ナンバー取得の流れ | |
+| 6 | 新規 | `alcohol-kenchiki-kojin` | 個人事業主のアルコール検知器（BACKLOG #14） | 機種比較と運用に振り切る（#3 と重ねない） |
+| 7 | 作り直し | `keikamotsu-hatarakikata` | 業務形態3類型 | |
+| 8 | 新規 | `juudai-jiko-sokuhou` | 重大事故の24時間速報（BACKLOG #18） | |
+| 9 | 作り直し | `keikamotsu-jittai-toukei` | 実態統計 | 「売上ベースである可能性が高い」は裏が取れないので直す |
+| 10 | 新規 | `keikamotsu-gyousei-shobun` | 行政処分の判断と実例（BACKLOG #21） | |
+| 11 | 作り直し | `keikamotsu-konenashi-shigoto-routes` | コネなしで仕事を得る | 「2〜3割高め」に出典が無いので直す |
+| 12 | 作り直し | `keikamotsu-yami-kouzou` | 業界の闇 | |
