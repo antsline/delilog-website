@@ -1,0 +1,12 @@
+{
+  "nenkan.png": {
+    "width": 1080,
+    "height": 1350,
+    "minFontPx": 44
+  },
+  "ninpan.png": {
+    "width": 1080,
+    "height": 1350,
+    "minFontPx": 44
+  }
+}
