@@ -21,7 +21,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-untensha-dai
 - [x] T1: ファクトチェック — 03-fact-check.md。裏が取れない主張は「削除」「書き換え」と判定
 - [x] T2: プロダクト整合性 — 04-consistency.md
 - [x] T3: 執筆 — content/blog/untensha-daichou-template.md・配布ファイル（PDF・Excel）と content/blog-short-ids.json の1行（daichou-tpl）。blog:stats が OK
-- [ ] T4: 図と OG — content/figures/untensha-daichou-template/。blog:figures が OK
+- [x] T4: 図と OG — content/figures/untensha-daichou-template/。blog:figures が OK
 - [ ] T5: 最終レビュー — 06-review.md。5つの検証コマンドがすべて OK、スマホのスクショを目で確認
 - [ ] T6: 公開準備 — 相互リンク（既存2〜3本の「あわせて読みたい」）、blog/untensha-daichou-template を push、PR（publish:2026-11-20）、プレビュー URL を取得。BLOG_SCHEDULE・BLOG_BACKLOG は触らない
 
@@ -32,6 +32,7 @@ WORKTREE: /Users/narajunichi/delilog-website/.claude/worktrees/blog-untensha-dai
 | T1 | (このコミット) | 採用9・書き換え5・削除1。M070〜M072 追加 |
 | T2 | (このコミット) | 重大8件を構成書に反映 |
 | T3 | (このコミット) | 本文 5,088字。短い ID daichou-tpl。配布ファイルは T4 のコミットに含める |
+| T4 | (このコミット) | 図2枚＋OG。blog:figures OK。配布ファイル PDF（空欄＋記入例）・xlsx（2シート）と元の HTML（_daichou-template.htm） |
 
 ## 失敗カウンタ
 
